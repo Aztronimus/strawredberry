@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<title>3D Engine</title>
+	<link rel="stylesheet" type="text/css" href="../style.css">
+	<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</script>
+</head>
+<body>
+	<p>
+		\begin{align}
+			ax_1 + by_1 + cz_1 &= 0\\
+			ax_2 + by_2 + cz_2 &= 0\\
+			ax + by + cz &= 0
+		\end{align}
+		Erasing one column
+		\begin{align}
+			x_2(ax_1 + by_1 + cz_1 &= 0)\\
+			x_1(ax_2 + by_2 + cz_2 &= 0)\\
+		\end{align}
+		Combining two equations we get one equation
+		\begin{align}
+			b(y_2x_1 - y_1x_2) + c(z_2x_1 - z_1x_2) = 0
+		\end{align}
+		In the case that \(x_1\) is equal to zero, the information of the second equation is lost, to avoid this we should use the other possible ways to take all the possibilities on count
+		\begin{align}
+			a(x_2y_1 - x_1y_2) + c(z_2y_1 - z_1y_2) &= 0\\
+			a(x_2z_1 - x_1z_2) + b(y_2z_1 - y_1z_2) &= 0
+		\end{align}
+		Renaming we get three equations
+		\begin{align}
+			bm_z + cm_y &= 0\\
+			-am_z + cm_x &= 0\\
+			-am_y - bm_x &= 0
+		\end{align}
+		Where...
+		\begin{align}
+			m_x &= z_2y_1 - z_1y_2\\
+			m_y &= z_2x_1 - z_1x_2\\
+			m_z &= y_2x_1 - y_1x_2
+		\end{align}
+		Something similar occurs for these two equations
+		\begin{align}
+			ax_1 + by_1 + cz_1 &= 0\\
+			ax + by + cz &= 0
+		\end{align}
+		Which transforms into 3 equations
+		\begin{align}
+			b(yx_1 - y_1x) + c(zx_1 - z_1x) &= 0\\
+			a(xy_1 - x_1y) + c(zy_1 - z_1y) &= 0\\
+			a(xz_1 - x_1z) + b(yz_1 - y_1z) &= 0
+		\end{align}
+		Renaming them as follows
+		\begin{align}
+			bn_z + cn_y &= 0\\
+			- an_z + cn_x &= 0\\
+			- an_y - bn_x &= 0
+		\end{align}
+		Where...
+		\begin{align}
+			n_x &= zy_1 - z_1y\\
+			n_y &= zx_1 - z_1x\\
+			n_z &= yx_1 - y_1x
+		\end{align}
+		Finally we get six equations
+		\begin{align}
+			bm_z + cm_y &= 0 & bn_z + cn_y &= 0\\
+			-am_z + cm_x &= 0 & - an_z + cn_x &= 0\\
+			-am_y - bm_x &= 0 & - an_y - bn_x &= 0
+		\end{align}
+		Combining them we get three equations
+		\begin{align}
+			n_ym_z - m_yn_z &= 0\\
+			-n_xm_z + m_xn_z &= 0\\
+			n_xm_y - m_xn_y &= 0
+		\end{align}
+		All of them are valid, but incomplete, only particular solutions, to get the general solution we have to sum them all together
+		\begin{align}
+			n_ym_z - m_yn_z - n_xm_z + m_xn_z + n_xm_y - m_xn_y &= 0\\
+			n_x (m_y - m_z) + n_y (m_z - m_x) + n_z (m_x - m_y) &= 0\\
+		\end{align}
+		Renaming we get
+		\begin{align}
+			n_xp_x + n_yp_y + n_zp_z &= 0\\
+		\end{align}
+		Where...
+		\begin{align}
+			p_x &= m_y - m_z\\
+			p_y &= m_z - m_x\\
+			p_z &= m_x - m_y
+		\end{align}
+		Replacing we get the answer
+		\begin{align}
+			(zy_1 - z_1y)p_x + (zx_1 - z_1x)p_y + (yx_1 - y_1x)p_z &= 0\\
+			z y_1p_x - y z_1p_x + z x_1p_y - x z_1p_y + y x_1p_z - x y_1p_z &= 0\\
+			x(- y_1p_z - z_1p_y) + y(x_1p_z - z_1p_x) + y(y_1p_x + x_1p_y) &= 0\\
+		\end{align}
+		So...
+		\begin{align}
+			a &= - y_1 p_z - z_1 p_y\\
+			b &= x_1 p_z - z_1 p_x\\
+			c &= y_1 p_x + x_1 p_y
+		\end{align}
+		\begin{align}
+			p_x &= z_2x_1 - z_1x_2 - y_2x_1 + y_1x_2\\
+			p_y &= y_2x_1 - y_1x_2 - z_2y_1 + z_1y_2\\
+			p_z &= z_2y_1 - z_1y_2 - z_2x_1 + z_1x_2
+		\end{align}
+		\begin{align}
+			a &= - y_1 (z_2y_1 - z_1y_2 - z_2x_1 + z_1x_2) - z_1 (y_2x_1 - y_1x_2 - z_2y_1 + z_1y_2)\\
+			&= - y_1 (z_2y_1 - z_1y_2 - z_2x_1) - z_1 (y_2x_1 - z_2y_1 + z_1y_2)\\
+			b &= x_1 (z_2y_1 - z_1y_2 - z_2x_1 + z_1x_2) - z_1 (z_2x_1 - z_1x_2 - y_2x_1 + y_1x_2)\\
+			&= x_1 (z_2y_1 - z_2x_1 + z_1x_2) - z_1 (z_2x_1 - z_1x_2 + y_1x_2)\\
+			c &= y_1 (z_2x_1 - z_1x_2 - y_2x_1 + y_1x_2) + x_1 (y_2x_1 - y_1x_2 - z_2y_1 + z_1y_2)\\
+			&= y_1 (- z_1x_2 - y_2x_1 + y_1x_2) + x_1 (y_2x_1 - y_1x_2 + z_1y_2)
+		\end{align}
+	</p>
+</body>
+</html>

@@ -1,4 +1,20 @@
 body {
+	font-size: larger;
 	color: white;
 	background-color: black
+}
+
+a:link,
+a:visited,
+a:active {
+	color: cyan;
+	text-decoration: none;
+}
+
+a:hover {
+	color: red;
+}
+
+ul {
+	list-style: none;
 }
