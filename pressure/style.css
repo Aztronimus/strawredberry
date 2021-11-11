@@ -1,0 +1,59 @@
+:root {
+	--v1: 15vw;
+}
+
+body {
+	font-size: larger;
+	color: white;
+	background-color: #101005;
+}
+
+a:link,
+a:visited,
+a:active {
+	color: cyan;
+	text-decoration: none;
+}
+
+a:hover {
+	color: red;
+}
+
+ul {
+	list-style: none;
+}
+
+h2,
+h3,
+body > ul,
+p {
+	margin-left: var(--v1);
+	margin-right: var(--v1);
+}
+
+p {
+	text-align: justify;
+	line-height: 25pt;
+	/*text-align-last: center;*/
+}
+
+h1 {
+	text-align: center;
+}
+
+h2 {
+	color: #f77;
+}
+
+h3 {
+	color: #f99;
+}
+
+b {
+	color: #0dd;
+}
+
+div.d1 {
+	border: 1px solid #333;
+	border-radius: 0 25px;
+}
