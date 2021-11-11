@@ -21,12 +21,18 @@
 	<h2>¿Dónde se usa?</h2>
 	<p>
 		Fisicoquímica para los balances de materia y energía
-		Presión osmótica en materiales poliméricos
-		Presión sanguínea
-		Presión en tuberías en flujo de fluídos
-		Presión atmosférica
-		Presión submarina
-		Ollas de presión
+		\begin{align}
+			E_2 - E_1 &= V(P_2 - P_1)\\
+			E_2 - E_1 &= P(V_2 - V_1)
+		\end{align}
+		Presión osmótica en materiales poliméricos<br>
+		Presión atmosférica<br>
+		Presión submarina<br>
+		\begin{align}
+			P = \rho h g
+		\end{align}
+		Presión en tuberías en flujo de fluídos<br>
+		Presión en intercambiadores de calor<br>
 		Hidraúlica
 	</p>
 	<div class="d1">
@@ -63,6 +69,14 @@
 		La presión hidrostática o de columna de líquido es la presión ejercida por un fluído debido a su propio peso.
 		\begin{align}
 			P = \frac{mg}{A}
+		\end{align}
+		Suponiendo una columna con área de base \(A\) y altura \(h\) de un líquido cuya densidad \(\rho\) es conocida, se calcula la presión hidrostáctica.
+		\begin{align}
+			P = \frac{F}{A} = \frac{mg}{A} = \frac{\rho V g}{A} = \frac{\rho A h g}{A} = \rho h g
+		\end{align}
+		De aquí se deduce que la presión hidrostática no depende del área de la columna, sino simplemente de su altura, de esa manera se puede calcular la presión bajo el mar usando únicamente la profundidad.
+		\begin{align}
+			P = \rho h g
 		\end{align}
 	</p>
 	<div class="d1">
@@ -103,23 +117,44 @@
 		\end{align}
 		La unidad \(\text{psia}\) es para presión absoluta y tiene las mismas unidades que \(\text{psi}\).
 	</p>
+	<h3>Columna de líquido</h3>
+	<p>
+		Utilizando la fórmula de presión hidrostática se pueden realizar conversiones entre unidades de columna de líquido y de presión convencional.
+		Ejemplo para obtener presión a partir de columna de líquido.
+		\begin{align}
+			h\ \text{mmHg} \rightarrow \frac{\text{dyn}}{\text{cm}^2}
+		\end{align}
+		\begin{align}
+			P &= \rho_\text{Hg} \cdot h\ \text{mm} \cdot g\\
+			&= \left(13.5336\ \frac{\text{g}}{\text{cm}^3}\right) \cdot (h\times 10^{-1}\ \text{cm}) \cdot \left(980.6\ \frac{\text{cm}}{\text{s}^2}\right)\\
+		\end{align}
+		Ejemplo para obtener columna de líquido a partir de presión.
+		\begin{align}
+			n\ \text{Pa} \rightarrow \text{mH}_2\text{O}
+		\end{align}
+		\begin{align}
+			h &= \frac{n\ \text{Pa}}{\rho_{\text{H}_2\text{O}} \cdot g}\\
+			&= \frac{n\ \text{Pa}}{997\ {\Large \frac{\text{kg}}{\text{m}^3}} \cdot 9.806\ {\Large \frac{\text{m}}{\text{s}^2}}}\\
+		\end{align}
+	</p>
+	<h3>Otras unidades</h3>
+	<p>
+		\begin{align}
+			\text{atm}\\
+			\text{bar}\\
+			\text{torr}
+		\end{align}
+	</p>
 	<div class="d1">
-		<h2>Comportamiento de la presión hidrostácica</h2>
+		<h2>Ejercicios y aplicaciones</h2>
 		<p>
-			Suponiendo una columna con área de base \(A\) y altura \(h\) de un líquido cuya densidad \(\rho\) es conocida, se calcula la presión hidrostáctica.
-			\begin{align}
-				P = \frac{F}{A} = \frac{mg}{A} = \frac{\rho V g}{A} = \frac{\rho A h g}{A} = \rho h g
-			\end{align}
+			Conversiones de unidades y magnitudes
+				Analizar si una fórmula tiene o no las unidades correspondientes
+				Crear factores de conversión
+				Saber que unidades tiene el resultado de una operación
+			Identificación de información en los enunciados
+			Identificación de fórmulas a utilizar en un enunciado
 		</p>
 	</div>
-	<h2>Ejercicios y aplicaciones</h2>
-	<p>
-		Conversiones de unidades y magnitudes
-			Analizar si una fórmula tiene o no las unidades correspondientes
-			Crear factores de conversión
-			Saber que unidades tiene el resultado de una operación
-		Identificación de información en los enunciados
-		Identificación de fórmulas a utilizar en un enunciado
-	</p>
 </body>
 </html>
