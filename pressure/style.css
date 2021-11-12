@@ -25,16 +25,33 @@ ul {
 
 h2,
 h3,
-body > ul,
+ul.p1,
+footer table,
 p {
-	margin-left: var(--v1);
-	margin-right: var(--v1);
+	padding-left: var(--v1);
+	padding-right: var(--v1);
 }
 
-p {
+p,
+ul li {
 	text-align: justify;
 	line-height: 25pt;
 	/*text-align-last: center;*/
+}
+
+footer table {
+	padding-top: 40px;
+	padding-bottom: 40px;
+	/*background-color: white;*/
+}
+
+footer table th{
+	text-align: right;
+}
+
+footer table th,
+footer table td {
+	padding: 0 10px;
 }
 
 h1 {
