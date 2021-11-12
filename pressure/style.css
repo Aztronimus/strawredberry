@@ -2,6 +2,12 @@
 	--v1: 15vw;
 }
 
+@media (max-width:  800px) {
+	:root {
+		--v1: 15px;
+	}
+}
+
 body {
 	font-size: larger;
 	color: white;
@@ -26,7 +32,7 @@ ul {
 h2,
 h3,
 ul.p1,
-footer table,
+table.t1,
 p {
 	padding-left: var(--v1);
 	padding-right: var(--v1);
@@ -39,22 +45,27 @@ ul li {
 	/*text-align-last: center;*/
 }
 
-footer table {
-	padding-top: 40px;
-	padding-bottom: 40px;
-	/*background-color: white;*/
+p,
+footer {
+	overflow-x: auto;
 }
 
-footer table th{
+table.t1 {
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+
+table.t1 th {
 	text-align: right;
 }
 
-footer table th,
-footer table td {
+table.t1 th,
+table.t1 td {
 	padding: 0 10px;
 }
 
 h1 {
+	color: #f55;
 	text-align: center;
 }
 
@@ -70,7 +81,7 @@ b {
 	color: #0dd;
 }
 
-div.d1 {
+div.d1:nth-child(even) {
 	border: 1px solid #333;
 	border-radius: 0 25px;
 }
