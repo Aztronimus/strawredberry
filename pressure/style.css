@@ -1,5 +1,8 @@
 :root {
 	--v1: 15vw;
+	/* gray border */
+	--v2: #333;
+	--v3: #303020;
 }
 
 @media (max-width:  800px) {
@@ -32,7 +35,7 @@ ul {
 h2,
 h3,
 ul.p1,
-table.t1,
+div.t1,
 p {
 	padding-left: var(--v1);
 	padding-right: var(--v1);
@@ -46,23 +49,26 @@ ul li {
 }
 
 p,
-footer,
-table.t1 {
+footer {
 	overflow-x: auto;
 }
 
-table.t1 {
-	padding-top: 40px;
-	padding-bottom: 40px;
+div.t1 table {
+	border-collapse: collapse;
 }
 
-table.t1 th {
-	text-align: right;
+div.t1 table th {
+	text-align: left;
 }
 
-table.t1 th,
-table.t1 td {
-	padding: 0 10px;
+div.t1 table tr:not(:last-child) {
+	/*background-color: black;*/
+	border-bottom: 2px solid var(--v3);
+}
+
+div.t1 table th,
+div.t1 table td {
+	padding: 10px;
 }
 
 h1 {
@@ -82,7 +88,11 @@ b {
 	color: #0dd;
 }
 
+div {
+	overflow-x: auto;
+}
+
 div.d1:nth-child(even) {
-	border: 1px solid #333;
+	border: 2px solid var(--v2);
 	border-radius: 0 25px;
 }
