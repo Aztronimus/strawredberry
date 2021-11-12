@@ -46,7 +46,8 @@ ul li {
 }
 
 p,
-footer {
+footer,
+table.t1 {
 	overflow-x: auto;
 }
 
