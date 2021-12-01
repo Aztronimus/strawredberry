@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width">
+	<title>Maxwell equations</title>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script>
+		MathJax = {
+			tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+		};
+	</script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1>Faraday - Lenz law</h1>
+		<!-- <h2>A charged particle</h2> -->
+	<p>
+		\begin{align}
+			\vec{E} &= k_eq\frac{\vec{r}}{r^3}&
+			\vec{B} &= k_bq\frac{\vec{v} \times \vec{r}}{r^3}
+		\end{align}
+		\begin{align}
+			\vec{v} &= v\hat{i}\\
+			\vec{r} &= \langle x - vt, y \rangle\\
+		\end{align}
+		\begin{align}
+			\vec{v} \times \vec{r} &= \det\left[\begin{array}{cc}
+				v & 0\\
+				x - vt & y\\
+			\end{array}\right]\hat{k}\\
+			&= vy\hat{k}\\
+			\\
+			\nabla \times \vec{E}
+			&= k_e q \cdot \det\left[\begin{array}{ccc}
+				\hat{i} & \hat{j} & \hat{k}\\
+				{\Large \frac{\partial}{\partial x}} & {\Large \frac{\partial}{\partial y}} & {\Large \frac{\partial}{\partial z}}\\
+				{\Large \frac{x - vt}{r^3}} & {\Large \frac{y}{r^3}} & 0
+			\end{array}\right]\\
+			&= k_e q \left\langle -\ \frac{\partial}{\partial z}\left(\frac{y}{r^3}\right), \frac{\partial}{\partial z}\left(\frac{x - vt}{r^3}\right), \frac{\partial}{\partial x}\left(\frac{y}{r^3}\right) - \frac{\partial}{\partial y}\left(\frac{x-vt}{r^3}\right) \right\rangle\\
+			&= k_e q \left[-3\frac{y(x - vt)}{r^5} \cdot 0 \right]\hat{k}\\
+			&= \vec{0}\\
+			\\
+			\frac{\partial B_z}{\partial t} &= k_b q v \frac{\partial}{\partial t}\left(\frac{y}{r^3}\right)\\
+			&= 3 k_b q v^2 \frac{y(x - vt)}{r^5}\\
+			\\
+			\nabla \times \vec{E} &= \frac{1}{v^2} \left[ -\ \frac{k_e}{k_b} \frac{\partial \vec{B}}{\partial t} + 3 k_e q\frac{y(x - vt)}{r^5}\right]
+		\end{align}
+	</p>
+</body>

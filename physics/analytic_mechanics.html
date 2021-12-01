@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width">
+  <title>Analytic mechanics</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+  <h1>Analytic mechanics</h1>
+  <p>
+    \begin{align}
+      \sum_{x}^{i=1}{asdf}\\
+      \left[
+        \begin{array}{cc}
+          x & y \\
+          x & y
+        \end{array}
+      \right]
+    \end{align}
+  </p>
+  <h2>Lagrangian</h2>
+  <p>
+    \begin{align}
+      E &= K + P\\
+      \mathcal{L} &= K - P\\
+      \\
+      K &= \frac{1}{2}(E + \mathcal{L})\\
+      P &= \frac{1}{2}(E - \mathcal{L})\\
+      \\
+      \mathcal{L} &= \frac{dS}{dt}\\
+      \\
+      \ddot{y} &= - g\\
+      \dot{y} &= - gt + k_1\\
+      y &= - g\frac{t^2}{2} + k_1t + k_2\\
+      \\
+      y(0) &= y_0\\
+      y(t_0) &= 0\\
+      \\
+      y &= - g\frac{t^2}{2} + \left(g\frac{t_0}{2} - \frac{y_0}{t_0}\right)t + y_0\\
+      y &= y_0\left(1 - \frac{t}{t_0}\right)\\
+      \\
+      \frac{\partial{\mathcal{L}}}{\partial{y}} &= \frac{d}{dt}\frac{\partial{\mathcal{L}}}{\partial{\dot{y}}}\\
+      \\\\
+      P &= mgy\\
+      K &= mg(y_0 - y)\\
+      \\
+      \mathcal{L} &= mg(y_0 - 2y)\\
+      S &= mg\int{(y_0 - 2y)dt} = mg\left(y_0t - 2\int{y \cdot dt}\right)\\
+      \\
+      \\
+      \int{y \cdot dt} &= \int{\left[g\frac{t^2}{2} - \left(\frac{y_0}{t_0} + g\frac{t_0}{2}\right)t + y_0\right]dt}\\
+      &= \left.\left[g\frac{t^3}{6} - \left(\frac{y_0}{t_0} + g\frac{t_0}{2}\right)\frac{t^2}{2} + y_0t\right]\right|_{t_0}\\
+      &= g\frac{t_0^3}{6} - \left(\frac{y_0}{t_0} + g\frac{t_0}{2}\right)\frac{t_0^2}{2} + y_0t_0\\
+      &= g\frac{t_0^3}{6} - \frac{y_0 t_0}{2} - g\frac{t_0^3}{4} + y_0t_0\\
+      &= gt_0^3\left(\frac{1}{6} - \frac{1}{4}\right) + y_0t_0\left(1 - \frac{1}{2}\right)\\
+      &= \frac{y_0t_0}{2} - \frac{gt_0^3}{12}\\
+      \\
+      \int{y \cdot dt} &= \int{y_0\left(1 - \frac{t}{t_0}\right)dt} = \frac{y_0t_0}{2}\\
+      \\
+      \frac{y_0t_0}{2} &> \frac{y_0t_0}{2} - \frac{gt_0^3}{12}\\
+      \\
+      \\
+      P &= mgy\\
+      K &= \frac{1}{2}m\dot{y}^2\\
+      \\
+      \mathcal{L} &= \frac{1}{2}m\dot{y}^2 - mgy\\
+      \\
+      \frac{\partial{\mathcal{L}}}{\partial{y}} &= \frac{d}{dt}\frac{\partial{\mathcal{L}}}{\partial{\dot{y}}}\\
+      -mg &= \frac{d}{dt}m\dot{y}\\
+      -mgt &= m\dot{y}\\
+      \dot{y} &= -gt\\
+    \end{align}
+  </p>
+  <h2>Euler-Lagrange equation</h2>
+  <p>
+    \begin{align}
+      S &= \int{\mathcal{L} \cdot dt}\\
+      q &= q_0 + n\mu\\
+      \dot{q} &= \dot{q}_0 + n\dot{\mu}\\
+      \\
+      \frac{\delta S}{\delta q} &= \lim_{n\mu \rightarrow 0} \frac{S(q) - S(q_0)}{n\mu} = \lim_{n \rightarrow 0} \frac{S(q) - S(q_0)}{n} = \frac{\delta{S}}{\delta n} = 0\\
+      \\
+      \frac{\delta{S}}{\delta n} &= \frac{\delta}{\delta n} \int{\mathcal{L} \cdot dt} =  \int{\frac{\delta{\mathcal{L}}}{\delta n} \cdot dt} = \int{\left[\frac{\partial{\mathcal{L}}}{\partial{\dot{q}}}\dot{\mu} + \frac{\partial{\mathcal{L}}}{\partial{q}} \mu \right]dt}\\
+      \\
+      \frac{d\mathcal{L}}{dn} &= \frac{\partial{\mathcal{L}}}{\partial{\dot{q}}}\frac{d\dot{q}}{dn} + \frac{\partial{\mathcal{L}}}{\partial{q}}\frac{dq}{dn} + \frac{\partial{\mathcal{L}}}{\partial{t}}\frac{dt}{dn} = \frac{\partial{\mathcal{L}}}{\partial{\dot{q}}}\dot{\mu} + \frac{\partial{\mathcal{L}}}{\partial{q}}\mu\\
+      \\
+      \frac{d}{dt}\left(\frac{\partial\mathcal{L}}{\partial\dot{q}}\mu\right) &= \frac{\partial\mathcal{L}}{\partial\dot{q}}\dot{\mu} + \frac{d}{dt}\left(\frac{\partial\mathcal{L}}{\partial\dot{q}}\right)\mu\\
+      - \frac{\partial\mathcal{L}}{\partial\dot{q}}\dot{\mu} &= \frac{d}{dt}\left(\frac{\partial\mathcal{L}}{\partial\dot{q}}\right)\mu - \frac{d}{dt}\left(\frac{\partial\mathcal{L}}{\partial\dot{q}}\mu\right)\\
+      \\
+      \int{\frac{\partial\mathcal{L}}{\partial q}\mu \cdot dt} &= - \int{\frac{\partial\mathcal{L}}{\partial\dot{q}}\dot{\mu} \cdot dt}\\
+      \int{\frac{\partial\mathcal{L}}{\partial q}\mu \cdot dt} &= \int{\left[\frac{d}{dt}\left(\frac{\partial\mathcal{L}}{\partial\dot{q}}\right)\mu - \frac{d}{dt}\left(\frac{\partial\mathcal{L}}{\partial\dot{q}}\mu\right)\right] dt}\\
+      \int_{t_0}^{t_1}{\frac{\partial\mathcal{L}}{\partial q}\mu \cdot dt} &= \int_{t_0}^{t_1}{\frac{d}{dt}\left(\frac{\partial\mathcal{L}}{\partial\dot{q}}\right)\mu \cdot dt} - \left.\left(\frac{\partial\mathcal{L}}{\partial\dot{q}}\mu\right)\right|_{t_0}^{t_1}\\
+      \\
+      \frac{\partial\mathcal{L}}{\partial q} &= \frac{d}{dt}\left(\frac{\partial\mathcal{L}}{\partial\dot{q}}\right)\\
+    \end{align}
+  </p>
+  <h2>Waves - mass spring system</h2>
+  <p>
+    \begin{align}
+      K &= \frac{1}{2} m \dot{x}^2\\
+      F &= - kx\\
+      K &= \int_{x_0}^{x} {F \cdot dx} = \left.\left[- \frac{k}{2} x^2 \right]\right|_{x_0}^{x} = \frac{k}{2} \left(x_0^2 - x^2\right)\\
+      P &= - \int_0^x {F \cdot dx} = \frac{k}{2} x^2\\
+      \\
+      \dot{x} &= \frac{dx}{dt}\\
+      dt &= \frac{dx}{\dot{x}}\\
+      t &= \int {\frac{dx}{\dot{x}}}\\
+      \\
+      \frac{1}{2} m \dot{x}^2 &= \frac{k}{2} \left( x_0^2 - x^2 \right)\\
+      \dot{x}^2 &= \frac{k}{m} \left( x_0^2 - x^2 \right)\\
+      |\dot{x}| &= \sqrt{\frac{k}{m} \left( x_0^2 - x^2 \right)}\\
+      \\
+      t &= \sqrt{\frac{m}{k}} \int {\frac{dx}{\sqrt{x_0^2 - x^2}}}\\
+      x &= x_0 \sin{u}\\
+      \frac{dx}{du} &= x_0 \cos{u}\\
+      \\
+      u &= \arcsin{\frac{x}{x_0}}\\
+      x_0^2 - x^2 &= x_0^2 - x_0^2 \sin^2{u} = x_0^2 \cos^2{u}\\
+      \\
+      t &= \sqrt{\frac{m}{k}} \int {\frac{x_0 \cos{u} \cdot du}{x_0 \cos{u}}} = \sqrt{\frac{m}{k}} \int{du} = \sqrt{\frac{m}{k}} \cdot u\\
+      &= \sqrt{\frac{m}{k}} \left.\left[\arcsin{\frac{x}{x_0}}\right]\right|_{x_0}^x = \sqrt{\frac{m}{k}} \left[\arcsin{\frac{x}{x_0}} - \arcsin{\frac{x_0}{x_0}}\right]\\
+      \\
+      t &= \sqrt{\frac{m}{k}} \left[\arcsin{\frac{x}{x_0}} - \frac{\pi}{2}\right]\\
+      x &= x_0 \sin{\left(\sqrt{\frac{k}{m}} \cdot t + \frac{\pi}{2}\right)} = x_0 \cos{\left(\sqrt{\frac{k}{m}} \cdot t\right)}\\
+    \end{align}\\
+    \begin{align}
+      K &= \frac{1}{2} m \dot{x}^2\\
+      P &= \frac{k}{2} x^2\\
+      \mathcal{L} &= K - P\\
+      \mathcal{L} &= \frac{1}{2} m \dot{x}^2 - \frac{k}{2} x^2\\
+      \\
+      \frac{\partial \mathcal{L}}{\partial x} &= \frac{d}{dt} \left(\frac{\partial \mathcal{L}}{\partial \dot{x}}\right)\\
+      \frac{\partial \mathcal{L}}{\partial x} &= - kx\\
+      \frac{d}{dt} \left(\frac{\partial \mathcal{L}}{\partial \dot{x}}\right) &= \frac{d}{dt} ( m \dot{x} ) = m\ddot{x}\\
+      \\
+      -kx &= m\ddot{x}\\
+      m\frac{d^2 x}{dt^2} + kx &= 0\\
+      \\
+      x &= e^{at}\\
+      \frac{dx}{dt} &= a e^{at}\\
+      \frac{d^2 x}{dt^2} &= a^2 e^{at}\\
+      \\
+      m a^2 e^{at} + k e^{at} &= 0\\
+      m a^2 + k &= 0\\
+      a_1 &= \sqrt{ - \frac{k}{m} } = i \sqrt{ \frac{k}{m} }\\
+      a_2 &= - i \sqrt{ \frac{k}{m} }\\
+      \\
+      x &= C_1 \cos{ \left( \sqrt{ \frac{k}{m} } \cdot t \right) } + C_2 \sin{ \left( \sqrt{ \frac{k}{m} } \cdot t \right) }\\
+      \frac{dx}{dt} &= - C_1 \sqrt{ \frac{k}{m} } \sin{ \left( \sqrt{ \frac{k}{m} } \cdot t \right) } + C_2 \sqrt{ \frac{k}{m} } \cos{ \left( \sqrt{ \frac{k}{m} } \cdot t \right) }\\
+      x_0 &= C_1\\
+      \left. \frac{dx}{dt} \right|_{t=0} &= 0 = C_2 \sqrt{ \frac{k}{m} }\\
+      \\
+      x &= x_0 \cos{\left(\sqrt{\frac{k}{m}} \cdot t\right)}\\
+    \end{align}
+  </p>
+  <h2>Waves - pendulum</h2>
+  <p>
+    \begin{align}
+      x &= r\sin{u}\\
+      y &= r - r\cos{u}\\
+      v &= r \frac{du}{dt}\\
+      \\
+      K &= \frac{1}{2} mv^2 = \frac{1}{2} mr^2 \left(\frac{du}{dt}\right)^2\\
+      P &= mgy = mgr(1 - \cos{u})\\
+      \mathcal{L} &= K - P\\
+      &= \frac{1}{2} mr^2 \left(\frac{du}{dt}\right)^2 - mgr(1 - \cos{u})\\
+      \\
+      \frac{\partial \mathcal{L}}{\partial u} &= \frac{d}{dt} {\left( \frac{\partial \mathcal{L}}{\partial \dot{u}} \right)}\\
+      \frac{\partial \mathcal{L}}{\partial u} &= - mgr\sin{u}\\
+      \frac{d}{dt} {\left( \frac{\partial \mathcal{L}}{\partial \dot{u}} \right)} &= \frac{d}{dt} {\left( mr^2 \frac{du}{dt} \right)} = mr^2 \frac{d^2 u}{dt^2}\\
+      \\
+      - mgr\sin{u} &= mr^2 \frac{d^2 u}{dt^2}\\
+      \frac{d^2 u}{dt^2} &= - \frac{g}{r}\sin{u}\\
+    \end{align}
+  </p>
+  <h2>Gravity</h2>
+  <p>
+    \begin{align}
+      F &= G\frac{M m}{x^2}\\
+      F &= k \frac{Q q}{x^2}\\
+      P &= \int_{x_1}^{x} {F \cdot dx} = \left.\left[ - G\frac{Mm}{x}\right]\right|_{x_1}^{x} = GMm\left( \frac{1}{x_1} - \frac{1}{x} \right)\\
+      \Delta E &= GMm\left( \frac{1}{x_1} - \frac{1}{x_0} \right)\\
+      &= K + P\\
+      K &= \Delta E - P\\
+      &= GMm\left( \frac{1}{x_1} - \frac{1}{x_0} \right) - GMm\left( \frac{1}{x_1} - \frac{1}{x} \right) = GMm\left( \frac{1}{x} - \frac{1}{x_0}\right)\\
+      &= \frac{1}{2} m \dot{x}^2\\
+      \\
+      \frac{dx}{dt} &= \sqrt{2GM\left( \frac{1}{x} - \frac{1}{x_0}\right)}\\
+      t &= \frac{1}{\sqrt{2GM}} \int{\frac{dx}{\sqrt{\frac{1}{x} - \frac{1}{x_0}}}}\\
+      \\\\
+      \mathcal{L} &= K - P\\
+      &= \frac{1}{2} m \dot{x}^2 - GMm\left( \frac{1}{x_1} - \frac{1}{x} \right)\\
+      \\
+      \frac{\partial \mathcal{L}}{\partial x} &= \frac{d}{dt}{\left(\frac{\partial \mathcal{L}}{\partial \dot{x}}\right)}\\
+      \frac{\partial \mathcal{L}}{\partial x} &= - G \frac{Mm}{x^2}\\
+      \frac{d}{dt}{\left(\frac{\partial \mathcal{L}}{\partial \dot{x}}\right)} &= \frac{d}{dt}{(m\dot{x})} = m\ddot{x}\\
+      - G \frac{Mm}{x^2} &= m\ddot{x}\\
+      \frac{d^2x}{dt^2} &= - G \frac{M}{x^2}\\
+      \frac{d^2x}{dt^2} + G \frac{M}{x^2} &= 0\\
+      \left[\frac{d}{dt}{\left(\frac{dx}{dt}\right)} + G \frac{M}{x^2}\right] dx &= 0\\
+      \frac{dx}{dt} d{\left(\frac{dx}{dt}\right)} + G \frac{M}{x^2} dx &= 0\\
+      v \cdot dv + G \frac{M}{x^2} \cdot dx &= 0\\
+      \int {\left[v \cdot dv + G \frac{M}{x^2} \cdot dx \right]} &= 0\\
+      \int {v \cdot dv} + \int {G \frac{M}{x^2} \cdot dx} &= 0\\
+      \frac{1}{2} v^2 - G\frac{M}{x} &= C\\
+    \end{align}
+  </p>
+  <h2>References</h2>
+  <ul>
+    <li><a href="https://www.quora.com/How-can-I-solve-the-differential-equation-d-2y-dx-2-1-y-2-if-y-is-a-function-of-x">How to solve \(\frac{d^2 y}{dx^2} + f(y(x)) = 0\)</a></li>
+    <li><a href="http://www.sc.ehu.es/sbweb/fisica3/dinamica/lagrange/lagrange.html">Lagrange</a></li>
+    <li><a href="https://math.stackexchange.com/questions/2102582/the-general-solution-of-y-sin-y">The general solution of \(y'' = - \sin{y}\)</a></li>
+  </ul>
+</body>

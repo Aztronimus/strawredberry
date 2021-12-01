@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tensors</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style type="text/css">
+		body
+		{
+			background-color: black;
+			color: white;
+		}
+		h1, h2
+		{
+			text-align: center;
+		}
+		div
+		{
+			display: flex;
+			justify-content: center;
+		}
+		p
+		{
+			padding: 0 20vw 0 20vw;
+			text-align: justify;
+		}
+	</style>
+	<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/tex-chtml.js">
+	</script>
+</head>
+<body>
+	<h1>Tensors</h1>
+	<h2>Basis change</h2>
+	<p>
+		Describing one basis in terms of the other
+		\begin{align}
+			e_1' &= m_{1,1}\ e_1 + m_{1,2}\ e_2\\
+			e_2' &= m_{2,1}\ e_1 + m_{2,2}\ e_2\\
+			\\
+			e_1 &= m_{1,1}'\ e_1' + m_{1,2}'\ e_2'\\
+			e_2 &= m_{2,1}'\ e_1' + m_{2,2}'\ e_2'\\
+		\end{align}
+		Describing one vector in different basis
+		\begin{align}
+			v &= v_1\ e_1 + v_2\ e_2\\
+			&= v_1'\ e_1' + v_2'\ e_2'\\
+			\\
+			v_1' &= v_1\ m_{1,1}' + v_2\ m_{2,1}'\\
+			v_2' &= v_1\ m_{1,2}' + v_2\ m_{2,2}'\\
+			\\
+			v_1 &= v_1'\ m_{1,1} + v_2'\ m_{2,1}\\
+			v_2 &= v_1'\ m_{1,2} + v_2'\ m_{2,2}\\
+		\end{align}
+	</p>
+	<h2>Scalar product with metric</h2>
+	<p>
+		Metric is how one basis perceive other basis, a basis always perceives itself as cartesian because the components of the basis points perpendicular to each other
+		\begin{align}
+			e_1 &= 1\ e_1 + 0\ e_2\\
+			e_2 &= 0\ e_1 + 1\ e_2\\
+			\\
+			g_{1, 1} &= e_1 \cdot e_1 = 1\\
+			g_{1, 2} &= e_1 \cdot e_2 = 0\\
+			g_{2, 1} &= e_2 \cdot e_1 = 0\\
+			g_{2, 2} &= e_2 \cdot e_2 = 1\\
+		\end{align}
+		But how does it perceives another basis?
+		\begin{align}
+			e_1' &= m_{1,1}\ e_1 + m_{1,2}\ e_2\\
+			e_2' &= m_{2,1}\ e_1 + m_{2,2}\ e_2\\
+			\\
+			g_{1, 1} &= e_1' \cdot e_1' = m_{1,1}^2 + m_{1,2}^2\\
+			g_{1, 2} &= e_1' \cdot e_2' = m_{1,1}\ m_{2,1} + m_{1,2}\ m_{2,2}\\
+			g_{2, 1} &= e_2' \cdot e_1' = m_{2,1}\ m_{1,1} + m_{2,2}\ m_{1,2}\\
+			g_{2, 2} &= e_2' \cdot e_2' = m_{2,1}^2 + m_{2,2}^2\\
+		\end{align}
+		Dot product with cartesian metric
+		\begin{align}
+			v \cdot v &= (v_1\ e_1 + v_2\ e_2) \cdot (v_1\ e_1 + v_2\ e_2)\\
+			&= v_1^2 (e_1 \cdot e_1) + v_1\ v_2 (e_1 \cdot e_2) + v_2\ v_1 (e_2 \cdot e_1) + v_2^2 (e_2 \cdot e_2)\\
+			&= v_1^2 (1) + v_1\ v_2 (0) + v_2\ v_1 (0) + v_2^2 (1)\\
+			&= v_1^2 + v_2^2\\
+		\end{align}
+		Dot product with a no-cartesian metric
+		\begin{align}
+			v \cdot v &= (v_1'\ e_1' + v_2'\ e_2') \cdot (v_1'\ e_1' + v_2'\ e_2')\\
+			&= {v_1'}^2(e_1' \cdot e_1') + v_1'\ v_2'(e_1' \cdot e_2') + v_2'\ v_1'(e_2' \cdot e_1') + {v_2'}^2(e_2' \cdot e_2')\\
+			&= {v_1'}^2\ g_{1, 1} + v_1'\ v_2'\ g_{1, 2} + v_2'\ v_1'\ g_{2, 1} + {v_2'}^2\ g_{2, 2}\\
+		\end{align}
+	</p>
+	<h2>Dual basis</h2>
+	<p>
+		\begin{align}
+			e_i \cdot e^j &= \delta_i^j = \left\lbrace\begin{array}{rcl}
+				0 & \text{if} & i \neq j\\
+				1 & \text{if} & i = j\\
+			\end{array}\right.\\
+		\end{align}
+		\begin{align}
+			e_1 \cdot e^1 &= 1 = (1\ e_1 + 0\ e_2) \cdot (m_{1,1}\ e_1 + m_{1,2}\ e_2) = m_{1,1}\ g_{1,1} + m_{1,2}\ g_{1,2}\\
+			e_1 \cdot e^2 &= 0 = (1\ e_1 + 0\ e_2) \cdot (m_{2,1}\ e_1 + m_{2,2}\ e_2) = m_{2,1}\ g_{1,1} + m_{2,2}\ g_{1,2}\\
+			e_2 \cdot e^1 &= 0 = (0\ e_1 + 1\ e_2) \cdot (m_{1,1}\ e_1 + m_{1,2}\ e_2) = m_{1,1}\ g_{2,1} + m_{1,2}\ g_{2,2}\\
+			e_2 \cdot e^2 &= 1 = (0\ e_1 + 1\ e_2) \cdot (m_{2,1}\ e_1 + m_{2,2}\ e_2) = m_{2,1}\ g_{2,1} + m_{2,2}\ g_{2,2}\\
+		\end{align}
+		\begin{align}
+			1 &= m_{1,1}\ g_{1,1} + m_{1,2}\ g_{1,2}\\
+			0 &= m_{1,1}\ g_{2,1} + m_{1,2}\ g_{2,2}\\
+			\\
+			1 &= m_{2,1}\ g_{2,1} + m_{2,2}\ g_{2,2}\\
+			0 &= m_{2,1}\ g_{1,1} + m_{2,2}\ g_{1,2}\\
+		\end{align}
+		\begin{align}
+			1 &= x a + y b\\
+			0 &= x c + y d\\
+		\end{align}
+		\begin{align}
+			\frac{1 - xa}{b} &= \frac{0 - xc}{d}\\
+			\frac{1 - yb}{a} &= \frac{0 - yd}{c}\\
+		\end{align}
+		\begin{align}
+			d - x(ad - bc) &= 0\\
+			c + y(ad - bc) &= 0\\
+		\end{align}
+		\begin{align}
+			x &= \frac{d}{ad - bc}&
+			y &= \frac{- c}{ad - bc}
+		\end{align}
+		\begin{align}
+			m_{1, 1} &= \frac{g_{2,2}}{g_{1,1}g_{2,2} - g_{2,1}g_{1,2}} = g^{1, 1}&
+			m_{1, 2} &= \frac{-g_{2,1}}{g_{1,1}g_{2,2} - g_{2,1}g_{1,2}} = g^{2, 1}\\
+			m_{2, 1} &= \frac{-g_{1,2}}{g_{1,1}g_{2,2} - g_{2,1}g_{1,2}} = g^{1, 2}&
+			m_{2, 2} &= \frac{g_{1,1}}{g_{1,1}g_{2,2} - g_{2,1}g_{1,2}} = g^{2, 2}\\
+		\end{align}
+		\begin{align}
+			e^1 &= g^{1,1}e_1 + g^{2,1}e_2\\
+			e^2 &= g^{1,2}e_1 + g^{2,2}e_2\\
+		\end{align}
+		Describing the same vector in dual basis
+		\begin{align}
+			v &= v_1 e^1 + v_2 e^2\\
+			&= v^1 e_1 + v^2 e_2\\
+			&= v_1 (g^{1,1}e_1 + g^{2,1}e_2) + v_2 (g^{1,2}e_1 + g^{2,2}e_2)\\
+			&= (v_1g^{1,1} + v_2g^{1,2})e_1 + (v_1g^{2,1} + v_2g^{2,2})e_2\\
+		\end{align}
+		\begin{align}
+			v^1 &= v_1\ g^{1,1} + v_2\ g^{1,2}\\
+			v^2 &= v_1\ g^{2,1} + v_2\ g^{2,2}\\
+		\end{align}
+	</p>
+	<h2>New metric with new basis</h2>
+	<p>
+		\begin{align}
+			a &= a_1\ e_1 + a_2\ e_2 = a_1'\ e_1' + a_2'\ e_2'\\
+			b &= b_1\ e_1 + b_2\ e_2 = b_1'\ e_1' + b_2'\ e_2'\\
+		\end{align}
+		\begin{align}
+			a \cdot b &= (a_1\ e_1 + a_2\ e_2) \cdot (b_1\ e_1 + b_2\ e_2)\\
+			&= (a_1'\ e_1' + a_2'\ e_2') \cdot (b_1'\ e_1' + b_2'\ e_2')\\
+			&= a_1\ b_1\ g_{1,1} + a_1\ b_2\ g_{1,2} + a_2\ b_1\ g_{2,1} + a_2\ b_2\ g_{2,2}\\
+			&= a_1'\ b_1'\ g_{1,1}' + a_1'\ b_2'\ g_{1,2}' + a_2'\ b_1'\ g_{2,1}' + a_2'\ b_2'\ g_{2,2}'\\
+			\\
+			&= (a_1'\ m_{1,1} + a_2'\ m_{2,1}) (b_1'\ m_{1,1} + b_2'\ m_{2,1}) g_{1,1}\\
+			&+ (a_1'\ m_{1,1} + a_2'\ m_{2,1}) (b_1'\ m_{1,2} + b_2'\ m_{2,2}) g_{1,2}\\
+			&+ (a_1'\ m_{1,2} + a_2'\ m_{2,2}) (b_1'\ m_{1,1} + b_2'\ m_{2,1}) g_{2,1}\\
+			&+ (a_1'\ m_{1,2} + a_2'\ m_{2,2}) (b_1'\ m_{1,2} + b_2'\ m_{2,2}) g_{2,2}\\
+			\\
+			&= (a_1'\ b_1'\ m_{1,1}\ m_{1,1} + a_1'\ b_2'\ m_{1,1}\ m_{2,1} + a_2'\ b_1'\ m_{2,1}\ m_{1,1} + a_2'\ b_2'\ m_{2,1}\ m_{2,1})g_{1,1}\\
+			&+ (a_1'\ b_1'\ m_{1,1}\ m_{1,2} + a_1'\ b_2'\ m_{1,1}\ m_{2,2} + a_2'\ b_1'\ m_{2,1}\ m_{1,2} + a_2'\ b_2'\ m_{2,1}\ m_{2,2})g_{1,2}\\
+			&+ (a_1'\ b_1'\ m_{1,2}\ m_{1,1} + a_1'\ b_2'\ m_{1,2}\ m_{2,1} + a_2'\ b_1'\ m_{2,2}\ m_{1,1} + a_2'\ b_2'\ m_{2,2}\ m_{2,1})g_{2,1}\\
+			&+ (a_1'\ b_1'\ m_{1,2}\ m_{1,2} + a_1'\ b_2'\ m_{1,2}\ m_{2,2} + a_2'\ b_1'\ m_{2,2}\ m_{1,2} + a_2'\ b_2'\ m_{2,2}\ m_{2,2})g_{2,2}\\
+			\\
+			&= a_1'\ b_1'(m_{1,1}\ m_{1,1}\ g_{1,1} + m_{1,1}\ m_{1,2}\ g_{1,2} + m_{1,2}\ m_{1,1}\ g_{2,1} + m_{1,2}\ m_{1,2}\ g_{2,2})\\
+			&+ a_1'\ b_2'(m_{1,1}\ m_{2,1}\ g_{1,1} + m_{1,1}\ m_{2,2}\ g_{1,2} + m_{1,2}\ m_{2,1}\ g_{2,1} + m_{1,2}\ m_{2,2}\ g_{2,2})\\
+			&+ a_2'\ b_1'(m_{2,1}\ m_{1,1}\ g_{1,1} + m_{2,1}\ m_{1,2}\ g_{1,2} + m_{2,2}\ m_{1,1}\ g_{2,1} + m_{2,2}\ m_{1,2}\ g_{2,2})\\
+			&+ a_2'\ b_2'(m_{2,1}\ m_{2,1}\ g_{1,1} + m_{2,1}\ m_{2,2}\ g_{1,2} + m_{2,2}\ m_{2,1}\ g_{2,1} + m_{2,2}\ m_{2,2}\ g_{2,2})\\
+			\\
+			g_{1,1}' &= m_{1,1}\ m_{1,1}\ g_{1,1} + m_{1,1}\ m_{1,2}\ g_{1,2} + m_{1,2}\ m_{1,1}\ g_{2,1} + m_{1,2}\ m_{1,2}\ g_{2,2}\\
+			g_{1,2}' &= m_{1,1}\ m_{2,1}\ g_{1,1} + m_{1,1}\ m_{2,2}\ g_{1,2} + m_{1,2}\ m_{2,1}\ g_{2,1} + m_{1,2}\ m_{2,2}\ g_{2,2}\\
+			g_{2,1}' &= m_{2,1}\ m_{1,1}\ g_{1,1} + m_{2,1}\ m_{1,2}\ g_{1,2} + m_{2,2}\ m_{1,1}\ g_{2,1} + m_{2,2}\ m_{1,2}\ g_{2,2}\\
+			g_{2,2}' &= m_{2,1}\ m_{2,1}\ g_{1,1} + m_{2,1}\ m_{2,2}\ g_{1,2} + m_{2,2}\ m_{2,1}\ g_{2,1} + m_{2,2}\ m_{2,2}\ g_{2,2}\\
+		\end{align}
+	</p>
+</body>
+</html>

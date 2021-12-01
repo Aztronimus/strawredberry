@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width">
+	<title>Relativity</title>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script>
+	MathJax = {
+		tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+	};
+	</script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h3 class="h3_home"><a href="index.html">Index</a></h3>
+	<h1>Relativity</h1>
+	<h2>Space-time transformations</h2>
+	<p>
+		Not rigorous description of the space time transformations.
+	</p>
+	<p>
+		Space-time is the way an spectator describes events from its own point of view, if something happens, it is necessary to say where and when, specifiying the position and the time, if space and time are components of a point, and the bidimensional graphic has the axis of space and time, then events are points in the space time of the observer.
+	</p>
+	<p>
+		The space time for one observer it is not always the same space time of another observer, it can be shifted in space and desynchronized in time, but these two differences are not relevant when measuring the distance between events, there is however a third difference: when the observer is moving at a constant speed relative to another, all the coordinate systems have their own basis vectors that describes the position of all the points on it, but how to transform the basis vectors of one coordinate system to another?, that is a transformation, and the transformation we need to change the basis vectors of spectator that is not moving to the basis vectors of another perspective that is moving is called a space-time transformation.
+	</p>
+	<h2>Space-time rules</h2>
+	<p>
+		Again, this explanation is not rigorous<br>
+	</p>
+	<ul type="none" class="p">
+		<li>
+			<b>One to one</b>
+			<p>This means that each one of all the events in the space-time of one observer corresponds one and only one event for any other observer.</p>
+		</li>
+		<li>
+			<b>No invertion</b>
+			<p>If in the same place one observer sees one event occurring before other, after the transformation this must remain equal to preserve causality, avoiding the invertion of cause-effect to effect-cause, this is not only a rule for time, it also applies for space, but not that rigorous, in the same time something that is in the left of an object for one observer cannot be at the right after the transformation (supposing that the two observers started with the same space-time before start moving relative each other)</p>
+		<li>
+	</ul>
+	<h2>Quotes notation</h2>
+	<p>
+		From your perspective, you are not moving<br>
+		All the coordinates you measure are not quoted
+		\begin{align}
+			t, x, y, z, \cdots, v, r, \cdots
+		\end{align}
+		The coordinates the moving perpspective measure are quoted
+		\begin{align}
+			t', x', y', z', \cdots, v', r', \cdots
+		\end{align}
+	</p>
+	<h2>Galilean transformation</h2>
+	<p>
+		If the moving perspective moves only in his own time, that leads it to move in your time but also in your space \(vt\) steps (if \(t = 1\), then \(vt = v\)).<br>
+		In this transformation events that are simultaneous for one oberserver, are simultaneous for any observer that travels at any speed.
+		\begin{align}
+			(\begin{array}{cc}
+				ct' & 0
+			\end{array})
+			\mathbf B'
+			&=
+			(\begin{array}{cc}
+				ct & x
+			\end{array})
+			\mathbf B\\
+			\\
+			t &= t'\\
+			x &= vt\\
+			\\
+			(\begin{array}{cc}
+				ct & 0
+			\end{array})
+			\mathbf B'
+			&=
+			(\begin{array}{cc}
+				ct & vt
+			\end{array})
+			\mathbf B\\
+			(\begin{array}{cc}
+				1 & 0
+			\end{array})
+			\mathbf B'
+			&=
+			\left(\begin{array}{cc}
+				1 & \Large \frac{v}{c}
+			\end{array}\right)
+			\mathbf B
+		\end{align}
+		Lastly, in the moving perspective, taking steps in space don't makes it to move in your time<br>
+		The distance of moving one step in space for an observer, is equivalent to the distance for all the observers.
+		\begin{align}
+			(\begin{array}{cc}
+				0 & x'
+			\end{array})
+			\mathbf B'
+			&=
+			(\begin{array}{cc}
+				ct & x
+			\end{array})
+			\mathbf B\\
+			\\
+			t &= 0\\
+			x &= x'\\
+			\\
+			(\begin{array}{cc}
+				0 & x
+			\end{array})
+			\mathbf B'
+			&=
+			\left(\begin{array}{cc}
+				0 & x
+			\end{array}\right)
+			\mathbf B\\
+			(\begin{array}{cc}
+				0 & 1
+			\end{array})
+			\mathbf B'
+			&=
+			(\begin{array}{cc}
+				0 & 1
+			\end{array})
+			\mathbf B
+		\end{align}
+		The transformation in matrix notation is as follows:
+		\begin{align}
+			B' &= TB & B &= T^{-1}B'\\
+			\left(\begin{array}{c}
+				c\mathbf t'\\
+				\mathbf x'
+			\end{array}\right)
+			&=
+			\left(\begin{array}{c}
+				1 & \Large \frac{v}{c}\\
+				0 & 1
+			\end{array}\right)
+			\left(\begin{array}{c}
+				c\mathbf t\\
+				\mathbf x
+			\end{array}\right)&
+			\left(\begin{array}{c}
+				c\mathbf t\\
+				\mathbf x
+			\end{array}\right)
+			&=
+			\left(\begin{array}{c}
+				1 & -\Large \frac{v}{c}\\
+				0 & 1
+			\end{array}\right)
+			\left(\begin{array}{c}
+				c\mathbf t'\\
+				\mathbf x'
+			\end{array}\right)
+		\end{align}
+		Transformation of the components of a vector described in both basis
+		<!-- \begin{align}
+			V^TB &= {V'}^TB'
+		\end{align} -->
+		\begin{align}
+			<!-- \left(V^T\right)B &= \left(V^T\right)T^{-1}B' & \left({V'}^T\right)B' &= \left({V'}^T\right)TB\\
+			{V'}^TB' &= V^TT^{-1}B' & V^TB &= {V'}^TTB\\
+			{V'}^T &= V^TT^{-1} & V^T &= {V'}^TT\\ -->
+			V' &= \left(T^{-1}\right)^TV & V &= T^T{V'}\\
+			\left(\begin{array}{c}
+				V_t'\\
+				V_x'
+			\end{array}\right)
+			&=
+			\left(\begin{array}{c}
+				1 & 0\\
+				-\Large \frac{v}{c} & 1
+			\end{array}\right)
+			\left(\begin{array}{c}
+				V_t\\
+				V_x
+			\end{array}\right)&
+			\left(\begin{array}{c}
+				V_t\\
+				V_x
+			\end{array}\right)
+			&=
+			\left(\begin{array}{c}
+				1 & 0\\
+				\Large \frac{v}{c} & 1
+			\end{array}\right)
+			\left(\begin{array}{c}
+				V_t'\\
+				V_x'
+			\end{array}\right)
+		\end{align}
+	</p>
+	<h2>Lorentz factor</h2>
+	<p>
+		\(y\) and \(y'\) are the same because two rays of light that start traveling parallel will remain parallel<br>
+		\(r\) is the displacement covered by the ray of light measured by you<br>
+		\(r'\) is the displacement covered by the ray of light measured by the moving person<br>
+		The moving person shoots a ray of light in his \(y'\) direction<br>
+		\begin{align}
+			x &= vt&
+			r &= ct&
+			r' &= ct'
+		\end{align}
+		\begin{align}
+			c &= \frac{r}{t} = \frac{r'}{t'}&
+			\gamma &= \frac{r}{r'} = \frac{t}{t'}
+		\end{align}
+		\begin{align}
+			\frac{x}{r} &= \frac{vt}{ct} = \frac{v}{c}
+		\end{align}
+		\begin{align}
+			r^2 &= {r'}^2 + x^2&
+			{r'}^2 &= r^2 - x^2&
+		\end{align}
+		\begin{align}
+			\frac{{r'}^2}{r^2} &= 1 - \frac{x^2}{r^2}&
+			\frac{r^2}{{r'}^2} &= \frac{1}{1 - {\Large \frac{x^2}{r^2}}}
+		\end{align}
+		\begin{align}
+			\gamma &= \frac{1}{\sqrt{1 - {\Large \frac{v^2}{c^2}}}}
+		\end{align}
+	</p>
+<!--   <h2>Lorentz factor part 2</h2>
+    <p>
+      \begin{align}
+        x &= G(x' + vt')\\
+        x' &= G(x - vt)\\
+        c &= u_x = u_x'\\\\
+        x &= Gx' + Gvt'\\
+        Gvt' &= x - Gx'\\
+        Gvt' &= x - G^2(x - vt)\\
+        Gt' &= {x \over v} - G^2({x \over v} - t)\\
+        Gt' &= {x \over v} - G^2{x \over v} + G^2t\\
+        Gt' &= {x \over v}(1 - G^2) + G^2t\\
+        t' &= G\left[{x \over v}\left({1 \over G^2} - 1\right) + t\right]\\\\
+        dx' &= G(dx - vdt)\\
+        dt' &= G\left[{dx \over v}\left({1 \over G^2} - 1\right) + dt\right]\\\\
+        u_x' &= {{dx - vdt} \over {{dx \over v}\left({1 \over G^2} - 1\right) + dt}}\\
+        \left[{dx \over v}\left({1 \over G^2} - 1\right) + dt\right] &= \left[{dx - vdt} \over u_x'\right]\\
+        \left(1 \over dt\right) \left[{dx \over v}\left({1 \over G^2} - 1\right) + dt\right] &= \left(1 \over dt\right)\left[{dx - vdt} \over u_x'\right]\\
+        {u_x \over v}\left({1 \over G^2} - 1\right) + 1 &= {{u_x - v} \over u_x'}\\
+        {c \over v}\left({1 \over G^2} - 1\right) + 1 &= {{c - v} \over c}\\
+        {c \over v}\left({1 \over G^2} - 1\right) &= {1 - {v \over c} - 1}\\
+        {1 \over G^2} - 1 &= - {v^2 \over c^2}\\
+        {1 \over G^2} &= 1 - {v^2 \over c^2}\\
+        G^2 &= {1 \over {1 - {v^2 \over c^2}}}\\
+        G &= {1 \over \sqrt{1 - {v^2 \over c^2}}}\\
+        G &= \gamma
+      \end{align}
+    </p> -->
+<!--     <h2>Classic-physics elastic collision</h2>
+    <p>
+      \begin{align}
+        p &= mv\\
+        p^\text{i} &= p^\text{f}\\
+        p_1^\text{i} + p_2^\text{i} &= p_1^\text{f} + p_2^\text{f}\\
+        0 &= p_1^\text{f} - p_1^\text{i} + p_2^\text{f} - p_2^\text{i}\\
+        0 &= m_1v_1^\text{f} - m_1v_1^\text{i} + m_2v_2^\text{f} - m_2v_2^\text{i} = m_1(v_1^\text{f} - v_1^\text{i}) + m_2(v_2^\text{f} - v_2^\text{i})\\
+        0 &= \Delta p_1 + \Delta p_2\\
+        0 &= \Delta v_1 m_1 + \Delta v_2 m_2\\\\
+        K &= {1 \over 2} mv^2\\
+        K^\text{i} &= K^\text{f}\\
+        K_1^\text{i} + K_2^\text{i} &= K_1^\text{f} + K_2^\text{f}\\
+        0 &= K_1^\text{f} - K_1^\text{i} + K_2^\text{f} - K_2^\text{i}\\
+        0 &= {1 \over 2} m_1{v_1^\text{f}}^2 - {1 \over 2} m_1{v_1^\text{i}}^2 + {1 \over 2} m_2{v_2^\text{f}}^2 - {1 \over 2} m_2{v_2^\text{i}}^2 = {1 \over 2}\left[m_1({v_1^\text{f}}^2 - {v_1^\text{i}}^2) + m_2({v_2^\text{f}}^2 - {v_2^i}^2)\right]\\
+        0 &= \Delta K_1 + \Delta K_2\\
+        0 &= \Delta v_1^2 m_1 + \Delta v_2^2 m_2\\\\
+        {{\Delta v_1^2 m_1} \over {\Delta v_1 m_1}} &= {{- \Delta v_2^2 m_2} \over {- \Delta v_2 m_2}} \rightarrow {{\Delta v_1^2} \over {\Delta v_1}} = {{\Delta v_2^2} \over {\Delta v_2}} \rightarrow {{\Delta v_1(v_1^\text{f} + v_1^\text{i})} \over {\Delta v_1}} = {{\Delta v_2(v_2^\text{f} + v_2^\text{i})} \over {\Delta v_2}}\\
+        v_1^\text{f} + v_1^\text{i} &= v_2^\text{f} + v_2^\text{i}\\
+        0 &= v_2^\text{f} - v_1^\text{f} + v_2^\text{i} - v_1^\text{i}\\
+        0 &= \Delta v^\text{f} + \Delta v^\text{i}\\\\
+        v_2^\text{f} &= v_1^\text{f} - \Delta v^\text{i}\\
+        v_2^\text{f} &= v_2^\text{i} - {m_1 \over m_2} \Delta v_1\\\\
+        v_1^\text{f} - \Delta v^\text{i} &= v_2^\text{i} - {m_1 \over m_2} \Delta v_1\\
+        v_1^\text{f} &= v_2^\text{i} - v_1^\text{i} + v_2^\text{i} - {m_1 \over m_2} (v_1^\text{f} - v_1^\text{i})\\
+        v_1^\text{f} &= 2v_2^\text{i} - v_1^\text{i} - {m_1 \over m_2} v_1^\text{f} + {m_1 \over m_2} v_1^\text{i}\\
+        {m_1 \over m_2} v_1^\text{f} + v_1^\text{f} &= 2v_2^\text{i} - v_1^\text{i} + {m_1 \over m_2} v_1^\text{i}\\
+        v_1^\text{f}\left( {m_1 \over m_2} + 1 \right) &= 2v_2^\text{i} - v_1^\text{i}\left({m_1 \over m_2} - 1 \right)\\
+        v_1^\text{f} &= \left[2v_2^\text{i} - v_1^\text{i}\left({m_1 \over m_2} - 1 \right)\right] \left( {m_1 \over m_2} + 1 \right)^{-1}\\
+      \end{align}
+    </p> -->
+    <!-- <h2>Change of basis</h2>
+    <p>
+      \begin{align}
+        a' &= k_{11} a + k_{12} b\\
+        b' &= k_{21} a + k_{22} b\\\\
+        a' - k_{11} a &= k_{12} b\\
+        b' - k_{21} a &= k_{22} b\\
+        a' - k_{12} b &= k_{11} a\\
+        b' - k_{22} b &= k_{21} a\\\\
+        {{a' - k_{11} a} \over k_{12}} &= b\\
+        {{b' - k_{21} a} \over k_{22}} &= b\\
+        {{a' - k_{12} b} \over k_{11}} &= a\\
+        {{b' - k_{22} b} \over k_{21}} &= a\\\\
+        k_{22} (a' - k_{11} a) &= k_{12} (b' - k_{21} a)\\
+        k_{22} a' - k_{22} k_{11} a &= k_{12} b' - k_{12} k_{21} a\\
+        k_{12} k_{21} a - k_{22} k_{11} a &= k_{12} b' - k_{22} a'\\
+        (k_{12} k_{21} - k_{22} k_{11}) a &= k_{12} b' - k_{22} a'\\\\
+        k_{21} (a' - k_{12} b) &= k_{11} (b' - k_{22} b)\\
+        k_{21} a' - k_{21} k_{12} b &= k_{11} b' - k_{11} k_{22} b\\
+        k_{11} k_{22} b - k_{21} k_{12} b &= k_{11} b' - k_{21} a'\\
+        (k_{11} k_{22} - k_{21} k_{12}) b &= k_{11} b' - k_{21} a'\\\\
+        a &= {k_{22} \over {k_{22} k_{11} - k_{12} k_{21}}} a' + {k_{12} \over {k_{12} k_{21} - k_{22} k_{11}}} b'\\
+        b &= {k_{21} \over {k_{21} k_{12} - k_{11} k_{22}}} a' + {k_{11} \over {k_{11} k_{22} - k_{21} k_{12}}} b'\\\\
+        r' &= k_a' a' + k_b' b'\\
+        r' &= k_a' \left(k_{11} a + k_{12} b\right) + k_b' \left(k_{21} a + k_{22} b\right)\\
+        r' &= k_a' k_{11} a + k_a' k_{12} b + k_b' k_{21} a + k_b' k_{22} b\\
+        r &= (k_a' k_{11} + k_b' k_{21}) a + (k_a' k_{12} + k_b' k_{22}) b\\\\
+        \left(
+          \begin{array}{c}
+            a'\\
+            b'
+          \end{array}
+        \right)
+        &=
+        \left(
+          \begin{array}{cc}
+            k_{11} & k_{12}\\
+            k_{21} & k_{22}
+          \end{array}
+        \right)
+        \left(
+          \begin{array}{c}
+            a\\
+            b
+          \end{array}
+        \right)
+        =
+        \left(
+          \begin{array}{c}
+            k_{11}a + k_{12}b\\
+            k_{21}a + k_{22}b
+          \end{array}
+        \right)\\
+        \left(
+          \begin{array}{c}
+            a\\
+            b
+          \end{array}
+        \right)
+        &=
+        \left|
+          \begin{array}{cc}
+            k_{11} & k_{12}\\
+            k_{21} & k_{22}
+          \end{array}
+        \right|^{-1}
+        \left(
+          \begin{array}{cc}
+            k_{22} & - k_{12}\\
+            - k_{21} & k_{11}
+          \end{array}
+        \right)
+        \left(
+          \begin{array}{c}
+            a'\\
+            b'
+          \end{array}
+        \right)
+        =
+        \left|
+          \begin{array}{cc}
+            k_{11} & k_{12}\\
+            k_{21} & k_{22}
+          \end{array}
+        \right|^{-1}
+        \left(
+          \begin{array}{c}
+            k_{22}a' - k_{12}b'\\
+            - k_{21}a' + k_{11}b'
+          \end{array}
+        \right)\\\\
+        \left(
+          \begin{array}{c}
+            k_a\\
+            k_b
+          \end{array}
+        \right)
+        &=
+        \left(
+          \begin{array}{cc}
+            k_{11} & k_{12}\\
+            k_{21} & k_{22}
+          \end{array}
+        \right)^T
+        \left(
+          \begin{array}{c}
+            k_a'\\
+            k_b'
+          \end{array}
+        \right)
+        =
+        \left(
+          \begin{array}{cc}
+            k_{11} & k_{21}\\
+            k_{12} & k_{22}
+          \end{array}
+        \right)
+        \left(
+          \begin{array}{c}
+            k_a'\\
+            k_b'
+          \end{array}
+        \right)
+        =
+        \left(
+          \begin{array}{c}
+            k_a' k_{11} + k_b' k_{21}\\
+            k_a' k_{12} + k_b' k_{22}
+          \end{array}
+        \right)\\
+        \left(
+          \begin{array}{c}
+            k_a'\\
+            k_b'
+          \end{array}
+        \right)
+        &=
+        \left(
+          \begin{array}{cc}
+            k_{11}' & k_{12}'\\
+            k_{21}' & k_{22}'
+          \end{array}
+        \right)^T
+        \left(
+          \begin{array}{c}
+            k_a\\
+            k_b
+          \end{array}
+        \right)
+        =
+        \left(
+          \begin{array}{cc}
+            k_{11}' & k_{21}'\\
+            k_{12}' & k_{22}'
+          \end{array}
+        \right)
+        \left(
+          \begin{array}{c}
+            k_a\\
+            k_b
+          \end{array}
+        \right)
+        =
+        \left(
+          \begin{array}{c}
+            k_a k_{11}' + k_b k_{21}'\\
+            k_a k_{12}' + k_b k_{22}'
+          \end{array}
+        \right)
+      \end{align}
+    </p> -->
+		<h2>Lorentz transformation</h2>
+		<p>
+			According to special relativity, simultaneous events separated by a distance for you are not simultaneous for an observer that is moving at a non-zero constant speed.<br>
+			For the moving perspective, taking one step in his time takes him to move not only in your time but also in your space<br>
+			One unit of time passes for the moving perspective, knowing that we can get the time it passes for an static perspective
+			\begin{align}
+				(\begin{array}{cc}
+					ct' & 0
+				\end{array})
+				\mathbf B'
+				&=
+				(\begin{array}{cc}
+					ct & x
+				\end{array})
+				\mathbf B\\
+				\\
+				t &= \gamma t'\\
+				x &= vt\\
+				\\
+				\left(\begin{array}{cc}
+					{\Large \frac{ct}{\gamma}} & 0
+				\end{array}\right)
+				\mathbf B'
+				&=
+				\left(\begin{array}{cc}
+					ct & vt
+				\end{array}\right)
+				\mathbf B\\
+				(\begin{array}{cc}
+					1 & 0
+				\end{array})
+				\mathbf B'
+				&=
+				\gamma
+				\left(\begin{array}{cc}
+					1 & {\Large \frac{v}{c}}
+				\end{array}\right)
+				\mathbf B\\
+			\end{align}
+			Using the time it takes a ray of light to travel a unit of distance for the moving perspective we can measure that from a static perspective there's not only a difference in distance between the traveler and the ray of light, but also in time.<br>
+			Time it takes a ray of light to travel a unit of distance (from moving's perspective)
+			\begin{align}
+				(\begin{array}{cc}
+					0 & x'
+				\end{array})
+				\mathbf B'
+				&=
+				(\begin{array}{cc}
+					ct & x
+				\end{array})
+				\mathbf B\\
+				\\
+				t &= \frac{v}{c}\cdot\frac{x}{c}\\
+				x &= \gamma x'\\
+				\\
+				\left(\begin{array}{cc}
+					0 & {\Large \frac{x}{\gamma}}
+				\end{array}\right)
+				\mathbf B'
+				&=
+				\left(\begin{array}{cc}
+					{\Large \frac{v}{c}}x & x
+				\end{array}\right)
+				\mathbf B\\
+				\left(\begin{array}{cc}
+					0 & 1
+				\end{array}\right)
+				\mathbf B'
+				&=
+				\gamma
+				\left(\begin{array}{cc}
+					{\Large \frac{v}{c}} & 1
+				\end{array}\right)
+				\mathbf B\\
+			\end{align}
+			Transformation in matrix notation:
+			\begin{align}
+				\mathbf B' &= \mathbf T \mathbf B & \mathbf B &= \mathbf T^{-1} \mathbf B'\\
+				\left(\begin{array}{c}
+					c\mathbf t'\\
+					\mathbf x'
+				\end{array}\right)
+				&=
+				\gamma
+				\left(\begin{array}{c}
+					1 & \Large \frac{v}{c}\\
+					\Large \frac{v}{c} & 1
+				\end{array}\right)
+				\left(\begin{array}{c}
+					c\mathbf t\\
+					\mathbf x
+				\end{array}\right)
+				&
+				\left(\begin{array}{c}
+					c\mathbf t\\
+					\mathbf x
+				\end{array}\right)
+				&=
+				\gamma
+				\left(\begin{array}{c}
+					1 & -\Large \frac{v}{c}\\
+					-\Large \frac{v}{c} & 1
+				\end{array}\right)
+				\left(\begin{array}{c}
+					c\mathbf t'\\
+					\mathbf x'
+				\end{array}\right)
+			\end{align}
+			Transformation of the vector components:
+			\begin{align}
+				\mathbf V' &= \left(\mathbf T^{-1}\right)^T\mathbf V & \mathbf V &= \mathbf T^T\mathbf V'\\
+				\left(\begin{array}{c}
+					V_t'\\
+					V_x'
+				\end{array}\right)
+				&=
+				\gamma
+				\left(\begin{array}{c}
+					1 & -\Large \frac{v}{c}\\
+					-\Large \frac{v}{c} & 1
+				\end{array}\right)
+				\left(\begin{array}{c}
+					V_t\\
+					V_x
+				\end{array}\right)&
+				\left(\begin{array}{c}
+					V_t\\
+					V_x
+				\end{array}\right)
+				&=
+				\gamma
+				\left(\begin{array}{c}
+					1 & \Large \frac{v}{c}\\
+					\Large \frac{v}{c} & 1
+				\end{array}\right)
+				\left(\begin{array}{c}
+					V_t'\\
+					V_x'
+				\end{array}\right)
+			\end{align}
+			Where did \(tc^2 = vx\) come from?
+			\begin{align}
+				ct &= \frac{c}{v}x
+			\end{align}
+			\begin{align}
+				ct_a &= x - k_a&
+				ct_b &= k_b - x\\
+				\\
+				t_a &= -t&
+				t_b &= t\\
+				x &= vt_a&
+				x &= vt_b\\
+				\\
+				k_a &= \left(1 - \frac{v}{c}\right)ct&
+				k_b &= \left(1 + \frac{v}{c}\right)ct\\
+			\end{align}
+			\begin{align}
+				x_x &= \frac{1}{2}(k_b + k_a)&
+				x_t &= \frac{1}{2}(k_b - k_a)\\
+				&= ct&
+				&= \frac{v}{c}t\\
+			\end{align}
+			Elapsed time between two events separated only by distance in \(S'\) frame of reference
+			\begin{align}
+				x_t &= \frac{v}{c} \cdot \frac{x_x}{c}
+			\end{align}
+			<!-- Distance between the ray of light and the moving perspective
+			\begin{align}
+				x &= ct - vt\\
+			\end{align}
+			Taking the time and space components of the \(\mathbf x'\) vector we get:
+			\begin{align}
+				\mathbf x' \cdot \mathbf t &= t = x_t&
+				\mathbf x' \cdot \mathbf x &= x = x_x\\
+				&= \gamma&
+				&= vt = v\gamma\\
+			\end{align}
+      \begin{align}
+        \hat{t}' &= k_1 \hat{\frac{x}{c}} + k_2 \hat{t}\\
+        t &= \gamma t' \rightarrow k_1 = t = \gamma\\
+        v &= \frac{x}{t} \rightarrow k_2 = \frac{x}{c} = t \frac{v}{c} = \gamma \frac{v}{c} \\\\
+        \hat{t}' &= \gamma \frac{v}{c} \hat{\frac{x}{c}} + \gamma \hat{t} = \gamma \left\langle\frac{v}{c}, 1\right\rangle\\\\
+        \frac{x'}{c} &= \gamma \left\langle 1, \frac{v}{c} \right\rangle = \gamma\left(\frac{x}{c} + \frac{v}{c} t\right)\\
+        t' &= \gamma \left\langle \frac{v}{c}, 1 \right\rangle = \gamma\left(\frac{vx}{c^2} + t\right)\\\\
+        \frac{x}{c} &= \gamma \left\langle 1, - \frac{v}{c} \right\rangle = \gamma\left(\frac{x'}{c} - \frac{v}{c} t'\right)\\
+        t &= \gamma \left\langle - \frac{v}{c}, 1 \right\rangle = \gamma\left( - \frac{vx'}{c^2} + t'\right)\\\\
+        \left(
+          \begin{array}{c}
+            \frac{x'}{c}\\
+            t'
+          \end{array}
+        \right)
+        &=
+        \gamma
+        \left(
+          \begin{array}{cc}
+            1 & \frac{v}{c}\\
+            \frac{v}{c} & 1
+          \end{array}
+        \right)
+        \left(
+          \begin{array}{c}
+            \frac{x}{c}\\
+            t
+          \end{array}
+        \right)
+        =
+        \gamma
+        \left(
+          \begin{array}{c}
+            \frac{x}{c} + \frac{v}{c} t\\
+            \frac{vx}{c^2} + t
+          \end{array}
+        \right)\\
+        \left(
+          \begin{array}{c}
+            \frac{x}{c}\\
+            t
+          \end{array}
+        \right)
+        &=
+        \gamma
+        \left(
+          \begin{array}{cc}
+            1 & - \frac{v}{c}\\
+            - \frac{v}{c} & 1
+          \end{array}
+        \right)
+        \left(
+          \begin{array}{c}
+            \frac{x'}{c}\\
+            t'
+          \end{array}
+        \right)
+        =
+        \gamma
+        \left(
+          \begin{array}{c}
+            \frac{x'}{c} - \frac{v}{c} t'\\
+            - \frac{vx'}{c^2} + t'
+          \end{array}
+        \right)
+      \end{align} -->
+		</p>
+		<h2>Time and space dilation and contraction</h2>
+		<p>
+			<b>Time dilation</b><br>
+			Two events in \(S'\) separated only by time (not by space) are separated by time in \(S\) as follows:
+			\begin{align}
+				t &= t'\gamma
+			\end{align}
+			<b>Length dilation</b><br>
+			Two events in \(S'\) separated only by space (not by time) are separated by space in \(S\) as follows:
+			\begin{align}
+				x &= x'\gamma
+			\end{align}
+			<b>Length contraction</b><br>
+			Two objects separated by a space in \(S'\) are separated by space in \(S\)<br>
+			We start with the time in \(S\) that separates two simultaneous events in \(S'\)<br>
+			\begin{align}
+				ct &= \frac{v}{c}x\\
+			\end{align}
+			Then we use the trayectory of an object that moves at a constant speed...
+			\begin{align}
+				ct &= \frac{c}{v}x\\
+			\end{align}
+			... and modify it to become the trayectory of an object that passes through the coordinates of the event \((ct, x)\), where:
+			\begin{align}
+				ct &= \frac{c}{v}x - k&
+				ct &= \frac{v}{c}x&
+				x &= x'\gamma\\
+			\end{align}
+			\begin{align}
+				k
+				<!-- &= \frac{c}{v}x - ct\\
+				&= \frac{c}{v}x - \frac{v}{c}x\\
+				&= \left(\frac{c}{v} - \frac{v}{c}\right)x\\
+				&= \frac{c}{v}\left(1 - \frac{v^2}{c^2}\right)x\\
+				&= \frac{c}{v} \cdot \frac{x}{\gamma^2}\\ -->
+				&= \frac{c}{v} \cdot \frac{x'}{\gamma}\\
+			\end{align}
+			The complete trayectory of that object is:
+			\begin{align}
+				ct &= \frac{c}{v}\left(x - \frac{x'}{\gamma}\right)
+			\end{align}
+			\(x\) is the distance of the same two objects at the same time in \(S\)<br>
+			\(x'\) is the distance of two objects at the same time in \(S'\)<br>
+			Now at the same time (\(ct = 0\)), the distance between objects is:
+			\begin{align}
+				x' &= x\gamma
+			\end{align}
+		</p>
+    <h2>Relativistic speed addition law</h2>
+    <p>
+      \begin{align}
+        u &= \frac{x}{t} \rightarrow t = \frac{x}{u}\\
+        \vec{p} &= \left\langle\frac{x}{c}, \frac{x}{u}\right\rangle\\\\
+        t &= 1 \rightarrow x = u\\\\
+        \vec{p} &= \left\langle\frac{u}{c}, 1\right\rangle\\
+        \vec{p}' &= \gamma\left\langle\frac{u}{c} - \frac{v}{c}, - \frac{uv}{c^2} + 1\right\rangle\\\\
+        \left(
+          \begin{array}{c}
+            \frac{u}{c} - \frac{v}{c}\\
+            - \frac{uv}{c^2} + 1
+          \end{array}
+        \right)
+        &=
+        \gamma
+        \left(
+          \begin{array}{cc}
+            1 & - \frac{v}{c}\\
+            - \frac{v}{c} & 1
+          \end{array}
+        \right)^T
+        \left(
+          \begin{array}{c}
+            \frac{u}{c}\\
+            1 
+          \end{array}
+        \right)\\
+        \left(
+          \begin{array}{c}
+            \frac{u}{c} + \frac{v}{c}\\
+            \frac{uv}{c^2} + 1
+          \end{array}
+        \right)
+        &=
+        \gamma
+        \left(
+          \begin{array}{cc}
+            1 & \frac{v}{c}\\
+            \frac{v}{c} & 1
+          \end{array}
+        \right)^T
+        \left(
+          \begin{array}{c}
+            \frac{u}{c}\\
+            1 
+          \end{array}
+        \right)\\\\
+        u' &= \frac{u - v}{1 - \frac{uv}{c^2}}\\
+        u &= \frac{u' + v}{1 + \frac{u'v}{c^2}}
+      \end{align}
+    </p>
+		<h2>Vertical axis velocity</h2>
+    <p>
+      \begin{align}
+        \left[
+          \begin{array}{c}
+            \frac{x'}{c}\\
+            \frac{y'}{c}\\
+            t'
+          \end{array}
+        \right]
+        &=
+        \gamma
+        \left[
+          \begin{array}{cc}
+            1 & 0 & \frac{v}{c}\\
+            0 & \gamma^{-1} & 0\\
+            \frac{v}{c} & 0 & 1
+          \end{array}
+        \right]
+        \left[
+          \begin{array}{c}
+            \frac{x}{c}\\
+            \frac{y}{c}\\
+            t
+          \end{array}
+        \right]
+        =
+        \left[
+          \begin{array}{c}
+            \gamma(\frac{x}{c} + \frac{v}{c} t)\\
+            \frac{y}{c}\\
+            \gamma(\frac{vx}{c^2} + t)
+          \end{array}
+        \right]\\
+        \left[
+          \begin{array}{c}
+            \frac{x}{c}\\
+            \frac{y}{c}\\
+            t
+          \end{array}
+        \right]
+        &=
+        \gamma
+        \left[
+          \begin{array}{cc}
+            1 & 0 & - \frac{v}{c}\\
+            0 & \gamma^{-1} & 0\\
+            - \frac{v}{c} & 0 & 1
+          \end{array}
+        \right]
+        \left[
+          \begin{array}{c}
+            \frac{x'}{c}\\
+            \frac{y'}{c}\\
+            t'
+          \end{array}
+        \right]
+        =
+        \left[
+          \begin{array}{c}
+            \gamma(\frac{x}{c} + \frac{v}{c} t)\\
+            \frac{y}{c}\\
+            \gamma(\frac{vx}{c^2} + t)
+          \end{array}
+        \right]\\
+        u_x &= \frac{x}{t}\\
+        u_y &= \frac{y}{t}\\
+        \vec{p} &= \left\langle\frac{x}{c}, \frac{y}{c}, t\right\rangle\\
+        \vec{p} &= \left\langle\frac{u_x}{c}, \frac{u_y}{c}, 1\right\rangle\\
+        \left[
+          \begin{array}{c}
+            U_x't'\\
+            U_y't'\\
+            t'
+          \end{array}
+        \right]
+        &=
+        \gamma
+        \left[
+          \begin{array}{cc}
+            1 & 0 & - V\\
+            0 & \gamma^{-1} & 0\\
+            - V & 0 & 1
+          \end{array}
+        \right]^T
+        \left[
+          \begin{array}{c}
+            U_x\\
+            U_y\\
+            1
+          \end{array}
+        \right]
+        =
+        \left[
+          \begin{array}{c}
+            \gamma(U_x - V)\\
+            U_y\\
+            \gamma(- U_x V + 1)
+          \end{array}
+        \right]\\
+        \left[
+          \begin{array}{c}
+            U_x t\\
+            U_y t\\
+            t
+          \end{array}
+        \right]
+        &=
+        \gamma
+        \left[
+          \begin{array}{cc}
+            1 & 0 &  V\\
+            0 & \gamma^{-1} & 0\\
+            V & 0 & 1
+          \end{array}
+        \right]^T
+        \left[
+          \begin{array}{c}
+            U_x'\\
+            U_y'\\
+            1
+          \end{array}
+        \right]
+        =
+        \left[
+          \begin{array}{c}
+            \gamma(U_x' + V)\\
+            U_y'\\
+            \gamma(U_x' V + 1)
+          \end{array}
+        \right]\\
+      \end{align}
+    </p>
+    <h2>Conservation of momentum - Relativistic elastic collision</h2>
+    <p>
+      \begin{align}
+        U_x' &= \frac{U_x - V}{1 - U_x V} &U_x &= \frac{U_x' + V}{1 + U_x' V}\\
+        U_y' &= \frac{U_y}{\gamma(1 - U_x V)} &U_y &= \frac{U_y'}{\gamma(1 + U_x' V)}\\
+      \end{align}
+      \begin{array}{rcl}
+        U_{Ax} &=& -U_{Bx}' &=& 0\\
+        U_{Ay} &=& -U_{By}' &=& U\\
+        U_A &=& -U_B' &=& U\\\\
+        U_{Bx} &=& -U_{Ax}' &=& V\\
+        U_{By} &=& -U_{Ay}' &=& -\frac{U}{\gamma}\\
+        U_B &=& -U_A' &=& \sqrt{V^2 + \frac{U^2}{\gamma^2}}\\\\
+        U_\text{before} &=& - U_\text{after} &=& U\\
+      \end{array}
+      \begin{align}
+        \\
+        U &> \frac{U}{\gamma}\\
+        \\
+        P_x &= m_A U_{Ax} + m_B U_{Bx}\\
+        P_y &= m_A U_{Ay} + m_B U_{By}\\
+        P_x' &= m_A' U_{Ax}' + m_B' U_{Bx}'\\
+        P_y' &= m_A' U_{Ay}' + m_B' U_{By}'\\
+        \\
+      \end{align}
+      \begin{array}{rcccl}
+        m_A (0) + m_B V &=& m_B V &=& m_A (0) + m_B V\\
+        m_A U + m_B \left(-\frac{U}{\gamma}\right) &>& 0 &>& m_A (- U) + m_B \frac{U}{\gamma}\\
+        m_A' (-V) + m_B' (0) &=& - m_B V &=& m_A' (-V) + m_B' (0)\\
+        m_A' \frac{U}{\gamma} + m_B' (- U) &<& 0 &<& m_A' \left(- \frac{U}{\gamma}\right) + m_B' U
+      \end{array}
+      \begin{align}
+        m_r &= mG(|v|)\\
+        G(0) &= 1\\\\
+        m_A U + m_B \left(-\frac{U}{\gamma}\right) &= m_A (- U) + m_B \frac{U}{\gamma}\\
+        G_A U + G_B\left(-\frac{U}{\gamma}\right) &= G_A (- U) + G_B \frac{U}{\gamma}\\
+        \gamma G(U) &= G\left(\sqrt{V^2 + \frac{U^2}{\gamma^2}}\right)\\
+        \gamma &= G(|V|)\\
+      \end{align}
+    </p>
+    <h2>Relativistic Doppler's effect</h2>
+    <p>
+      \begin{align}
+        t &= \gamma t'\\
+        \lambda' &= ct'\\
+        \lambda &= ct - vt\\
+        \\
+        \lambda &= (c - v)t\\
+        \lambda &= (1 - V)ct\\
+        \lambda &= \frac{1 - V}{\sqrt{1 - V^2}}ct'\\
+        \\
+        \lambda &= \sqrt{\frac{1 - V}{1 + V}}\lambda' = (1 - V)\gamma \lambda'\\
+        f &= \sqrt{\frac{1 + V}{1 - V}}f' = (1 + V)\gamma f'\\
+        \\
+        t_1(X) &= \frac{X}{v}\\
+        t_1(X) &= X + k\\
+        t_1(X_0) &= t_0\\\\
+        t_0 &= \frac{X_0}{v}\\
+        t_0 &= X_0 + k\\\\
+        t_1(X) &= X + t_0 - t_0 v\\
+        t_2(X) &= X\\\\
+        X_1(X) &= t - (1 - v)t_0\\
+        X_2(X) &= t\\\\
+        \lambda &= X_2 - X_1 = (1 - v)t_0\\
+        t_0 &= \gamma t_0'\\
+        c &= \frac{\lambda'}{t_0'}\\\\
+        \lambda &= \frac{1 - V}{\sqrt{1 - V^2}}\lambda' = \frac{(1 - V)^1}{(1 - V)^{1/2}(1 + V)^{1/2}}\\\\
+        \lambda &= \sqrt{\frac{1 - V}{1 + V}}\lambda' = (1 - V)\gamma \lambda'\\
+        f &= \sqrt{\frac{1 + V}{1 - V}}f' = (1 + V)\gamma f'\\
+      \end{align}
+    </p>
+    <h2>Relativistic Doppler's effect in Y axis</h2>
+    <p>
+      \begin{align}
+        y &= mx\\
+        y &= \frac{1}{m}(d - x)\\
+        \\
+        mx &= \frac{1}{m}(d - x)\\
+        m^2x &= d - x\\
+        x + m^2x &= d\\
+        \\
+        x &= \frac{d}{1 + m^2}\\
+        y &= \frac{md}{1 + m^2}\\
+        \\
+        \Delta x &= d - \frac{d}{1 + m^2} = d \left(1 - \frac{1}{1 + m^2}\right) = d\left(\frac{m^2}{1 + m^2}\right)\\
+        \Delta y &= md - \frac{md}{1 + m^2} = md \left(1 - \frac{1}{1 + m^2}\right) = m \Delta x\\
+        \\
+        \lambda^2 &= (\Delta x)^2 + (\Delta y)^2 = (\Delta x)^2 + (m\Delta x)^2 = (\Delta x)^2(1 + m^2)\\
+        \lambda^2 &= d^2\left(\frac{m^2}{1 + m^2}\right)^2(1 + m^2) = m^2d^2\frac{m^2}{1 + m^2}\\
+        \lambda^2 &= d^2\left(\frac{m^2}{1 + m^2}\right)^2(1 + m^2) = m^2d^2\frac{m^2}{1 + m^2}\\
+        \lambda &= \lambda'\frac{m}{\sqrt{1 + m^2}}\\
+        \\
+        d &= vt\\
+        md &= ct' = \lambda'\\
+        t &= t' \gamma\\
+        \\
+        m &= \frac{ct'}{vt} = \frac{1}{V \gamma}\\
+        \\
+        \lambda &= \lambda' \frac{1}{V \gamma\sqrt{1 + \left(\frac{1}{V \gamma}\right)^2}} = \lambda' \frac{1}{\sqrt{1 + V^2 \gamma^2}}\\
+        1 + V^2 \gamma^2 &= 1 + \frac{V^2}{1 - V^2} = \frac{1}{1 - V^2} = \gamma^2\\
+        \\
+        \lambda &= \frac{\lambda'}{\gamma}\\
+        f &= f' \gamma
+      \end{align}
+    </p>
+    <h2>Mass-energy conversion equation</h2>
+    <p>
+      \begin{align}
+        K &= m G(v)\\\\
+        E_2 &= 2hf + K_2\\
+        E_1 &= K_1 + hf\left(\sqrt{\frac{1 - V}{1 + V}} + \sqrt{\frac{1 + V}{1 - V}}\right)\\\\
+        2hf + K_2 &= K_1 + hf\left(\frac{1 - V}{\sqrt{1 - V^2}} + \frac{1 + V}{\sqrt{1 - V^2}}\right)\\
+        2hf + K_2 &= K_1 + \frac{2hf}{\sqrt{1 - V^2}}\\
+        K_2 - K_1 &= 2hf\left(\frac{1}{\sqrt{1 - V^2}} - 1\right)\\
+        (m_2 - m_1)G &= 2hf\left(\frac{1}{\sqrt{1 - V^2}} - 1\right)\\\\
+        \frac{E}{m} &= \frac{G}{\frac{1}{\sqrt{1 - V^2}} - 1}\\
+        G &= k\left(\frac{1}{\sqrt{1 - V^2}} - 1\right)\\
+        \\
+        K &= mk\left(\frac{1}{\sqrt{1 - V^2}} - 1\right)\\
+        E &= mk
+      \end{align}
+    </p>
+    <h2>Momentum of a photon</h2>
+    <p>
+      \begin{align}
+        \frac{P_{Bx}}{P_B} &= \frac{v}{c} = V\\
+        \frac{P_{By}}{P_B} &= \frac{\sqrt{c^2 - v^2}}{c} = \sqrt{1 - \frac{v^2}{c^2}} = \frac{1}{\gamma}\\
+        \\
+        P &= P(E)\\
+        \\
+        E_A &= hf\\
+        E_B &= hf\gamma\\
+        \\
+        P_{Ay} - P_{By} &= - P_{Ay} + P_{By} = 0\\
+        P_{Ay} &= P_{By}\\
+        P_A &= \frac{P_B}{\gamma}\\
+        \gamma P_A &= P_B\\
+        \\
+        P(hf)\gamma &= P(hf\gamma)\\
+        \\
+        p &\propto E\\
+        \\
+        E &= mk\\
+        p &= mv\gamma\\
+        \\
+        E &= 2hf\\
+        f_1' &= (1 + V) \gamma f\\
+        f_2' &= (1 - V) \gamma f\\
+        \\
+        p_3 &= p_1 + p_2\\
+        mv\gamma &= \frac{p}{E}E_1 + \frac{p}{E}E_2\\
+        \frac{2hf}{k}v\gamma &= \frac{p}{E} hf(1 + V) \gamma - \frac{p}{E} hf(1 - V) \gamma\\
+        2\frac{v}{k} &= 2\frac{p}{E} V\\
+        \\
+        E &= p \frac{k}{c}
+      \end{align}
+    </p>
+    <h2>Relativistic inelastic collision</h2>
+    <p>
+      \begin{align}
+        U_1 &= V\\
+        U_2 &= -V\\
+        U_3 &= 0\\
+        \\
+        U_1' &= \frac{V - V}{1 - V^2} = 0\\
+        U_2' &= \frac{- 2V}{1 + V^2}\\
+        U_3' &= \frac{0 - V}{1 - 0} = -V\\
+        \\
+        E &= mk\\
+        K &= mk\left(\frac{1}{\sqrt{1 - V^2}} - 1\right)\\
+        \\
+        m_1 &= m\\
+        m_2 &= m\\
+        m_3 &= 2m + \frac{2K}{k}\\
+        \\
+        P &= m \gamma V\\
+        \\
+        \left(2m + \frac{2K}{k}\right) \frac{1}{\sqrt{1 - V^2}}(-V) &= m\frac{1}{\sqrt{1 - \left(\frac{-2V}{1 + V^2}\right)^2}}\left(\frac{-2V}{1 + V^2}\right)\\
+        \left(1 + \frac{K}{km}\right)\frac{1}{\sqrt{1 - V^2}} &= \frac{1}{\left(1 + V^2\right)\sqrt{1 - 4V^2\left(\frac{1}{1 + V^2}\right)^2}}\\
+        1 - V^2 &= \left(1 + V^2\right)^2\left[1 - 4V^2\left(\frac{1}{1 + V^2}\right)^2\right]\left(\frac{1}{\sqrt{1 - V^2}}\right)^2\\
+        1 - V^2 &= \left(1 + V^2\right)^2\left[1 - 4V^2\left(\frac{1}{1 + V^2}\right)^2\right]\left(\frac{1}{1 - V^2}\right)\\
+        \left(1 - V^2\right)^2 &= \left(1 + V^2\right)^2 - 4V^2\\
+        \left(1 - V^2\right)^2 &= 1 + 2V^2 + V^4 - 4V^2\\
+        \left(1 - V^2\right)^2 &= 1 - 2V^2 + V^4\\
+        \left(1 - V^2\right)^2 &= \left(1 - V^2\right)^2\\
+      \end{align}
+    </p>
+    <h2>Relativistic inelastic collision of two objects with same mass</h2>
+    <p>
+      \begin{align}
+        u_2' + u_1' &= 0\\\\
+        \frac{u_2 - v}{1 - \frac{u_2v}{c^2}} + \frac{u_1 - v}{1 - \frac{u_1v}{c^2}}&= 0\\
+        (u_2 - v)\left(1 - \frac{u_1v}{c^2}\right) + (u_1 - v)\left(1 - \frac{u_2v}{c^2}\right) &= 0\\
+        u_2 - \frac{u_1u_2v}{c^2} - v + \frac{u_1v^2}{c^2} + u_1 - \frac{u_1u_2v}{c^2} - v + \frac{u_2v^2}{c^2} &= 0\\
+        u_1 + u_2 - 2\frac{u_1u_2v}{c^2} - 2v + \frac{u_1v^2}{c^2} + \frac{u_2v^2}{c^2}&= 0\\
+        u_1 + u_2 - 2\left(\frac{u_1u_2}{c^2} + 1\right)v + \left(\frac{u_1 + u_2}{c^2}\right)v^2 &= 0\\
+        c^2(u_1 + u_2) - 2(u_1u_2 + c^2)v + (u_1 + u_2)v^2 &= 0\\
+        c^2 - 2\frac{u_1u_2 + c^2}{u_1 + u_2}v + v^2 &= 0\\
+        2 v &= 2\frac{u_1u_2 + c^2}{u_1 + u_2} - 2\sqrt{\left(\frac{u_1u_2 + c^2}{u_1 + u_2}\right)^2 - c^2}\\
+        v &= \frac{u_1u_2 + c^2}{u_1 + u_2} - \sqrt{\left(\frac{u_1u_2 + c^2}{u_1 + u_2}\right)^2 - c^2}\\
+        v &= \frac{u_1u_2 + c^2}{u_1 + u_2} - \sqrt{\frac{u_1^2 u_2^2 + 2u_1u_2c^2 + c^4}{(u_1 + u_2)^2} - \frac{c^2(u_1^2 + 2u_1u_2 + u_2^2)}{(u_1 + u_2)^2}}\\
+        v &= \frac{u_1u_2 + c^2}{u_1 + u_2} - \frac{\sqrt{u_1^2 u_2^2 - c^2(u_1^2 + u_2^2) + c^4}}{u_1 + u_2}\\
+        v &= \frac{u_1u_2 - \sqrt{(u_1^2 - c^2)(u_2^2 - c^2)} + c^2}{u_1 + u_2}\\
+      \end{align}
+    </p>
+    <h2>Something interesting...</h2>
+    <p>
+      \begin{align}
+        u' &= v\\
+        u &= \frac{u' + v}{1 + \frac{u'v}{c^2}}\\
+        u &= \frac{2v}{1 + \frac{v^2}{c^2}}\\
+        v_{n+1} &= \frac{v + v_n}{1 + \frac{vv_n}{c^2}}\\
+      \end{align}
+    </p>
+    <h2>Total energy</h2>
+    <p>
+      \begin{align}
+        E &= mk\gamma\\
+        p &= mv\gamma\\
+        \\
+        E &= mk\gamma\\
+        K &= mk \left(\gamma - 1\right)\\
+        M &= mk\\
+        P &= p\frac{k}{c}\\
+        \\
+        E &= M\gamma\\
+        K &= M(\gamma - 1)= E - M\\
+        P &= M\gamma V = EV\\
+        \\
+        E^2 &= M^2\gamma^2\\
+        E^2 (1 - V^2)&= M^2\\
+        E^2 &= M^2 + E^2V^2\\
+        E^2 &= M^2 + P^2\\
+      \end{align}
+    </p>
+    <h2>Relation between energy and mass</h2>
+    <p>
+      \begin{align}
+        K &= Fx\\
+        p &= Ft\\
+        v &= \frac{x}{t}\\
+        \\
+        \frac{K(t)}{p} &= \frac{x(t)}{t} = v(t)\\
+        \frac{K}{p} &= c\\
+        \\
+        M &= mk\\
+        \\
+        c &= \frac{K}{p} = \frac{E - M}{p} = \frac{P}{p} = \frac{k}{c}\\
+        \\
+        M &= mc^2\\
+        \\\\
+        F &= \frac{dp}{dt} = \frac{dK}{dx}\\
+        v &= \frac{dx}{dt} = \frac{dK}{dp}\\
+        K &= Fx = \int v \cdot dp\\
+        \\
+        p &= mv\gamma = mcV\gamma\\
+        \frac{V^2}{1 - V^2} &= \left(\frac{p}{mc}\right)^2\\
+        V^2 &= \frac{\left(\frac{p}{mc}\right)^2}{1 + \left(\frac{p}{mc}\right)^2}\\
+        \\
+        K &= c\int{\frac{\frac{p}{mc}}{\sqrt{1 + \left(\frac{p}{mc}\right)^2}}dp}\\
+        q &= 1 + \left(\frac{p}{mc}\right)^2 \rightarrow \frac{m^2 c^2}{2}\cdot dq = p \cdot dp\\
+        K &= \frac{mc^2}{2}\int{q^{-1/2} \cdot dq}\\
+        K &= \left. m c^2 q^{1/2} \right|_{q_1}^{q_2} = \left. m c^2 \sqrt{1 + \left(\frac{p}{mc}\right)^2}\right|_{0}^{p}\\
+        K &= \sqrt{(mc^2)^2 + (pc)^2} - mc^2\\
+      \end{align}
+    </p>
+    <!-- <h2>Spectral series of Hydrogen atom</h2>
+    <p>
+      Rydberg formula
+      \begin{align}
+        R_\text{H} &= 10967757.6 \pm 1.2 \text{m}^{-1}\\
+        \frac{1}{\lambda} &= R_\text{H} \left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right), n_2 \in [n_1 + 1, \infty)
+      \end{align}
+      Longest and shortest wavelengths for each series<br/>
+      \begin{align}
+        \frac{1}{\lambda_\text{min}} &= R_\text{H} \frac{1}{n_1^2}\\
+        \frac{1}{\lambda_\text{max}} &= R_\text{H} \left(\frac{1}{n_1^2} - \frac{1}{(n_1 + 1)^2}\right)\\
+        \\
+        \lambda_\text{Lyman} &\in [9.112670506 \times 10^{-8} \text{m}, &1.215022734 \times 10^{-7} \text{m}]\\
+        \lambda_\text{Balmer} &\in [3.645068202 \times 10^{-7} \text{m}, &6.561122764 \times 10^{-7} \text{m}]\\
+        \lambda_\text{Paschen} &\in [8.201403455 \times 10^{-7} \text{m}, &1.874606504 \times 10^{-6} \text{m}]\\
+        \lambda_\text{Brackett} &\in [1.458027281 \times 10^{-6} \text{m}, &4.05007578 \times 10^{-6} \text{m}]\\
+        \lambda_\text{Pfund} &\in [2.278167626 \times 10^{-6} \text{m}, &7.455821323 \times 10^{-6} \text{m}]\\
+        \\
+        E_\text{Lyman} &\in [10.20426939 \text{ eV}, &13.60569252 \text{ eV}]\\
+        E_\text{Balmer} &\in [1.889679516 \text{ eV}, &3.40142313 \text{ eV}]\\
+        E_\text{Paschen} &\in [0.6613878308 \text{ eV}, &1.511743613 \text{ eV}]\\
+        E_\text{Brackett} &\in [0.3061280817 \text{ eV}, &0.8503557824 \text{ eV}]\\
+        E_\text{Pfund} &\in [0.1662917974 \text{ eV}, &0.5442277007 \text{ eV}]\\
+        \\
+        \frac{hc}{e}R_\text{H}\left(1 - \frac{1}{n^2}\right) &< 12.2\\
+        1 - \frac{1}{n^2} &< 12.2\frac{e}{hcR_\text{H}}\\
+        1 - 12.2\frac{e}{hcR_\text{H}} &< \frac{1}{n^2}\\
+        n^2 &< \frac{1}{1 - 12.2\frac{e}{hcR_\text{H}}}\\
+        n &< \sqrt{\frac{1}{1 - 12.2\frac{e}{hcR_\text{H}}}} = 3.111108513\\
+        \\
+        \frac{hc}{e} R_\text{H} \left(1 - \frac{1}{3^2}\right) &= 12.09394891 \text{ eV}\\
+        \frac{hc}{e} R_\text{H} \left(1 - \frac{1}{4^2}\right) &= 12.75533674 \text{ eV}\\
+      \end{align}
+      \begin{align}
+        n &= 3 &1.0257 \times 10^{-7} \text{m}\\
+        n &= 2 &1.2150 \times 10^{-7} \text{m}\\
+        \\
+        n &= \infty &3.6450 \times 10^{-7} \text{m}\\
+        &\cdots\\
+        n &= 5 &4.3393 \times 10^{-7} \text{m}\\
+        n &= 4 &4.8600 \times 10^{-7} \text{m}\\
+        n &= 3 &6.5611 \times 10^{-7} \text{m}\\
+        \\
+        n &= \infty &8.2014 \times 10^{-7} \text{m}\\
+        &\cdots\\
+        n &= 6 &1.0935 \times 10^{-6} \text{m}\\
+        n &= 5 &1.2814 \times 10^{-6} \text{m}\\
+        n &= 4 &1.8746 \times 10^{-6} \text{m}\\
+        \\
+        n &= \infty &1.4580 \times 10^{-6} \text{m}\\
+        &\cdots\\
+        n &= 7 &2.1649 \times 10^{-6} \text{m}\\
+        n &= 6 &2.6244 \times 10^{-6} \text{m}\\
+        n &= 5 &4.0500 \times 10^{-6} \text{m}\\
+        \\
+        n &= \infty &2.2781 \times 10^{-6} \text{m}\\
+        &\cdots\\
+        n &= 8 &3.7385 \times 10^{-6} \text{m}\\
+        n &= 7 &4.6512 \times 10^{-6} \text{m}\\
+        n &= 6 &7.4558 \times 10^{-6} \text{m}\\
+      \end{align}
+    </p> -->
+    <footer>
+      <a href="https://macul.ciencias.uchile.cl/alejo/clases/2018_mechanics/">Funcionales</a>
+    </footer>
+</body>
+</html>

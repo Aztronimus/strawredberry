@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width">
+  <title>MathJax v3 with TeX input and HTML output</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+    <h1>MathJax v3 beta: TeX input, HTML output test</h1>
+    <p>
+      \begin{align}
+        \sum_{x}^{i=1}{asdf}\\
+        \left[
+          \begin{array}{cc}
+            x & y \\
+            x & y
+          \end{array}
+        \right]
+      \end{align}
+    </p>
+    <h2>Spheric coordinates</h2>
+    <p>
+      \begin{align}
+        x &= r \sin \varphi \cos \theta\\
+        y &= r \sin \varphi \sin \theta\\
+        z &= r \cos \varphi\\\\
+        r &= \sqrt{x^2 + y^2 + z^2}\\
+        \theta &= \arctan {y \over x}\\
+        \varphi &= \arctan {\sqrt{x^2 + y^2} \over z}\\\\
+        b &= {{135º - \theta} \over 90º}\\
+        h &= {{135º - \varphi} \over 90º}\\
+      \end{align}
+    </p>
+</body>
+</html>

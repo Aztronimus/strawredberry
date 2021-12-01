@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width">
+  <title>Maxwell equations</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <h1>Divergence theorem</h1>
+  <h2>2-dimensional case</h2>
+  <p>
+    \begin{align}
+      \int_C {F \cdot dn} &= \iint_D {\left(\frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y}\right)dA}\\
+      &= \iint_D {\left(\nabla \cdot F\right) \cdot dS}\\
+      \\
+      dS &= \vec{u} dA\\
+      \vec{u} &= \langle 1, 1\rangle\\
+      \\
+      F(x, y) &= \langle P(x, y), Q(x, y) \rangle\\
+    \end{align}
+    \begin{align}
+      r_1 &= \langle t, b \rangle & n_1 &= \langle b, -t \rangle\\
+      r_2 &= \langle c, t \rangle & n_2 &= \langle t, -c \rangle\\
+      r_3 &= \langle t, d \rangle & n_3 &= \langle d, -t \rangle\\
+      r_4 &= \langle a, t \rangle & n_4 &= \langle t, -a \rangle\\
+    \end{align}
+    \begin{align}
+      \int_C {F \cdot dn} &= \int_{C_1} {F \cdot dn_1} + \int_{C_2} {F \cdot dn_2} + \int_{C_3} {F \cdot dn_3} + \int_{C_4} {F \cdot dn_4}\\
+      \int_C {F \cdot dn} &= \int_C {\langle P, Q \rangle \cdot \frac{ds}{dt} dt}\\
+      &= \int_C {\langle P, Q \rangle \cdot {\left\langle \frac{dy}{dt}, - \frac{dx}{dt} \right\rangle} \frac{dt}{\sqrt{(\frac{dx}{dt})^2 + (\frac{dy}{dt})^2}}}\\
+      &= \int_C {\langle P, Q \rangle \cdot {\left\langle dy, - dx \right\rangle} \frac{dt}{\sqrt{dx^2 + dy^2}}}\\
+      &= \int_C {(P dy - Q dx)}\\
+      \\
+      \int_{C_1} {F \cdot dn_1} &= \int_b^b {P dy} - \int_a^c {Q dx} = - \int_a^c {Q(x, b) dx}\\
+      \int_{C_2} {F \cdot dn_2} &= \int_b^d {P dy} - \int_c^c {Q dx} = \int_b^d {P(c, y) dy}\\
+      \int_{C_3} {F \cdot dn_3} &= \int_d^d {P dy} - \int_c^a {Q dx} = - \int_c^a {Q(x, d) dx}\\
+      \int_{C_4} {F \cdot dn_4} &= \int_d^b {P dy} - \int_a^a {Q dx} = \int_d^b {P(a, y) dy}\\
+      \\
+      \int_C {F \cdot dn} &= - \int_a^c {Q(x, b) dx} + \int_b^d {P(c, y) dy} - \int_c^a {Q(x, d) dx} + \int_d^b {P(a, y) dy}\\
+      &= \int_b^d {P(c, y) dy} - \int_b^d {P(a, y) dy} + \int_a^c {Q(x, d) dx} - \int_a^c {Q(x, b) dx}\\
+      \\\\
+      \iint_D {\frac{\partial P}{\partial x}dA} &= \int_b^d {\int_a^c {\frac{\partial P}{\partial x} dx} dy} = \int_b^d {[P(c, y) - P(a, y)] dy}\\
+      \iint_D {\frac{\partial Q}{\partial y}dA} &= \int_a^c {\int_b^d {\frac{\partial Q}{\partial y} dy} dx} = \int_a^c {[Q(x, d) - Q(x, b)] dx}\\
+      \\
+      \iint_D {\left(\frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y}\right)dA} &= \int_b^d {[P(c, y) - P(a, y)] dy} + \int_a^c {[Q(x, d) - Q(x, b)] dx}\\
+      &= \int_b^d {P(c, y) dy} - \int_b^d {P(a, y) dy} + \int_a^c {Q(x, d) dx} - \int_a^c {Q(x, b) dx}\\
+      \\
+    \end{align}
+    Flux per unit area around a point<br>
+    \begin{align}
+      \int_C {F \cdot dn} &= \iint_D {(\nabla \cdot F) \cdot dS}\\
+      \\
+      \text{div}{(F)} \cdot \vec{u} &= \lim_{A \rightarrow 0} {\frac{\int_C {F \cdot dn}}{\iint_D {dA}}}\\
+      &= \lim_{A \rightarrow 0} {\frac{\iint_D {(\nabla \cdot F) \cdot dS}}{\iint_D {dA}}}\\
+      \text{div}{(F)} &= \nabla \cdot F\\
+    \end{align}
+  </p>
+  <h2>3-dimensional case</h2>
+  <p>
+    \begin{align}
+      \int_C {F \cdot dn} &= \iiint_D {\left(\frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}\right)dV}\\
+      &= \iiint_D {(\nabla \cdot F) \cdot dS}\\
+      \\
+      \vec{u} &= \langle 1, 1, 1\rangle\\
+      dS &= \vec{u} dV\\
+      \\
+      F(x,y,z) &= \langle P(x,y,z), Q(x,y,z), R(x,y,z)\rangle\\
+    \end{align}
+    \begin{array}{cc}
+      n_{x^+} = \langle t, 0, 0 \rangle & n_{x^-} = \langle -t, 0, 0 \rangle \\
+      n_{y^+} = \langle 0, t, 0 \rangle & n_{y^-} = \langle 0, -t, 0 \rangle \\
+      n_{z^+} = \langle 0, 0, t \rangle & n_{z^-} = \langle 0, 0, -t \rangle \\
+    \end{array}
+    \begin{align}
+      \int_C {F \cdot dn} &= \iint_C {F(d, x, y) \cdot dn_{x^+}} + \iint_C {F(x, e, y) \cdot dn_{y^+}} + \iint_C {F(x, y, f) \cdot dn_{z^+}}\\
+      &+ \iint_C {F(a, x, y) \cdot dn_{x^-}} + \iint_C {F(x, b, y) \cdot dn_{y^-}} + \iint_C {F(x, y, c) \cdot dn_{z^-}}\\
+      \\
+      &= \iint_C {[F(d, x, y) - F(a, x, y)]\cdot dn_x}\\
+      &+ \int_C {[F(x, e, y) - F(x, b, y)]\cdot dn_y}\\
+      &+ \iint_C {[F(x, y, f) - F(x, y, c)] \cdot dn_z}\\
+      \\
+      &= \iint_D {\left[P(d, x, y) - P(a, x, y)\right]dA_x}\\
+      &+ \iint_D {\left[Q(x, e, y) - Q(x, b, y)\right]dA_y}\\
+      &+ \iint_D {\left[R(x, y, f) - R(x, y, c)\right]dA_z}\\
+      \\
+      \iiint_D {(\nabla \cdot F) \cdot dS} &= \iiint_D {\left(\frac{\partial P}{\partial x}\right)dV} + \iiint_D {\left(\frac{\partial Q}{\partial y}\right)dV} + \iiint_D {\left(\frac{\partial R}{\partial z}\right)dV}\\
+      &= \iint_D {\left[P(d, x, y) - P(a, x, y)\right]dA_x}\\
+      &+ \iint_D {\left[Q(x, e, y) - Q(x, b, y)\right]dA_y}\\
+      &+ \iint_D {\left[R(x, y, f) - R(x, y, c)\right]dA_z}\\
+    \end{align}
+  </p>
+</body>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width">
+	<title>Maxwell equations</title>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script>
+		MathJax = {
+			tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+		};
+	</script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1>Electromagnetic waves</h1>
+	<h2>Linked electric and magnetic fields</h2>
+	<p>
+		If somehow the electric and magnetic field could exist without charges to be created, they would look like this
+		\begin{align}
+			\nabla \cdot \mathbf E &= \frac{\rho}{\epsilon_0}&
+			\nabla \cdot \mathbf B &= 0\\
+			\nabla \times \mathbf E &= -\ \frac{\partial \mathbf B}{\partial t}&
+			\nabla \times \mathbf B &= \frac{1}{c^2} \frac{\partial \mathbf E}{\partial t}\\
+		\end{align}
+		Electric wave
+		\begin{align}
+			\nabla \times (\nabla \times \mathbf E) &= \nabla(\nabla \cdot \mathbf E) - \nabla^2 \mathbf E\\
+			\nabla \times \left(-\ \frac{\partial \mathbf B}{\partial t}\right) &= - \nabla^2 \mathbf E\\
+			\frac{\partial}{\partial t} (\nabla \times \mathbf B) &= \nabla^2 \mathbf E\\
+			\frac{1}{c^2} \frac{\partial^2 \mathbf E}{\partial t^2} &= \nabla^2 \mathbf E\\
+		\end{align}
+		Magnetic wave
+		\begin{align}
+			\nabla \times (\nabla \times \mathbf B) &= \nabla(\nabla \cdot \mathbf B) - \nabla^2 \mathbf B\\
+			\nabla \times \left(\frac{1}{c^2} \frac{\partial \mathbf E}{\partial t}\right) &= - \nabla^2 \mathbf B\\
+			\frac{1}{c^2} \frac{\partial}{\partial t} (\nabla \times \mathbf E) &= - \nabla^2 \mathbf B\\
+			\frac{1}{c^2} \frac{\partial^2 \mathbf B}{\partial t^2} &= \nabla^2 \mathbf B\\
+		\end{align}
+	</p>
+	<h2>Vector identity</h2>
+	<p>
+		\begin{align}
+			\nabla \times (\nabla \times \mathbf V) &= \nabla(\nabla \cdot \mathbf V) - \nabla^2 \mathbf V\\
+		\end{align}
+		\begin{align}
+			\mathbf V &= \langle V_x, V_y \rangle\\
+			\\
+			\nabla \times \mathbf V &= \left(\frac{\partial}{\partial x}V_y - \frac{\partial}{\partial y}V_x\right) \hat k\\
+			\nabla \times (\nabla \times \mathbf V) &= \left(\frac{\partial}{\partial x}V_y - \frac{\partial}{\partial y}V_x\right) \hat k\\
+			&= \left\langle \frac{\partial^2}{\partial y \partial x}V_y - \frac{\partial^2}{\partial y^2}V_x, \frac{\partial^2}{\partial x \partial y}V_x - \frac{\partial^2}{\partial x^2}V_y \right\rangle\\
+			\\
+			\nabla \cdot \mathbf V &= \frac{\partial}{\partial x} V_x + \frac{\partial}{\partial y} V_y\\
+			\nabla(\nabla \cdot \mathbf V) &= \left\langle \frac{\partial^2}{\partial x^2} V_x + \frac{\partial^2}{\partial x \partial y} V_y, \frac{\partial^2}{\partial y \partial x} V_x + \frac{\partial^2}{\partial y^2} V_y \right\rangle\\
+			\\
+			\nabla^2 \mathbf V &= \left\langle \frac{\partial^2}{\partial x^2}V_x + \frac{\partial^2}{\partial y^2}V_x, \frac{\partial^2}{\partial x^2}V_y + \frac{\partial^2}{\partial y^2}V_y \right\rangle
+		\end{align}
+	</p>
+</body>

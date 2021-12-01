@@ -1,0 +1,133 @@
+<!DOCRYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Algebra</title>
+	<script type="text/javascript" src="../load-mathjax.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<p>
+		\begin{align}
+			A
+			&= \left(\begin{array}{c}
+				a_1\\
+				a_2\\
+			\end{array}\right)
+			= \left(\begin{array}{cc}
+				a_{11} & a_{12}\\
+				a_{21} & a_{22}\\
+			\end{array}\right)
+		\end{align}
+	</p>
+	<p>
+		\begin{align}
+			R_n^2\left(\begin{array}{c}
+				a_i\\
+				a_j\\
+			\end{array}\right)
+			&= a_{jn} a_i - a_{in} a_j\\
+		\end{align}
+	</p>
+	<p>
+		\begin{align}
+			R_1^2\left(\begin{array}{c}
+				a_1\\
+				a_2\\
+			\end{array}\right)
+			&= a_{21} a_1 - a_{11} a_2\\
+			&= a_{21} (\begin{array}{cc}a_{11} & a_{12}\end{array}) - a_{11} (\begin{array}{cc}a_{21} & a_{22}\end{array})\\
+			&= (\begin{array}{cc}a_{21}a_{11} - a_{11}a_{21} & a_{21}a_{12} - a_{11}a_{22}\end{array})\\
+			&= (\begin{array}{cc}0 & -d\end{array})\\
+			\\
+			R_2^2\left(\begin{array}{c}
+				a_1\\
+				a_2\\
+			\end{array}\right)
+			&= a_{22} a_1 - a_{12} a_2\\
+			&= a_{22} (\begin{array}{cc}a_{11} & a_{12}\end{array}) - a_{12} (\begin{array}{cc}a_{21} & a_{22}\end{array})\\
+			&= (\begin{array}{cc}a_{22}a_{11} - a_{12}a_{21} & a_{22}a_{12} - a_{12}a_{22}\end{array})\\
+			&= (\begin{array}{cc}d & 0\end{array})\\
+		\end{align}
+	</p>
+	<p>
+		\begin{align}
+			F^2\left(\begin{array}{c}
+				a_i\\
+				a_j\\
+			\end{array}\right)
+			&= \left(\begin{array}{c}
+				R_2^2(A)\\
+				R_1^2(A)\\
+			\end{array}\right)
+		\end{align}
+	</p>
+	<p>
+		\begin{align}
+			F^2\left(\begin{array}{c}
+				a_1\\
+				a_2\\
+			\end{array}\right)
+			&= \left(\begin{array}{c}
+				R_2^2(A)\\
+				R_1^2(A)\\
+			\end{array}\right)
+			= \left(\begin{array}{cc}
+				d & 0\\
+				0 & -d\\
+			\end{array}\right)
+		\end{align}
+	</p>
+	<p>
+		asdf
+		\begin{align}
+			A
+			&= \left(\begin{array}{c}
+				a_2\\
+				a_3\\
+			\end{array}\right)
+			= \left(\begin{array}{ccc}
+				a_{21} & a_{22} & a_{23}\\
+				a_{31} & a_{32} & a_{33}\\
+			\end{array}\right)
+		\end{align}
+	</p>
+	<p>
+		\begin{align}
+			R_2^2\left(\begin{array}{c}
+				a_2\\
+				a_3\\
+			\end{array}\right)
+			&= a_{32} a_2 - a_{22} a_3\\
+			&= a_{32} (\begin{array}{ccc}a_{21} & a_{22} & a_{23}\end{array}) - a_{22} (\begin{array}{ccc}a_{31} & a_{32} & a_{33}\end{array})\\
+			&= (\begin{array}{ccc}a_{32}a_{21} - a_{22}a_{31} & a_{32}a_{22} - a_{22}a_{32} & a_{32}a_{23} - a_{22}a_{33}\end{array})\\
+			&= (\begin{array}{ccc}d_{13} & 0 & -d_{11}\end{array})\\
+			R_3^2\left(\begin{array}{c}
+				a_2\\
+				a_3\\
+			\end{array}\right)
+			&= a_{33} a_2 - a_{23} a_3\\
+			&= a_{33} (\begin{array}{ccc}a_{21} & a_{22} & a_{23}\end{array}) - a_{23} (\begin{array}{ccc}a_{31} & a_{32} & a_{33}\end{array})\\
+			&= (\begin{array}{ccc}a_{33}a_{21} - a_{23}a_{31} & a_{33}a_{22} - a_{23}a_{32} & a_{33}a_{23} - a_{23}a_{33}\end{array})\\
+			&= (\begin{array}{ccc}d_{12} & d_{11} & 0\end{array})\\
+		\end{align}
+	</p>
+	<p>
+		\begin{align}
+			F^2\left(\begin{array}{c}
+				a_1\\
+				a_2\\
+			\end{array}\right)
+			&= \left(\begin{array}{c}
+				R_2^2(A)\\
+				R_1^2(A)\\
+			\end{array}\right)
+			= \left(\begin{array}{cc}
+				d & 0\\
+				0 & -d\\
+			\end{array}\right)
+		\end{align}
+	</p>
+</body>
+</html>

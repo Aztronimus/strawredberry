@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width">
+  <title>Double slit</title>
+  <style type="text/css">
+    .button
+    {
+      text-align: center;
+      border: 1px solid black;
+      padding: 0px 20px 0px 20px;
+    }
+    .button:hover
+    {
+      border: 1px solid white;
+    }
+    table
+    {
+      margin: 0 auto 0 auto;
+    }
+    canvas
+    {
+      border: 1px solid black;
+      width: 70vw;
+      height: 30vw;
+      display: flex;
+    }
+    .centered
+    {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+  <h1>Double slit</h1>
+  <p>
+    \begin{align}
+      \sum_{x}^{i=1}{asdf}\\
+      \left[
+        \begin{array}{cc}
+          x & y \\
+          x & y
+        \end{array}
+      \right]
+    \end{align}
+  </p>
+  <div class="centered"><canvas width="700" height="300"></canvas></div>
+  <fieldset>
+    <legend>Controls</legend>
+    <form><table>
+      <tr>
+        <th>A</th>
+        <td><input type="number"></td>
+        <td><input
+          min="1"
+          max="200"
+          type="range"
+          oninput="
+            A = this.value;
+            draw();
+          "
+        ></td>
+      </tr>
+      <tr>
+        <th>B</th>
+        <td><input type="number"></td>
+        <td><input
+          min="1"
+          max="200"
+          type="range"
+          oninput="
+            B = this.value;
+            draw();
+          "
+        ></td>
+      </tr>
+      <tr>
+        <th>x</th>
+        <td><input type="number"></td>
+        <td><input
+          min="0"
+          max="360"
+          type="range"
+          oninput="
+            x = this.value * Math.PI / 180;
+            draw();
+          "
+        ></td>
+      </tr>
+      <tr>
+        <th>beta</th>
+        <td><input type="number"></td>
+        <td><input
+          min="0"
+          max="360"
+          type="range"
+          oninput="
+            beta = this.value * Math.PI / 180;
+            draw();
+          "
+        ></td>
+      </tr>
+    </table></form>
+  </fieldset>
+  <h2>Amplitude of the sum of two waves with same frequency</h2>
+  <p>
+    \begin{align}
+      C\sin(x + \gamma) &= A\sin(x) + B\sin(x + \beta)\\
+      0 &= \left.\frac{d}{dx}{[A\sin(x) + B\sin(x + \beta)]}\right|_{x_m} = A\cos(x_m) + B\cos(x_m + \beta)\\
+      \\
+      \cos(x) &= \cos(-x)\\
+      \cos(x + \pi) &= - \cos(x)\\
+      \\
+      C^2 &= A^2 + B^2 - 2AB\cos(\theta)\\
+      D^2 &= A^2 - \left(\frac{C^2 + A^2 - B^2}{2C}\right)^2\\
+      \\
+      D^2 &= \frac{A^2 B^2 \sin^2(\beta)}{A^2 + B^2 + 2AB\cos(\beta)}\\
+      \\
+      \cos(x_m) &= D \leftrightarrow B\cos(\beta) \leq A\\
+      \cos(x_m) &= - D \leftrightarrow B\cos(\beta) \geq A\\
+    \end{align}
+  </p>
+  <script type="text/javascript">
+    "use strict";
+    let A = 50,
+    B = 100,
+    x = Math.PI / 4,
+    beta = Math.PI * 100 / 180,
+    xb;
+    let ctx = document.querySelector("canvas").getContext("2d");
+    function draw() {
+      xb = x + beta;
+      ctx.strokeStyle = "black";
+      ctx.clearRect(0, 0, 700, 300);
+      ctx.beginPath();
+        ctx.moveTo(350, 150);
+        ctx.lineTo(350 + A * Math.cos(x), 150 - A * Math.sin(x));
+      ctx.closePath();
+      ctx.stroke();
+      ctx.beginPath();
+        ctx.moveTo(350, 150);
+        ctx.lineTo(350 + B * Math.cos(xb), 150 - B * Math.sin(xb));
+      ctx.closePath();
+      ctx.stroke();
+      ctx.strokeStyle = "cyan";
+      ctx.beginPath();
+        ctx.moveTo(350, 150);
+        ctx.lineTo(350 + A * Math.cos(x), 150);
+      ctx.closePath();
+      ctx.stroke();
+      ctx.strokeStyle = "red";
+      ctx.beginPath();
+        ctx.moveTo(350, 150);
+        ctx.lineTo(350 + B * Math.cos(xb), 150);
+      ctx.closePath();
+      ctx.stroke();
+    }
+    draw();
+  </script>
+</body>
+</html>

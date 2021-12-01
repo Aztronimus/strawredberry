@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width">
+	<title>Maxwell equations</title>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script>
+		MathJax = {
+			tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+		};
+	</script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+	<style type="text/css">
+		.center
+		{
+			display: flex;
+			justify-content: center;
+		}
+		canvas
+		{
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<h1>Maxwell equations</h1>
+	<p>
+		\begin{align}
+			\sum_{x}^{i=1}{asdf}\\
+			\left[
+			\begin{array}{cc}
+				x & y \\
+				x & y
+			\end{array}
+			\right]
+		\end{align}
+	</p>
+	<div class="center"><canvas width="600" height="400">Your browser doesn't support canvas</canvas></div>
+	<script type="text/javascript">
+		const canvas = document.querySelector("canvas"),
+		ctx = canvas.getContext("2d"),
+		mp = [canvas.width / 2, canvas.height / 2];
+		ctx.lineWidth = 2;
+		// ctx.strokeStyle = "blue";
+		// ctx.fillStyle = "blue";
+		let r = 22;
+		r = [r / 2 - r * .2, r, parseInt(mp[0] / r), parseInt(mp[1] / r)];
+		function field([x, y]) {
+			// return [x, 0];
+			// return [0, y];
+			// let i = (x**2 + y**2)**1.5;
+			// return [(x / i), y / i];
+			// return [- y, x];
+			// two particles
+			// let d = 100,
+			// p = [
+			// 	[d - x, d - y],
+			// 	[d + x, d + y]
+			// ];
+			// let i = [
+			// 	(p[0][0]**2 + p[0][1]**2)**1.5,
+			// 	(p[1][0]**2 + p[1][1]**2)**1.5
+			// ]
+			// return [
+			// 	(p[0][0] / i[0]) + (p[1][0] / i[1]),
+			// 	(p[0][1] / i[0]) + (p[1][1] / i[1])
+			// ];
+			// two particles repulsion
+			let d = 100,
+			p = [
+				[x - d, y - d],
+				[d + x, d + y]
+			];
+			let i = [
+				(p[0][0]**2 + p[0][1]**2)**1.5,
+				(p[1][0]**2 + p[1][1]**2)**1.5
+			]
+			return [
+				(p[0][0] / i[0]) + (p[1][0] / i[1]),
+				(p[0][1] / i[0]) + (p[1][1] / i[1])
+			];
+			// return [(d - x) / i, (- y) / i];
+			// return [(d + x) / ii, y / ii];
+		}
+		function getAngle(x, y) {
+			if(x == 0) {
+				if(y > 0) return Math.PI / 2;
+				else if(y < 0) return - Math.PI / 2;
+				return;
+			}
+			let r = Math.atan(y / x);
+			if(x > 0) {
+				if(y == 0) return 0;
+				else return r;
+			} else return r + Math.PI;
+		}
+		function getColor(i, k = 1) {
+			let c = parseInt(255 * Math.exp(-i * k));
+			c = [
+				c.toString(16),
+				(255 - c).toString(16),
+			];
+			if(c[0].length == 1) c[0] = "0" + c[0];
+			if(c[1].length == 1) c[1] = "0" + c[1];
+			return "#" + c[1] + c[0] + c[0];
+		}
+		function drawArrow(p, v) {
+			const a = getAngle(v[0], v[1]),
+			i = Math.sqrt(v[0]**2 + v[1]**2);
+			let c = getColor(i, 10000);
+			ctx.strokeStyle = c;
+			ctx.fillStyle = c;
+			if(typeof a != "number") {
+				// ctx.translate(p[0], p[1]);
+				// ctx.rotate(- a);
+				ctx.beginPath();
+				ctx.arc(p[0], p[1], 2.5, 0, 2*Math.PI);
+				ctx.closePath();
+				ctx.fill();
+				// ctx.rotate(a);
+				// ctx.translate(- p[0], - p[1]);
+				return;
+			}
+			// const a = - Math.PI / 4;
+			// console.log(a);
+			ctx.translate(p[0], p[1]);
+			ctx.rotate(- a)
+			ctx.beginPath();
+			ctx.moveTo(r[0] + 5, 0);
+			ctx.lineTo(r[0] - 4, + 3);
+			ctx.lineTo(r[0] -4, -3);
+			ctx.closePath();
+			ctx.fill();
+			ctx.beginPath();
+			ctx.moveTo(-r[0], 0);
+			ctx.lineTo(r[0], 0);
+			ctx.stroke();
+			ctx.closePath();
+			ctx.rotate(a);
+			ctx.translate(- p[0], - p[1]);
+		}
+		let p = [];
+		function draw() {
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			for(let i = - r[2], ii = r[2] + 1; i != ii; i++) {
+				for(let j = - r[3], jj = r[3] + 1; j != jj; j++) {
+					p = [mp[0] + i * r[1], mp[1] + j * r[1]];
+					drawArrow(p, field([p[0] - mp[0], mp[1] - p[1]]));
+				}
+			}
+		}
+		draw();
+		// document.onmousemove = function(e) {
+		// 	let p = [e.offsetX, e.offsetY];
+		// 	// ctx.clearRect(0, 0, canvas.width, canvas.height);
+		// 	drawArrow(p, field([p[0] - mp[0], mp[1] - p[1]]));
+		// }
+		/*
+		https://www.khanacademy.org/math/multivariable-calculus/greens-theorem-and-stokes-theorem/stokes-theorem/v/green-s-and-stokes-theorem-relationship
+		https://www.khanacademy.org/math/multivariable-calculus/greens-theorem-and-stokes-theorem/divergence-theorem-articles/a/2d-divergence-theorem
+		https://www.khanacademy.org/math/multivariable-calculus/integrating-multivariable-functions/line-integrals-in-vector-fields-articles/a/flux-in-two-dimensions
+
+		*/
+	</script>
+</body>

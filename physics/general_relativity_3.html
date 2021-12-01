@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tensors</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style type="text/css">
+		body
+		{
+			background-color: black;
+			color: white;
+		}
+		h1, h2
+		{
+			text-align: center;
+		}
+		div
+		{
+			display: flex;
+			justify-content: center;
+		}
+		p
+		{
+			padding: 0 20vw 0 20vw;
+			text-align: justify;
+		}
+	</style>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+	<h1>Tensors (in matrix notation)</h1>
+	<h2>Basis change</h2>
+	<p>
+		Describing one basis in terms of the other
+		\begin{align}
+			\left(\begin{array}{c}
+				e_1'\\
+				e_2'\\
+			\end{array}\right)
+			&=
+			\left(\begin{array}{c}
+				m_{1,1} & m_{1,2}\\
+				m_{2,1} & m_{2,2}\\
+			\end{array}\right)
+			\left(\begin{array}{c}
+				e_1\\
+				e_2\\
+			\end{array}\right)\\
+			\\
+			\left(\begin{array}{c}
+				e_1\\
+				e_2\\
+			\end{array}\right)
+			&=
+			\left(\begin{array}{cc}
+				m_{1,1}' & m_{1,2}'\\
+				m_{2,1}' & m_{2,2}'\\
+			\end{array}\right)
+			\left(\begin{array}{c}
+				e_1'\\
+				e_2'\\
+			\end{array}\right)\\
+		\end{align}
+		Describing one vector in different basis
+		\begin{align}
+			v &=
+			\left(\begin{array}{c}
+				v_1\\
+				v_2\\
+			\end{array}\right)^T
+			\left(\begin{array}{c}
+				e_1\\
+				e_2\\
+			\end{array}\right)
+			=
+			\left(\begin{array}{c}
+				v_1'\\
+				v_2'\\
+			\end{array}\right)^T
+			\left(\begin{array}{c}
+				e_1'\\
+				e_2'\\
+			\end{array}\right)\\
+		\end{align}
+		\begin{align}
+			\left(\begin{array}{c}
+				v_1'\\
+				v_2'\\
+			\end{array}\right)
+			&=
+			\left(\begin{array}{cc}
+				m_{1,1}' & m_{1,2}'\\
+				m_{2,1}' & m_{2,2}'\\
+			\end{array}\right)^T
+			\left(\begin{array}{c}
+				v_1\\
+				v_2\\
+			\end{array}\right)\\
+			\\
+			\left(\begin{array}{c}
+				v_1\\
+				v_2\\
+			\end{array}\right)
+			&=
+			\left(\begin{array}{cc}
+				m_{1,1} & m_{1,2}\\
+				m_{2,1} & m_{2,2}\\
+			\end{array}\right)^T
+			\left(\begin{array}{c}
+				v_1'\\
+				v_2'\\
+			\end{array}\right)
+		\end{align}
+	</p>
+	<h2>Scalar product with metric</h2>
+	<p>
+		Metric is how one basis perceive other basis, a basis always perceives itself as cartesian because the components of the basis points perpendicular to each other
+		\begin{align}
+			\left(\begin{array}{c}
+				e_1\\
+				e_2
+			\end{array}\right)
+			&=
+			\left(\begin{array}{cc}
+				1 & 0\\
+				0 & 1\\
+			\end{array}\right)
+			\left(\begin{array}{c}
+				e_1\\
+				e_2\\
+			\end{array}\right)\\
+			\\
+			\left(\begin{array}{cc}
+				g_{1, 1} & g_{1, 2}\\
+				g_{2, 1} & g_{2, 2}\\
+			\end{array}\right)
+			&=
+			\left(\begin{array}{cc}
+				e_1 \cdot e_1 & e_1 \cdot e_2\\
+				e_2 \cdot e_1 & e_2 \cdot e_2\\
+			\end{array}\right)\\
+			&=
+			\left(\begin{array}{cc}
+				1 & 0\\
+				0 & 1\\
+			\end{array}\right)
+		\end{align}
+		But how does it perceives another basis?
+		\begin{align}
+			\left(\begin{array}{c}
+				e_1'\\
+				e_2'\\
+			\end{array}\right)
+			&=
+			\left(\begin{array}{c}
+				m_{1,1} & m_{1,2}\\
+				m_{2,1} & m_{2,2}\\
+			\end{array}\right)
+			\left(\begin{array}{c}
+				e_1\\
+				e_2\\
+			\end{array}\right)\\
+		\end{align}
+		\begin{align}
+			\left(\begin{array}{cc}
+				g_{1, 1} & g_{1, 2}\\
+				g_{2, 1} & g_{2, 2}\\
+			\end{array}\right)
+			&=
+			\left(\begin{array}{cc}
+				e_1' \cdot e_1' & e_1' \cdot e_2'\\
+				e_2' \cdot e_1' & e_2' \cdot e_2'\\
+			\end{array}\right)\\
+			&=
+			\left(\begin{array}{cc}
+				m_{1,1} & m_{1,2}\\
+				m_{2,1} & m_{2,2}\\
+			\end{array}\right)
+			\left(\begin{array}{cc}
+				m_{1,1} & m_{1,2}\\
+				m_{2,1} & m_{2,2}\\
+			\end{array}\right)^T
+		\end{align}
+		Dot product with cartesian metric
+		\begin{align}
+			u \cdot v &=
+			\left(\begin{array}{c}
+				u_1\\
+				u_2
+			\end{array}\right)^T
+			\left(\begin{array}{cc}
+				1 & 0\\
+				0 & 1\\
+			\end{array}\right)
+			\left(\begin{array}{c}
+				v_1\\
+				v_2
+			\end{array}\right)
+		\end{align}
+		Dot product with a no-cartesian metric
+		\begin{align}
+			u \cdot v &=
+			\left(\begin{array}{c}
+				u_1\\
+				u_2\\
+			\end{array}\right)^T
+			\left(\begin{array}{cc}
+				g_{1, 1} & g_{1, 2}\\
+				g_{2, 1} & g_{2, 2}\\
+			\end{array}\right)
+			\left(\begin{array}{c}
+				v_1\\
+				v_2\\
+			\end{array}\right)
+		\end{align}
+	</p>
+	<h2>Dual basis</h2>
+	<p>
+		\begin{align}
+			e_i \cdot e^j &= \delta_i^j =
+			\left\lbrace\begin{array}{rcl}
+				0 & \text{if} & i \neq j\\
+				1 & \text{if} & i = j\\
+			\end{array}\right.\\
+		\end{align}
+		\begin{align}
+			\left(\begin{array}{c}
+				e^1\\
+				e^2\\
+			\end{array}\right)
+			&=
+			\left(\begin{array}{cc}
+				m_{1,1} & m_{1,2}\\
+				m_{2,1} & m_{2,2}\\
+			\end{array}\right)
+			\left(\begin{array}{c}
+				e_1\\
+				e_2\\
+			\end{array}\right)\\
+		\end{align}
+		\begin{align}
+			\left(\begin{array}{cc}
+				e_1 \cdot e^1 & e_1 \cdot e^2\\
+				e_2 \cdot e^1 & e_2 \cdot e^2\\
+			\end{array}\right)
+			&=
+			\left(\begin{array}{cc}
+				g_{1, 1} & g_{1, 2}\\
+				g_{2, 1} & g_{2, 2}\\
+			\end{array}\right)
+			\left(\begin{array}{cc}
+				m_{1,1} & m_{1,2}\\
+				m_{2,1} & m_{2,2}\\
+			\end{array}\right)^T
+			=
+			\left(\begin{array}{c}
+				1 & 0\\
+				0 & 1\\
+			\end{array}\right)\\
+		\end{align}
+		\begin{align}
+			\left(\begin{array}{cc}
+				m_{1,1} & m_{1,2}\\
+				m_{2,1} & m_{2,2}\\
+			\end{array}\right)^T
+			&=
+			\left(\begin{array}{cc}
+				g_{1, 1} & g_{1, 2}\\
+				g_{2, 1} & g_{2, 2}\\
+			\end{array}\right)^{-1}
+			=
+			\left(\begin{array}{cc}
+				g^{1, 1} & g^{1, 2}\\
+				g^{2, 1} & g^{2, 2}\\
+			\end{array}\right)
+		\end{align}
+		\begin{align}
+			\left(\begin{array}{c}
+				e^1\\
+				e^2\\
+			\end{array}\right)
+			&=
+			\left(\begin{array}{cc}
+				g^{1, 1} & g^{1, 2}\\
+				g^{2, 1} & g^{2, 2}\\
+			\end{array}\right)^T
+			\left(\begin{array}{c}
+				e_1\\
+				e_2\\
+			\end{array}\right)\\
+		\end{align}
+		Describing the same vector in dual basis
+		\begin{align}
+			v &=
+			\left(\begin{array}{c}
+				v_1\\
+				v_2\\
+			\end{array}\right)^T
+			\left(\begin{array}{c}
+				e^1\\
+				e^2\\
+			\end{array}\right)
+			=
+			\left(\begin{array}{c}
+				v^1\\
+				v^2\\
+			\end{array}\right)^T
+			\left(\begin{array}{c}
+				e_1\\
+				e_2\\
+			\end{array}\right)\\
+			&=
+			\left(\begin{array}{c}
+				v_1\\
+				v_2\\
+			\end{array}\right)^T
+			\left(\begin{array}{cc}
+				g^{1, 1} & g^{1, 2}\\
+				g^{2, 1} & g^{2, 2}\\
+			\end{array}\right)^T
+			\left(\begin{array}{c}
+				e_1\\
+				e_2\\
+			\end{array}\right)\\
+		\end{align}
+		\begin{align}
+			\left(\begin{array}{c}
+				v^1\\
+				v^2\\
+			\end{array}\right)
+			&=
+			\left(\begin{array}{cc}
+				g^{1, 1} & g^{1, 2}\\
+				g^{2, 1} & g^{2, 2}\\
+			\end{array}\right)
+			\left(\begin{array}{c}
+				v_1\\
+				v_2\\
+			\end{array}\right)
+		\end{align}
+	</p>
+	<h2>New metric with new basis</h2>
+	<p>
+		\begin{align}
+			a &=
+			\left(\begin{array}{c}
+				a_1\\
+				a_2\\
+			\end{array}\right)^T
+			\left(\begin{array}{c}
+				e_1\\
+				e_1\\
+			\end{array}\right)
+			=
+			\left(\begin{array}{c}
+				a_1'\\
+				a_2'\\
+			\end{array}\right)^T
+			\left(\begin{array}{c}
+				e_1'\\
+				e_2'\\
+			\end{array}\right)\\
+			b &=
+			\left(\begin{array}{c}
+				b_1\\
+				b_2\\
+			\end{array}\right)^T
+			\left(\begin{array}{c}
+				e_1\\
+				e_1\\
+			\end{array}\right)
+			=
+			\left(\begin{array}{c}
+				b_1'\\
+				b_2'\\
+			\end{array}\right)^T
+			\left(\begin{array}{c}
+				e_1'\\
+				e_2'\\
+			\end{array}\right)\\
+		\end{align}
+		\begin{align}
+			a \cdot b &=
+			\left(\begin{array}{c}
+				a_1\\
+				a_2\\
+			\end{array}\right)^T
+			\left(\begin{array}{cc}
+				g_{1, 1} & g_{1, 2}\\
+				g_{2, 1} & g_{2, 2}\\
+			\end{array}\right)
+			\left(\begin{array}{c}
+				b_1\\
+				b_2\\
+			\end{array}\right)\\
+			&=
+			\left(\begin{array}{c}
+				a_1'\\
+				a_2'\\
+			\end{array}\right)^T
+			\left(\begin{array}{cc}
+				g_{1, 1}' & g_{1, 2}'\\
+				g_{2, 1}' & g_{2, 2}'\\
+			\end{array}\right)
+			\left(\begin{array}{c}
+				b_1'\\
+				b_2'\\
+			\end{array}\right)\\
+			&=
+			\left(\begin{array}{c}
+				a_1'\\
+				a_2'\\
+			\end{array}\right)^T
+			\left(\begin{array}{cc}
+				m_{1,1} & m_{1,2}\\
+				m_{2,1} & m_{2,2}\\
+			\end{array}\right)
+			\left(\begin{array}{cc}
+				g_{1, 1} & g_{1, 2}\\
+				g_{2, 1} & g_{2, 2}\\
+			\end{array}\right)
+			\left(\begin{array}{c}
+				m_{1,1} & m_{1,2}\\
+				m_{2,1} & m_{2,2}\\
+			\end{array}\right)^T
+			\left(\begin{array}{c}
+				b_1'\\
+				b_2'\\
+			\end{array}\right)\\
+		\end{align}
+		\begin{align}
+			\left(\begin{array}{cc}
+				g_{1, 1}' & g_{1, 2}'\\
+				g_{2, 1}' & g_{2, 2}'\\
+			\end{array}\right)
+			&=
+			\left(\begin{array}{cc}
+				m_{1,1} & m_{1,2}\\
+				m_{2,1} & m_{2,2}\\
+			\end{array}\right)
+			\left(\begin{array}{cc}
+				g_{1, 1} & g_{1, 2}\\
+				g_{2, 1} & g_{2, 2}\\
+			\end{array}\right)
+			\left(\begin{array}{cc}
+				m_{1,1} & m_{1,2}\\
+				m_{2,1} & m_{2,2}\\
+			\end{array}\right)^T
+		\end{align}
+	</p>
+</body>
+</html>

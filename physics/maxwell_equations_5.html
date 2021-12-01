@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width">
+	<title>Maxwell equations</title>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script>
+		MathJax = {
+			tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+		};
+	</script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1>Gauss's theorem of flux</h1>
+	<p>
+	  \begin{align}
+			\int_C {F \cdot dn} &= \iint_R {\left(\nabla \cdot F\right) \cdot dS}\\
+			&= \int_b^d {P(c, y) dy} - \int_b^d {P(a, y) dy} + \int_a^c {Q(x, d) dx} - \int_a^c {Q(x, b) dx}\\
+		\end{align}
+		Here the field is inversely proportional to the square of the distance
+		\begin{align}
+			F &= \frac{k}{x^2 + y^2} \langle x, y \rangle\\
+			\nabla \cdot F &= \left \langle \frac{\partial}{\partial x}, \frac{\partial}{\partial y} \right \rangle \cdot \left \langle \frac{kx}{ x^2 + y^2 }, \frac{ky}{ x^2 + y^2 } \right \rangle\\
+			\\
+			\sin^2{v} + \cos^2{v} &= 1\\
+			\tan^2{v} + 1 &= \sec^2{v}\\
+			\int_{u_1}^{u_2} {\frac{kc}{ c^2 + u^2 } du} &= k \int_{v_1}^{v_2} {\frac{c^2 sec^2{v}}{ c^2\sec^2{v} } dv} = k\left.[v]\right|_{v_1}^{v_2} = k\left.\left[\arctan{\frac{u}{c}}\right]\right|_{u_1}^{u_2}\\
+			u^2 &= c^2\tan^2{v}\\
+			\frac{du}{dv} &= c \sec^2{v}\\
+			\\
+			\int_b^d {P(c, y) dy} &= \int_b^d {\frac{kc}{ c^2 + y^2 } dy} = k\left[\arctan{\frac{d}{c}} - \arctan{\frac{b}{c}}\right]\\
+			\int_b^d {P(a, y) dy} &= \int_b^d {\frac{ka}{ a^2 + y^2 } dy} = k\left[\arctan{\frac{d}{a}} - \arctan{\frac{b}{a}}\right]\\
+			\int_a^c {Q(x, d) dx} &= \int_a^c {\frac{kd}{ x^2 + d^2 } dx} = k\left[\arctan{\frac{c}{d}} - \arctan{\frac{a}{d}}\right]\\
+			\int_a^c {Q(x, b) dx} &= \int_a^c {\frac{kb}{ x^2 + b^2 } dx} = k\left[\arctan{\frac{c}{b}} - \arctan{\frac{a}{b}}\right]\\
+		\end{align}
+		\begin{align}
+			\arctan{u} + \arctan{\frac{1}{u}} &= \frac{\pi}{2}\cdot\frac{|u|}{u}\\
+			\alpha + \beta + \frac{\pi}{2} &= \pi\\
+			\tan{\alpha} &= \frac{o}{a}\\
+			\arctan{(\cot{\alpha})} = \tan{\beta} &= \frac{a}{o}\\
+			\arctan{\frac{o}{a}} &= \left\lbrace\begin{array}{rcl}
+				\alpha & \text{if} & a > 0\\
+				-\alpha & \text{if} & a < 0\\
+			\end{array}\right.\\
+			\arctan{\frac{a}{o}} &= \left\lbrace\begin{array}{rcl}
+				\beta & \text{if} & a > 0\\
+				-\beta & \text{if} & a < 0\\
+			\end{array}\right.\\
+			\arctan{\frac{o}{a}} + \arctan{\frac{a}{o}} &=
+			\left\lbrace\begin{array}{rcl}
+				\frac{\pi}{2} & \text{if} & a > 0\\
+				-\frac{\pi}{2} & \text{if} & a < 0\\
+			\end{array}\right.\\
+		\end{align}
+		\begin{align}
+			\int_C {F \cdot dn} &= k\left[\arctan{\frac{d}{c}} - \arctan{\frac{b}{c}}\right] - k\left[\arctan{\frac{d}{a}} - \arctan{\frac{b}{a}}\right]\\
+			& + k\left[\arctan{\frac{c}{d}} - \arctan{\frac{a}{d}}\right] - k\left[\arctan{\frac{c}{b}} - \arctan{\frac{a}{b}}\right]\\
+			&= k\left[\arctan{\frac{d}{c}} - \arctan{\frac{b}{c}} - \arctan{\frac{d}{a}} + \arctan{\frac{b}{a}}\right.\\
+			&\left. + \arctan{\frac{c}{d}} - \arctan{\frac{a}{d}} - \arctan{\frac{c}{b}} + \arctan{\frac{a}{b}}\right]\\
+			&= k \frac{\pi}{2}\left[ \frac{|d/c|}{d/c} - \frac{|b/c|}{b/c} - \frac{|d/a|}{d/a} + \frac{|b/a|}{b/a}\right]\\
+			\\
+			\int_C {F \cdot dn} &= k\left[\arctan{\frac{d}{c}} - \arctan{\frac{b}{c}}\right] - k\left[\arctan{\frac{d}{a}} - \arctan{\frac{b}{a}}\right]\\
+			& + k\left[\arctan{\frac{c}{d}} - \arctan{\frac{a}{d}}\right] - k\left[\arctan{\frac{c}{b}} - \arctan{\frac{a}{b}}\right]\\
+			&= k\left[\arctan{\frac{d}{c}} - \arctan{\frac{b}{c}} - \arctan{\frac{d}{a}} + \arctan{\frac{b}{a}}\right.\\
+			&\left. + \arctan{\frac{c}{d}} - \arctan{\frac{a}{d}} - \arctan{\frac{c}{b}} + \arctan{\frac{a}{b}}\right]\\
+			&= k \frac{\pi}{2}\left[ \frac{|d/c|}{d/c} - \frac{|b/c|}{b/c} - \frac{|d/a|}{d/a} + \frac{|b/a|}{b/a}\right]\\
+		\end{align}
+	</p>
+	<h2>Maxwell's equations</h2>
+	<p>
+		\begin{align}
+			\iint_R {D \cdot dA} &= \iiint_V {\rho \cdot dV} & \int_C {D \cdot ds} &= \iint_R {\sigma \cdot dA}\\
+			\iint_R {B \cdot dA} &= 0 & \int_C {B \cdot ds} &= 0\\
+			\int_C {E \cdot dl} &= - \iint_R {\frac{\partial B}{\partial t} dA} & \int_C {E \cdot dr} &= - \iint_R {\frac{\partial B}{\partial t} dA}\\
+			\int_C {H \cdot dl} &= \iint_R {\left(J + \frac{\partial D}{\partial t}\right) dA} & \int_C {H \cdot dr} &= \iint_R {\left(J + \frac{\partial D}{\partial t}\right) dA}\\
+			\\
+			\int {E \cdot da} &= \frac{q}{\epsilon_0} & \iint_R {\left(\nabla \cdot D\right)dA} &= \iint_R {\sigma \cdot dA}\\
+			\int {B \cdot da} &= 0 & \iint_R {\left(\nabla \cdot B\right)dA} &= 0\\
+			\int {E \cdot dl} &= - \int {\frac{\partial B}{\partial t} \cdot da} & \iint_R {\left(\nabla \times E \right)dA} &= - \iint_R {\frac{\partial B}{\partial t} dA}\\
+			\int {B \cdot dl} &= \mu_0 I + \mu_0 \epsilon_0 \int {\frac{\partial E}{\partial t} da} & \iint_R {\left(\nabla \times H \right)dA} &= \iint_R {\left(J + \frac{\partial D}{\partial t}\right) dA}\\
+			\\
+			\nabla \cdot D &= \sigma\\
+			\nabla \cdot B &= 0\\
+			\nabla \times E &= - \frac{\partial B}{\partial t}\\
+			\nabla \times H &= J + \frac{\partial D}{\partial t}\\
+			\\
+			D &= \epsilon_0 E\\
+			I &= \int {J dA}\\
+			B &= \mu_0 H\\
+		\end{align}
+	</p>
+</body>
+<!-- 
+https://thefactfactor.com/facts/pure_science/physics/amperes-law/5950/
+https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.sciencefacts.net%2Fwp-content%2Fuploads%2F2020%2F06%2FAmperes-Law-Derivation.jpg&imgrefurl=https%3A%2F%2Fwww.sciencefacts.net%2Famperes-law.html&tbnid=L-obTF8l6qqAKM&vet=12ahUKEwidq6agq9juAhVB-KwKHaqVDcwQMygCegUIARCqAQ..i&docid=v_B5hp28NbRvfM&w=700&h=592&q=ampere%27s%20law%20derivation&safe=off&client=firefox-b-d&ved=2ahUKEwidq6agq9juAhVB-KwKHaqVDcwQMygCegUIARCqAQ
+https://www.slideserve.com/addison/biot-savart-law
+http://hyperphysics.phy-astr.gsu.edu/hbase/electric/farlaw.html
+https://en.wikipedia.org/wiki/Charge_density
+ -->

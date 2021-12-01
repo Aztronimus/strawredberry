@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width">
+  <title>Maxwell equations</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+  <h1>Green's theorem of circulation</h1>
+  <p>
+    \begin{align}
+      \sum_{x}^{i=1}{asdf}\\
+      \left[
+        \begin{array}{cc}
+          x & y \\
+          x & y
+        \end{array}
+      \right]
+    \end{align}
+  </p>
+  <h2>2-dimensional case</h2>
+  <p>
+    \begin{align}
+      \int_C {F \cdot dr} &= \iint_D {\left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right)dA}\\
+      &= \iint_D {(\nabla \times F) \cdot dS}\\
+      \\
+      dS &= \vec{u} dA\\
+      \vec{u} &= \langle 1, 1\rangle\\
+      \\
+      F(x, y) &= \langle P(x, y), Q(x, y) \rangle\\
+      \\
+      r_1 &= \langle t, b \rangle\\
+      r_2 &= \langle c, t \rangle\\
+      r_3 &= \langle t, d \rangle\\
+      r_4 &= \langle a, t \rangle\\
+    \end{align}
+    \begin{align}
+      \int_C {F \cdot dr} &= \int_{C_1} {F \cdot dr_1} + \int_{C_2} {F \cdot dr_2} + \int_{C_3} {F \cdot dr_3} + \int_{C_4} {F \cdot dr_4}\\
+      
+      \int_C {F \cdot dr} &= \int_C {\langle P, Q \rangle \cdot \frac{dr}{dt} dt} = \int_C {\langle P, Q \rangle \cdot {\left\langle \frac{dx}{dt}, \frac{dy}{dt} \right\rangle} dt} = \int_C ({P dx} + {Q dy})\\
+      \\
+      \int_{C_1} {F \cdot dr_1} &= \int_a^c {P dx} + \int_b^b {Q dy} = \int_a^c {P(x, b) dx}\\
+      \int_{C_2} {F \cdot dr_2} &= \int_c^c {P dx} + \int_b^d {Q dy} = \int_b^d {Q(c, y) dy}\\
+      \int_{C_3} {F \cdot dr_3} &= \int_c^a {P dx} + \int_d^d {Q dy} = \int_c^a {P(x, d) dx}\\
+      \int_{C_4} {F \cdot dr_4} &= \int_a^a {P dx} + \int_d^b {Q dy} = \int_d^b {Q(a, y) dy}\\
+      \\
+      \int_C {F \cdot dr} &= \int_a^c {P(x, b) dx} + \int_b^d {Q(c, y) dy} + \int_c^a {P(x, d) dx} + \int_d^b {Q(a, y) dy}\\
+      &= \int_b^d {Q(c, y) dy} - \int_b^d {Q(a, y) dy} - \int_a^c {P(x, d) dx} + \int_a^c {P(x, b) dx}\\
+      \\\\
+      \iint_D {\frac{\partial Q}{\partial x}dA} &= \int_b^d {\int_a^c {\frac{\partial Q}{\partial x} dx} dy} = \int_b^d {[Q(c, y) - Q(a, y)] dy}\\
+      \iint_D {\frac{\partial P}{\partial y}dA} &= \int_a^c {\int_b^d {\frac{\partial P}{\partial y} dy} dx} = \int_a^c {[P(x, d) - P(x, b)] dx}\\
+      \\
+      \iint_D {\left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right)dA} &= \int_b^d {[Q(c, y) - Q(a, y)] dy} - \int_a^c {[P(x, d) - P(x, b)] dx}\\
+      &= \int_b^d {Q(c, y) dy} - \int_b^d {Q(a, y) dy} - \int_a^c {P(x, d) dx} + \int_a^c {P(x, b) dx}\\
+    \end{align}
+  </p>
+  <p>
+    Circulation per unit area around a point<br>
+    \begin{align}
+      \int_C {F \cdot dr} &= \iint_D {(\nabla \times F) \cdot dS}\\
+      \\
+      \text{rot}{(F)} \cdot \vec{u} &= \lim_{A \rightarrow 0} {\frac{\int_C {F \cdot dr}}{\iint_D {dA}}}\\
+      &= \lim_{A \rightarrow 0} {\frac{\iint_D {(\nabla \times F) \cdot dS}}{\iint_D {dA}}}\\
+      \text{rot}{(F)} &= \nabla \times F\\
+    \end{align}
+  </p>
+  <h2>3-dimensional case</h2>
+  <p>
+    \begin{align}
+      \int_C {F \cdot dr} &= \iiint_D {\left(\frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z} + \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x} + \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right)dV}\\
+      &= \iiint_D {(\nabla \times F) \cdot dS}\\
+      \\
+      \vec{u} &= \langle 1, 1, 1\rangle\\
+      dS &= \vec{u} dV\\
+      \\
+      F(x,y,z) &= \langle P(x,y,z), Q(x,y,z), R(x,y,z)\rangle\\
+      F_x &= \langle 0, Q, R\rangle\\
+      F_y &= \langle P, 0, R\rangle\\
+      F_z &= \langle P, Q, 0\rangle\\
+    \end{align}
+    \begin{array}{ccccc}
+      r_{x, 1} = \langle 0, t, c \rangle & r_{y, 1} = \langle a, 0, t \rangle & r_{z, 1} = \langle t, b, 0 \rangle\\
+      r_{x, 2} = \langle 0, e, t  \rangle & r_{y, 2} = \langle t, 0, f \rangle & r_{z, 2} = \langle d, t, 0 \rangle\\
+      r_{x, 3} = \langle 0, t, f  \rangle & r_{y, 3} = \langle d, 0, t \rangle & r_{z, 3} = \langle t, e, 0 \rangle\\
+      r_{x, 4} = \langle 0, b, t \rangle & r_{y, 4} = \langle t, 0, c \rangle & r_{z, 4} = \langle a, t, 0 \rangle\\
+    \end{array}
+    \begin{align}
+      \int_C {F \cdot dr} &= \int_{C_x} {F_x \cdot dr_x} + \int_{C_y} {F_y \cdot dr_y} + \int_{C_z} {F_z \cdot dr_z}
+    \end{align}
+    Right here there's a strong connection with Cramer's rule<br>
+    \begin{align}
+      \nabla \times F = \left|\begin{array}{ccc}
+        \hat{i} & \hat{j} & \hat{k}\\
+        \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z}\\
+        P & Q & R\\
+      \end{array}\right|
+      &= \left\langle \frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z}, \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x}, \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right\rangle\\
+      &= \langle (\nabla \times F_x) \cdot \vec{u}, (\nabla \times F_y) \cdot \vec{u}, (\nabla \times F_z) \cdot \vec{u} \rangle\\
+    \end{align}
+    \begin{align}
+      \iiint_D {(\nabla \times F) \cdot dS} &= \iiint_D {(\nabla \times F_x) \cdot dS} + \iiint_D {(\nabla \times F_y) \cdot dS} + \iiint_D {(\nabla \times F_z) \cdot dS}\\
+      &= \iint_{D_x} {(\nabla \times F_x) \cdot dS_x} + \iint_{D_y} {(\nabla \times F_y) \cdot dS_y} + \iint_{D_z} {(\nabla \times F_z) \cdot dS_z}\\
+      &= \int_{C_x} {F_x \cdot dr_x} + \int_{C_y} {F_y \cdot dr_y} + \int_{C_z} {F_z \cdot dr_z}\\
+    \end{align}
+  </p>
+  <script type="text/javascript"></script>
+</body>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width">
+	<title>Maxwell equations</title>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script>
+		MathJax = {
+			tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+		};
+	</script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h3 class="h3_home"><a href="index.html">Index</a></h3>
+	<h1>Electromechanics</h1>
+	<h2>Electric and magnetic fields created by a moving charge</h2>
+	<p>
+		These equations are only valid when \(v \ll c\)<br>
+		From Coulomb law we get the electric field<br>
+		From Biot-Savart law we get the magnetic field<br>
+		From Lorentz law we get the change in momentum of a moving charge<br>
+		\begin{align}
+			\mathbf E &= k_e q\frac{\mathbf r}{r^3}&
+			\mathbf B &= k_b q\frac{\mathbf v \times \mathbf r}{r^3}\\
+		\end{align}
+		\begin{align}
+			\mathbf F &= q(\mathbf E + \mathbf v \times \mathbf B)\\
+		\end{align}
+		Unifiying Colomb law with Biot-Savart we see that somehow the magnetic field is created by the electric field, as if they were a consequence of one same thing...<br>
+		And from Lorentz law when the force does not exist something similar
+		\begin{align}
+			\mathbf v \times \mathbf E &= \mathbf B&
+			\mathbf v \times \mathbf B &= - \mathbf E\\
+		\end{align} 
+	</p>
+	<h2>Galilean transformation problem</h2>
+	<p>
+		Magnetic field created by a wire according to Biot-Savart law and Maxwell equations
+		\begin{align}
+			\mathbf B &= 2k_b \frac{I}{r} \hat{k}
+		\end{align}
+		According to Lorentz law, if a charge is moving parallel to this cable, it must experience a force
+		\begin{align}
+			\frac{\mathbf F}{q} &= \mathbf v \times \mathbf B\\
+		\end{align}
+		\begin{align}
+			\mathbf v &= v\hat{i}&
+			\mathbf B &= B\hat{k}\\
+		\end{align}
+		\begin{align}
+			\mathbf v \times \mathbf B &= -vB \hat{j}\\
+		\end{align}
+		The charge would see that the negative charges of the wire are moving in the opposite direction, the magnetic field created by that current of negative charges should be the same since the opposite direction cancels out with the negative charge, but the charge is no longer moving so that it does not feels any force
+		\begin{align}
+			\frac{\mathbf F'}{q} &= \mathbf v' \times \mathbf B'\\
+		\end{align}
+		\begin{align}
+			\mathbf v' &= 0\hat{i}&
+			\mathbf B &= B\hat{k}\\
+		\end{align}
+		\begin{align}
+			\mathbf v \times \mathbf B &= 0 \hat{j}\\
+		\end{align}
+	</p>
+	<h2>Lorentz contraction relation with electric and magnetic fields</h2>
+	<p>
+		Combining Lorentz contraction with Coulomb law one a magnetic field, so, the magnetic field is a consequence of appliying the relativistic rules to the electric forces
+		\begin{align}
+			\mathbf E &= k_e q \frac{\mathbf r}{r^3}
+		\end{align}
+	</p>
+</body>

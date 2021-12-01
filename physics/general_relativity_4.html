@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tensors</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style type="text/css">
+		body
+		{
+			background-color: black;
+			color: white;
+		}
+		h1, h2
+		{
+			text-align: center;
+		}
+		div
+		{
+			display: flex;
+			justify-content: center;
+		}
+		p
+		{
+			padding: 0 20vw 0 20vw;
+			text-align: justify;
+		}
+	</style>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+	<h1>Tensors (in matrix notation)</h1>
+	<h2>Basis change</h2>
+	<p>
+		Describing one basis in terms of the other
+		\begin{align}
+			e_i' &= m_{i,j}\ e_j\\
+			e_i &= m_{i,j}'\ e_j'\\
+		\end{align}
+		Describing one vector in different basis
+		\begin{align}
+			v &= v_i\ e_i = v_i'\ e_i'\\
+		\end{align}
+		\begin{align}
+			v_i &= m_{j,i}'\ v_j'\\
+			v_i' &= m_{j,i}\ v_j\\
+		\end{align}
+	</p>
+	<h2>Scalar product with metric</h2>
+	<p>
+		Metric is how one basis perceive other basis, a basis always perceives itself as cartesian because the components of the basis points perpendicular to each other
+		\begin{align}
+			e_i &= \delta_i^j\ e_j\\
+			g_{i,j} &= e_i \cdot e_j = \delta_i^j\\
+		\end{align}
+		But how does it perceives another basis?
+		\begin{align}
+			e_i' &= m_{i,j}\ e_j\\
+			g_{i,j} &= e_i' \cdot e_j' = m_{i,k}\ m_{j,k}\\
+		\end{align}
+		Dot product with cartesian metric
+		\begin{align}
+			u \cdot v &= u_i\ \delta_i^j\ v_j = u_i\ v_i\\
+		\end{align}
+		Dot product with a no-cartesian metric
+		\begin{align}
+			u \cdot v &= u_i\ g_{i,j}\ v_j\\
+		\end{align}
+	</p>
+	<h2>Dual basis</h2>
+	<p>
+		\begin{align}
+			e_i \cdot e^j &= \delta_i^j
+		\end{align}
+		\begin{align}
+			e^i &= m_{i,j}\ e_j\\
+		\end{align}
+		\begin{align}
+			e_i \cdot e^j = g_{i,k}\ m_{j, k} &= \delta_i^j\\
+			g^{h,i}\ g_{i,k}\ m_{j, k} &= g^{h,i}\ \delta_i^j\\
+			\delta_h^k\ m_{j, k} &= g^{h,i}\ \delta_i^j\\
+			m_{j, h} &= g^{h,j}\\
+		\end{align}
+		\begin{align}
+			e^i &= g^{j, i}\ e_j\\
+		\end{align}
+		Describing the same vector in dual basis
+		\begin{align}
+			v &= v_i\ e^i = v^i\ e_i\\
+			&= v_i\ g^{j, i}\ e_j\\
+			v^i &= g^{i, j}\ v_j\\
+		\end{align}
+	</p>
+	<h2>New metric with new basis</h2>
+	<p>
+		\begin{align}
+			a &= a_i\ e_i = a_i'\ e_i'\\
+			b &= b_i\ e_i = b_i'\ e_i'\\
+		\end{align}
+		\begin{align}
+			a \cdot b &= a_i\ g_{i,j}\ b_j\\
+			&= a_i'\ g_{i,j}'\ b_j'\\
+			&= (m_{h,i}'\ a_h')\ g_{i,j}\ (m_{k,j}'\ b_k')\\
+			&= a_h'\ (m_{h,i}'\ g_{i,j}\ m_{k,j}')\ b_k'\\
+		\end{align}
+		\begin{align}
+			g_{i,j}' &= m_{h,i}'\ g_{i,j}\ m_{k,j}'\\
+		\end{align}
+	</p>
+</body>
+</html>

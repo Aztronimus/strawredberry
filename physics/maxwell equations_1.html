@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width">
+  <title>Maxwell equations</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+  <h1>Maxwell equations</h1>
+  <p>
+    \begin{align}
+      \sum_{x}^{i=1}{asdf}\\
+      \left[
+        \begin{array}{cc}
+          x & y \\
+          x & y
+        \end{array}
+      \right]
+    \end{align}
+  </p>
+  <h2>Determinant</h2>
+  <p>
+    \begin{align}
+      a x + b y &= e\\
+      c x + d y &= f\\
+      \\
+      x &= \frac{e - b y}{a}\\
+      x &= \frac{f - d y}{c}\\
+      \\
+      \frac{e - b y}{a} &= \frac{f - d y}{c}\\
+      ce - cb y &= af - ad y\\
+      ad y - cb y &= af - ce\\
+      \\
+      y &= \frac{af - ce}{ad - cb}\\
+      x &= \frac{bf - de}{bc - da}\\
+      \\
+      ad - cb &\neq 0\\
+      \\
+      \det{\left(\begin{array}{cc|c}
+        a & b & e\\
+        c & d & f
+      \end{array}\right)}
+      &=
+      \left|\begin{array}{cc}
+        a & b\\
+        c & d
+      \end{array}\right|
+      =
+      ad - cb\\
+    \end{align}
+  </p>
+  <h2>Area of a parellelogram described by two vectors</h2>
+  <p>
+    \begin{align}
+      \vec{v}_1 &= \langle a, b \rangle\\
+      \vec{v}_2 &= \langle c, d \rangle\\
+      \\
+      A &= (a + c)(b + d) - (ab + 2bc + cd)\\
+      &= ab + ad + bc + cd - ab - 2bc - cd\\
+      &= ad - bc
+    \end{align}
+  </p>
+  <h2>Volume of a parallelepiped</h2>
+  <h2>Matrix notation</h2>
+  <p>
+    \begin{align}
+      \left(\begin{array}{cc|c}
+        a & b & e\\
+        c & d & f
+      \end{array}\right)
+      &\rightarrow
+      \left(\begin{array}{cc|c}
+        1 & 0 & x\\
+        0 & 1 & y
+      \end{array}\right)\\
+      \\
+      \left(\begin{array}{cc|c}
+        ad & bd & ed\\
+        bc & bd & bf
+      \end{array}\right)
+      &\rightarrow
+      \left(\begin{array}{cc|c}
+        ad - bc & bd - bd & ed - bf\\
+        bc & bd & bf
+      \end{array}\right)
+      \rightarrow
+      \left(\begin{array}{cc|c}
+        1 & 0 & \frac{ed - bf}{ad - bc}\\
+        c & d & f
+      \end{array}\right)
+      \\
+      \left(\begin{array}{cc|c}
+        ac & bc & ec\\
+        ca & da & fa
+      \end{array}\right)
+      &\rightarrow
+      \left(\begin{array}{cc|c}
+        ac & bc & ec\\
+        ca - ac & da - bc & fa - ec
+      \end{array}\right)
+      \rightarrow
+      \left(\begin{array}{cc|c}
+        a & b & e\\
+        0 & 1 & \frac{fa - ec}{da - bc}
+      \end{array}\right)\\
+      \\
+      \left(\begin{array}{cc|c}
+        a & b & e\\
+        c & d & f
+      \end{array}\right)
+      &\rightarrow
+      \left(\begin{array}{cc|c}
+        1 & 0 & \frac{ed - bf}{ad - bc}\\
+        0 & 1 & \frac{fa - ec}{da - bc}
+      \end{array}\right)\\
+    \end{align}
+  </p>
+  <h2>Matrix reduction</h2>
+  <p>
+    \begin{align}
+      \left[\begin{array}{ccc|c}
+        a & b & c & j\\
+        d & e & f & k\\
+        g & h & i & l
+      \end{array}\right]
+      &\rightarrow
+      \left[\begin{array}{ccc|c}
+        a & b & c & j\\
+        da - ad & ea - bd & fa - cd & ka - jd\\
+        ga - ag & ha - bg & ia - cg & la - jg
+      \end{array}\right]\\
+      \\
+      &\left(\begin{array}{cc|c}
+        ea - bd & fa - cd & ka - jd\\
+        ha - bg & ia - cg & la - jg
+      \end{array}\right)\\
+      \\
+      &\left(\begin{array}{cc|c}
+        ae - db & ce - fb & je - kb\\
+        ge - dh & ie - fh & le - kh
+      \end{array}\right)\\
+      \\
+      &\left(\begin{array}{cc|c}
+        ai - gc & bi - hc & ji - lc \\
+        di - gf & ei - hf & ki - lf 
+      \end{array}\right)\\
+      \\\\
+      &\left[\begin{array}{cccc|c}
+        a_{11} & a_{12} & \cdots & a_{1n} & a_{1, n+1}\\
+        a_{21} & a_{22} & \cdots & a_{2n} & a_{2, n+1}\\
+        \vdots & \vdots & \ddots & \vdots & \vdots\\
+        a_{m1} & a_{m2} & \cdots & a_{mn} & a_{m, n+1}
+      \end{array}\right]\\
+      \\
+      &\left(\begin{array}{ccccccc|c}
+        a_{i1} & \cdots & a_{ij} & \cdots & a_{il} & \cdots & a_{in} & a_{i,n+1}\\
+        a_{k1} & \cdots & a_{kj} & \cdots & a_{kl} & \cdots & a_{kn} & a_{k,n+1}\\
+      \end{array}\right)\\
+      &\left(\begin{array}{cc|c}
+        a_{ij} & a_{il} & a_{i,n+1}\\
+        a_{kj} & a_{kl} & a_{k,n+1}\\
+      \end{array}\right)
+      \rightarrow
+      \left(\begin{array}{cc|c}
+        a_{ij}a_{kl} & a_{il}a_{kl} & a_{i,n+1}a_{kl}\\
+        a_{kj}a_{il} & a_{kl}a_{il} & a_{k,n+1}a_{il}\\
+      \end{array}\right)\\
+      &\left(\begin{array}{cc|c}
+        a_{ij}a_{kl} - a_{kj}a_{il} & 0 & a_{i,n+1}a_{kl} - a_{k,n+1}a_{il}\\
+        a_{kj}a_{il} & a_{kl}a_{il} & a_{k,n+1}a_{il}\\
+      \end{array}\right)\\
+      \\
+      b_{ij} &= a_{ij}a_{kl} - a_{kj}a_{il}
+      =
+      \left|\begin{array}{cc}
+        a_{ij} & a_{il}\\
+        a_{kj} & a_{kl}
+      \end{array}\right|\\
+    \end{align}
+  </p>
+  <h2>Sliding rows and columns</h2>
+  <p>
+    \begin{align}
+      \left[\begin{array}{ccc|c}
+        a_{11} & a_{12} & a_{13} & a_{14}\\
+        a_{21} & a_{22} & a_{23} & a_{24}\\
+        a_{31} & a_{32} & a_{33} & a_{34}
+      \end{array}\right]
+      &\rightarrow
+      \left[\begin{array}{ccc|c}
+        a_{13} & a_{11} & a_{12} & a_{14}\\
+        a_{23} & a_{21} & a_{22} & a_{24}\\
+        a_{33} & a_{31} & a_{32} & a_{34}
+      \end{array}\right]
+      =
+      \left[\begin{array}{ccc|c}
+        b_{11} & b_{12} & b_{13} & b_{14}\\
+        b_{21} & b_{22} & b_{23} & b_{24}\\
+        b_{31} & b_{32} & b_{33} & b_{34}
+      \end{array}\right]\\
+      \\
+      b_{ij} &= a_{i,j-n}\\
+      \\
+      \left[\begin{array}{ccc|c}
+        a_{11} & a_{12} & a_{13} & a_{14}\\
+        a_{21} & a_{22} & a_{23} & a_{24}\\
+        a_{31} & a_{32} & a_{33} & a_{34}
+      \end{array}\right]
+      &\rightarrow
+      \left[\begin{array}{ccc|c}
+        a_{31} & a_{32} & a_{33} & a_{34}\\
+        a_{11} & a_{12} & a_{13} & a_{14}\\
+        a_{21} & a_{22} & a_{23} & a_{24}
+      \end{array}\right]
+      =
+      \left[\begin{array}{ccc|c}
+        b_{11} & b_{12} & b_{13} & b_{14}\\
+        b_{21} & b_{22} & b_{23} & b_{24}\\
+        b_{31} & b_{32} & b_{33} & b_{34}
+      \end{array}\right]\\
+      \\
+      b_{ij} &= a_{i-n,j}\\
+      \\
+      \left[\begin{array}{ccc|c}
+        a_{11} & a_{12} & a_{13} & a_{14}\\
+        a_{21} & a_{22} & a_{23} & a_{24}\\
+        a_{31} & a_{32} & a_{33} & a_{34}
+      \end{array}\right]
+      &\rightarrow
+      \left[\begin{array}{ccc|c}
+        a_{33} & a_{31} & a_{32} & a_{34}\\
+        a_{13} & a_{11} & a_{12} & a_{14}\\
+        a_{23} & a_{21} & a_{22} & a_{24}
+      \end{array}\right]
+      =
+      \left[\begin{array}{ccc|c}
+        b_{11} & b_{12} & b_{13} & b_{14}\\
+        b_{21} & b_{22} & b_{23} & b_{24}\\
+        b_{31} & b_{32} & b_{33} & b_{34}
+      \end{array}\right]\\
+      \\
+      b_{ij} &= a_{i-n,j-n}\\
+    \end{align}
+  </p>
+  <h2>General solution</h2>
+  <p>
+    \begin{align}
+      x_n &= \frac{\left(A^{S_n}\right)^{R_{m-1}}_{1,m+1}}{\left(A^{S_n}\right)^{R_{m-1}}_{11}}\\
+      \\
+      A^{S_n} &= a_{i-n,j-n}\\
+      A^R &=
+      \left|\begin{array}{cc}
+        a_{ij} & a_{im}\\
+        a_{mj} & a_{mm}
+      \end{array}\right|\\
+      A^{R_{n+1}} &= \left|\begin{array}{cc}
+        A^{R_n}_{ij} & A^{R_n}_{i,m-n}\\
+        A^{R_n}_{m-n,j} & A^{R_n}_{m-n,m-n}
+      \end{array}\right|
+    \end{align}
+    \begin{align}
+      A &= a_{ij}
+      &
+      B &=
+      \left|\begin{array}{cc}
+        a_{ij} & a_{i3}\\
+        a_{3j} & a_{33}
+      \end{array}\right|
+      &
+      C &=
+      \left|\begin{array}{cc}
+        b_{ij} & b_{i2}\\
+        b_{2j} & b_{22}
+      \end{array}\right|\\
+      \\
+      b_{11} &=
+      \left|\begin{array}{cc}
+        a_{11} & a_{13}\\
+        a_{31} & a_{33}
+      \end{array}\right|
+      &
+      b_{12} &=
+      \left|\begin{array}{cc}
+        a_{12} & a_{13}\\
+        a_{32} & a_{33}
+      \end{array}\right|
+      &
+      b_{14} &=
+      \left|\begin{array}{cc}
+        a_{14} & a_{13}\\
+        a_{34} & a_{33}
+      \end{array}\right|\\
+      b_{21} &=
+      \left|\begin{array}{cc}
+        a_{21} & a_{23}\\
+        a_{31} & a_{33}
+      \end{array}\right|
+      &
+      b_{22} &=
+      \left|\begin{array}{cc}
+        a_{22} & a_{23}\\
+        a_{32} & a_{33}
+      \end{array}\right|
+      &
+      b_{24} &=
+      \left|\begin{array}{cc}
+        a_{24} & a_{23}\\
+        a_{34} & a_{33}
+      \end{array}\right|\\
+    \end{align}
+    \begin{align}
+      c_{11} &=
+      \left|\begin{array}{cc}
+        b_{11} & b_{12}\\
+        b_{21} & b_{22}
+      \end{array}\right|
+      = b_{11} b_{22} - b_{21} b_{12}\\
+      &= (a_{11}a_{33} - a_{31}a_{13})(a_{22}a_{33} - a_{32}a_{23}) - (a_{21}a_{33} - a_{31}a_{23})(a_{12}a_{33} - a_{32}a_{13})\\
+      c_{14} &=
+      \left|\begin{array}{cc}
+        b_{14} & b_{12}\\
+        b_{24} & b_{22}
+      \end{array}\right|
+      = b_{14} b_{22} - b_{24} b_{12}\\
+      &= (a_{14}a_{33} - a_{34}a_{13})(a_{22}a_{33} - a_{32}a_{23}) - (a_{24}a_{33} - a_{34}a_{23})(a_{12}a_{33} - a_{32}a_{13})\\
+      \\
+      x_0 &= \frac{(a_{14}a_{33} - a_{34}a_{13})(a_{22}a_{33} - a_{32}a_{23}) - (a_{24}a_{33} - a_{34}a_{23})(a_{12}a_{33} - a_{32}a_{13})}{(a_{11}a_{33} - a_{31}a_{13})(a_{22}a_{33} - a_{32}a_{23}) - (a_{21}a_{33} - a_{31}a_{23})(a_{12}a_{33} - a_{32}a_{13})}
+    \end{align}
+    \begin{align}
+      E &=
+      \left[\begin{array}{ccc|c}
+        e_{11} & e_{12} & e_{13} & e_{14}\\
+        e_{21} & e_{22} & e_{23} & e_{24}\\
+        e_{31} & e_{32} & e_{33} & e_{34}
+      \end{array}\right]\\
+      \\
+      A &= E^{S_d}\\
+      a_{ij} &= e_{i-d,j-d}\\
+    \end{align}
+    \begin{align}
+      x_0 &= \frac{(e_{14}e_{33} - e_{34}e_{13})(e_{22}e_{33} - e_{32}e_{23}) - (e_{24}e_{33} - e_{34}e_{23})(e_{12}e_{33} - e_{32}e_{13})}{(e_{11}e_{33} - e_{31}e_{13})(e_{22}e_{33} - e_{32}e_{23}) - (e_{21}e_{33} - e_{31}e_{23})(e_{12}e_{33} - e_{32}e_{13})}\\
+      \\
+      x_1 &= \frac{(e_{34}e_{22} - e_{24}e_{32})(e_{11}e_{22} - e_{21}e_{12}) - (e_{14}e_{22} - e_{24}e_{12})(e_{31}e_{22} - e_{21}e_{32})}{(e_{33}e_{22} - e_{23}e_{32})(e_{11}e_{22} - e_{21}e_{12}) - (e_{13}e_{22} - e_{23}e_{12})(e_{31}e_{22} - e_{21}e_{32})}\\
+      \\
+      x_2 &= \frac{(e_{24}e_{11} - e_{14}e_{21})(e_{33}e_{11} - e_{13}e_{31}) - (e_{34}e_{11} - e_{14}e_{31})(e_{23}e_{11} - e_{13}e_{21})}{(e_{22}e_{11} - e_{12}e_{21})(e_{33}e_{11} - e_{13}e_{31}) - (e_{32}e_{11} - e_{12}e_{31})(e_{23}e_{11} - e_{13}e_{21})}
+    \end{align}
+  </p>
+  <h2>Matrix product</h2>
+  <p>
+    The rows of the first matrix multiplied by the columns of the second matrix<br>
+    \begin{align}
+      c_{ij} &= \sum_{x=1}^{m}{a_{ix}b_{xj}}\\
+      \\
+      \left(\begin{array}{cc}
+        a_{11} & a_{12}
+      \end{array}\right)
+      \left(\begin{array}{c}
+        b_{11}\\
+        b_{21}
+      \end{array}\right)
+      &= (c_{11})
+      = (a_{11}b_{11} + a_{12}b_{21})\\
+      \\
+      \left(\begin{array}{ccc}
+        a_{11} & a_{12}\\
+        a_{21} & a_{22}
+      \end{array}\right)
+      \left(\begin{array}{cc}
+        b_{11}\\
+        b_{21}
+      \end{array}\right)
+      &=
+      \left(\begin{array}{cc}
+        c_{11}\\
+        c_{21}
+      \end{array}\right)
+      =
+      \left(\begin{array}{cc}
+        a_{11}b_{11} + a_{12}b_{21}\\
+        a_{21}b_{11} + a_{22}b_{21}
+      \end{array}\right)\\
+      \\
+      \left(\begin{array}{ccc}
+        a_{11} & a_{12}\\
+        a_{21} & a_{22}
+      \end{array}\right)
+      \left(\begin{array}{cc}
+        b_{11} & b_{12}\\
+        b_{21} & b_{22}
+      \end{array}\right)
+      &=
+      \left(\begin{array}{cc}
+        c_{11} & c_{12}\\
+        c_{21} & c_{22}
+      \end{array}\right)\\
+      \\
+      \left(\begin{array}{ccc}
+        a_{11} & a_{12}\\
+        a_{21} & a_{22}
+      \end{array}\right)
+      \left(\begin{array}{cc}
+        b_{11} & b_{12} & b_{13}\\
+        b_{21} & b_{22} & b_{23}
+      \end{array}\right)
+      &=
+      \left(\begin{array}{cc}
+        c_{11} & c_{12}  & c_{13}\\
+        c_{21} & c_{22}  & c_{23}
+      \end{array}\right)\\
+      \\\\
+      \left(\begin{array}{ccc}
+        a_{11} & a_{12} & a_{13}
+      \end{array}\right)
+      \left[\begin{array}{c}
+        b_{11}\\
+        b_{21}\\
+        b_{31}
+      \end{array}\right]
+      &= (c_{11})
+      = (a_{11}b_{11} + a_{12}b_{21} + a_{13}b_{31})\\
+      \\
+      \left(\begin{array}{ccc}
+        a_{11} & a_{12} & a_{13}\\
+        a_{21} & a_{22} & a_{23}
+      \end{array}\right)
+      \left[\begin{array}{cc}
+        b_{11}\\
+        b_{21}\\
+        b_{31}
+      \end{array}\right]
+      &=
+      \left(\begin{array}{cc}
+        c_{11}\\
+        c_{21}
+      \end{array}\right)
+      =
+      \left(\begin{array}{cc}
+        a_{11}b_{11} + a_{12}b_{21} + a_{13}b_{31}\\
+        a_{21}b_{11} + a_{22}b_{21} + a_{23}b_{31}
+      \end{array}\right)\\
+      \\
+      \left(\begin{array}{ccc}
+        a_{11} & a_{12} & a_{13}\\
+        a_{21} & a_{22} & a_{23}
+      \end{array}\right)
+      \left[\begin{array}{cc}
+        b_{11} & b_{12}\\
+        b_{21} & b_{22}\\
+        b_{31} & b_{32}
+      \end{array}\right]
+      &=
+      \left(\begin{array}{cc}
+        c_{11} & c_{12}\\
+        c_{21} & c_{22}
+      \end{array}\right)\\
+      \\
+      \left(\begin{array}{ccc}
+        a_{11} & a_{12} & a_{13}\\
+        a_{21} & a_{22} & a_{23}
+      \end{array}\right)
+      \left[\begin{array}{cc}
+        b_{11} & b_{12} & b_{13}\\
+        b_{21} & b_{22} & b_{23}\\
+        b_{31} & b_{32} & b_{33}
+      \end{array}\right]
+      &=
+      \left(\begin{array}{cc}
+        c_{11} & c_{12} & c_{13}\\
+        c_{21} & c_{22} & c_{23}
+      \end{array}\right)\\
+    \end{align}
+  </p>
+  <h2>Identity matrix</h2>
+  <p>
+    \begin{align}
+      \delta_{ij} &= \left\{\begin{array}{rcl}
+        1 & \mbox{if} & i = j\\
+        0 & \mbox{if} & i \neq j
+      \end{array}\right.\\
+      \\
+      b_{ij} &= \sum_{x=1}^m{a_{ix}\delta_{xj}} = a_{i1}\delta_{1j} + \cdots + a_{ij}\delta_{jj} + \cdots + a_{im}\delta_{mj} = a_{ij}\\
+    \end{align}
+    \begin{align}
+      \left(\begin{array}{cc}
+        1 & 0\\
+        0 & 1
+      \end{array}\right)
+      \left(\begin{array}{c}
+        a_{11}\\
+        a_{21}
+      \end{array}\right)
+      &=
+      \left(\begin{array}{c}
+        a_{11}\\
+        a_{21}
+      \end{array}\right)\\
+      \\
+      \left(\begin{array}{cc}
+        1 & 0\\
+        0 & 1
+      \end{array}\right)
+      \left(\begin{array}{c}
+        a_{11} & a_{12}\\
+        a_{21} & a_{22}
+      \end{array}\right)
+      &=
+      \left(\begin{array}{c}
+        a_{11} & a_{12}\\
+        a_{21} & a_{22}
+      \end{array}\right)\\
+      \\
+      \left(\begin{array}{cc}
+        1 & 0\\
+        0 & 1
+      \end{array}\right)
+      \left(\begin{array}{c}
+        a_{11} & a_{12} & a_{13}\\
+        a_{21} & a_{22} & a_{23}
+      \end{array}\right)
+      &=
+      \left(\begin{array}{c}
+        a_{11} & a_{12} & a_{13}\\
+        a_{21} & a_{22} & a_{23}
+      \end{array}\right)\\
+    \end{align}
+  </p>
+  <h2>Inverse matrix</h2>
+  <p>
+    \begin{align}
+      \left(\begin{array}{cc}
+        a_{11} & a_{12}\\
+        a_{21} & a_{22}
+      \end{array}\right)
+      \left(\begin{array}{cc}
+        b_{11} & b_{12}\\
+        b_{21} & b_{22}
+      \end{array}\right)
+      &=
+      \left(\begin{array}{cc}
+        1 & 0\\
+        0 & 1
+      \end{array}\right)\\
+      \\
+      \left(\begin{array}{cc}
+        a_{11}a_{22} & a_{12}a_{22}\\
+        a_{21}a_{11} & a_{22}a_{11}
+      \end{array}\right)
+      \left(\begin{array}{cc}
+        b_{11} & b_{12}\\
+        b_{21} & b_{22}
+      \end{array}\right)
+      &=
+      \left(\begin{array}{cc}
+        a_{22} & 0\\
+        0 & a_{11}
+      \end{array}\right)\\
+      \\
+      \left(\begin{array}{cc}
+        a_{11}a_{22} - a_{21}a_{12} & a_{12}a_{22} - a_{22}a_{12}\\
+        a_{21}a_{11} - a_{11}a_{21} & a_{22}a_{11} - a_{12}a_{21}
+      \end{array}\right)
+      \left(\begin{array}{cc}
+        b_{11} & b_{12}\\
+        b_{21} & b_{22}
+      \end{array}\right)
+      &=
+      \left(\begin{array}{cc}
+        a_{22} & - a_{12}\\
+        - a_{21} & a_{11}
+      \end{array}\right)\\
+      \\
+      (a_{11}a_{22} - a_{21}a_{12})
+      \left(\begin{array}{cc}
+        1 & 0\\
+        0 & 1
+      \end{array}\right)
+      \left(\begin{array}{cc}
+        b_{11} & b_{12}\\
+        b_{21} & b_{22}
+      \end{array}\right)
+      &=
+      \left(\begin{array}{cc}
+        a_{22} & - a_{12}\\
+        - a_{21} & a_{11}
+      \end{array}\right)\\
+      \\
+      \left(\begin{array}{cc}
+        a_{11} & a_{12}\\
+        a_{21} & a_{22}
+      \end{array}\right)^{-1}
+      &=
+      \left|\begin{array}{cc}
+          a_{11} & a_{12}\\
+          a_{21} & a_{22}
+        \end{array}\right|^{-1}
+      \left(\begin{array}{cc}
+        a_{22} & - a_{12}\\
+        - a_{21} & a_{11}
+      \end{array}\right)\\
+    \end{align}
+  </p>
+  <h2>Skewing and sliding slices</h2>
+  <p>
+    \begin{align}
+      x_1' &= x_1\\
+      x_2' &= x_2\\
+      &\cdots\\
+      x_k' &= m_1 x_1 + m_2 x_2 + \cdots + x_k + \cdots + m_n x_n\\
+      &\cdots\\
+      x_n' &= x_n\\
+      \\
+      \left[\begin{array}{cccccc}
+        a_{11} & a_{12} & \cdots & a_{1k}' & \cdots & a_{1m}\\
+        a_{21} & a_{22} & \cdots & a_{2k}' & \cdots & a_{2m}\\
+        \vdots & \vdots & & \vdots & & \vdots\\
+        a_{m1} & a_{m2} & \cdots & a_{mk}' & \cdots & a_{mm}
+      \end{array}\right]
+      &= 
+      \left[\begin{array}{cccccc}
+        a_{11} & a_{12} & \cdots & a_{1k} & \cdots & a_{1m}\\
+        a_{21} & a_{22} & \cdots & a_{2k} & \cdots & a_{2m}\\
+        \vdots & \vdots & & \vdots & & \vdots\\
+        a_{m1} & a_{m2} & \cdots & a_{mk} & \cdots & a_{mm}
+      \end{array}\right]
+      \left[\begin{array}{cccccc}
+        1 & 0 & \cdots & m_1 & \cdots & 0\\
+        0 & 1 & \cdots & m_2 & \cdots & 0\\
+        \vdots & \vdots & & \vdots & & \vdots\\
+        0 & 0 & \cdots & m_m & \cdots & 1
+      \end{array}\right]\\
+      \\
+      B &= AM\\
+      \\
+      m_{ij} &= \delta_{ij} + m_j \delta_{kj} (1 - \delta_{ik})\\
+      \\
+      \delta_{kj} (1 - \delta_{ik}) &=
+      \left\{\begin{array}{ccccc}
+        0 & \text{if} & j \neq k & \text{or} & i = k\\
+        1 & \text{if} & j = k & \text{and} & i \neq k\\
+      \end{array}\right.\\
+      \\
+      \det{A} &= \det{B}\\
+    \end{align}
+    \begin{align}
+      \left(\begin{array}{cc}
+        a & a m_1 + b\\
+        c & c m_1 + d\\
+      \end{array}\right)
+      &= 
+      \left(\begin{array}{cc}
+        a & b\\
+        c & d\\
+      \end{array}\right)
+      \left(\begin{array}{cc}
+        1 & m_1\\
+        0 & 1\\
+      \end{array}\right)\\
+      \\
+      m_1 &= - \frac{b}{a}\\
+      \\
+      \det{\left(\begin{array}{cc}
+        a & 0\\
+        c & - \frac{b}{a} c + d\\
+      \end{array}\right)}
+      &=
+      ad - bc\\
+      \\\\
+      \left[\begin{array}{cc}
+        a & b & a m_1 + c\\
+        d & e & d m_1 + f\\
+        g & h & g m_1 + i\\
+      \end{array}\right]
+      &= 
+      \left[\begin{array}{cc}
+        a & b & c\\
+        d & e & f\\
+        g & h & i\\
+      \end{array}\right]
+      \left[\begin{array}{cc}
+        1 & 0 & m_1\\
+        0 & 1 & 0\\
+        0 & 0 & 1\\
+      \end{array}\right]\\
+      \\
+      m_1 &= - \frac{c}{a}\\
+      \\
+      \left[\begin{array}{cc}
+        a & a m_1 + b & 0\\
+        d & d m_1 + e & - \frac{c}{a} d + f\\
+        g & g m_1 + h & - \frac{c}{a} g + i\\
+      \end{array}\right]
+      &= 
+      \left[\begin{array}{cc}
+        a & b & 0\\
+        d & e & - \frac{c}{a} d + f\\
+        g & h & - \frac{c}{a} g + i\\
+      \end{array}\right]
+      \left[\begin{array}{cc}
+        1 & m_1 & 0\\
+        0 & 1 & 0\\
+        0 & 0 & 1\\
+      \end{array}\right]\\
+      \\
+      m_1 &= - \frac{b}{a}\\
+      \\
+      \left[\begin{array}{cc}
+        a & 0 & 0\\
+        d & - \frac{b}{a} d + e & (- \frac{b}{a} d + e) m_2 - \frac{c}{a} d + f\\
+        g & - \frac{b}{a} g + h & (- \frac{b}{a} g + h) m_2 - \frac{c}{a} g + i\\
+      \end{array}\right]
+      &= 
+      \left[\begin{array}{cc}
+        a & 0 & 0\\
+        d & - \frac{b}{a} d + e & - \frac{c}{a} d + f\\
+        g & - \frac{b}{a} g + h & - \frac{c}{a} g + i\\
+      \end{array}\right]
+      \left[\begin{array}{cc}
+        1 & 0 & 0\\
+        0 & 1 & m_2\\
+        0 & 0 & 1\\
+      \end{array}\right]\\
+      \\
+      m_2 &= - \frac{- \frac{c}{a} d + f}{- \frac{b}{a} d + e}\\
+      \\
+      \det{\left[\begin{array}{cc}
+        a & 0 & 0\\
+        d & - \frac{b}{a} d + e & 0\\
+        g & - \frac{b}{a} g + h & - (- \frac{b}{a} g + h) \frac{- \frac{c}{a} d + f}{- \frac{b}{a} d + e} - \frac{c}{a} g + i\\
+      \end{array}\right]} &= a \times - \frac{b}{a} d + e \times \left [- (- \frac{b}{a} g + h) \frac{- \frac{c}{a} d + f}{- \frac{b}{a} d + e} - \frac{c}{a} g + i \right]\\
+      &= a \times \left[(\frac{b}{a} g - h) (- \frac{c}{a} d + f) + (- \frac{b}{a} d + e)(- \frac{c}{a} g + i)\right]\\
+      &= (bg - ha) (- \frac{c}{a} d + f) + (- bd + ea)(- \frac{c}{a} g + i)\\
+      &= - \frac{bgcd}{a} + bgf + \frac{hacd}{a} - haf + \frac{bdcg}{a} - bdi - \frac{eacg}{a} + eai\\
+      &= bgf + hcd - haf - bdi - ecg + eai\\
+      &= eai + hcd + bgf - ecg - haf - bdi 
+    \end{align}
+  </p>
+  <h2>Gradient, divergence and curl</h2>
+  <p>
+    \begin{align}
+      \nabla &= \left\langle \frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right\rangle\\
+      \\
+      \nabla v &= \left\langle \frac{\partial v}{\partial x}, \frac{\partial v}{\partial y}, \frac{\partial v}{\partial z} \right\rangle\\
+      \\
+      \nabla \cdot v &= \frac{\partial v_x}{\partial x} + \frac{\partial v_y}{\partial y} + \frac{\partial v_z}{\partial z}\\
+      \\
+      \nabla \times v
+      &=
+      \left[\begin{array}{ccc}
+        \hat{i} & \hat{j} & \hat{k}\\
+        \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+        v_x & v_y & v_z
+      \end{array}\right]
+      =
+      \left\langle \frac{\partial v_z}{\partial y} - \frac{\partial v_y}{\partial z}, \frac{\partial v_x}{\partial z} - \frac{\partial v_z}{\partial x}, \frac{\partial v_y}{\partial x} - \frac{\partial v_x}{\partial y} \right\rangle
+    \end{align}
+  </p>
+
+  
+  <!-- <h2>Inverse matrix</h2>
+  <p>
+    \begin{align}
+      H_{C3} - H_{C2} &= \int_{T_2}^{T_b}{Cp_C^\text{liq} \cdot dT} + \Delta H_{C}^\text{vap} + \int_{T_b}^{T_3}{Cp_C^\text{gi} \cdot dT}\\
+      \int_{T_2}^{T_b}{Cp_B^\text{liq} \cdot dT} &= \int_{308.15}^{353.25}{(A + BT + CT^2 + DT^3 + ET^4) \cdot dT}\\
+      \int_{T_b}^{T_3}{Cp_B^\text{gi} \cdot dT} &= \int_{353.25}^{673.15}{(A + BT + CT^2 + DT^3) \cdot dT}\\
+      \\
+      Cp^\text{gi}_m &= \sum_i{Y_i Cp^\text{gi}_i}\\
+      &= \sum_i{Y_i(A_i + B_iT + C_iT^2 + D_iT^3 + E_iT^4)}\\
+      &= \left(\sum_i{Y_i A_i}\right) + \left(\sum_i{Y_i B_i}\right)T + \left(\sum_i{Y_i C_i}\right)T^2 + \left(\sum_i{Y_i D_i}\right)T^3 + \left(\sum_i{Y_i E_i}\right)T^4\\
+      &= A_m + B_m T + C_m T^2 + D_m T^3 + E_m T^4\\
+      \\
+      A_m &= \sum_i{Y_i A_i}\\
+      B_m &= \sum_i{Y_i B_i}\\
+      C_m &= \sum_i{Y_i C_i}\\
+      D_m &= \sum_i{Y_i D_i}\\
+      E_m &= \sum_i{Y_i E_i}\\
+    \end{align}
+  </p> -->
+  <script type="text/javascript">
+    /*
+    let E = [
+      [1, 1, 1, 14],
+      [2, 1, 3, 30],
+      [2, 3, 2, 33]
+    ];
+    */
+    /*
+    let E = [
+      [1, 3, 2, 30],
+      [3, 2, 2, 33],
+      [1, 1, 1, 14]
+    ];
+    */
+    /*
+    let E = [
+      [2, 2, 3, 33],
+      [1, 1, 1, 14],
+      [3, 2, 1, 30]
+    ];
+    */
+    /*
+    let a = E[0][3]*E[2][2] - E[2][3]*E[0][2],
+    b = E[1][1]*E[2][2] - E[2][1]*E[1][2],
+    c = E[1][3]*E[2][2] - E[2][3]*E[1][2],
+    d = E[0][1]*E[2][2] - E[2][1]*E[0][2],
+    e = E[0][0]*E[2][2] - E[2][0]*E[0][2],
+    f = E[1][1]*E[2][2] - E[2][1]*E[1][2],
+    g = E[1][0]*E[2][2] - E[2][0]*E[1][2],
+    h = E[0][1]*E[2][2] - E[2][1]*E[0][2];
+    console.log((e*f-g*h));
+    console.log((a*b - c*d) / (e*f - g*h))
+    */
+    /*
+      https://www.khanacademy.org/math/multivariable-calculus/greens-theorem-and-stokes-theorem/stokes-theorem/v/green-s-and-stokes-theorem-relationship
+      https://www.khanacademy.org/math/multivariable-calculus/greens-theorem-and-stokes-theorem/divergence-theorem-articles/a/2d-divergence-theorem
+      https://www.khanacademy.org/math/multivariable-calculus/integrating-multivariable-functions/line-integrals-in-vector-fields-articles/a/flux-in-two-dimensions
+      
+    */
+  </script>
+</body>

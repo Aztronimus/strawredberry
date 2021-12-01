@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quantum mechanichs</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style type="text/css">
+		body
+		{
+			background-color: black;
+			color: white;
+		}
+		h1, h2
+		{
+			text-align: center;
+		}
+		div
+		{
+			display: flex;
+			justify-content: center;
+		}
+		p
+		{
+			padding: 0 20vw 0 20vw;
+			text-align: justify;
+		}
+	</style>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+	<h1>Differential equations</h1>
+	<h2>Order reduction</h2>
+	<p>
+		\begin{align}
+			D^2y_1 + PDy_1 + Qy_1 &= 0\\
+			D^2y_2 + PDy_2 + Qy_2 &= 0\\
+		\end{align}
+		\begin{align}
+			y_2 &= uy_1\\
+			Dy_2 &= Duy_1 + uDy_1\\
+			D^2y_2 &= D^2uy_1 + 2DuDy_1 + uD^2y_1\\
+		\end{align}
+		\begin{align}
+			D^2uy_1 + 2DuDy_1 + uD^2y_1 + P(Duy_1 + uDy_1) + Quy_1 &= 0\\
+			uD^2y_1 + PuDy_1 + Quy_1 + D^2uy_1 + 2DuDy_1 + PDuy_1 &= 0\\
+			u(D^2y_1 + PDy_1 + Qy_1) + D^2uy_1 + (2Dy_1 + Py_1)Du &= 0\\
+			D^2uy_1 + (2Dy_1 + Py_1)Du &= 0\\
+			D^2u + \left(2\frac{Dy_1}{y_1} + P\right)Du &= 0\\
+		\end{align}
+		\begin{align}
+			w &= Du\\
+			Dw &= D^2u\\
+			P &= 2\frac{Dy_1}{y_1} + P\\
+		\end{align}
+		\begin{align}
+			Dw + \left(2\frac{Dy_1}{y_1} + P\right)w &= 0\\
+			\frac{dw}{w} + 2\frac{dy_1}{y_1} + Pdx &= 0\\
+			\ln{w} + 2\ln{y_1} &= - \int{Pdx} + C\\
+			\ln{(wy_1^2)} &= - \int{Pdx} + C\\
+			wy_1^2 &= e^{- \int{Pdx}}\\
+			w &= \frac{e^{- \int{Pdx}}}{y_1^2}\\
+			u &= \int{\frac{e^{- \int{Pdx}}}{y_1^2} dx}\\
+		\end{align}
+		\begin{align}
+			P &= -2\\
+			Q &= 1\\
+			y_1 &= e^x\\
+			Dy_1 &= e^x\\
+			\\
+			u &= \int{\frac{e^{- \int{Pdx}}}{y_1^2} dx}\\
+			&= x + C\\
+			\\
+			y_2 &= xy_1 + Cy_1\\
+		\end{align}
+	</p>
+</body>
+</html>

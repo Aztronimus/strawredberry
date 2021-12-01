@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width">
+  <title>Tensors</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+    <h1>Tensors</h1>
+    <p>
+      \begin{align}
+        \sum_{x}^{i=1}{asdf}\\
+        \left[
+          \begin{array}{cc}
+            x & y \\
+            x & y
+          \end{array}
+        \right]
+      \end{align}
+    </p>
+    <h2>Dyad product</h2>
+    <p>
+      \begin{align}
+        U &= U_1\hat{e}_1 + U_2\hat{e}_2 + \cdots + U_n\hat{e}_n = \sum_i^n{U_i\hat{e}_i}\\
+        V &= V_1\hat{e}_1 + V_2\hat{e}_2 + \cdots + V_n\hat{e}_n = \sum_i^n{V_i\hat{e}_i}\\
+        UV &= (U_1\hat{e}_1 + U_2\hat{e}_2 + \cdots + U_n\hat{e}_n)(V_1\hat{e}_1 + V_2\hat{e}_2 + \cdots + V_n\hat{e}_n)\\
+        &=
+        \begin{array}{c}
+          U_1V_1\hat{e}_1\hat{e}_1 &+& U_1V_2\hat{e}_1\hat{e}_2 &+& \cdots &+& U_1V_n\hat{e}_1\hat{e}_n &+ \\
+          U_2V_1\hat{e}_2\hat{e}_1 &+& U_2V_2\hat{e}_2\hat{e}_2 &+& \cdots &+& U_1V_n\hat{e}_1\hat{e}_n &+ \\
+          \vdots &+& \vdots &+& \ddots &+& \vdots &+ \\
+          U_nV_1\hat{e}_n\hat{e}_1 &+& U_nV_2\hat{e}_n\hat{e}_2 &+& \cdots &+& U_nV_n\hat{e}_n\hat{e}_n
+        \end{array}\\
+        &= \left(\sum_i^n{U_i\hat{e}_i}\right)\left(\sum_i^n{V_i\hat{e}_i}\right) = \sum_i^n{U_i\hat{e}_i}\sum_j^n{V_j\hat{e}_j} = \sum_i^n\sum_j^n{U_iV_j\hat{e}_i\hat{e}_j}\\
+        \mu_{ij} &= U_iV_j\hat{e}_i\hat{e}_j
+      \end{align}
+    </p>
+    <h2>Covariant and Contravariant vectors</h2>
+    <p>
+      \begin{align}
+        i \cdot i^* &= 1\\
+        i \cdot j^* &= 0\\
+        j \cdot i^* &= 0\\
+        j \cdot j^* &= 1\\
+        i &= \langle a, b \rangle\\
+        i* &= \langle c, d \rangle\\
+        j &= \langle e, f \rangle\\
+        j* &= \langle g, h \rangle\\
+        ac + bd &= 1\\
+        ag + bh &= 0\\
+        ec + fd &= 0\\
+        eg + fh &= 1\\
+        a &= {{1 - bd} \over {c}}\\
+        c &= {g(bd - 1) \over bh}\\
+        fh &= {eg(1 - bd) \over db}\\
+        eg &= db\\
+        a &= {5 \over {c}}\\
+        c &= {5g \over bh}\\
+        fh &= 5\\
+        2\cdot3 &= 6\cdot1\\
+        ag &= bh\\
+        3a &= 1h\\
+        \left(\begin{array}{cc}
+          a & b\\
+          e & f\\
+        \end{array}\right)
+        \left(\begin{array}{cc}
+          c & g\\
+          d & h\\
+        \end{array}\right) &= 
+        \left(\begin{array}{cc}
+          1 & 0\\
+          0 & 1\\
+        \end{array}\right)\\
+        \left(\begin{array}{cc}
+          3 & 1\\
+          2 & 5\\
+        \end{array}\right)
+        \left(\begin{array}{cc}
+          15 & 3\\
+          6 & 1\\
+        \end{array}\right) &= 
+        \left(\begin{array}{cc}
+          1 & 0\\
+          0 & 1\\
+        \end{array}\right)
+      \end{align}
+    </p>
+    <h2>Vector-Matrix multiplication</h2>
+    <p>
+      \begin{align}
+        V &= \left(
+          \begin{array}{ccc}
+            V_1 & V_2 & \cdots & V_i
+          \end{array}
+        \right)\\
+        M &=
+        \left(
+          \begin{array}{ccc}
+            \mu_{11} & \mu_{12} & \ldots & \mu_{1j} \\
+            \mu_{21} & \mu_{22} & \ldots & \mu_{2j} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            \mu_{i1} & \mu_{i2} & \ldots & \mu_{ij} \\
+          \end{array}
+        \right)\\
+        \left(
+          \begin{array}{ccc}
+            V_1 & V_2 & \cdots & V_i
+          \end{array}
+        \right)
+        \left(
+          \begin{array}{ccc}
+            \mu_{11} & \mu_{12} & \ldots & \mu_{1j} \\
+            \mu_{21} & \mu_{22} & \ldots & \mu_{2j} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            \mu_{i1} & \mu_{i2} & \ldots & \mu_{ij} \\
+          \end{array}
+        \right) &=
+        \left(\begin{array}{c}
+          V_1\mu_{11} + V_2\mu_{21} + \cdots + V_i\mu_{i1}\\
+          V_1\mu_{12} + V_2\mu_{22} + \cdots + V_i\mu_{i2}\\
+          \vdots\\
+          V_1\mu_{1j} + V_2\mu_{2j} + \cdots + V_i\mu_{ij}\\
+        \end{array}\right) =
+        \left(\begin{array}{c}
+          \upsilon_1\\
+          \upsilon_2\\
+          \vdots\\
+          \upsilon_j
+        \end{array}\right)\\
+        V \cdot M &= \upsilon\\
+        \upsilon_j &= \sum_{i}{V_i\mu_{ij}}
+      \end{align}
+    </p>
+</body>
+</html>

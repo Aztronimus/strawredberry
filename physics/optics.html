@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width">
+  <title>Optics</title>
+  <style type="text/css">
+    .button
+    {
+      text-align: center;
+      border: 1px solid black;
+      padding: 0px 20px 0px 20px;
+    }
+    .button:hover
+    {
+      border: 1px solid white;
+    }
+    table
+    {
+      margin: 0 auto 0 auto;
+    }
+    canvas
+    {
+      border: 1px solid black;
+      width: 70vw;
+      height: 30vw;
+      display: flex;
+    }
+    .centered
+    {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+  <h1>Optics</h1>
+  <p>
+    \begin{align}
+      \sum_{x}^{i=1}{asdf}\\
+      \left[
+        \begin{array}{cc}
+          x & y \\
+          x & y
+        \end{array}
+      \right]
+    \end{align}
+  </p>
+  <div class="centered"><canvas width="700" height="300"></canvas></div>
+  <fieldset>
+    <legend>Controls</legend>
+    <form><table>
+      <tr>
+        <td>Medium angle</td>
+        <td><input
+          oninput="theta = Number(this.value) * Math.PI / 180; draw();"
+          type="range"
+          min="-90"
+          max="90"
+        ></td>
+      </tr>
+      <tr>
+        <td>Laser angle</td>
+        <td><input
+          oninput="alpha = Number(this.value) * Math.PI / 180; draw();"
+          type="range"
+          min="-90"
+          max="90"
+        ></td>
+      </tr>
+    </table></form>
+  </fieldset>
+  <h2>Snell's law of refraction</h2>
+  <p>
+    \begin{align}
+      \frac{\sin{\theta_1}}{\sin{\theta_2}} &= \frac{v_1}{v_2} = \frac{n_2}{n_1}
+    \end{align}
+  </p>
+  <h2>Refractive index</h2>
+  <p>
+    \begin{align}
+      n &= \frac{c}{v}
+    \end{align}
+  </p>
+  <h2>Sellmeier equation</h2>
+  <p>
+    \begin{align}
+      n^2 &= 1 + \frac{B_1 \lambda^2}{\lambda^2 - C_1} + \frac{B_2 \lambda^2}{\lambda^2 - C_2} + \frac{B_3 \lambda^2}{\lambda^2 - C_3}
+    \end{align}
+  </p>
+  <footer>
+    <ul>
+      <li><a href="https://doc.comsol.com/5.5/doc/com.comsol.help.roptics/roptics_ug_optics.6.46.html">Optical Dispersion Models</a></li>
+      <li><a href="https://refractiveindex.info/?shelf=other&book=air&page=Ciddor">Refractive index</a></li>
+    </ul>
+  </footer>
+  <script type="text/javascript">
+    "use strict";
+    let ctx = document.querySelector("canvas").getContext("2d");
+    let L = 381;
+    let theta = 0;
+    let alpha = 0;
+    let v1 = 1;
+    let v2 = 0.5;
+    function draw() {
+      let x = L * Math.sin(theta),
+      y = L * Math.cos(theta),
+      x1 = L * Math.cos(alpha),
+      y1 = L * Math.sin(alpha),
+      y2 = L * Math.sin(alpha + theta) * v2 / v1,
+      x2 = Math.sqrt(L ** 2 - y2 ** 2),
+      beta = Math.asin(y2 / L) - theta;
+      x2 = L * Math.cos(beta);
+      y2 = L * Math.sin(beta);
+      ctx.clearRect(0, 0, 700, 300);
+      ctx.strokeStyle = "black";
+      ctx.beginPath();
+        ctx.moveTo(350 - x, 150 + y);
+        ctx.lineTo(350 + x, 150 - y);
+      ctx.closePath();
+      ctx.stroke();
+      ctx.strokeStyle = "red";
+      ctx.beginPath();
+        ctx.moveTo(350 - x1, 150 + y1);
+        ctx.lineTo(350, 150);
+      ctx.closePath();
+      ctx.stroke();
+      ctx.beginPath();
+        ctx.moveTo(350, 150);
+        ctx.lineTo(350 + x2, 150 - y2);
+      ctx.closePath();
+      ctx.stroke();
+    }
+    draw();
+  </script>
+</body>
+</html>

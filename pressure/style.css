@@ -1,8 +1,7 @@
 :root {
 	--v1: 15vw;
 	/* gray border */
-	--v2: #333;
-	--v3: #303020;
+	--v2: #303020;
 }
 
 @media (max-width:  800px) {
@@ -63,7 +62,7 @@ div.t1 table th {
 
 div.t1 table tr:not(:last-child) {
 	/*background-color: black;*/
-	border-bottom: 2px solid var(--v3);
+	border-bottom: 2px solid var(--v2);
 }
 
 div.t1 table th,
@@ -72,16 +71,16 @@ div.t1 table td {
 }
 
 h1 {
-	color: #f55;
+	color: #f44;
 	text-align: center;
 }
 
 h2 {
-	color: #f77;
+	color: #f66;
 }
 
 h3 {
-	color: #f99;
+	color: #f88;
 }
 
 b {
