@@ -8,7 +8,277 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+	<!-- <p>
+		\begin{align}
+			T^n (A) &= dI\\
+			T^n (M_{ij}(B)) &= d_{ij}I\\
+		\end{align}
+		\begin{align}
+			T^n\left[\begin{array}{c}
+				a_{11} & a_{12} & \cdots & a_{1n}\\
+				a_{21} & a_{22} & \cdots & a_{2n}\\
+				\vdots & \vdots & \ddots & \vdots\\
+				a_{n1} & a_{n2} & \cdots & a_{nn}\\
+			\end{array}\right] =
+			\left[\begin{array}{c}
+				d & 0 & \cdots & 0\\
+				0 & d & \cdots & 0\\
+				\vdots & \vdots & \ddots & \vdots\\
+				0 & 0 & \cdots & d\\
+			\end{array}\right]\\
+		\end{align}
+		\begin{align}
+			M_{11} &=
+			\left[\begin{array}{c}
+				a_{22} & a_{23} & \cdots & a_{2n}\\
+				a_{32} & a_{33} & \cdots & a_{3n}\\
+				\vdots & \vdots & \ddots & \vdots\\
+				a_{n2} & a_{n3} & \cdots & a_{nn}\\
+			\end{array}\right]
+		\end{align}
+	</p> -->
+	<h2>Main Operations</h2>
+	<!-- <p>
+		The determinant
+		\begin{align}
+			D^2\left(\begin{array}{c}
+				a_{11} & a_{12}\\
+				a_{21} & a_{22}
+			\end{array}\right) =
+			d
+		\end{align}
+		The \(T\) transformation
+		\begin{align}
+			T^2\left(\begin{array}{cc}
+				a_{11} & a_{12}\\
+				a_{21} & a_{22}
+			\end{array}\right) =
+			\left(\begin{array}{cc}
+				d & 0\\
+				0 & d
+			\end{array}\right)
+		\end{align}
+		\begin{align}
+			R^2_1\left(\begin{array}{cc}
+				a_{11} & a_{12}\\
+				a_{21} & a_{22}
+			\end{array}\right) =
+			\left(\begin{array}{cc}
+				d & 0
+			\end{array}\right)\\
+			R^2_2\left(\begin{array}{cc}
+				a_{11} & a_{12}\\
+				a_{21} & a_{22}
+			\end{array}\right) =
+			\left(\begin{array}{cc}
+				0 & d
+			\end{array}\right)\\
+		\end{align}
+		The \(F\) transformation
+		\begin{align}
+			F^3_1\left(\begin{array}{ccc}
+				a_{11} & a_{12} & a_{13}\\
+				a_{21} & a_{22} & a_{23}\\
+				a_{31} & a_{32} & a_{33}
+			\end{array}\right) =
+			\left(\begin{array}{ccc}
+				a_{11} & a_{12} & a_{13}\\
+				- d_{12} & - d_{11} & 0\\
+				d_{13} & 0 & - d_{11}
+			\end{array}\right)
+		\end{align}
+		\begin{align}
+			F^3_2\left(\begin{array}{ccc}
+				a_{11} & a_{12} & a_{13}\\
+				a_{21} & a_{22} & a_{23}\\
+				a_{31} & a_{32} & a_{33}
+			\end{array}\right) =
+			\left(\begin{array}{ccc}
+				- d_{22} & - d_{21} & 0\\
+				a_{21} & a_{22} & a_{23}\\
+				0 & - d_{23} & - d_{22}
+			\end{array}\right)
+		\end{align}
+		\begin{align}
+			F^3_3\left(\begin{array}{ccc}
+				a_{11} & a_{12} & a_{13}\\
+				a_{21} & a_{22} & a_{23}\\
+				a_{31} & a_{32} & a_{33}
+			\end{array}\right) =
+			\left(\begin{array}{ccc}
+				- d_{33} & 0 & d_{31}\\
+				0 & - d_{33} & - d_{32}\\
+				a_{31} & a_{32} & a_{33}
+			\end{array}\right)
+		\end{align}
+		Specialized \(T\) transformation
+		\begin{align}
+			T^2_1\left(\begin{array}{cc}
+				a_{21} & a_{22} & a_{23}\\
+				a_{31} & a_{32} & a_{33}
+			\end{array}\right) =
+			\left(\begin{array}{cc}
+				d_{12} & d_{11} & 0\\
+				- d_{13} & 0 & d_{11}
+			\end{array}\right)\\
+			T^2_2\left(\begin{array}{cc}
+				a_{11} & a_{12} & a_{13}\\
+				a_{31} & a_{32} & a_{33}
+			\end{array}\right) =
+			\left(\begin{array}{cc}
+				d_{22} & d_{21} & 0\\
+				0 & d_{23} & d_{22}
+			\end{array}\right)\\
+			T^2_3\left(\begin{array}{cc}
+				a_{21} & a_{22} & a_{23}\\
+				a_{31} & a_{32} & a_{33}
+			\end{array}\right) =
+			\left(\begin{array}{cc}
+				d_{33} & 0 & - d_{31}\\
+				0 & d_{33} & d_{32}
+			\end{array}\right)
+		\end{align}
+		The \(S\) transformation
+		\begin{align}
+			S^2_{12}\left(\begin{array}{cc}
+				a_{21} & a_{22} & a_{23}\\
+				a_{31} & a_{32} & a_{33}
+			\end{array}\right) &=
+			\left(\begin{array}{cc}
+				d_{12} & d_{11} & 0
+			\end{array}\right)\\
+			S^2_{13}\left(\begin{array}{cc}
+				a_{21} & a_{22} & a_{23}\\
+				a_{31} & a_{32} & a_{33}
+			\end{array}\right) &=
+			\left(\begin{array}{cc}
+				- d_{13} & 0 & d_{11}
+			\end{array}\right)\\
+			S^2_{21}\left(\begin{array}{cc}
+				a_{11} & a_{12} & a_{13}\\
+				a_{31} & a_{32} & a_{33}
+			\end{array}\right) &=
+			\left(\begin{array}{cc}
+				d_{22} & d_{21} & 0
+			\end{array}\right)\\
+			S^2_{23}\left(\begin{array}{cc}
+				a_{11} & a_{12} & a_{13}\\
+				a_{31} & a_{32} & a_{33}
+			\end{array}\right) &=
+			\left(\begin{array}{cc}
+				0 & d_{23} & d_{22}
+			\end{array}\right)\\
+			S^2_{31}\left(\begin{array}{cc}
+				a_{21} & a_{22} & a_{23}\\
+				a_{31} & a_{32} & a_{33}
+			\end{array}\right) &=
+			\left(\begin{array}{cc}
+				d_{33} & 0 & - d_{31}
+			\end{array}\right)\\
+			S^2_{32}\left(\begin{array}{cc}
+				a_{21} & a_{22} & a_{23}\\
+				a_{31} & a_{32} & a_{33}
+			\end{array}\right) &=
+			\left(\begin{array}{cc}
+				0 & d_{33} & d_{32}
+			\end{array}\right)\\
+		\end{align}
+	</p> -->
+	<h2>Row Product</h2>
 	<p>
+		Definition
+		\begin{align}
+			\left(\begin{array}{c}
+				a_{11} & a_{12}\\
+				a_{21} & a_{22}
+			\end{array}\right) \times_P
+			\left(\begin{array}{c}
+				x_1\\
+				x_2
+			\end{array}\right) =
+			\left(\begin{array}{c}
+					a_{11} x_1 & a_{12} x_1\\
+					a_{21} x_2 & a_{22} x_2
+				\end{array}\right)
+		\end{align}
+		Solving a \(2 \times 2\) system
+		\begin{align}
+			T^2\left(\begin{array}{c}
+				a_{11} & a_{12}\\
+				a_{21} & a_{22}
+			\end{array}\right) &=
+			\left(\begin{array}{c}
+				a_{11} & a_{12}\\
+				a_{21} & a_{22}
+			\end{array}\right)
+			\times_P \left(\begin{array}{c}
+				a_{22}\\
+				a_{11}
+			\end{array}\right) -
+			\left(\begin{array}{c}
+				a_{21} & a_{22}\\
+				a_{11} & a_{12}
+			\end{array}\right) \times_P
+			\left(\begin{array}{c}
+				a_{12}\\
+				a_{21}
+			\end{array}\right)\\
+			&=
+			\left(\begin{array}{c}
+				a_{11} a_{22} & a_{12} a_{22}\\
+				a_{21} a_{11} & a_{22} a_{11}
+			\end{array}\right) -
+			\left(\begin{array}{cc}
+				a_{21} a_{12} & a_{22} a_{12}\\
+				a_{11} a_{21} & a_{12} a_{21}
+			\end{array}\right)\\
+			&=
+			\left(\begin{array}{c}
+				a_{11} a_{22} - a_{21} a_{12} & 0\\
+				0 & a_{22} a_{11} - a_{12} a_{21}
+			\end{array}\right)
+		\end{align}
+		Solving a \(3 \times 3\) system
+		\begin{align}
+			F^3_1 &=
+			\left(\begin{array}{c}
+				a_{11} & a_{12} & a_{13}\\
+				a_{21} & a_{22} & a_{23}\\
+				a_{31} & a_{32} & a_{33}
+			\end{array}\right) \times_P
+			\left(\begin{array}{c}
+				1\\ a_{33}\\ a_{22}
+			\end{array}\right) -
+			\left(\begin{array}{c}
+				a_{11} & a_{12} & a_{13}\\
+				a_{31} & a_{32} & a_{33}\\
+				a_{21} & a_{22} & a_{23}
+			\end{array}\right) \times_P
+			\left(\begin{array}{c}
+				0\\ a_{23}\\ a_{32}
+			\end{array}\right)\\
+			&=
+			\left(\begin{array}{c}
+				a_{11} & a_{12} & a_{13}\\
+				a_{21} a_{33} & a_{22} a_{33} & a_{23} a_{33}\\
+				a_{31} a_{22} & a_{32} a_{22} & a_{33} a_{22}
+			\end{array}\right) -
+			\left(\begin{array}{c}
+				0 & 0 & 0\\
+				a_{31} a_{23} & a_{32} a_{23} & a_{33} a_{23}\\
+				a_{21} a_{32} & a_{22} a_{32} & a_{23} a_{32}
+			\end{array}\right)\\
+			&=
+			\left(\begin{array}{c}
+				a_{11} & a_{12} & a_{13}\\
+				a_{21} a_{33} - a_{31} a_{23} & a_{22} a_{33} - a_{32} a_{23} & 0\\
+				a_{31} a_{22} - a_{21} a_{32} & 0 & a_{33} a_{22} - a_{23} a_{32}
+			\end{array}\right)\\
+
+		\end{align}
+	</p>
+	<h2>Draft</h2>
+	<!-- <p>
 		\begin{align}
 			A
 			&= \left(\begin{array}{c}
@@ -116,18 +386,34 @@
 	<p>
 		\begin{align}
 			F^2\left(\begin{array}{c}
-				a_1\\
 				a_2\\
+				a_3\\
 			\end{array}\right)
 			&= \left(\begin{array}{c}
+				R_3^2(A)\\
 				R_2^2(A)\\
-				R_1^2(A)\\
 			\end{array}\right)
-			= \left(\begin{array}{cc}
-				d & 0\\
-				0 & -d\\
+			= \left(\begin{array}{ccc}
+				d_{12} & d_{11} & 0\\
+				d_{13} & 0 & -d_{11}\\
 			\end{array}\right)
 		\end{align}
 	</p>
+	<p>
+		\begin{align}
+			G^3\left(\begin{array}{c}
+				a_1\\
+				a_2\\
+				a_3\\
+			\end{array}\right)
+			&= \left(\begin{array}{c}
+				a_1\\
+				F^2\left(\begin{array}{c}
+					a_2\\
+					a_3\\
+				\end{array}\right)\\
+			\end{array}\right)\\
+		\end{align}
+	</p> -->
 </body>
 </html>
