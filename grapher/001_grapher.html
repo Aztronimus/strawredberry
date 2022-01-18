@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Grapher</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="../load-mathjax.js"></script>
+</head>
+<body>
+	<h1>Grapher</h1>
+	<div class="center"><canvas id="canvas1" width="800" height="600"></canvas></div>
+	<form autocomplete="off"><div class="dialog">
+		<div class="legend">canvas1 - 800px × 600px</div>
+		<div class="row">
+			<div class="field">
+				<div>X range from</div>
+				<input type="text" name="" placeholder="Insert value">
+			</div>
+			<div class="field">
+				<div>X range to</div>
+				<input type="text" name="" placeholder="Insert value">
+			</div>
+		</div>
+		<div class="row">
+			<div class="field">
+				<div>Y range from</div>
+				<input type="text" name="" placeholder="Insert value">
+			</div>
+			<div class="field">
+				<div>Y range to</div>
+				<input type="text" name="" placeholder="Insert value">
+			</div>
+		</div>
+		<div class="row">
+			<div class="field">
+				<div>Number of points</div>
+				<input type="text" name="" placeholder="Insert value">
+			</div>
+			<div class="field">
+				<div>Type</div>
+				<select>
+					<option>Sharp</option>
+					<option>Smooth</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<input class="back" type="button" name="" value="BACK">
+			<input class="save" type="button" name="" value="SAVE">
+		</div>
+	</div></form>
+	<script type="text/javascript">
+		let canvas1 = document.getElementById("canvas1"),
+		ctx1 = canvas1.getContext("2d");
+		ctx1.strokeStyle = "white";
+		ctx1.lineWidth = "10px"
+		ctx1.beginPath();
+		ctx1.moveTo(100, 100);
+		ctx1.lineTo(700, 500);
+		ctx1.stroke();
+		ctx1.closePath();
+		// canvas1.addEventListener("contextmenu", function(e) {
+		// 	e.preventDefault();
+		// 	e.stopPropagation();
+		// 	console.log(e);
+		// });
+	</script>
+</body>
+</html>
+
+<!-- 
+https://math.stackexchange.com/questions/2828057/what-is-the-equation-to-produce-this-bezier-curve
+
+ -->
