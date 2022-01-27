@@ -18,11 +18,19 @@
 
 body {
 	background-color: black;
-	color white;
+	color: white;
+}
+
+h1, h2, h3 {
+	font-family: TruenoRoundBold;
+	font-weight: unset;
+	padding: 20px;
+	text-align: center;
 }
 
 canvas {
-	border: 1px solid white;
+	border: 1px solid #555;
+	border-radius: 10px;
 }
 
 div.center {
@@ -32,11 +40,14 @@ div.center {
 }
 
 div.dialog {
+	/*border: 3px solid white;*/
+	display: none;
 	position: absolute;
 	inset: 0;
 	margin: auto;
 	width: 600px;
-	height: 400px;
+	height: 300px;
+	overflow: auto;
 	border-radius: 15px;
 	color: #999;
 	font-family: VarelaRound;
@@ -79,7 +90,7 @@ div.dialog div.field:hover {
 }
 
 div.dialog input,
-div.dialog  {
+div.dialog select {
 	/*border: 4px solid white;*/
 	color: white;
 	font-weight: inherit;
@@ -87,6 +98,15 @@ div.dialog  {
 	font-size: 12pt;
 	background-color: transparent;
 	width: 100%;
+}
+
+div.dialog select:hover {
+	cursor: pointer;
+}
+
+div.dialog select:focus {
+	background-color: inherit;
+	font-family: inherit;
 }
 
 div.dialog input[type="button"] {
