@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width">
+	<title>Special relativity</title>
+	<script type="text/javascript" src="../js/mathjax_loader.js"></script>
+	<link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+	<header>
+		<h1><a href="../index.html">StrawRedBerry</a></h1>
+		<h2>Special relativity</h2>
+	</header>
+	<div id="center">
+		<div class="center">
+			<ul id="links">
+				<li class="group">Quantum mechanics</li>
+				<ul>
+					<li><a href="quantum_mechanichs_1.html">Quantum mechanics</a></li>
+					<li><a href="double_slit.html">Double slit</a></li>
+				</ul>
+				<li><a href="analytic_mechanics.html">Analytic mechanics</a></li>
+				<li class="group">Relativity</li>
+				<ul>
+					<li><a href="relativity_1.html">Special relativity 1</a></li>
+					<li><a href="relativity_2.html">Special relativity 2</a></li>
+					<li><a href="relativity_3.html">Special relativity 3</a></li>
+					<li><a href="drawing.html">Visualizing curved space (work in progress)</a></li>
+					<li><a href="general_relativity.html">Special relativity</a></li>
+					<li><a href="general_relativity_2.html">Tensors</a></li>
+					<li><a href="general_relativity_3.html">Tensors (in matrix notation)</a></li>
+					<li><a href="general_relativity_4.html">Tensors (in tensor notation)</a></li>
+				</ul>
+				<li class="group">Electromagnetism</li>
+				<ul>
+					<li><a href="maxwell equations_1.html">Linear algebra</a></li>
+					<li><a href="maxwell_equations_2.html">Visualizing electric field</a></li>
+					<li><a href="maxwell_equations_3.html">Green's theorem of circulation</a></li>
+					<li><a href="maxwell_equations_4.html">Divergence theorem</a></li>
+					<li><a href="maxwell_equations_5.html">Gauss's theorem of flux</a></li>
+					<li><a href="maxwell_equations_6.html">Ampere-Maxwell law</a></li>
+					<li><a href="maxwell_equations_7.html">Faraday-Lenz law</a></li>
+					<li><a href="maxwell_equations_8.html">Electromagnetic waves</a></li>
+					<li><a href="maxwell_equations_9.html">Electromechanics</a></li>
+				</ul>
+				<li><a href="optics.html">Snell's law</a></li>
+				<li><a href="tensors.html">Tensors</a></li>
+			</ul>
+		</div>
+		<div id="content">
+			<h1 id="toc_1">Energy</h1>
+			<h2 id="toc_1_12">Mass-energy conversion equation</h2>
+			<p>
+				\begin{align}
+					K &= m G(v)\\\\
+					E_2 &= 2hf + K_2\\
+					E_1 &= K_1 + hf\left(\sqrt{\frac{1 - V}{1 + V}} + \sqrt{\frac{1 + V}{1 - V}}\right)\\\\
+					2hf + K_2 &= K_1 + hf\left(\frac{1 - V}{\sqrt{1 - V^2}} + \frac{1 + V}{\sqrt{1 - V^2}}\right)\\
+					2hf + K_2 &= K_1 + \frac{2hf}{\sqrt{1 - V^2}}\\
+					K_2 - K_1 &= 2hf\left(\frac{1}{\sqrt{1 - V^2}} - 1\right)\\
+					(m_2 - m_1)G &= 2hf\left(\frac{1}{\sqrt{1 - V^2}} - 1\right)\\\\
+					\frac{E}{m} &= \frac{G}{\frac{1}{\sqrt{1 - V^2}} - 1}\\
+					G &= k\left(\frac{1}{\sqrt{1 - V^2}} - 1\right)\\
+					\\
+					K &= mk\left(\frac{1}{\sqrt{1 - V^2}} - 1\right)\\
+					E &= mk
+				\end{align}
+			</p>
+			<h2 id="toc_1_13">Momentum of a photon</h2>
+			<p>
+				\begin{align}
+					\frac{P_{Bx}}{P_B} &= \frac{v}{c} = V\\
+					\frac{P_{By}}{P_B} &= \frac{\sqrt{c^2 - v^2}}{c} = \sqrt{1 - \frac{v^2}{c^2}} = \frac{1}{\gamma}\\
+					\\
+					P &= P(E)\\
+					\\
+					E_A &= hf\\
+					E_B &= hf\gamma\\
+					\\
+					P_{Ay} - P_{By} &= - P_{Ay} + P_{By} = 0\\
+					P_{Ay} &= P_{By}\\
+					P_A &= \frac{P_B}{\gamma}\\
+					\gamma P_A &= P_B\\
+					\\
+					P(hf)\gamma &= P(hf\gamma)\\
+					\\
+					p &\propto E\\
+					\\
+					E &= mk\\
+					p &= mv\gamma\\
+					\\
+					E &= 2hf\\
+					f_1' &= (1 + V) \gamma f\\
+					f_2' &= (1 - V) \gamma f\\
+					\\
+					p_3 &= p_1 + p_2\\
+					mv\gamma &= \frac{p}{E}E_1 + \frac{p}{E}E_2\\
+					\frac{2hf}{k}v\gamma &= \frac{p}{E} hf(1 + V) \gamma - \frac{p}{E} hf(1 - V) \gamma\\
+					2\frac{v}{k} &= 2\frac{p}{E} V\\
+					\\
+					E &= p \frac{k}{c}
+				\end{align}
+			</p>
+			<h2 id="toc_1_14">Relativistic inelastic collision</h2>
+			<p>
+				\begin{align}
+					U_1 &= V\\
+					U_2 &= -V\\
+					U_3 &= 0\\
+					\\
+					U_1' &= \frac{V - V}{1 - V^2} = 0\\
+					U_2' &= \frac{- 2V}{1 + V^2}\\
+					U_3' &= \frac{0 - V}{1 - 0} = -V\\
+					\\
+					E &= mk\\
+					K &= mk\left(\frac{1}{\sqrt{1 - V^2}} - 1\right)\\
+					\\
+					m_1 &= m\\
+					m_2 &= m\\
+					m_3 &= 2m + \frac{2K}{k}\\
+					\\
+					P &= m \gamma V\\
+					\\
+					\left(2m + \frac{2K}{k}\right) \frac{1}{\sqrt{1 - V^2}}(-V) &= m\frac{1}{\sqrt{1 - \left(\frac{-2V}{1 + V^2}\right)^2}}\left(\frac{-2V}{1 + V^2}\right)\\
+					\left(1 + \frac{K}{km}\right)\frac{1}{\sqrt{1 - V^2}} &= \frac{1}{\left(1 + V^2\right)\sqrt{1 - 4V^2\left(\frac{1}{1 + V^2}\right)^2}}\\
+					1 - V^2 &= \left(1 + V^2\right)^2\left[1 - 4V^2\left(\frac{1}{1 + V^2}\right)^2\right]\left(\frac{1}{\sqrt{1 - V^2}}\right)^2\\
+					1 - V^2 &= \left(1 + V^2\right)^2\left[1 - 4V^2\left(\frac{1}{1 + V^2}\right)^2\right]\left(\frac{1}{1 - V^2}\right)\\
+					\left(1 - V^2\right)^2 &= \left(1 + V^2\right)^2 - 4V^2\\
+					\left(1 - V^2\right)^2 &= 1 + 2V^2 + V^4 - 4V^2\\
+					\left(1 - V^2\right)^2 &= 1 - 2V^2 + V^4\\
+					\left(1 - V^2\right)^2 &= \left(1 - V^2\right)^2\\
+				\end{align}
+			</p>
+			<h2 id="toc_1_15">Relativistic inelastic collision of two objects with same mass</h2>
+			<p>
+				\begin{align}
+					u_2' + u_1' &= 0\\\\
+					\frac{u_2 - v}{1 - \frac{u_2v}{c^2}} + \frac{u_1 - v}{1 - \frac{u_1v}{c^2}}&= 0\\
+					(u_2 - v)\left(1 - \frac{u_1v}{c^2}\right) + (u_1 - v)\left(1 - \frac{u_2v}{c^2}\right) &= 0\\
+					u_2 - \frac{u_1u_2v}{c^2} - v + \frac{u_1v^2}{c^2} + u_1 - \frac{u_1u_2v}{c^2} - v + \frac{u_2v^2}{c^2} &= 0\\
+					u_1 + u_2 - 2\frac{u_1u_2v}{c^2} - 2v + \frac{u_1v^2}{c^2} + \frac{u_2v^2}{c^2}&= 0\\
+					u_1 + u_2 - 2\left(\frac{u_1u_2}{c^2} + 1\right)v + \left(\frac{u_1 + u_2}{c^2}\right)v^2 &= 0\\
+					c^2(u_1 + u_2) - 2(u_1u_2 + c^2)v + (u_1 + u_2)v^2 &= 0\\
+					c^2 - 2\frac{u_1u_2 + c^2}{u_1 + u_2}v + v^2 &= 0\\
+					2 v &= 2\frac{u_1u_2 + c^2}{u_1 + u_2} - 2\sqrt{\left(\frac{u_1u_2 + c^2}{u_1 + u_2}\right)^2 - c^2}\\
+					v &= \frac{u_1u_2 + c^2}{u_1 + u_2} - \sqrt{\left(\frac{u_1u_2 + c^2}{u_1 + u_2}\right)^2 - c^2}\\
+					v &= \frac{u_1u_2 + c^2}{u_1 + u_2} - \sqrt{\frac{u_1^2 u_2^2 + 2u_1u_2c^2 + c^4}{(u_1 + u_2)^2} - \frac{c^2(u_1^2 + 2u_1u_2 + u_2^2)}{(u_1 + u_2)^2}}\\
+					v &= \frac{u_1u_2 + c^2}{u_1 + u_2} - \frac{\sqrt{u_1^2 u_2^2 - c^2(u_1^2 + u_2^2) + c^4}}{u_1 + u_2}\\
+					v &= \frac{u_1u_2 - \sqrt{(u_1^2 - c^2)(u_2^2 - c^2)} + c^2}{u_1 + u_2}\\
+				\end{align}
+			</p>
+			<h2 id="toc_1_16">Something interesting...</h2>
+			<p>
+				\begin{align}
+					u' &= v\\
+					u &= \frac{u' + v}{1 + \frac{u'v}{c^2}}\\
+					u &= \frac{2v}{1 + \frac{v^2}{c^2}}\\
+					v_{n+1} &= \frac{v + v_n}{1 + \frac{vv_n}{c^2}}\\
+				\end{align}
+			</p>
+			<h2 id="toc_1_17">Total energy</h2>
+			<p>
+				\begin{align}
+					E &= mk\gamma\\
+					p &= mv\gamma\\
+					\\
+					E &= mk\gamma\\
+					K &= mk \left(\gamma - 1\right)\\
+					M &= mk\\
+					P &= p\frac{k}{c}\\
+					\\
+					E &= M\gamma\\
+					K &= M(\gamma - 1)= E - M\\
+					P &= M\gamma V = EV\\
+					\\
+					E^2 &= M^2\gamma^2\\
+					E^2 (1 - V^2)&= M^2\\
+					E^2 &= M^2 + E^2V^2\\
+					E^2 &= M^2 + P^2\\
+				\end{align}
+			</p>
+			<h2 id="toc_1_18">Relation between energy and mass</h2>
+			<p>
+				\begin{align}
+					K &= Fx\\
+					p &= Ft\\
+					v &= \frac{x}{t}\\
+					\\
+					\frac{K(t)}{p} &= \frac{x(t)}{t} = v(t)\\
+					\frac{K}{p} &= c\\
+					\\
+					M &= mk\\
+					\\
+					c &= \frac{K}{p} = \frac{E - M}{p} = \frac{P}{p} = \frac{k}{c}\\
+					\\
+					M &= mc^2\\
+					\\\\
+					F &= \frac{dp}{dt} = \frac{dK}{dx}\\
+					v &= \frac{dx}{dt} = \frac{dK}{dp}\\
+					K &= Fx = \int v \cdot dp\\
+					\\
+					p &= mv\gamma = mcV\gamma\\
+					\frac{V^2}{1 - V^2} &= \left(\frac{p}{mc}\right)^2\\
+					V^2 &= \frac{\left(\frac{p}{mc}\right)^2}{1 + \left(\frac{p}{mc}\right)^2}\\
+					\\
+					K &= c\int{\frac{\frac{p}{mc}}{\sqrt{1 + \left(\frac{p}{mc}\right)^2}}dp}\\
+					q &= 1 + \left(\frac{p}{mc}\right)^2 \rightarrow \frac{m^2 c^2}{2}\cdot dq = p \cdot dp\\
+					K &= \frac{mc^2}{2}\int{q^{-1/2} \cdot dq}\\
+					K &= \left. m c^2 q^{1/2} \right|_{q_1}^{q_2} = \left. m c^2 \sqrt{1 + \left(\frac{p}{mc}\right)^2}\right|_{0}^{p}\\
+					K &= \sqrt{(mc^2)^2 + (pc)^2} - mc^2\\
+				\end{align}
+			</p>
+			<!-- <h2>Spectral series of Hydrogen atom</h2>
+			<p>
+			  Rydberg formula
+			  \begin{align}
+				R_\text{H} &= 10967757.6 \pm 1.2 \text{m}^{-1}\\
+				\frac{1}{\lambda} &= R_\text{H} \left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right), n_2 \in [n_1 + 1, \infty)
+			  \end{align}
+			  Longest and shortest wavelengths for each series<br/>
+			  \begin{align}
+				\frac{1}{\lambda_\text{min}} &= R_\text{H} \frac{1}{n_1^2}\\
+				\frac{1}{\lambda_\text{max}} &= R_\text{H} \left(\frac{1}{n_1^2} - \frac{1}{(n_1 + 1)^2}\right)\\
+				\\
+				\lambda_\text{Lyman} &\in [9.112670506 \times 10^{-8} \text{m}, &1.215022734 \times 10^{-7} \text{m}]\\
+				\lambda_\text{Balmer} &\in [3.645068202 \times 10^{-7} \text{m}, &6.561122764 \times 10^{-7} \text{m}]\\
+				\lambda_\text{Paschen} &\in [8.201403455 \times 10^{-7} \text{m}, &1.874606504 \times 10^{-6} \text{m}]\\
+				\lambda_\text{Brackett} &\in [1.458027281 \times 10^{-6} \text{m}, &4.05007578 \times 10^{-6} \text{m}]\\
+				\lambda_\text{Pfund} &\in [2.278167626 \times 10^{-6} \text{m}, &7.455821323 \times 10^{-6} \text{m}]\\
+				\\
+				E_\text{Lyman} &\in [10.20426939 \text{ eV}, &13.60569252 \text{ eV}]\\
+				E_\text{Balmer} &\in [1.889679516 \text{ eV}, &3.40142313 \text{ eV}]\\
+				E_\text{Paschen} &\in [0.6613878308 \text{ eV}, &1.511743613 \text{ eV}]\\
+				E_\text{Brackett} &\in [0.3061280817 \text{ eV}, &0.8503557824 \text{ eV}]\\
+				E_\text{Pfund} &\in [0.1662917974 \text{ eV}, &0.5442277007 \text{ eV}]\\
+				\\
+				\frac{hc}{e}R_\text{H}\left(1 - \frac{1}{n^2}\right) &< 12.2\\
+				1 - \frac{1}{n^2} &< 12.2\frac{e}{hcR_\text{H}}\\
+				1 - 12.2\frac{e}{hcR_\text{H}} &< \frac{1}{n^2}\\
+				n^2 &< \frac{1}{1 - 12.2\frac{e}{hcR_\text{H}}}\\
+				n &< \sqrt{\frac{1}{1 - 12.2\frac{e}{hcR_\text{H}}}} = 3.111108513\\
+				\\
+				\frac{hc}{e} R_\text{H} \left(1 - \frac{1}{3^2}\right) &= 12.09394891 \text{ eV}\\
+				\frac{hc}{e} R_\text{H} \left(1 - \frac{1}{4^2}\right) &= 12.75533674 \text{ eV}\\
+			  \end{align}
+			  \begin{align}
+				n &= 3 &1.0257 \times 10^{-7} \text{m}\\
+				n &= 2 &1.2150 \times 10^{-7} \text{m}\\
+				\\
+				n &= \infty &3.6450 \times 10^{-7} \text{m}\\
+				&\cdots\\
+				n &= 5 &4.3393 \times 10^{-7} \text{m}\\
+				n &= 4 &4.8600 \times 10^{-7} \text{m}\\
+				n &= 3 &6.5611 \times 10^{-7} \text{m}\\
+				\\
+				n &= \infty &8.2014 \times 10^{-7} \text{m}\\
+				&\cdots\\
+				n &= 6 &1.0935 \times 10^{-6} \text{m}\\
+				n &= 5 &1.2814 \times 10^{-6} \text{m}\\
+				n &= 4 &1.8746 \times 10^{-6} \text{m}\\
+				\\
+				n &= \infty &1.4580 \times 10^{-6} \text{m}\\
+				&\cdots\\
+				n &= 7 &2.1649 \times 10^{-6} \text{m}\\
+				n &= 6 &2.6244 \times 10^{-6} \text{m}\\
+				n &= 5 &4.0500 \times 10^{-6} \text{m}\\
+				\\
+				n &= \infty &2.2781 \times 10^{-6} \text{m}\\
+				&\cdots\\
+				n &= 8 &3.7385 \times 10^{-6} \text{m}\\
+				n &= 7 &4.6512 \times 10^{-6} \text{m}\\
+				n &= 6 &7.4558 \times 10^{-6} \text{m}\\
+			  \end{align}
+			</p> -->
+		</div>
+		<div class="center">
+			<ol id="index" start="3">
+				<li class="group"><a href="#toc_3">Energy</a></li>
+				<ol class="group">
+					<li><a href="#toc_1_12">Mass-energy conversion equation</a></li>
+					<li><a href="#toc_1_13">Momentum of a photon</a></li>
+					<li><a href="#toc_1_14">Relativistic inelastic collision</a></li>
+					<li><a href="#toc_1_15">Relativistic inelastic collision of two objects with same mass</a></li>
+					<li><a href="#toc_1_16">Something interesting...</a></li>
+					<li><a href="#toc_1_17">Total energy</a></li>
+					<li><a href="#toc_1_18">Relation between energy and mass</a></li>
+				</ol>
+			</ol>
+		</div>
+	</div>
+	<footer>
+		<h1>StrawRedBerry</h1>
+		<a href="https://macul.ciencias.uchile.cl/alejo/clases/2018_mechanics/">Funcionales</a>
+	</footer>
+</body>
+</html>

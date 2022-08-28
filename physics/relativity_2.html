@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width">
+	<title>Special relativity</title>
+	<script type="text/javascript" src="../js/mathjax_loader.js"></script>
+	<link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+	<header>
+		<h1><a href="../index.html">StrawRedBerry</a></h1>
+		<h2>Special relativity</h2>
+	</header>
+	<div id="center">
+		<div class="center">
+			<ul id="links">
+				<li class="group">Quantum mechanics</li>
+				<ul>
+					<li><a href="quantum_mechanichs_1.html">Quantum mechanics</a></li>
+					<li><a href="double_slit.html">Double slit</a></li>
+				</ul>
+				<li><a href="analytic_mechanics.html">Analytic mechanics</a></li>
+				<li class="group">Relativity</li>
+				<ul>
+					<li><a href="relativity_1.html">Special relativity 1</a></li>
+					<li><a href="relativity_2.html">Special relativity 2</a></li>
+					<li><a href="relativity_3.html">Special relativity 3</a></li>
+					<li><a href="drawing.html">Visualizing curved space (work in progress)</a></li>
+					<li><a href="general_relativity.html">Special relativity</a></li>
+					<li><a href="general_relativity_2.html">Tensors</a></li>
+					<li><a href="general_relativity_3.html">Tensors (in matrix notation)</a></li>
+					<li><a href="general_relativity_4.html">Tensors (in tensor notation)</a></li>
+				</ul>
+				<li class="group">Electromagnetism</li>
+				<ul>
+					<li><a href="maxwell equations_1.html">Linear algebra</a></li>
+					<li><a href="maxwell_equations_2.html">Visualizing electric field</a></li>
+					<li><a href="maxwell_equations_3.html">Green's theorem of circulation</a></li>
+					<li><a href="maxwell_equations_4.html">Divergence theorem</a></li>
+					<li><a href="maxwell_equations_5.html">Gauss's theorem of flux</a></li>
+					<li><a href="maxwell_equations_6.html">Ampere-Maxwell law</a></li>
+					<li><a href="maxwell_equations_7.html">Faraday-Lenz law</a></li>
+					<li><a href="maxwell_equations_8.html">Electromagnetic waves</a></li>
+					<li><a href="maxwell_equations_9.html">Electromechanics</a></li>
+				</ul>
+				<li><a href="optics.html">Snell's law</a></li>
+				<li><a href="tensors.html">Tensors</a></li>
+			</ul>
+		</div>
+		<div id="content">
+			<h1 id="toc_1">Speed addition</h1>
+			<h2 id="toc_1_7">Relativistic speed addition law</h2>
+			<p>
+			  \begin{align}
+				u &= \frac{x}{t} \rightarrow t = \frac{x}{u}\\
+				\vec{p} &= \left\langle\frac{x}{c}, \frac{x}{u}\right\rangle\\\\
+				t &= 1 \rightarrow x = u\\\\
+				\vec{p} &= \left\langle\frac{u}{c}, 1\right\rangle\\
+				\vec{p}' &= \gamma\left\langle\frac{u}{c} - \frac{v}{c}, - \frac{uv}{c^2} + 1\right\rangle\\\\
+				\left(
+				  \begin{array}{c}
+					\frac{u}{c} - \frac{v}{c}\\
+					- \frac{uv}{c^2} + 1
+				  \end{array}
+				\right)
+				&=
+				\gamma
+				\left(
+				  \begin{array}{cc}
+					1 & - \frac{v}{c}\\
+					- \frac{v}{c} & 1
+				  \end{array}
+				\right)^T
+				\left(
+				  \begin{array}{c}
+					\frac{u}{c}\\
+					1 
+				  \end{array}
+				\right)\\
+				\left(
+				  \begin{array}{c}
+					\frac{u}{c} + \frac{v}{c}\\
+					\frac{uv}{c^2} + 1
+				  \end{array}
+				\right)
+				&=
+				\gamma
+				\left(
+				  \begin{array}{cc}
+					1 & \frac{v}{c}\\
+					\frac{v}{c} & 1
+				  \end{array}
+				\right)^T
+				\left(
+				  \begin{array}{c}
+					\frac{u}{c}\\
+					1 
+				  \end{array}
+				\right)\\\\
+				u' &= \frac{u - v}{1 - \frac{uv}{c^2}}\\
+				u &= \frac{u' + v}{1 + \frac{u'v}{c^2}}
+			  \end{align}
+			</p>
+			<h2 id="toc_1_8">Vertical axis velocity</h2>
+			<p>
+				\begin{align}
+				\left[
+					\begin{array}{c}
+						\frac{x'}{c}\\
+						\frac{y'}{c}\\
+						t'
+				 	\end{array}
+				\right]
+				&=
+				\gamma
+				\left[
+					\begin{array}{cc}
+						1 & 0 & \frac{v}{c}\\
+						0 & \gamma^{-1} & 0\\
+						\frac{v}{c} & 0 & 1
+					\end{array}
+				\right]
+				\left[
+					\begin{array}{c}
+						\frac{x}{c}\\
+						\frac{y}{c}\\
+						t
+					\end{array}
+				\right]
+				=
+				\left[
+					\begin{array}{c}
+						\gamma(\frac{x}{c} + \frac{v}{c} t)\\
+						\frac{y}{c}\\
+						\gamma(\frac{vx}{c^2} + t)
+					\end{array}
+				\right]\\
+				\left[
+					\begin{array}{c}
+						\frac{x}{c}\\
+						\frac{y}{c}\\
+						t
+					\end{array}
+				\right]
+				&=
+				\gamma
+				\left[
+					\begin{array}{cc}
+						1 & 0 & - \frac{v}{c}\\
+						0 & \gamma^{-1} & 0\\
+						- \frac{v}{c} & 0 & 1
+					\end{array}
+				\right]
+				\left[
+					\begin{array}{c}
+						\frac{x'}{c}\\
+						\frac{y'}{c}\\
+						t'
+					\end{array}
+				\right]
+				=
+				\left[
+					\begin{array}{c}
+						\gamma(\frac{x}{c} + \frac{v}{c} t)\\
+						\frac{y}{c}\\
+						\gamma(\frac{vx}{c^2} + t)
+					\end{array}
+				\right]\\
+				u_x &= \frac{x}{t}\\
+				u_y &= \frac{y}{t}\\
+				\vec{p} &= \left\langle\frac{x}{c}, \frac{y}{c}, t\right\rangle\\
+				\vec{p} &= \left\langle\frac{u_x}{c}, \frac{u_y}{c}, 1\right\rangle\\
+				\left[
+					\begin{array}{c}
+						U_x't'\\
+						U_y't'\\
+						t'
+					\end{array}
+				\right]
+				&=
+				\gamma
+				\left[
+					\begin{array}{cc}
+						1 & 0 & - V\\
+						0 & \gamma^{-1} & 0\\
+						- V & 0 & 1
+					\end{array}
+				\right]^T
+				\left[
+					\begin{array}{c}
+						U_x\\
+						U_y\\
+						1
+					\end{array}
+				\right]
+				=
+				\left[
+					\begin{array}{c}
+						\gamma(U_x - V)\\
+						U_y\\
+						\gamma(- U_x V + 1)
+					\end{array}
+				\right]\\
+				\left[
+					\begin{array}{c}
+						U_x t\\
+						U_y t\\
+						t
+					\end{array}
+				\right]
+				&=
+				\gamma
+				\left[
+					\begin{array}{cc}
+						1 & 0 &  V\\
+						0 & \gamma^{-1} & 0\\
+						V & 0 & 1
+					\end{array}
+				\right]^T
+				\left[
+					\begin{array}{c}
+						U_x'\\
+						U_y'\\
+						1
+					\end{array}
+				\right]
+				=
+				\left[
+					\begin{array}{c}
+						\gamma(U_x' + V)\\
+						U_y'\\
+						\gamma(U_x' V + 1)
+					\end{array}
+				\right]\\
+			  \end{align}
+			</p>
+			<h2 id="toc_1_9">Conservation of momentum - Relativistic elastic collision</h2>
+			<p>
+				\begin{align}
+					U_x' &= \frac{U_x - V}{1 - U_x V} &U_x &= \frac{U_x' + V}{1 + U_x' V}\\
+					U_y' &= \frac{U_y}{\gamma(1 - U_x V)} &U_y &= \frac{U_y'}{\gamma(1 + U_x' V)}\\
+				\end{align}
+				\begin{array}{rcl}
+				U_{Ax} &=& -U_{Bx}' &=& 0\\
+				U_{Ay} &=& -U_{By}' &=& U\\
+				U_A &=& -U_B' &=& U\\\\
+				U_{Bx} &=& -U_{Ax}' &=& V\\
+				U_{By} &=& -U_{Ay}' &=& -\frac{U}{\gamma}\\
+				U_B &=& -U_A' &=& \sqrt{V^2 + \frac{U^2}{\gamma^2}}\\\\
+				U_\text{before} &=& - U_\text{after} &=& U\\
+				\end{array}
+				\begin{align}
+					\\
+					U &> \frac{U}{\gamma}\\
+					\\
+					P_x &= m_A U_{Ax} + m_B U_{Bx}\\
+					P_y &= m_A U_{Ay} + m_B U_{By}\\
+					P_x' &= m_A' U_{Ax}' + m_B' U_{Bx}'\\
+					P_y' &= m_A' U_{Ay}' + m_B' U_{By}'\\
+					\\
+				\end{align}
+				\begin{array}{rcccl}
+					m_A (0) + m_B V &=& m_B V &=& m_A (0) + m_B V\\
+					m_A U + m_B \left(-\frac{U}{\gamma}\right) &>& 0 &>& m_A (- U) + m_B \frac{U}{\gamma}\\
+					m_A' (-V) + m_B' (0) &=& - m_B V &=& m_A' (-V) + m_B' (0)\\
+					m_A' \frac{U}{\gamma} + m_B' (- U) &<& 0 &<& m_A' \left(- \frac{U}{\gamma}\right) + m_B' U
+				\end{array}
+				\begin{align}
+					m_r &= mG(|v|)\\
+					G(0) &= 1\\\\
+					m_A U + m_B \left(-\frac{U}{\gamma}\right) &= m_A (- U) + m_B \frac{U}{\gamma}\\
+					G_A U + G_B\left(-\frac{U}{\gamma}\right) &= G_A (- U) + G_B \frac{U}{\gamma}\\
+					\gamma G(U) &= G\left(\sqrt{V^2 + \frac{U^2}{\gamma^2}}\right)\\
+					\gamma &= G(|V|)\\
+				\end{align}
+			</p>
+			<h2 id="toc_1_10">Relativistic Doppler's effect</h2>
+			<p>
+				\begin{align}
+					t &= \gamma t'\\
+					\lambda' &= ct'\\
+					\lambda &= ct - vt\\
+					\\
+					\lambda &= (c - v)t\\
+					\lambda &= (1 - V)ct\\
+					\lambda &= \frac{1 - V}{\sqrt{1 - V^2}}ct'\\
+					\\
+					\lambda &= \sqrt{\frac{1 - V}{1 + V}}\lambda' = (1 - V)\gamma \lambda'\\
+					f &= \sqrt{\frac{1 + V}{1 - V}}f' = (1 + V)\gamma f'\\
+					\\
+					t_1(X) &= \frac{X}{v}\\
+					t_1(X) &= X + k\\
+					t_1(X_0) &= t_0\\\\
+					t_0 &= \frac{X_0}{v}\\
+					t_0 &= X_0 + k\\\\
+					t_1(X) &= X + t_0 - t_0 v\\
+					t_2(X) &= X\\\\
+					X_1(X) &= t - (1 - v)t_0\\
+					X_2(X) &= t\\\\
+					\lambda &= X_2 - X_1 = (1 - v)t_0\\
+					t_0 &= \gamma t_0'\\
+					c &= \frac{\lambda'}{t_0'}\\\\
+					\lambda &= \frac{1 - V}{\sqrt{1 - V^2}}\lambda' = \frac{(1 - V)^1}{(1 - V)^{1/2}(1 + V)^{1/2}}\\\\
+					\lambda &= \sqrt{\frac{1 - V}{1 + V}}\lambda' = (1 - V)\gamma \lambda'\\
+					f &= \sqrt{\frac{1 + V}{1 - V}}f' = (1 + V)\gamma f'\\
+				\end{align}
+			</p>
+			<h2 id="toc_1_11">Relativistic Doppler's effect in Y axis</h2>
+			<p>
+				\begin{align}
+					y &= mx\\
+					y &= \frac{1}{m}(d - x)\\
+					\\
+					mx &= \frac{1}{m}(d - x)\\
+					m^2x &= d - x\\
+					x + m^2x &= d\\
+					\\
+					x &= \frac{d}{1 + m^2}\\
+					y &= \frac{md}{1 + m^2}\\
+					\\
+					\Delta x &= d - \frac{d}{1 + m^2} = d \left(1 - \frac{1}{1 + m^2}\right) = d\left(\frac{m^2}{1 + m^2}\right)\\
+					\Delta y &= md - \frac{md}{1 + m^2} = md \left(1 - \frac{1}{1 + m^2}\right) = m \Delta x\\
+					\\
+					\lambda^2 &= (\Delta x)^2 + (\Delta y)^2 = (\Delta x)^2 + (m\Delta x)^2 = (\Delta x)^2(1 + m^2)\\
+					\lambda^2 &= d^2\left(\frac{m^2}{1 + m^2}\right)^2(1 + m^2) = m^2d^2\frac{m^2}{1 + m^2}\\
+					\lambda^2 &= d^2\left(\frac{m^2}{1 + m^2}\right)^2(1 + m^2) = m^2d^2\frac{m^2}{1 + m^2}\\
+					\lambda &= \lambda'\frac{m}{\sqrt{1 + m^2}}\\
+					\\
+					d &= vt\\
+					md &= ct' = \lambda'\\
+					t &= t' \gamma\\
+					\\
+					m &= \frac{ct'}{vt} = \frac{1}{V \gamma}\\
+					\\
+					\lambda &= \lambda' \frac{1}{V \gamma\sqrt{1 + \left(\frac{1}{V \gamma}\right)^2}} = \lambda' \frac{1}{\sqrt{1 + V^2 \gamma^2}}\\
+					1 + V^2 \gamma^2 &= 1 + \frac{V^2}{1 - V^2} = \frac{1}{1 - V^2} = \gamma^2\\
+					\\
+					\lambda &= \frac{\lambda'}{\gamma}\\
+					f &= f' \gamma
+				\end{align}
+			</p>
+		</div>
+		<div class="center">
+			<ol id="index" start="2">
+				<li class="group"><a href="#toc_2">Speed addition</a></li>
+				<ol class="group">
+					<li><a href="#toc_1_7">Relativistic speed addition law</a></li>
+					<li><a href="#toc_1_8">Vertical axis velocity</a></li>
+					<li><a href="#toc_1_9">Conservation of momentum - Relativistic elastic collision</a></li>
+					<li><a href="#toc_1_10">Relativistic Doppler's effect</a></li>
+					<li><a href="#toc_1_11">Relativistic Doppler's effect in Y axis</a></li>
+				</ol>
+			</ol>
+		</div>
+	</div>
+	<footer>
+		<h1>StrawRedBerry</h1>
+		<a href="https://macul.ciencias.uchile.cl/alejo/clases/2018_mechanics/">Funcionales</a>
+	</footer>
+</body>
+</html>

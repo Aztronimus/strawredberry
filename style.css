@@ -1,20 +1,272 @@
+@font-face {
+	font-family: Circular-Book;
+	src: url("fonts/CircularStd-Book.otf");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: Circular-Book;
+	src: url("fonts/CircularStd-Bold.otf");
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: BonaNova;
+	src: url("fonts/BonaNova-Bold.woff") format("woff");
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: BonaNova;
+	src: url("fonts/BonaNova-Italic.woff") format("woff");
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: BonaNova;
+	src: url("fonts/BonaNova-Regular.woff") format("woff");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: Roboto-Mono;
+	src: url("fonts/RobotoMono-Regular.woff") format("woff");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: Roboto-Mono;
+	src: url("fonts/RobotoMono-Bold.woff") format("woff");
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: Roboto-Mono;
+	src: url("fonts/RobotoMono-BoldItalic.woff") format("woff");
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: Roboto-Mono;
+	src: url("fonts/RobotoMono-Italic.woff") format("woff");
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: Noto-Serif;
+	src: url("fonts/NotoSerif-Regular.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: Noto-Serif;
+	src: url("fonts/NotoSerif-Bold.woff") format("woff");
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: Noto-Serif;
+	src: url("fonts/NotoSerif-Italic.woff") format("woff");
+	font-weight: normal;
+	font-style: italic;
+}
+
+:root {
+	--main-0: #f37;
+	--main-1: #3bf;
+	--main-2: #fd3;
+	--main-3: #7f3;
+	--main-4: #f73;
+	--main-5: #b3f;
+	--color-a0: #0ff;
+	--contrast-a: white;
+	--contrast-a1: #555;
+	--contrast-a2: #111;
+	--contrast-a3: #333;
+	--contrast-b: black;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	border: none;
+}
+
 body {
-	font-size: larger;
+	font-size: 1.2em;
 	color: white;
-	background-color: black
+	background-color: var(--contrast-b);
+	font-family: BonaNova;
+}
+
+p {
+	line-height: 1.5em;
+	text-align: justify;
+}
+
+header,
+footer {
+	background-color: var(--contrast-a2);
+}
+
+header {
+	padding: 1.5em;
+}
+
+footer {
+	padding: 1em 10%;
+}
+
+#center {
+	display: grid;
+	grid-template-columns: 1fr 7in 1fr;
+}
+
+#content h1,
+#content h2,
+#content ul,
+#content ul li,
+#content ol,
+#content p {
+	margin: 1em 0;
+}
+
+#content ul {
+	list-style-position: inside;
+}
+
+#content ul.none {
+	list-style: none;
+}
+
+h1, h2 {
+	font-family: Circular-Book;
+	text-align: center;
+}
+
+header h1 {
+	color: var(--main-0);
+	font-size: 2em;
+}
+
+header h2 {
+	color: var(--main-1);
+	font-size: 1.5em;
+}
+
+footer h1 {
+	color: var(--contrast-a1);
+	font-size: 1.5em;
+	text-align: left;
+}
+
+h1 a:hover {
+	color: var(--main-2);
 }
 
 a:link,
 a:visited,
 a:active {
-	color: cyan;
+	color: inherit;
 	text-decoration: none;
 }
 
-a:hover {
-	color: red;
+#links,
+#links ul {
+	list-style: none;
 }
 
-ul {
-	list-style: none;
+#index,
+#index ol {
+	list-style: number inside;
+}
+
+#links,
+#links ul,
+#index,
+#index ol {
+	margin: 1em 0;
+	line-height: 1.5em;
+}
+
+#links a:hover,
+#index a:hover {
+	color: var(--color-a0);
+	color: var(--main-2);
+}
+
+#links li.group,
+#index li.group {
+	margin: 1em 0;
+	font-family: Circular-Book;
+	/*font-family: MJXTEX-B;*/
+	/*font-family: MJXTEX-I;*/
+	/*font-family: MJXTEX;*/
+	/*font-family: MJXZERO;*/
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+#links ul,
+#index ol {
+	margin-left: 2em;
+}
+
+#links,
+#index {
+	position: sticky;
+	top: 0;
+}
+
+#links,
+#index {
+	margin: 1em 2em;
+}
+
+div.center {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+mjx-container {
+	overflow: auto hidden;
+}
+
+@supports selector(::-webkit-scrollbar) {
+	::-webkit-scrollbar {
+		background-color: var(--contrast-b);
+	}
+
+	::-webkit-scrollbar-thumb {
+		background-color: var(--contrast-a3);
+	}
+}
+
+@supports (scrollbar-color: var(--contrast-a) var(--contrast-a)) {
+	* {
+		scrollbar-color: var(--contrast-a3) var(--contrast-b);
+	}
+}
+
+@media screen and (max-width: 14in) {
+	#index {
+		display: none;
+	}
+
+	#links {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 7in) {
+	#center {
+		display: block;
+	}
 }

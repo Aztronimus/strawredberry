@@ -23,6 +23,9 @@
 				<li><a href="analytic_mechanics.html">Analytic mechanics</a></li>
 				<li class="group">Relativity</li>
 				<ul>
+					<li><a href="relativity_1.html">Special relativity 1</a></li>
+					<li><a href="relativity_2.html">Special relativity 2</a></li>
+					<li><a href="relativity_3.html">Special relativity 3</a></li>
 					<li><a href="drawing.html">Visualizing curved space (work in progress)</a></li>
 					<li><a href="general_relativity.html">Special relativity</a></li>
 					<li><a href="general_relativity_2.html">Tensors</a></li>
@@ -46,7 +49,7 @@
 			</ul>
 		</div>
 		<div id="content">
-			<h1 id="toc_1">Relativity</h1>
+			<h1 id="toc_1">Space-time</h1>
 			<h2 id="toc_1_1">Space-time transformations</h2>
 			<p>Not rigorous description of the space time transformations.</p>
 			<p>
@@ -76,7 +79,7 @@
 				\begin{align}
 					t, x, y, z, \cdots, v, r, \cdots
 				\end{align}
-				The coordinates the moving perpspective measure are quoted
+				The coordinates the moving perspective measure are quoted
 				\begin{align}
 					t', x', y', z', \cdots, v', r', \cdots
 				\end{align}
@@ -84,7 +87,8 @@
 			<h2 id="toc_1_4">Galilean transformation</h2>
 			<p>
 				If the moving perspective moves only in his own time, that leads it to move in your time but also in your space \(vt\) steps (if \(t = 1\), then \(vt = v\)).<br>
-				In this transformation events that are simultaneous for one oberserver, are simultaneous for any observer that travels at any speed.
+				In this transformation events that are simultaneous for one oberserver, are simultaneous for any observer that travels at any speed.<br>
+				\(ct\) is the distance traveled by a ray of light in a given time \(t\)
 				\begin{align}
 					(\begin{array}{cc}
 						ct' & 0
@@ -221,15 +225,25 @@
 				\end{align}
 			</p>
 			<h2 id="toc_1_5">Lorentz factor</h2>
+			<p>Statements:</p>
+			<ul>
+				<li>An object will continue moving in a straight line unless it is acted on by an unbalanced force.</li>
+				<li>Two observers moving towards each other at a constant speed will measure the same speed at which the other observer is approaching or moving away.</li>
+				<li>The speed of light is constant regardless the observer.</li>
+				<li>Traveling parallel to a pair of light beams that are also traveling parallel to each other will not change the distance between them, regardless of the speed of the observer.</li>
+			</ul>
+			<p>Definitions:</p>
+			<ul class="none">
+				<li>\(r\) is the displacement covered by the ray of light measured by the stationary perspective when the ray reaches a certain height \(y\).</li>
+				<li>\(r'\) is the displacement covered by the ray of light measured from the moving perspective when the ray reaches a certain height \(y'\).</li>
+				<li>\(y = y'\) to make the comparison between the time and distance measured by both observers.</li>
+			</ul>
 			<p>
-				Statements:<br>
-				An object will continue moving in a straight line unless it is acted on by an unbalanced force<br>
-				Two observers moving towards each other at a constant speed will measure the same speed at which the other observer is approaching or moving away<br>
-				The speed of light is constant regardless the observer<br>
-				\(y = y'\) because two rays of light that start traveling parallel will remain parallel<br>
-				\(r\) is the displacement covered by the ray of light measured by you<br>
-				\(r'\) is the displacement covered by the ray of light measured from the moving perspective<br>
-				The moving person shoots a ray of light in his \(y'\) direction<br>
+				The moving person shoots a ray of light in his \(y'\) direction.<br>
+				Since the ray of light will stay above the moving person for both observers, the ray of light will describe an inclined path for the stationary perspective.<br>
+				There are two events separated by space and time that both observers can measure: the first event is when the light beam is shot by the moving observer, the second event is when the light beam has reached the height \(y = y'\).
+			</p>
+			<p>
 				\begin{align}
 					x &= vt&
 					r &= ct&
@@ -728,7 +742,7 @@
 				\right)
 			  \end{align} -->
 				</p>
-				<h2>Time and space dilation and contraction</h2>
+				<h2 id="toc_1_7">Time and space dilation and contraction</h2>
 				<p>
 					<b>Time dilation</b><br>
 					Two events in \(S'\) separated only by time (not by space) are separated by time in \(S\) as follows:
@@ -776,523 +790,10 @@
 						x' &= x\gamma
 					\end{align}
 				</p>
-			<h2 id="toc_1_7">Relativistic speed addition law</h2>
-			<p>
-			  \begin{align}
-				u &= \frac{x}{t} \rightarrow t = \frac{x}{u}\\
-				\vec{p} &= \left\langle\frac{x}{c}, \frac{x}{u}\right\rangle\\\\
-				t &= 1 \rightarrow x = u\\\\
-				\vec{p} &= \left\langle\frac{u}{c}, 1\right\rangle\\
-				\vec{p}' &= \gamma\left\langle\frac{u}{c} - \frac{v}{c}, - \frac{uv}{c^2} + 1\right\rangle\\\\
-				\left(
-				  \begin{array}{c}
-					\frac{u}{c} - \frac{v}{c}\\
-					- \frac{uv}{c^2} + 1
-				  \end{array}
-				\right)
-				&=
-				\gamma
-				\left(
-				  \begin{array}{cc}
-					1 & - \frac{v}{c}\\
-					- \frac{v}{c} & 1
-				  \end{array}
-				\right)^T
-				\left(
-				  \begin{array}{c}
-					\frac{u}{c}\\
-					1 
-				  \end{array}
-				\right)\\
-				\left(
-				  \begin{array}{c}
-					\frac{u}{c} + \frac{v}{c}\\
-					\frac{uv}{c^2} + 1
-				  \end{array}
-				\right)
-				&=
-				\gamma
-				\left(
-				  \begin{array}{cc}
-					1 & \frac{v}{c}\\
-					\frac{v}{c} & 1
-				  \end{array}
-				\right)^T
-				\left(
-				  \begin{array}{c}
-					\frac{u}{c}\\
-					1 
-				  \end{array}
-				\right)\\\\
-				u' &= \frac{u - v}{1 - \frac{uv}{c^2}}\\
-				u &= \frac{u' + v}{1 + \frac{u'v}{c^2}}
-			  \end{align}
-			</p>
-			<h2 id="toc_1_8">Vertical axis velocity</h2>
-			<p>
-				\begin{align}
-				\left[
-					\begin{array}{c}
-						\frac{x'}{c}\\
-						\frac{y'}{c}\\
-						t'
-				 	\end{array}
-				\right]
-				&=
-				\gamma
-				\left[
-					\begin{array}{cc}
-						1 & 0 & \frac{v}{c}\\
-						0 & \gamma^{-1} & 0\\
-						\frac{v}{c} & 0 & 1
-					\end{array}
-				\right]
-				\left[
-					\begin{array}{c}
-						\frac{x}{c}\\
-						\frac{y}{c}\\
-						t
-					\end{array}
-				\right]
-				=
-				\left[
-					\begin{array}{c}
-						\gamma(\frac{x}{c} + \frac{v}{c} t)\\
-						\frac{y}{c}\\
-						\gamma(\frac{vx}{c^2} + t)
-					\end{array}
-				\right]\\
-				\left[
-					\begin{array}{c}
-						\frac{x}{c}\\
-						\frac{y}{c}\\
-						t
-					\end{array}
-				\right]
-				&=
-				\gamma
-				\left[
-					\begin{array}{cc}
-						1 & 0 & - \frac{v}{c}\\
-						0 & \gamma^{-1} & 0\\
-						- \frac{v}{c} & 0 & 1
-					\end{array}
-				\right]
-				\left[
-					\begin{array}{c}
-						\frac{x'}{c}\\
-						\frac{y'}{c}\\
-						t'
-					\end{array}
-				\right]
-				=
-				\left[
-					\begin{array}{c}
-						\gamma(\frac{x}{c} + \frac{v}{c} t)\\
-						\frac{y}{c}\\
-						\gamma(\frac{vx}{c^2} + t)
-					\end{array}
-				\right]\\
-				u_x &= \frac{x}{t}\\
-				u_y &= \frac{y}{t}\\
-				\vec{p} &= \left\langle\frac{x}{c}, \frac{y}{c}, t\right\rangle\\
-				\vec{p} &= \left\langle\frac{u_x}{c}, \frac{u_y}{c}, 1\right\rangle\\
-				\left[
-					\begin{array}{c}
-						U_x't'\\
-						U_y't'\\
-						t'
-					\end{array}
-				\right]
-				&=
-				\gamma
-				\left[
-					\begin{array}{cc}
-						1 & 0 & - V\\
-						0 & \gamma^{-1} & 0\\
-						- V & 0 & 1
-					\end{array}
-				\right]^T
-				\left[
-					\begin{array}{c}
-						U_x\\
-						U_y\\
-						1
-					\end{array}
-				\right]
-				=
-				\left[
-					\begin{array}{c}
-						\gamma(U_x - V)\\
-						U_y\\
-						\gamma(- U_x V + 1)
-					\end{array}
-				\right]\\
-				\left[
-					\begin{array}{c}
-						U_x t\\
-						U_y t\\
-						t
-					\end{array}
-				\right]
-				&=
-				\gamma
-				\left[
-					\begin{array}{cc}
-						1 & 0 &  V\\
-						0 & \gamma^{-1} & 0\\
-						V & 0 & 1
-					\end{array}
-				\right]^T
-				\left[
-					\begin{array}{c}
-						U_x'\\
-						U_y'\\
-						1
-					\end{array}
-				\right]
-				=
-				\left[
-					\begin{array}{c}
-						\gamma(U_x' + V)\\
-						U_y'\\
-						\gamma(U_x' V + 1)
-					\end{array}
-				\right]\\
-			  \end{align}
-			</p>
-			<h2 id="toc_1_9">Conservation of momentum - Relativistic elastic collision</h2>
-			<p>
-				\begin{align}
-					U_x' &= \frac{U_x - V}{1 - U_x V} &U_x &= \frac{U_x' + V}{1 + U_x' V}\\
-					U_y' &= \frac{U_y}{\gamma(1 - U_x V)} &U_y &= \frac{U_y'}{\gamma(1 + U_x' V)}\\
-				\end{align}
-				\begin{array}{rcl}
-				U_{Ax} &=& -U_{Bx}' &=& 0\\
-				U_{Ay} &=& -U_{By}' &=& U\\
-				U_A &=& -U_B' &=& U\\\\
-				U_{Bx} &=& -U_{Ax}' &=& V\\
-				U_{By} &=& -U_{Ay}' &=& -\frac{U}{\gamma}\\
-				U_B &=& -U_A' &=& \sqrt{V^2 + \frac{U^2}{\gamma^2}}\\\\
-				U_\text{before} &=& - U_\text{after} &=& U\\
-				\end{array}
-				\begin{align}
-					\\
-					U &> \frac{U}{\gamma}\\
-					\\
-					P_x &= m_A U_{Ax} + m_B U_{Bx}\\
-					P_y &= m_A U_{Ay} + m_B U_{By}\\
-					P_x' &= m_A' U_{Ax}' + m_B' U_{Bx}'\\
-					P_y' &= m_A' U_{Ay}' + m_B' U_{By}'\\
-					\\
-				\end{align}
-				\begin{array}{rcccl}
-					m_A (0) + m_B V &=& m_B V &=& m_A (0) + m_B V\\
-					m_A U + m_B \left(-\frac{U}{\gamma}\right) &>& 0 &>& m_A (- U) + m_B \frac{U}{\gamma}\\
-					m_A' (-V) + m_B' (0) &=& - m_B V &=& m_A' (-V) + m_B' (0)\\
-					m_A' \frac{U}{\gamma} + m_B' (- U) &<& 0 &<& m_A' \left(- \frac{U}{\gamma}\right) + m_B' U
-				\end{array}
-				\begin{align}
-					m_r &= mG(|v|)\\
-					G(0) &= 1\\\\
-					m_A U + m_B \left(-\frac{U}{\gamma}\right) &= m_A (- U) + m_B \frac{U}{\gamma}\\
-					G_A U + G_B\left(-\frac{U}{\gamma}\right) &= G_A (- U) + G_B \frac{U}{\gamma}\\
-					\gamma G(U) &= G\left(\sqrt{V^2 + \frac{U^2}{\gamma^2}}\right)\\
-					\gamma &= G(|V|)\\
-				\end{align}
-			</p>
-			<h2 id="toc_1_10">Relativistic Doppler's effect</h2>
-			<p>
-				\begin{align}
-					t &= \gamma t'\\
-					\lambda' &= ct'\\
-					\lambda &= ct - vt\\
-					\\
-					\lambda &= (c - v)t\\
-					\lambda &= (1 - V)ct\\
-					\lambda &= \frac{1 - V}{\sqrt{1 - V^2}}ct'\\
-					\\
-					\lambda &= \sqrt{\frac{1 - V}{1 + V}}\lambda' = (1 - V)\gamma \lambda'\\
-					f &= \sqrt{\frac{1 + V}{1 - V}}f' = (1 + V)\gamma f'\\
-					\\
-					t_1(X) &= \frac{X}{v}\\
-					t_1(X) &= X + k\\
-					t_1(X_0) &= t_0\\\\
-					t_0 &= \frac{X_0}{v}\\
-					t_0 &= X_0 + k\\\\
-					t_1(X) &= X + t_0 - t_0 v\\
-					t_2(X) &= X\\\\
-					X_1(X) &= t - (1 - v)t_0\\
-					X_2(X) &= t\\\\
-					\lambda &= X_2 - X_1 = (1 - v)t_0\\
-					t_0 &= \gamma t_0'\\
-					c &= \frac{\lambda'}{t_0'}\\\\
-					\lambda &= \frac{1 - V}{\sqrt{1 - V^2}}\lambda' = \frac{(1 - V)^1}{(1 - V)^{1/2}(1 + V)^{1/2}}\\\\
-					\lambda &= \sqrt{\frac{1 - V}{1 + V}}\lambda' = (1 - V)\gamma \lambda'\\
-					f &= \sqrt{\frac{1 + V}{1 - V}}f' = (1 + V)\gamma f'\\
-				\end{align}
-			</p>
-			<h2 id="toc_1_11">Relativistic Doppler's effect in Y axis</h2>
-			<p>
-				\begin{align}
-					y &= mx\\
-					y &= \frac{1}{m}(d - x)\\
-					\\
-					mx &= \frac{1}{m}(d - x)\\
-					m^2x &= d - x\\
-					x + m^2x &= d\\
-					\\
-					x &= \frac{d}{1 + m^2}\\
-					y &= \frac{md}{1 + m^2}\\
-					\\
-					\Delta x &= d - \frac{d}{1 + m^2} = d \left(1 - \frac{1}{1 + m^2}\right) = d\left(\frac{m^2}{1 + m^2}\right)\\
-					\Delta y &= md - \frac{md}{1 + m^2} = md \left(1 - \frac{1}{1 + m^2}\right) = m \Delta x\\
-					\\
-					\lambda^2 &= (\Delta x)^2 + (\Delta y)^2 = (\Delta x)^2 + (m\Delta x)^2 = (\Delta x)^2(1 + m^2)\\
-					\lambda^2 &= d^2\left(\frac{m^2}{1 + m^2}\right)^2(1 + m^2) = m^2d^2\frac{m^2}{1 + m^2}\\
-					\lambda^2 &= d^2\left(\frac{m^2}{1 + m^2}\right)^2(1 + m^2) = m^2d^2\frac{m^2}{1 + m^2}\\
-					\lambda &= \lambda'\frac{m}{\sqrt{1 + m^2}}\\
-					\\
-					d &= vt\\
-					md &= ct' = \lambda'\\
-					t &= t' \gamma\\
-					\\
-					m &= \frac{ct'}{vt} = \frac{1}{V \gamma}\\
-					\\
-					\lambda &= \lambda' \frac{1}{V \gamma\sqrt{1 + \left(\frac{1}{V \gamma}\right)^2}} = \lambda' \frac{1}{\sqrt{1 + V^2 \gamma^2}}\\
-					1 + V^2 \gamma^2 &= 1 + \frac{V^2}{1 - V^2} = \frac{1}{1 - V^2} = \gamma^2\\
-					\\
-					\lambda &= \frac{\lambda'}{\gamma}\\
-					f &= f' \gamma
-				\end{align}
-			</p>
-			<h2 id="toc_1_12">Mass-energy conversion equation</h2>
-			<p>
-				\begin{align}
-					K &= m G(v)\\\\
-					E_2 &= 2hf + K_2\\
-					E_1 &= K_1 + hf\left(\sqrt{\frac{1 - V}{1 + V}} + \sqrt{\frac{1 + V}{1 - V}}\right)\\\\
-					2hf + K_2 &= K_1 + hf\left(\frac{1 - V}{\sqrt{1 - V^2}} + \frac{1 + V}{\sqrt{1 - V^2}}\right)\\
-					2hf + K_2 &= K_1 + \frac{2hf}{\sqrt{1 - V^2}}\\
-					K_2 - K_1 &= 2hf\left(\frac{1}{\sqrt{1 - V^2}} - 1\right)\\
-					(m_2 - m_1)G &= 2hf\left(\frac{1}{\sqrt{1 - V^2}} - 1\right)\\\\
-					\frac{E}{m} &= \frac{G}{\frac{1}{\sqrt{1 - V^2}} - 1}\\
-					G &= k\left(\frac{1}{\sqrt{1 - V^2}} - 1\right)\\
-					\\
-					K &= mk\left(\frac{1}{\sqrt{1 - V^2}} - 1\right)\\
-					E &= mk
-				\end{align}
-			</p>
-			<h2 id="toc_1_13">Momentum of a photon</h2>
-			<p>
-				\begin{align}
-					\frac{P_{Bx}}{P_B} &= \frac{v}{c} = V\\
-					\frac{P_{By}}{P_B} &= \frac{\sqrt{c^2 - v^2}}{c} = \sqrt{1 - \frac{v^2}{c^2}} = \frac{1}{\gamma}\\
-					\\
-					P &= P(E)\\
-					\\
-					E_A &= hf\\
-					E_B &= hf\gamma\\
-					\\
-					P_{Ay} - P_{By} &= - P_{Ay} + P_{By} = 0\\
-					P_{Ay} &= P_{By}\\
-					P_A &= \frac{P_B}{\gamma}\\
-					\gamma P_A &= P_B\\
-					\\
-					P(hf)\gamma &= P(hf\gamma)\\
-					\\
-					p &\propto E\\
-					\\
-					E &= mk\\
-					p &= mv\gamma\\
-					\\
-					E &= 2hf\\
-					f_1' &= (1 + V) \gamma f\\
-					f_2' &= (1 - V) \gamma f\\
-					\\
-					p_3 &= p_1 + p_2\\
-					mv\gamma &= \frac{p}{E}E_1 + \frac{p}{E}E_2\\
-					\frac{2hf}{k}v\gamma &= \frac{p}{E} hf(1 + V) \gamma - \frac{p}{E} hf(1 - V) \gamma\\
-					2\frac{v}{k} &= 2\frac{p}{E} V\\
-					\\
-					E &= p \frac{k}{c}
-				\end{align}
-			</p>
-			<h2 id="toc_1_14">Relativistic inelastic collision</h2>
-			<p>
-				\begin{align}
-					U_1 &= V\\
-					U_2 &= -V\\
-					U_3 &= 0\\
-					\\
-					U_1' &= \frac{V - V}{1 - V^2} = 0\\
-					U_2' &= \frac{- 2V}{1 + V^2}\\
-					U_3' &= \frac{0 - V}{1 - 0} = -V\\
-					\\
-					E &= mk\\
-					K &= mk\left(\frac{1}{\sqrt{1 - V^2}} - 1\right)\\
-					\\
-					m_1 &= m\\
-					m_2 &= m\\
-					m_3 &= 2m + \frac{2K}{k}\\
-					\\
-					P &= m \gamma V\\
-					\\
-					\left(2m + \frac{2K}{k}\right) \frac{1}{\sqrt{1 - V^2}}(-V) &= m\frac{1}{\sqrt{1 - \left(\frac{-2V}{1 + V^2}\right)^2}}\left(\frac{-2V}{1 + V^2}\right)\\
-					\left(1 + \frac{K}{km}\right)\frac{1}{\sqrt{1 - V^2}} &= \frac{1}{\left(1 + V^2\right)\sqrt{1 - 4V^2\left(\frac{1}{1 + V^2}\right)^2}}\\
-					1 - V^2 &= \left(1 + V^2\right)^2\left[1 - 4V^2\left(\frac{1}{1 + V^2}\right)^2\right]\left(\frac{1}{\sqrt{1 - V^2}}\right)^2\\
-					1 - V^2 &= \left(1 + V^2\right)^2\left[1 - 4V^2\left(\frac{1}{1 + V^2}\right)^2\right]\left(\frac{1}{1 - V^2}\right)\\
-					\left(1 - V^2\right)^2 &= \left(1 + V^2\right)^2 - 4V^2\\
-					\left(1 - V^2\right)^2 &= 1 + 2V^2 + V^4 - 4V^2\\
-					\left(1 - V^2\right)^2 &= 1 - 2V^2 + V^4\\
-					\left(1 - V^2\right)^2 &= \left(1 - V^2\right)^2\\
-				\end{align}
-			</p>
-			<h2 id="toc_1_15">Relativistic inelastic collision of two objects with same mass</h2>
-			<p>
-				\begin{align}
-					u_2' + u_1' &= 0\\\\
-					\frac{u_2 - v}{1 - \frac{u_2v}{c^2}} + \frac{u_1 - v}{1 - \frac{u_1v}{c^2}}&= 0\\
-					(u_2 - v)\left(1 - \frac{u_1v}{c^2}\right) + (u_1 - v)\left(1 - \frac{u_2v}{c^2}\right) &= 0\\
-					u_2 - \frac{u_1u_2v}{c^2} - v + \frac{u_1v^2}{c^2} + u_1 - \frac{u_1u_2v}{c^2} - v + \frac{u_2v^2}{c^2} &= 0\\
-					u_1 + u_2 - 2\frac{u_1u_2v}{c^2} - 2v + \frac{u_1v^2}{c^2} + \frac{u_2v^2}{c^2}&= 0\\
-					u_1 + u_2 - 2\left(\frac{u_1u_2}{c^2} + 1\right)v + \left(\frac{u_1 + u_2}{c^2}\right)v^2 &= 0\\
-					c^2(u_1 + u_2) - 2(u_1u_2 + c^2)v + (u_1 + u_2)v^2 &= 0\\
-					c^2 - 2\frac{u_1u_2 + c^2}{u_1 + u_2}v + v^2 &= 0\\
-					2 v &= 2\frac{u_1u_2 + c^2}{u_1 + u_2} - 2\sqrt{\left(\frac{u_1u_2 + c^2}{u_1 + u_2}\right)^2 - c^2}\\
-					v &= \frac{u_1u_2 + c^2}{u_1 + u_2} - \sqrt{\left(\frac{u_1u_2 + c^2}{u_1 + u_2}\right)^2 - c^2}\\
-					v &= \frac{u_1u_2 + c^2}{u_1 + u_2} - \sqrt{\frac{u_1^2 u_2^2 + 2u_1u_2c^2 + c^4}{(u_1 + u_2)^2} - \frac{c^2(u_1^2 + 2u_1u_2 + u_2^2)}{(u_1 + u_2)^2}}\\
-					v &= \frac{u_1u_2 + c^2}{u_1 + u_2} - \frac{\sqrt{u_1^2 u_2^2 - c^2(u_1^2 + u_2^2) + c^4}}{u_1 + u_2}\\
-					v &= \frac{u_1u_2 - \sqrt{(u_1^2 - c^2)(u_2^2 - c^2)} + c^2}{u_1 + u_2}\\
-				\end{align}
-			</p>
-			<h2 id="toc_1_16">Something interesting...</h2>
-			<p>
-				\begin{align}
-					u' &= v\\
-					u &= \frac{u' + v}{1 + \frac{u'v}{c^2}}\\
-					u &= \frac{2v}{1 + \frac{v^2}{c^2}}\\
-					v_{n+1} &= \frac{v + v_n}{1 + \frac{vv_n}{c^2}}\\
-				\end{align}
-			</p>
-			<h2 id="toc_1_17">Total energy</h2>
-			<p>
-				\begin{align}
-					E &= mk\gamma\\
-					p &= mv\gamma\\
-					\\
-					E &= mk\gamma\\
-					K &= mk \left(\gamma - 1\right)\\
-					M &= mk\\
-					P &= p\frac{k}{c}\\
-					\\
-					E &= M\gamma\\
-					K &= M(\gamma - 1)= E - M\\
-					P &= M\gamma V = EV\\
-					\\
-					E^2 &= M^2\gamma^2\\
-					E^2 (1 - V^2)&= M^2\\
-					E^2 &= M^2 + E^2V^2\\
-					E^2 &= M^2 + P^2\\
-				\end{align}
-			</p>
-			<h2 id="toc_1_18">Relation between energy and mass</h2>
-			<p>
-				\begin{align}
-					K &= Fx\\
-					p &= Ft\\
-					v &= \frac{x}{t}\\
-					\\
-					\frac{K(t)}{p} &= \frac{x(t)}{t} = v(t)\\
-					\frac{K}{p} &= c\\
-					\\
-					M &= mk\\
-					\\
-					c &= \frac{K}{p} = \frac{E - M}{p} = \frac{P}{p} = \frac{k}{c}\\
-					\\
-					M &= mc^2\\
-					\\\\
-					F &= \frac{dp}{dt} = \frac{dK}{dx}\\
-					v &= \frac{dx}{dt} = \frac{dK}{dp}\\
-					K &= Fx = \int v \cdot dp\\
-					\\
-					p &= mv\gamma = mcV\gamma\\
-					\frac{V^2}{1 - V^2} &= \left(\frac{p}{mc}\right)^2\\
-					V^2 &= \frac{\left(\frac{p}{mc}\right)^2}{1 + \left(\frac{p}{mc}\right)^2}\\
-					\\
-					K &= c\int{\frac{\frac{p}{mc}}{\sqrt{1 + \left(\frac{p}{mc}\right)^2}}dp}\\
-					q &= 1 + \left(\frac{p}{mc}\right)^2 \rightarrow \frac{m^2 c^2}{2}\cdot dq = p \cdot dp\\
-					K &= \frac{mc^2}{2}\int{q^{-1/2} \cdot dq}\\
-					K &= \left. m c^2 q^{1/2} \right|_{q_1}^{q_2} = \left. m c^2 \sqrt{1 + \left(\frac{p}{mc}\right)^2}\right|_{0}^{p}\\
-					K &= \sqrt{(mc^2)^2 + (pc)^2} - mc^2\\
-				\end{align}
-			</p>
-			<!-- <h2>Spectral series of Hydrogen atom</h2>
-			<p>
-			  Rydberg formula
-			  \begin{align}
-				R_\text{H} &= 10967757.6 \pm 1.2 \text{m}^{-1}\\
-				\frac{1}{\lambda} &= R_\text{H} \left(\frac{1}{n_1^2} - \frac{1}{n_2^2}\right), n_2 \in [n_1 + 1, \infty)
-			  \end{align}
-			  Longest and shortest wavelengths for each series<br/>
-			  \begin{align}
-				\frac{1}{\lambda_\text{min}} &= R_\text{H} \frac{1}{n_1^2}\\
-				\frac{1}{\lambda_\text{max}} &= R_\text{H} \left(\frac{1}{n_1^2} - \frac{1}{(n_1 + 1)^2}\right)\\
-				\\
-				\lambda_\text{Lyman} &\in [9.112670506 \times 10^{-8} \text{m}, &1.215022734 \times 10^{-7} \text{m}]\\
-				\lambda_\text{Balmer} &\in [3.645068202 \times 10^{-7} \text{m}, &6.561122764 \times 10^{-7} \text{m}]\\
-				\lambda_\text{Paschen} &\in [8.201403455 \times 10^{-7} \text{m}, &1.874606504 \times 10^{-6} \text{m}]\\
-				\lambda_\text{Brackett} &\in [1.458027281 \times 10^{-6} \text{m}, &4.05007578 \times 10^{-6} \text{m}]\\
-				\lambda_\text{Pfund} &\in [2.278167626 \times 10^{-6} \text{m}, &7.455821323 \times 10^{-6} \text{m}]\\
-				\\
-				E_\text{Lyman} &\in [10.20426939 \text{ eV}, &13.60569252 \text{ eV}]\\
-				E_\text{Balmer} &\in [1.889679516 \text{ eV}, &3.40142313 \text{ eV}]\\
-				E_\text{Paschen} &\in [0.6613878308 \text{ eV}, &1.511743613 \text{ eV}]\\
-				E_\text{Brackett} &\in [0.3061280817 \text{ eV}, &0.8503557824 \text{ eV}]\\
-				E_\text{Pfund} &\in [0.1662917974 \text{ eV}, &0.5442277007 \text{ eV}]\\
-				\\
-				\frac{hc}{e}R_\text{H}\left(1 - \frac{1}{n^2}\right) &< 12.2\\
-				1 - \frac{1}{n^2} &< 12.2\frac{e}{hcR_\text{H}}\\
-				1 - 12.2\frac{e}{hcR_\text{H}} &< \frac{1}{n^2}\\
-				n^2 &< \frac{1}{1 - 12.2\frac{e}{hcR_\text{H}}}\\
-				n &< \sqrt{\frac{1}{1 - 12.2\frac{e}{hcR_\text{H}}}} = 3.111108513\\
-				\\
-				\frac{hc}{e} R_\text{H} \left(1 - \frac{1}{3^2}\right) &= 12.09394891 \text{ eV}\\
-				\frac{hc}{e} R_\text{H} \left(1 - \frac{1}{4^2}\right) &= 12.75533674 \text{ eV}\\
-			  \end{align}
-			  \begin{align}
-				n &= 3 &1.0257 \times 10^{-7} \text{m}\\
-				n &= 2 &1.2150 \times 10^{-7} \text{m}\\
-				\\
-				n &= \infty &3.6450 \times 10^{-7} \text{m}\\
-				&\cdots\\
-				n &= 5 &4.3393 \times 10^{-7} \text{m}\\
-				n &= 4 &4.8600 \times 10^{-7} \text{m}\\
-				n &= 3 &6.5611 \times 10^{-7} \text{m}\\
-				\\
-				n &= \infty &8.2014 \times 10^{-7} \text{m}\\
-				&\cdots\\
-				n &= 6 &1.0935 \times 10^{-6} \text{m}\\
-				n &= 5 &1.2814 \times 10^{-6} \text{m}\\
-				n &= 4 &1.8746 \times 10^{-6} \text{m}\\
-				\\
-				n &= \infty &1.4580 \times 10^{-6} \text{m}\\
-				&\cdots\\
-				n &= 7 &2.1649 \times 10^{-6} \text{m}\\
-				n &= 6 &2.6244 \times 10^{-6} \text{m}\\
-				n &= 5 &4.0500 \times 10^{-6} \text{m}\\
-				\\
-				n &= \infty &2.2781 \times 10^{-6} \text{m}\\
-				&\cdots\\
-				n &= 8 &3.7385 \times 10^{-6} \text{m}\\
-				n &= 7 &4.6512 \times 10^{-6} \text{m}\\
-				n &= 6 &7.4558 \times 10^{-6} \text{m}\\
-			  \end{align}
-			</p> -->
 		</div>
 		<div class="center">
 			<ol id="index">
-				<li class="group"><a href="#toc_1">Relativity</a></li>
+				<li class="group"><a href="#toc_1">Space-time</a></li>
 				<ol class="group">
 					<li><a href="#toc_1_1">Space-time transformations</a></li>
 					<li><a href="#toc_1_2">Space-time rules</a></li>
@@ -1300,18 +801,7 @@
 					<li><a href="#toc_1_4">Galilean transformation</a></li>
 					<li><a href="#toc_1_5">Lorentz factor</a></li>
 					<li><a href="#toc_1_6">Lorentz transformation</a></li>
-					<li><a href="#toc_1_7">Relativistic speed addition law</a></li>
-					<li><a href="#toc_1_8">Vertical axis velocity</a></li>
-					<li><a href="#toc_1_9">Conservation of momentum - Relativistic elastic collision</a></li>
-					<li><a href="#toc_1_10">Relativistic Doppler's effect</a></li>
-					<li><a href="#toc_1_11">Relativistic Doppler's effect in Y axis</a></li>
-					<li><a href="#toc_1_12">Mass-energy conversion equation</a></li>
-					<li><a href="#toc_1_13">Momentum of a photon</a></li>
-					<li><a href="#toc_1_14">Relativistic inelastic collision</a></li>
-					<li><a href="#toc_1_15">Relativistic inelastic collision of two objects with same mass</a></li>
-					<li><a href="#toc_1_16">Something interesting...</a></li>
-					<li><a href="#toc_1_17">Total energy</a></li>
-					<li><a href="#toc_1_18">Relation between energy and mass</a></li>
+					<li><a href="#toc_1_7">Time and space dilation and contraction</a></li>
 				</ol>
 			</ol>
 		</div>
