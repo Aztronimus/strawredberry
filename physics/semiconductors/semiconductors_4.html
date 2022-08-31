@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Semiconductores</title>
+	<script type="text/javascript" src="../../js/mathjax_loader.js"></script>
+	<style type="text/css">
+		canvas {
+			border: 1px solid gray;
+		}
+
+		.center {
+			display: flex;
+			justify-content: center;
+		}
+
+		p {
+			margin: auto;
+			width: 7in;
+		}
+
+		body {
+			font-size: 1.2em;
+		}
+
+		.lb, .rb {
+			position: fixed;
+			width: 50px;
+			height: 100%;
+			z-index: 1;
+			top: 0;
+		}
+
+		.lb {
+			left: 0;
+		}
+
+		.rb {
+			right: 0;
+		}
+
+		.lb a, .rb a {
+			display: block;
+			width: 100%;
+			height: 100%;
+			/*background-color: gray;*/
+		}
+	</style>
+</head>
+<body>
+	<p>
+		\begin{align}
+			P' \dfrac{\sin{\alpha a}}{\alpha a} + \cos{\alpha a} = \cos{ka} \tag{3.24}\\
+			f(\alpha a) = P' \dfrac{\sin{\alpha a}}{\alpha a} + \cos{\alpha a} \tag{3.29}\\
+			f(\alpha a) = \cos{ka} \tag{3.30}
+		\end{align}
+	</p>
+	<div class="lb"><a href="semiconductors_2.html"></a></div>
+	<div class="rb"><a href="semiconductors_4.html"></a></div>
+	<div class="center"><canvas id="canvas_1" width="800" height="450"></canvas></div>
+	<p>
+		\(P'\) <input id="input_p" type="range" min="0" max="20" value="10"> <output id="output_p"></output>
+	</p>
+	<p>
+		\begin{align}
+			\cos{ka} &= 1 &\text{si}& &ka &= 2n \cdot \pi & \forall n \in \mathbb{Z}\\
+			\cos{ka} &= -1 &\text{si}& &ka &= (2n + 1) \cdot \pi & \forall n \in \mathbb{Z}\\
+		\end{align}
+	</p>
+	<script type="text/javascript" src="../../grapher/grapher.js"></script>
+	<script type="text/javascript">
+	(async function() {
+		await document.fonts.ready;
+		let exitFunction = false;
+		if(!checkResources()) {
+			// console.log("Trying to get resources");
+			await new Promise(r => { setTimeout(r, 1000); });
+			exitFunction = !checkResources();
+		}
+
+		function checkResources() {
+			let available = document.fonts.check("64px MJXTEX");
+			return available;
+		}
+
+		if(exitFunction) {
+			console.log("MathJax fonts not loaded");
+			return;
+		}
+
+		{
+			let p = 5;
+			const input_p = document.getElementById("input_p");
+			const output_p = document.getElementById("output_p");
+			const canvas = document.getElementById("canvas_1");
+			const ctx = canvas.getContext("2d");
+			const gInfo = new GraphInfo(canvas);
+			gInfo.graphArea = [[-5 * Math.PI, 4], [5 * Math.PI, -4]]
+			let points;
+			// console.log(points);
+			function getIntersection(a, b, v) {
+				// a and b are points of the form [x, y]
+				// v is the value of y (1 or -1)
+				// dy_2 / dx_2 = dy_1 / dx_1 -> dx_2 = dy_2 * dx_1 / dy_1
+				return [a[0] + (v - a[1]) * (b[0] - a[0]) / (b[1] - a[1]), v];
+			}
+			function getPoints(p, ctx) {
+				// p is a set of points of the form [x, y]
+				// will return the intersections of the function with y = 1 and y = -1
+				const r = [];
+				const _i = p.length - 2;
+				let b = false;
+				let v = 1;
+				for(let i = 0; i != _i; ++i) {
+					b = false;
+					if(p[i][1] > 1 && p[i + 1][1] < 1) { b = true; v = 1 }
+					else if(p[i][1] < 1 && p[i + 1][1] > 1) { b = true; v = 1}
+					else if(p[i][1] > -1 && p[i + 1][1] < -1) { b = true; v = -1}
+					else if(p[i][1] < -1 && p[i + 1][1] > -1) { b = true; v = -1}
+					if(b) { r.push(getIntersection(p[i], p[i + 1], v)); }
+				}
+				if(r.length % 4) {
+					r.shift();
+					r.pop();
+				}
+				return r;
+			}
+
+			function drawRectsFromPoints(p, ctx) {
+				let _i = p.length - 1;
+				for(let i = 0; i < _i; i += 2) {
+					ctx.fillRect(p[i][0], p[i][1], p[i + 1][0] - p[i][0], p[i + 1][1] - p[i][1]);
+				}
+			}
+
+			function draw() {
+				// Computation
+				points = pointsFromParametric(150, [-5 * Math.PI, 5 * Math.PI], t => [t, p * Math.sin(t) / t + Math.cos(t)]);
+				let points_2 = getPoints(points, ctx);
+				points = gInfo.mapToViewportCoord(points);
+				points_2 = gInfo.mapToViewportCoord(points_2);
+				ctx.clearRect(0, 0, 800, 450);
+				// Axis
+				ctx.lineWidth = 2;
+				ctx.strokeStyle = "gray";
+				// Horizontal axis
+				ctx.beginPath();
+				ctx.moveTo(0, 225);
+				ctx.lineTo(800, 225);
+				ctx.stroke();
+				ctx.closePath();
+				// Vertical axis
+				ctx.beginPath();
+				ctx.moveTo(400, 0);
+				ctx.lineTo(400, 450);
+				ctx.stroke();
+				ctx.closePath();
+				// Fill Polygons
+				ctx.fillStyle = "#f08";
+				ctx.globalAlpha = 0.2;
+				drawRectsFromPoints(points_2, ctx);
+				ctx.globalAlpha = 1.0;
+				// Graph
+				ctx.lineWidth = 4;
+				ctx.strokeStyle = "#f08";
+				// console.log(p1);
+				drawPolyline(points, ctx);
+				// drawPoints(points_2, ctx);
+				// Text
+				ctx.strokeStyle = "white"
+				ctx.fillStyle = "black";
+				ctx.font = "italic 24px MJXTEX-I";
+				ctx.textAlign = "right";
+				drawOText("f", 400 - 8, 32, ctx);
+				drawOText("αa", 800 - 32, 225 - 8, ctx);
+			}
+
+			input_p.oninput = () => {
+				p = Number(input_p.value / 2);
+				draw();
+			}
+
+			draw();
+		}
+	})();
+	</script>
+</body>
+</html>

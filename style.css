@@ -235,7 +235,13 @@ div.center {
 	align-items: flex-start;
 }
 
+canvas {
+	border: 1px solid var(--contrast-a3);
+	width: 100%;
+}
+
 mjx-container {
+	padding: 2px 0;
 	overflow: auto hidden;
 }
 

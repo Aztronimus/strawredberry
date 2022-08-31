@@ -243,6 +243,8 @@
 				Since the ray of light will stay above the moving person for both observers, the ray of light will describe an inclined path for the stationary perspective.<br>
 				There are two events separated by space and time that both observers can measure: the first event is when the light beam is shot by the moving observer, the second event is when the light beam has reached the height \(y = y'\).
 			</p>
+			<canvas id="canvas_1_5_1" width="800" height="450"></canvas>
+			<canvas id="canvas_1_5_2" width="800" height="450"></canvas>
 			<p>
 				\begin{align}
 					x &= vt&
@@ -268,6 +270,7 @@
 					\gamma &= \frac{1}{\sqrt{1 - {\Large \frac{v^2}{c^2}}}}
 				\end{align}
 			</p>
+			<canvas id="canvas_1_5_3" width="800" height="450"></canvas>
 			<!--   <h2>Lorentz factor part 2</h2>
 			<p>
 			  \begin{align}
@@ -499,6 +502,7 @@
 			  \end{align}
 			</p> -->
 			<h2 id="toc_1_6">Lorentz transformation</h2>
+			<canvas id="canvas_1_6_1" width="640" height="360"></canvas>
 			<p>
 				According to special relativity, simultaneous events separated by a distance for you are not simultaneous for an observer that is moving at a non-zero constant speed.<br>
 				For the moving perspective, taking one step in his time takes him to move not only in your time but also in your space<br>
@@ -810,5 +814,175 @@
 		<h1>StrawRedBerry</h1>
 		<a href="https://macul.ciencias.uchile.cl/alejo/clases/2018_mechanics/">Funcionales</a>
 	</footer>
+	<script type="text/javascript" src="../grapher/grapher.js"></script>
+	<script type="text/javascript">
+	(async function() {
+		await document.fonts.ready;
+		let exitFunction = false;
+		if(!checkResources()) {
+			// console.log("Trying to get resources");
+			await new Promise(r => { setTimeout(r, 1000); });
+			exitFunction = !checkResources();
+		}
+
+		function checkResources() {
+			let available = document.fonts.check("64px MJXTEX-B");
+			return available;
+		}
+
+		if(exitFunction) {
+			console.log("MathJax fonts not loaded");
+			return;
+		}
+
+		{
+			const ctx = document.getElementById("canvas_1_5_1").getContext("2d");
+			ctx.fillStyle = "white";
+			ctx.strokeStyle = "gray";
+			ctx.lineWidth = 2;
+			// Horizontal axis
+			ctx.beginPath();
+			ctx.moveTo(0, 225);
+			ctx.lineTo(800, 225);
+			ctx.stroke();
+			ctx.closePath();
+			// Vertical axis
+			ctx.beginPath();
+			ctx.moveTo(400, 0);
+			ctx.lineTo(400, 450);
+			ctx.stroke();
+			ctx.closePath();
+			// Lightbeam path
+			ctx.lineWidth = 4;
+			// Lightbeam slope is 3 / 4
+			ctx.strokeStyle = "cyan";
+			ctx.beginPath();
+			ctx.moveTo(100, 450);
+			ctx.lineTo(700, 0);
+			ctx.closePath();
+			ctx.stroke();
+			// Points
+			drawPoint([400, 225], ctx);
+			drawPoint([600, 75], ctx);
+			// Text
+			ctx.font = "italic 24px MJXTEX-I";
+			ctx.strokeStyle = "black"
+			drawOText("S", 16, 32, ctx);
+			drawOText("A", 400 + 16, 225 + 16, ctx);
+			drawOText("B", 600 + 16, 75 + 16, ctx);
+			ctx.textAlign = "right";
+			ctx.fillText("y", 400 - 8, 32);
+			ctx.fillText("x", 800 - 32, 225 - 8);
+		}
+
+		{
+			const ctx = document.getElementById("canvas_1_5_2").getContext("2d");
+			ctx.fillStyle = "white";
+			ctx.strokeStyle = "gray";
+			ctx.lineWidth = 2;
+			// Horizontal axis
+			ctx.beginPath();
+			ctx.moveTo(0, 225);
+			ctx.lineTo(800, 225);
+			ctx.stroke();
+			ctx.closePath();
+			// Vertical axis
+			ctx.beginPath();
+			ctx.moveTo(400, 0);
+			ctx.lineTo(400, 450);
+			ctx.stroke();
+			ctx.closePath();
+			// Lightbeam path
+			ctx.lineWidth = 4;
+			// Lightbeam slope is 3 / 4
+			ctx.strokeStyle = "cyan";
+			ctx.beginPath();
+			ctx.moveTo(400, 450);
+			ctx.lineTo(400, 0);
+			ctx.closePath();
+			ctx.stroke();
+			// Points
+			drawPoint([400, 225], ctx);
+			drawPoint([400, 75], ctx);
+			// Text
+			ctx.font = "italic 24px MJXTEX-I";
+			ctx.strokeStyle = "black"
+			drawOText("S'", 16, 32, ctx);
+			drawOText("A", 400 + 16, 225 + 16, ctx);
+			drawOText("B", 400 + 16, 75 + 16, ctx);
+			ctx.textAlign = "right";
+			ctx.fillText("y'", 400 - 8, 32);
+			ctx.fillText("x'", 800 - 32, 225 - 8);
+		}
+
+		{
+			const canvas = document.getElementById("canvas_1_5_3");
+			const ctx = canvas.getContext("2d");
+			ctx.fillStyle = "white";
+			ctx.strokeStyle = "gray";
+			ctx.lineWidth = 2;
+			// Horizontal axis
+			ctx.beginPath();
+			ctx.moveTo(0, 225);
+			ctx.lineTo(800, 225);
+			ctx.stroke();
+			ctx.closePath();
+			// Vertical axis
+			ctx.beginPath();
+			ctx.moveTo(400, 0);
+			ctx.lineTo(400, 450);
+			ctx.stroke();
+			ctx.closePath();
+			// Graph
+			ctx.lineWidth = 4;
+			ctx.strokeStyle = "magenta";
+			const gInfo = new GraphInfo(canvas);
+			gInfo.graphArea = [[-1.5, 10], [1.5, -10]]
+			const points = pointsFromParametric(20, [Math.sqrt(Math.PI / 2), Math.sqrt(1 / 10)], t => [Math.cos(t**2), 1 / Math.sin(t**2)], gInfo);
+			drawPolyline(points, ctx);
+			// Text
+			ctx.font = "italic 24px MJXTEX-I";
+			ctx.strokeStyle = "black"
+			ctx.textAlign = "right";
+			ctx.fillText("γ", 400 - 8, 32);
+			ctx.fillText("v", 800 - 32, 225 - 8);
+		}
+
+		{
+			const ctx = document.getElementById("canvas_1_6_1").getContext("2d");
+			ctx.fillStyle = "white";
+			ctx.strokeStyle = "gray";
+			ctx.lineWidth = 2;
+			ctx.font = "24px MJXTEX-I";
+			ctx.textAlign = "right";
+			ctx.fillText("ct", 320 - 8, 32);
+			// ctx.font = "32px MJXTEX-B";
+			// const metrics = ctx.measureText("t");
+			// ctx.strokeRect(410 + metrics.actualBoundingBoxLeft, 50 + metrics.actualBoundingBoxDescent, metrics.actualBoundingBoxRight, - metrics.actualBoundingBoxAscent);
+			// ctx.fillText("t", 410, 50);
+			ctx.fillText("x", 640 - 32, 180 - 8);
+			// Horizontal axis
+			ctx.beginPath();
+			ctx.moveTo(0, 180);
+			ctx.lineTo(640, 180);
+			ctx.stroke();
+			ctx.closePath();
+			// Vertical axis
+			ctx.beginPath();
+			ctx.moveTo(320, 0);
+			ctx.lineTo(320, 360);
+			ctx.stroke();
+			ctx.closePath();
+			// Lightbeam path
+			ctx.strokeStyle = "cyan";
+			ctx.beginPath();
+			ctx.moveTo(80, 360);
+			ctx.lineTo(560, 0);
+			ctx.closePath();
+			ctx.stroke();
+			drawPoint([320, 180], ctx);
+		}
+	})();
+	</script>
 </body>
 </html>

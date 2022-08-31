@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Semiconductores</title>
+	<script type="text/javascript" src="../../js/mathjax_loader.js"></script>
+	<style type="text/css">
+		canvas {
+			border: 1px solid gray;
+		}
+
+		.center {
+			display: flex;
+			justify-content: center;
+		}
+
+		p {
+			margin: auto;
+			width: 7in;
+		}
+
+		body {
+			font-size: 1.2em;
+		}
+
+		.lb, .rb {
+			position: fixed;
+			width: 50px;
+			height: 100%;
+			z-index: 1;
+			top: 0;
+		}
+
+		.lb {
+			left: 0;
+		}
+
+		.rb {
+			right: 0;
+		}
+
+		.lb a, .rb a {
+			display: block;
+			width: 100%;
+			height: 100%;
+			/*background-color: gray;*/
+		}
+	</style>
+</head>
+<body>
+	<p>
+		\begin{align}
+			P' \dfrac{\sin{\alpha a}}{\alpha a} + \cos{\alpha a} = \cos{ka} \tag{3.24}\\
+			f(\alpha a) = P' \dfrac{\sin{\alpha a}}{\alpha a} + \cos{\alpha a} \tag{3.29}\\
+			f(\alpha a) = \cos{ka} \tag{3.30}
+		\end{align}
+	</p>
+	<div class="lb"><a href="semiconductors_2.html"></a></div>
+	<div class="rb"><a href="semiconductors_2.html"></a></div>
+	<div class="center"><canvas id="canvas_1" width="800" height="450"></canvas></div>
+	<p>
+		\(k\) <input id="input_k" type="range" min="0" max="20" value="10"> <output id="output_k"></output>
+	</p>
+	<script type="text/javascript" src="../../grapher/grapher.js"></script>
+	<script type="text/javascript">
+	(async function() {
+		await document.fonts.ready;
+		let exitFunction = false;
+		if(!checkResources()) {
+			// console.log("Trying to get resources");
+			await new Promise(r => { setTimeout(r, 1000); });
+			exitFunction = !checkResources();
+		}
+
+		function checkResources() {
+			let available = document.fonts.check("64px MJXTEX");
+			return available;
+		}
+
+		if(exitFunction) {
+			console.log("MathJax fonts not loaded");
+			return;
+		}
+
+		{
+			let k = 1;
+			const input_k = document.getElementById("input_k");
+			const output_k = document.getElementById("output_k");
+			const canvas = document.getElementById("canvas_1");
+			const ctx = canvas.getContext("2d");
+			const gInfo = new GraphInfo(canvas);
+			gInfo.graphArea = [[-5 * Math.PI, 5], [5 * Math.PI, -5]]
+			let points;
+			// console.log(points);	
+			function draw() {
+				ctx.clearRect(0, 0, 800, 450);
+				// Axis
+				ctx.lineWidth = 2;
+				ctx.strokeStyle = "gray";
+				// Horizontal axis
+				ctx.beginPath();
+				ctx.moveTo(0, 225);
+				ctx.lineTo(800, 225);
+				ctx.stroke();
+				ctx.closePath();
+				// Vertical axis
+				ctx.beginPath();
+				ctx.moveTo(400, 0);
+				ctx.lineTo(400, 450);
+				ctx.stroke();
+				ctx.closePath();
+				// Graph
+				ctx.lineWidth = 4;
+				ctx.strokeStyle = "#0f7";
+				points = pointsFromParametric(150, [-5 * Math.PI, 5 * Math.PI], t => [t, Math.cos(k * t)], gInfo);
+				// drawPoints(points, ctx);
+				drawPolyline(points, ctx);
+				// Text
+				ctx.strokeStyle = "white";
+				ctx.fillStyle = "black";
+				ctx.font = "italic 24px MJXTEX-I";
+				ctx.textAlign = "right";
+				drawOText("f", 400 - 8, 32, ctx);
+				drawOText("a", 800 - 32, 225 - 8, ctx);
+			}
+
+			input_k.oninput = () => {
+				k = Number(input_k.value) / 10;
+				draw();
+			}
+
+			draw();
+		}
+	})();
+	</script>
+</body>
+</html>
