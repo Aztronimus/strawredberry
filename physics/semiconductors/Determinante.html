@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Examen</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="viwport-width=device-width, initial-scale=1.0">
+	<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+	</script>
+	<style type="text/css">
+		body
+		{
+			background-color: black;
+			color: white;
+		}
+		p.text
+		{
+			padding: 0 15vw;
+		}
+	</style>
+</head>
+<body>
+	<p class="text">
+		Por regla de Cramer el determinante para una matríz 4x4 es:
+	</p>
+	<p>
+		\begin{align}
+			\det\left[\begin{array}{cccc}
+				a & b & c & d\\
+				e & f & g & h\\
+				i & j & k & l\\
+				m & n & o & p
+			\end{array}\right]
+			&=
+			a\cdot\det\left[\begin{array}{cccc}
+				f & g & h\\
+				j & k & l\\
+				n & o & p
+			\end{array}\right]
+			-
+			b\cdot\det\left[\begin{array}{cccc}
+				e & g & h\\
+				i & k & l\\
+				m & o & p
+			\end{array}\right]
+			+
+			c\cdot\det\left[\begin{array}{cccc}
+				e & f & h\\
+				i & j & l\\
+				m & n & p
+			\end{array}\right]
+			-
+			d\cdot\det\left[\begin{array}{cccc}
+				e & f & g\\
+				i & j & k\\
+				m & n & o
+			\end{array}\right]\\
+			\\
+			\det\left[\begin{array}{cccc}
+				f & g & h\\
+				j & k & l\\
+				n & o & p
+			\end{array}\right]
+			&=
+			fkp + joh + ngl - nkh - jgp - fol\\
+			\det\left[\begin{array}{cccc}
+				e & g & h\\
+				i & k & l\\
+				m & o & p
+			\end{array}\right]
+			&=
+			ekp + ioh + mgl - mkh - igp - eol\\
+			\det\left[\begin{array}{cccc}
+				e & f & h\\
+				i & j & l\\
+				m & n & p
+			\end{array}\right]
+			&=
+			ejp + inh + mfl - mjh - ifp - enl\\
+			\det\left[\begin{array}{cccc}
+				e & f & g\\
+				i & j & k\\
+				m & n & o
+			\end{array}\right]
+			&=
+			ejo + ing + mfk - mjg - ifo - enk\\
+			\\
+			&=afkp + ajoh + angl - ankh - ajgp - afol\\
+			&+bmkh + bigp + beol - bekp - bioh - bmgl\\
+			&+cejp + cinh + cmfl - cmjh - cifp - cenl\\
+			&+dmjg + difo + denk - dejo - ding - dmfk\\
+		\end{align}
+	</p>
+	<p class="text">
+		El determinante de Kronig Penny es:
+	</p>
+	<p id="out"></p>
+	<p class="text">
+		La solución del determinante es:
+	</p>
+	<p>
+		\begin{align}
+			\left(\frac{Q^2 - K^2}{2QK}\right)\sinh(Qb)\sin(Ka) + \cosh(Qb)\cos(Ka) = \cos((a + b)k)\\
+		\end{align}
+	</p>
+	<p class="text">
+		Utilizando las siguientes definiciones la ecuación anterior se transforma en:
+	</p>
+	<p>
+		\begin{align}
+			\sinh(Qb) &= \frac{e^{Qb} - e^{-Qb}}{2}&
+			\sin(Ka) &= \frac{i(e^{-iKa} - e^{iKa})}{2}\\
+			\cosh(Qb) &= \frac{e^{Qb} + e^{-Qb}}{2}&
+			\cos(Ka) &= \frac{e^{iKa} - e^{-iKa}}{2}\\
+		\end{align}
+		\begin{align}
+			\cos((a + b)k) &= \frac{e^{ik(a + b)} - e^{-ik(a + b)}}{2}\\
+		\end{align}
+		\begin{align}
+			\left(\frac{Q^2 - K^2}{2QK}\right)\left(\frac{e^{Qb} - e^{-Qb}}{2}\right)\left(\frac{i(e^{-iKa} - e^{iKa})}{2}\right) + \left(\frac{e^{Qb} + e^{-Qb}}{2}\right)\left(\frac{e^{iKa} - e^{-iKa}}{2}\right) = \left(\frac{e^{ik(a + b)} - e^{-ik(a + b)}}{2}\right)\\
+		\end{align}
+		\begin{align}
+			i(Q^2 - K^2)(e^{Qb} - e^{-Qb})(e^{-iKa} - e^{iKa}) + 2QK(e^{Qb} + e^{-Qb})(e^{iKa} - e^{-iKa}) = 4QK(e^{ik(a + b)} - e^{-ik(a + b)})\\
+		\end{align}
+	</p>
+	<p class="text">
+		Esto es igual a la solución del determinante:
+	</p>
+	<p>
+		\begin{align}
+			0 &=
+			iQ^2e^{Qb}(e^{-iKa} - e^{iKa})\\
+			&- iQ^2e^{-Qb}(e^{-iKa} - e^{iKa})\\
+			&- iK^2e^{Qb}(e^{-iKa} - e^{iKa})\\
+			&+ iK^2e^{-Qb}(e^{-iKa} - e^{iKa})\\
+			&+ 2QKe^{Qb}(e^{iKa} - e^{-iKa})\\
+			&+ 2QKe^{-Qb}(e^{iKa} - e^{-iKa})\\
+			&- 4QK(e^{ik(a + b)} - e^{-ik(a + b)})\\
+		\end{align}
+	</p>
+</body>
+<script type="text/javascript">
+	"use strict";
+	const out = document.getElementById("out");
+	function strSign(x, b = false) {
+		let a = Math.abs(x);
+		return (x > 0 ? "+" : "-") + (b ? (a == 1 ? "" : a) : "");
+	}
+	class obj
+	{
+		k = 1;
+		i = [0, "j", ""];
+		K = [0, "(\\alpha - k)", ""];
+		Q = [0, "Q", ""];
+		ea = [0, "e", "iKa"];
+		eb = [0, "e", "ik(a+b)"];
+		eQ = [0, "e", "Qb"];
+		constructor(k = 1, i = 0, K = 0, Q = 0, ea = 0, eb = 0, eQ = 0) {
+			this.k = k;
+			this.i[0] = i;
+			this.K[0] = K;
+			this.Q[0] = Q;
+			this.ea[0] = ea;
+			this.eb[0] = eb;
+			this.eQ[0] = eQ;
+		}
+		iSimplify() {
+			if(this.i[0] == 2) {
+				this.i[0] = 0;
+				this.k *= -1;
+			}
+		}
+		sameFactor(x) {
+			let b = true;
+			b &= this.i[0] == x.i[0];
+			b &= this.K[0] == x.K[0];
+			b &= this.Q[0] == x.Q[0];
+			b &= this.ea[0] == x.ea[0];
+			b &= this.eb[0] == x.eb[0];
+			b &= this.eQ[0] == x.eQ[0];
+			return b;
+		}
+		sum(x) {
+			if(this.sameFactor(x)) {
+				this.k += x.k;
+				return true;
+			}
+			return false;
+		}
+		toLaTeX() {
+			if(this.k == 0) return "+0";
+			let p = true,
+			s = "",
+			M = [this.i, this.K, this.Q, this.ea, this.eQ, this.eb];
+			for(let i of M) {
+				// console.log(p);
+				p &= i[0] == 0;
+			}
+			if(p) return (this.k > 0 ? "+" : "") + this.k;
+			s += `${strSign(this.k, true)}`;
+			for(let i of M) {
+				if(i[0]) {
+					s += i[1];
+					if(i[0] != 1) {
+						s += "^{";
+						if(i[2] != "") {
+							if(i[0] == -1) {
+								s += `-${i[2]}`;
+							} else {
+								s += `${i[0]}${i[2]}`;
+							}
+						} else {
+							s += `${i[0]}`;
+						}
+						s += "}";
+					} else if(i[2] != "") {
+						s += `^{${i[2]}}`;
+					}
+				}
+			}
+			return s;
+		}
+	}
+	function product() {
+		let R = [1, 0, 0, 0, 0, 0, 0];
+		for(let i of arguments) {
+			R[0] *= 	i.k;
+			R[1] += 	i.i[0];
+			R[2] += 	i.K[0];
+			R[3] += 	i.Q[0];
+			R[4] += 	i.ea[0];
+			R[5] += 	i.eb[0];
+			R[6] += 	i.eQ[0];
+			// console.log(i);
+		}
+		R = new obj(...R);
+		R.iSimplify();
+		return R;
+	}
+	function determinant4x4(
+		[
+			[a, b, c, d],
+			[e, f, g, h],
+			[i, j, k, l],
+			[m, n, o, p]
+		]
+	) {
+		let M = [
+			[
+				[a, f, k, p],
+				[a, j, o, h],
+				[a, n, g, l],
+				[b, m, k, h],
+				[b, i, g, p],
+				[b, e, o, l],
+				[c, e, j, p],
+				[c, i, n, h],
+				[c, m, f, l],
+				[d, m, j, g],
+				[d, i, f, o],
+				[d, e, n, k]
+			],
+			[
+				[a, n, k, h],
+				[a, j, g, p],
+				[a, f, o, l],
+				[b, e, k, p],
+				[b, i, o, h],
+				[b, m, g, l],
+				[c, m, j, h],
+				[c, i, f, p],
+				[c, e, n, l],
+				[d, e, j, o],
+				[d, i, n, g],
+				[d, m, f, k]
+			]
+		];
+		M[0] = M[0].map(x => product(...x))
+		M[1] = M[1].map(x => {
+			let r = product(...x);
+			r.k *= -1;
+			// r.eb -= 1;
+			return r;
+		});
+		return M[0].concat(M[1]);
+	}
+	let M = [
+		[
+			new obj(1),
+			new obj(1),
+			new obj(-1),
+			new obj(-1)
+		],
+		[
+			new obj(1, 1, 1),
+			new obj(-1, 1, 1),
+			new obj(-1, 0, 0, 1),
+			new obj(1, 0, 0, 1)
+		],
+		[
+			new obj(1, 0, 0, 0, 1),
+			new obj(1, 0, 0, 0, -1),
+			new obj(-1, 0, 0, 0, 0, 1, -1),
+			new obj(-1, 0, 0, 0, 0, 1, 1),
+		],
+		[
+			new obj(1, 1, 1, 0, 1, 0, 0),
+			new obj(-1, 1, 1, 0, -1, 0, 0),
+			new obj(-1, 0, 0, 1, 0, 1, -1),
+			new obj(1, 0, 0, 1, 0, 1, 1),
+		]
+	];
+	function detToLaTeX(M) {
+		let s = "", t = "";
+		for(let i of M) {
+			t += "c";
+			s += i.map(j => j.toLaTeX()).join("&") + "\\\\";
+		}
+		return `\\begin{array}{${t}}${s}\\end{array}`;
+	}
+	function resToLaTeX(M) {
+		let t,
+		s = "",
+		b = 0;
+		// m = determinant4x4(M);
+		for(let j of M) {
+			// j.eb[0] -= 1;
+			s += "&" + j.toLaTeX() + (b == 3 ? "\\\\" : "&");
+			if(b++ == 3) b = 0;
+		}
+		return s;
+	}
+	function sum(M) {
+		let N = [...M],
+		A = [];
+		// console.log(N[1]);
+		for(let i = 0, ii = N.length; i != ii; i++) {
+			if(A.includes(i)) continue;
+			for(let j = i + 1; j != ii; j++) {
+				if(A.includes(j)) continue;
+				if(N[i].sum(N[j])) {
+					A.push(j);
+					delete N[j];
+				}
+			}
+			// console.log(i, N[i]);
+		}
+		return N.filter(x => {return x != undefined});
+		// return N;
+	}
+	// determinant4x4(M);
+	out.innerHTML = "\\begin{align}\\det\\left[" + detToLaTeX(M) + "\\right]\\end{align}";
+	M = determinant4x4(M);
+	out.innerHTML += "\\begin{align}" + resToLaTeX(M) + "\\end{align}";
+	M = sum(M);
+	out.innerHTML += "\\begin{align}" + resToLaTeX(M) + "\\end{align}";
+	M.forEach(e => {e.eb[0] -= 1;});
+	out.innerHTML += "\\begin{align}" + resToLaTeX(M) + "\\end{align}";
+	M.forEach(e => {e.i[0] += 1; e.iSimplify()});
+	out.innerHTML += "\\begin{align}" + resToLaTeX(M) + "\\end{align}";
+	// console.log(determinant4x4(M));
+	// console.log(...sum(determinant4x4(M)));
+	//		&= afkp + ajoh + angl - ankh - ajgp - afol\\
+	// 		&+ bmkh + bigp + beol - bekp - bioh - bmgl\\
+	// 		&+ cejp + cinh + cmfl - cmjh - cifp - cenl\\
+	// 		&+ dmjg + difo + denk - dejo - ding - dmfk\\
+
+	// let a = new obj(1);
+	// let b = new obj(-1, 1, 1);
+	// let a = new obj(1, 1, 1, 1, 1, 1, 1);
+	// let b = new obj(3, -1, -1, -1, 0, -3, 0);
+	// let c = product(a, b);
+	// console.log(a.toLaTeX());
+	// console.log(b.toLaTeX());
+	// console.log(c.toLaTeX());
+</script>
+</html>
+<!-- 
+	http://www.phengkimving.com/calc_of_one_real_var/07_the_exp_and_log_func/07_06_the_hyp_func.htm
+	http://bingweb.binghamton.edu/~suzuki/SolidStatePhysics/15-4_Kronig_Penney_model.pdf
+
+	https://www.showme.com/sh/?h=XA1tRoW
+ -->

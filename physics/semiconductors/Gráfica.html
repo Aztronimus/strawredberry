@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Examen - Gráfica</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="viwport-width=device-width, initial-scale=1.0">
+	<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+	</script>
+	<style type="text/css">
+		body
+		{
+			background-color: black;
+			color: white;
+		}
+		p.text
+		{
+			padding: 0 15vw;
+		}
+		div.flex
+		{
+			display: flex;
+			justify-content: center;
+		}
+		canvas
+		{
+			border: 1px solid gray;
+			border-radius: 25px;
+		}
+		h1
+		{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h1>Modelo de Kronig-Penney</h1>
+	<div class="flex"><canvas width="900" height="350">Your browser does not support canvas</canvas></div>
+	<p>
+		\begin{align}
+			\left(\frac{Q^2 - K^2}{2QK}\right)\sinh(Qb)\sin(Ka) + \cosh(Qb)\cos(Ka) = \cos(k(a + b))\\
+		\end{align}
+		\begin{align}
+			K &= \sqrt{\frac{2mE}{\hbar^2}}&
+			Q &= \sqrt{\frac{2m(U_0 - E)}{\hbar^2}}\\
+		\end{align}
+	</p>
+	<!-- <p id="out"></p> -->
+	<div class="flex"><form autocomplete="off"><table>
+		<tr>
+			<td>\(U_0 / (\text{eV})\)</td>
+			<td>\(a / Å\)</td>
+			<td>\(b / Å\)</td>
+		</tr>
+		<tr>
+			<td><input
+				type="range"
+				value="10"
+				min="0"
+				max="40"
+				step="0.05"
+				oninput="
+					f_E.Yp[0] = this.value;
+					f_E.Yp[3] = this.value * 1.60218E-19 / n;
+					draw();
+				"
+			></td>
+			<td><input
+				type="range"
+				value="10"
+				min="0"
+				max="40"
+				step="0.05"
+				oninput="
+					f_E.Yp[1] = this.value;
+					// f_E.Yp[3] = this.value * 1.60218E-19 / 100;
+					draw();
+				"
+			></td>
+			<td><input
+				type="range"
+				value="0.4"
+				min="0"
+				max="7"
+				step="0.01"
+				oninput="
+					f_E.Yp[2] = this.value;
+					// f_E.Yp[3] = this.value * 1.60218E-19 / 100;
+					draw();
+				"
+			></td>
+		</tr>
+	</table></form></div>
+</body>
+<script type="text/javascript">
+	"use strict";
+	function drawFig(ctx, x, y) {
+		const r = 10;
+		ctx.beginPath();
+		ctx.moveTo(x - r, y - r);
+		ctx.lineTo(x - r, y + r);
+		ctx.lineTo(x + r, y + r);
+		ctx.lineTo(x + r, y - r);
+		ctx.closePath();
+		ctx.stroke();
+		ctx.beginPath();
+		ctx.arc(x + r, y + r, r, 0, 2 * Math.PI);
+		ctx.closePath();
+		ctx.stroke();
+	}
+	// function ctxTransform(ctx, h, a, b, c) {
+	// 	ctx.translate(c, h - c);
+	// 	ctx.transform(a, 0, 0, -b, 0, 0);
+	// }
+	// function coordTo(Q, d, s) {
+	// 	let R = [];
+	// 	for(let q of Q) {
+	// 		R.push(d + q * s);
+	// 	}
+	// 	return R;
+	// }
+	class parametricFunction {
+		constructor(X, Y, Xp = [], Yp = [], T = [0, 50]) {
+			this.Xp = Xp;
+			this.Yp = Yp;
+			this.X = x => X(x, ...this.Xp);
+			this.Y = y => Y(y, ...this.Yp);
+			this.T = T;
+		}
+	}
+	class graphic {
+		constructor(
+			canvas,
+			D = [0, 0],
+			S = [1, 1],
+			F = []
+		) {
+			this.canvas = canvas;
+			this.ctx = canvas.getContext("2d");
+			this.D = D;
+			this.S = S;
+			// array of parametric functions
+			this.F = F;
+		}
+		drawParametricFunc(ctx, X, Y, [t, tt]) {
+			ctx.beginPath();
+			ctx.moveTo(X(t), Y(t));
+			while(t++ != tt) {ctx.lineTo(X(t), Y(t));}
+			ctx.stroke();
+			ctx.closePath();
+		}
+		drawAxis(ctx, X = [-10, 100], Y = [-10, 100], P = [0, 0]) {
+			// draw X axis
+			ctx.beginPath();
+			ctx.moveTo(P[0] + X[0], P[1]);
+			ctx.lineTo(P[0] + X[1], P[1]);
+			ctx.stroke();
+			ctx.closePath();
+			// draw Y axis
+			ctx.beginPath();
+			ctx.moveTo(P[0], P[1] + Y[0]);
+			ctx.lineTo(P[0], P[1] + Y[1]);
+			ctx.stroke();
+			ctx.closePath();
+		}
+		graph() {
+			let c = this.ctx.strokeColor,
+			c2 = this.ctx.lineWidth;
+			for(let f of this.F) {
+				this.ctx.strokeStyle = "#00ff77";
+				this.ctx.lineWidth = 3.5;
+				this.drawParametricFunc(
+					this.ctx,
+					t => this.D[0] + f.X(t) * this.S[0],
+					t => this.D[1] + f.Y(t) * this.S[1],
+					f.T
+				);
+			}
+			this.ctx.strokeStyle = "white";
+			this.ctx.lineWidth = 2;
+			this.drawAxis(
+				this.ctx,
+				[- this.D[0], this.canvas.width - this.D[0]],
+				[- this.D[1], this.canvas.height - this.D[1]],
+				this.D
+			);
+			this.ctx.strokeStyle = c;
+			this.ctx.lineWidth = c2;
+		}
+	}
+
+	function f(E, U0 = 10, a = 10, b = 0.4) {
+		/*
+			a in Angstroms
+			b in Angstroms
+			U0 in eV
+		*/
+		a *= 1E-10;
+		b *= 1E-10;
+		const m = 9.10938356E-31,
+		hbar = 1.0545718E-34,
+		c1 = 2 * m / (hbar ** 2),
+		c2 = c1 * U0 * 1.60218E-19,
+		K2 = c1 * E,
+		Q2 = c2 - K2,
+		K = Math.sqrt(K2),
+		Q = Math.sqrt(Q2),
+		Ka = K * a,
+		Qb = Q * b;
+		return (Q2 - K2)/(2*K*Q)*Math.sinh(Qb)*Math.sin(Ka) + Math.cosh(Qb)*Math.cos(Ka);
+	}
+	// const out = document.getElementById("out");
+	let canvas = document.querySelector("canvas"),
+	ctx = canvas.getContext("2d"),
+	size = [canvas.width, canvas.height];
+	ctx.strokeStyle = "white";
+	ctx.lineWidth = 2;
+	let U0 = 10,
+	a = 10,
+	b = 0.4,
+	step = U0 * 1.60218E-19 / 100;
+	let n = 1000;
+
+	let f_E = new parametricFunction(
+		x => x / n * 100,
+		(x, U0, a, b, s) => f(x * s, U0, a, b),
+		[],
+		[10, 10, 0.4, 10 * 1.60218E-19 / n],
+		[1, n - 1]
+	),
+	fp = new parametricFunction(
+		x => 50*x,
+		x => 1,
+		[],
+		[],
+		[0, 2]
+	),
+	fn = new parametricFunction(
+		x => 50*x,
+		x => -1,
+		[],
+		[],
+		[0, 2]
+	),
+	myGraphic = new graphic(
+		canvas,
+		[50, 220],
+		[9, -35],
+		[f_E, fp, fn]
+	);
+	function draw() {
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		myGraphic.graph();
+	}
+	draw();
+</script>
+</html>
+<!-- 
+	http://www.phengkimving.com/calc_of_one_real_var/07_the_exp_and_log_func/07_06_the_hyp_func.htm
+	http://bingweb.binghamton.edu/~suzuki/SolidStatePhysics/15-4_Kronig_Penney_model.pdf
+
+	https://www.showme.com/sh/?h=XA1tRoW
+
+	Quantum chemical bonding
+	https://www.britannica.com/science/chemical-bonding/Molecular-orbitals-of-polyatomic-species
+ -->

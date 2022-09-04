@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width">
+	<title>Polynome calculator</title>
+	<script type="text/javascript" src="../js/mathjax_loader.js"></script>
+	<link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+	<header>
+		<h1><a href="../index.html">StrawRedBerry</a></h1>
+		<h2>Polynome calculator</h2>
+	</header>
+	<div id="center">
+		<div class="center">
+			<ul id="links">
+				<li class="group">StrawRedBerry</li>
+				<ul>
+					<li>Polynome calculator</li>
+				</ul>
+			</ul>
+		</div>
+		<div id="content">
+			<h1 id="toc_1">Space-time</h1>
+			<h2 id="toc_1_1">Space-time transformations</h2>
+			<p id="p_out"></p>
+		</div>
+		<div class="center">
+			<ol id="index">
+				<li class="group"><a href="#toc_1">Space-time</a></li>
+				<ol class="group">
+					<li><a href="#toc_1_1">Space-time transformations</a></li>
+					<li><a href="#toc_1_2">Space-time rules</a></li>
+					<li><a href="#toc_1_3">Quotes notation</a></li>
+					<li><a href="#toc_1_4">Galilean transformation</a></li>
+					<li><a href="#toc_1_5">Lorentz factor</a></li>
+					<li><a href="#toc_1_6">Lorentz transformation</a></li>
+					<li><a href="#toc_1_7">Time and space dilation and contraction</a></li>
+				</ol>
+			</ol>
+		</div>
+	</div>
+	<footer>
+		<h1>StrawRedBerry</h1>
+		<a href="https://macul.ciencias.uchile.cl/alejo/clases/2018_mechanics/">Funcionales</a>
+	</footer>
+	<script type="text/javascript" src="../grapher/grapher.js"></script>
+	<script type="text/javascript">
+		"use strict";
+		// literal deffinition:
+		// [v, e]
+
+		// monomial deffinition:
+		// [c, v_0, e_0, v_1, e_1, v_2, e_2, ...]
+		// [c, l_0, l_1, l_2, ...]
+		// "c" is the coefficient of the monomial
+		// "v_n" and "e_n" are the "n" variable "v" with its respective exponent "e"
+
+		// polynomial deffinition
+		// [m_0, m_1, m_2, ...]
+		// a polynomial is an array of monomials
+
+		// add, multiply and factorize currently are the only operations available for polynomials
+
+		function pc_sortMonomial(m) {
+			return [m[0], ...m.slice(1).sort((a, b) => a[0] - b[0])];
+		}
+
+		function pc_add2Monomials(a, b) {
+			// a and b are monomials
+			// monomials must be in its reduced form, counter-example: 3x^0 (3x)(2yx)
+			// monomials must be ordered, example: [1, 0, 1, 1, 2, 2, 4] x y^2 z^4, counter-example: [1, 1, 2, 0, 1, 2, 4] y^2 x z^4
+			if(b.length != a.length) { return false; }
+			const _i = a.length;
+			for(let i = 1; i < _i; ++i) {
+				if(a[i][0] != b[i][0] || a[i][1] != b[i][1]) { return false; }
+			}
+			return [b[0] + a[0], ...a.slice(1)];
+		}
+
+		function pc_add2Polynomials(a, b) {
+			// a and b are polynomials
+			// polynomials must be in its reduced form, counter-example: 3a + 1x + 2a
+			const r = [];
+			const k = [...b.keys()];
+			let s;
+			let t;
+			for(let m of a) {
+				s = true;
+				// try adding the monomial "m" to the monomials in "b"
+				for(let i in k) {
+					t = pc_add2Monomials(m, b[k[i]]);
+					if(t) {
+						// if the coefficient of the monomial is not zero...
+						if(t[0]) { r.push(t); }
+						k.splice(i, 1);
+						s = false;
+						break;
+					}
+				}
+				// if adding failed, then save the monomial in the resultant polynomial "r"
+				if(s) { r.push(m); }
+			}
+			// add all the elements of b that could not be added
+			for(let i of k) { r.push(b[i]); }
+			return r;
+		}
+
+		function pc_addPolynomials(arr) {
+			// arr is an array of polynomials of the form [p_0, p_1, p_2, ...]
+			return arr.reduce(pc_add2Polynomials);
+		}
+
+		function pc_multiply2Literals(a, b) {
+			// a and b are literals
+			if(a[0] == b[0]) { return [a[0], a[1] + b[1]]; }
+			return false;
+		}
+
+		function pc_multiply2Monomials(a, b) {
+			// a and b are polynomials
+			// monomials must have a coefficient different from 0
+			const r = [a[0] * b[0]];
+			const k = [...b.keys()];
+			k.shift();
+			const _i = a.length;
+			let s;
+			let t;
+			for(let i = 1; i < _i; ++i) {
+				s = true;
+				for(let j in k) {
+					t = pc_multiply2Literals(a[i], b[k[j]]);
+					if(t) {
+						if(t[1]) { r.push(t); };
+						s = false;
+						k.splice(j, 1);
+						break;
+					}
+				}
+				// if multiplying failed, then add the literal to the monomial
+				if(s) { r.push(a[i]); }
+			}
+			// add all the elements of b that could not be added
+			for(let i of k) { r.push(b[i]); }
+			return pc_sortMonomial(r);
+		}
+
+		function pc_multiplyMonomialPolynomial(m, p) {
+			// m is a monomial
+			// p is a polynomial
+			const r = [];
+			for(let n of p) { r.push(pc_multiply2Monomials(m, n)); }
+			return r;
+		}
+
+		function pc_multiply2Polynomials(a, b) {
+			// a and b are polynomials
+			const arr = [];
+			for(let m of a) { arr.push(pc_multiplyMonomialPolynomial(m, b)); }
+			return pc_addPolynomials(arr);
+		}
+
+		function pc_multiplyPolynomials(arr) {
+			// arr is an array of polynomials of the form [p_0, p_1, p_2, ...]
+			return arr.reduce(pc_multiply2Polynomials);
+		}
+
+		function pc_polynomeToLaTeX(p, a) {
+			// "p" is a polynome
+			// "a" is an array of strings containing the LaTeX representations of the variables of the polynome
+			let s = "";
+			let _i;
+			for(let m of p) {
+				s += `+ ${m[0]} `;
+				_i = m.length;
+				for(let i = 1; i < _i; ++i) {
+					s += `${a[m[i][0]]}^{${m[i][1]}} `;
+				}
+			}
+			return s;
+		}
+
+		{
+			const a = ["x", "y", "z", "e"];
+
+			// y^2 z^2
+			const m0 = [1, [1, 2], [2, 2]];
+			// y^2 e^2
+			const m1 = [1, [1, -2], [3, 2]];
+			const m2 = [1, [1, 2], [2, 2], [3, 1]];
+			const m3 = [-1, [1, 2], [2, 2]];
+			const m4 = [5, [0, 1]];
+			const m5 = pc_multiply2Monomials(m0, m1);
+
+			const p0 = [m0, m1, m2];
+			const p1 = [m4, m3, m1, m2];
+			const p2 = pc_add2Polynomials(p0, p1);
+			const p3 = pc_multiplyMonomialPolynomial(m5, p0);
+
+			const p_out = document.getElementById("p_out");
+			p_out.innerText += "\\begin{align}";
+			p_out.innerText += `${pc_polynomeToLaTeX(p0, a)}\\\\`;
+			p_out.innerText += `${pc_polynomeToLaTeX(p1, a)}\\\\`;
+			p_out.innerText += `${pc_polynomeToLaTeX(p2, a)}\\\\`;
+			p_out.innerText += `${pc_polynomeToLaTeX([m0], a)}\\\\`;
+			p_out.innerText += `${pc_polynomeToLaTeX([m1], a)}\\\\`;
+			p_out.innerText += `${pc_polynomeToLaTeX([m5], a)}\\\\`;
+			p_out.innerText += `${pc_polynomeToLaTeX(p3, a)}\\\\`;
+			p_out.innerText += "\\end{align}";
+		}
+
+		{
+			const a = ["a", "b", "c", "d"];
+
+			// a
+			const m0 = [1, [0, 1]];
+			// b
+			const m1 = [1, [1, 1]];
+			// c
+			const m2 = [1, [2, 1]];
+			// d
+			const m3 = [1, [3, 1]];
+
+			const p0 = [[5], m0, m1, m2];
+			const p1 = [[3], [1, [0, -1]], [1, [1, 2]]];
+			const p2 = pc_multiply2Polynomials(p0, p1);
+			// const p6 = pc_add2Polynomials(p3, p4);
+
+			// console.log(pc_add2Monomials(m0, m3));
+
+			const p_out = document.getElementById("p_out");
+			p_out.innerText += "\\begin{align}";
+			p_out.innerText += `${pc_polynomeToLaTeX(p0, a)}\\\\`;
+			p_out.innerText += `${pc_polynomeToLaTeX(p1, a)}\\\\`;
+			p_out.innerText += `${pc_polynomeToLaTeX(p2, a)}\\\\`;
+			p_out.innerText += "\\end{align}";
+		}
+	</script>
+</body>
+</html>
+<!-- 
+https://www.dcode.fr/polynomial-factorization
+ -->

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width">
+	<title>Semiconductors</title>
+	<script type="text/javascript" src="../../js/mathjax_loader.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../style.css">
+</head>
+<body>
+	<header>
+		<h1><a href="../../index.html">StrawRedBerry</a></h1>
+		<h2>Semiconductors</h2>
+	</header>
+	<div id="center">
+		<div class="center">
+			<ul id="links">
+				<li class="group">Quantum mechanics</li>
+				<ul>
+					<li><a href="quantum_mechanichs_1.html">Quantum mechanics</a></li>
+					<li><a href="double_slit.html">Double slit</a></li>
+				</ul>
+				<li><a href="analytic_mechanics.html">Analytic mechanics</a></li>
+				<li class="group">Relativity</li>
+				<ul>
+					<li><a href="relativity_1.html">Special relativity 1</a></li>
+					<li><a href="relativity_2.html">Special relativity 2</a></li>
+					<li><a href="relativity_3.html">Special relativity 3</a></li>
+					<li><a href="drawing.html">Visualizing curved space (work in progress)</a></li>
+					<li><a href="general_relativity.html">Special relativity</a></li>
+					<li><a href="general_relativity_2.html">Tensors</a></li>
+					<li><a href="general_relativity_3.html">Tensors (in matrix notation)</a></li>
+					<li><a href="general_relativity_4.html">Tensors (in tensor notation)</a></li>
+				</ul>
+				<li class="group">Electromagnetism</li>
+				<ul>
+					<li><a href="maxwell equations_1.html">Linear algebra</a></li>
+					<li><a href="maxwell_equations_2.html">Visualizing electric field</a></li>
+					<li><a href="maxwell_equations_3.html">Green's theorem of circulation</a></li>
+					<li><a href="maxwell_equations_4.html">Divergence theorem</a></li>
+					<li><a href="maxwell_equations_5.html">Gauss's theorem of flux</a></li>
+					<li><a href="maxwell_equations_6.html">Ampere-Maxwell law</a></li>
+					<li><a href="maxwell_equations_7.html">Faraday-Lenz law</a></li>
+					<li><a href="maxwell_equations_8.html">Electromagnetic waves</a></li>
+					<li><a href="maxwell_equations_9.html">Electromechanics</a></li>
+				</ul>
+				<li><a href="optics.html">Snell's law</a></li>
+				<li><a href="tensors.html">Tensors</a></li>
+			</ul>
+		</div>
+		<div id="content">
+			<h1 id="toc_1">Kronig-Penney Model</h1>
+			<h2 id="toc_1_1">Model</h2>
+			<p>Periodic Potential function</p>
+			<p>
+				\begin{align}
+					V(x) &= \left\lbrace
+						\begin{array}{lcl}
+							0 & \text{if} & 0 < x < a\\
+							V_0 & \text{if} & -b < x < 0\\
+						\end{array}
+					\right.\\
+					\\
+					V(x) &= V(x + a + b)
+				\end{align}
+			</p>
+			<p>Bloch theorem.</p>
+			<p>
+				\begin{align}
+					\psi(x) &= u(x)e^{jkx}\\
+					\psi(x, t) &= \psi(x)\phi(t) = u(x)e^{jkx} \cdot e^{-j(E/\hbar)t}\\
+					\psi(x, t) &= u(x)e^{j(kx-(E/\hbar)t)}\\
+				\end{align}
+			</p>
+			<p>Time-independent Schrödinger equation (used to get the stationary states of the system).</p>
+			</p>
+				\begin{align}
+					\frac{\partial^2 \psi(x, t)}{\partial x^2} + \gamma^2\psi(x, t) = 0
+				\end{align}
+				\begin{align}
+					\gamma^2 &= \frac{2m}{\hbar^2}(E - V(x))
+				\end{align}
+			</p>
+			<h2 id="toc_1_2">Solution</h2>
+			<p>Substituting in Schrödinger equation.</p>
+			<p>
+				\begin{align}
+					\frac{\partial \psi(x, t)}{\partial x} &= \frac{\partial}{\partial x} (\psi(x) \phi(t)) = \frac{d\psi(x)}{dx} \phi(t)\\
+					\\
+					\frac{d\psi(x)}{dx} &= \frac{d}{dx} \left(u(x)e^{jkx}\right)\\
+					&= \frac{du(x)}{dx}e^{jkx} + u(x)\frac{de^{jkx}}{dx}\\
+					&= \frac{du(x)}{dx}e^{jkx} + u(x)e^{jkx}jk\\
+					&= e^{jkx}\left(\frac{du(x)}{dx} + u(x)jk \right)\\
+					\\
+					\frac{d^2 \psi(x)}{dx^2} &= \frac{d}{dx} \left( e^{jkx}\left(\frac{du(x)}{dx} + u(x)jk \right) \right)\\
+					&= \frac{de^{jkx}}{dx} \left( \frac{du(x)}{dx} + u(x)jk \right) + e^{jkx} \frac{d}{dx} \left( \frac{du(x)}{dx} + u(x)jk \right)\\
+					&= e^{jkx} jk \left( \frac{du(x)}{dx} + u(x)jk \right) + e^{jkx} \left( \frac{d^2 u(x)}{dx^2} + \frac{du(x)}{dx}jk \right)\\
+					&= e^{jkx} \left( 2jk \frac{du(x)}{dx} - k^2 u(x) + \frac{d^2 u(x)}{dx^2} \right)\\
+					\\
+					\frac{\partial^2 \psi(x, t)}{\partial x^2} &= \frac{d^2\psi(x)}{dx^2} \phi(t)\\
+					\\
+					&= \left( 2jk \frac{du(x)}{dx} - k^2 u(x) + \frac{d^2 u(x)}{dx^2} \right) e^{jkx} \phi(t)
+				\end{align}
+			</p>
+			<p>We finally get:</p>
+			<p>
+				\begin{align}
+					&\frac{\partial^2 \psi(x, t)}{\partial x^2} + \gamma^2\psi(x, t) = 0\\
+					&\left( 2jk \frac{du(x)}{dx} - k^2 u(x) + \frac{d^2 u(x)}{dx^2} \right) e^{jkx} \phi(t) + \gamma^2 u(x) e^{jkx} \phi(t) = 0\\
+					&\frac{d^2 u(x)}{dx^2} + 2jk \frac{du(x)}{dx} + \left(\gamma^2 - k^2 \right) u(x) = 0\\
+				\end{align}
+			</p>
+			<p>Solving this differential equation gives us:</p>
+			<p>
+				\begin{align}
+					u(x) &= Ee^{j\left(\gamma - k\right)x} + Fe^{- j\left(\gamma + k\right)x}\\
+					&= \left( Ee^{j\gamma x} + Fe^{- j\gamma x} \right) e^{-jkx}
+				\end{align}
+			</p>
+			<p>Considering that \(\gamma\) as a constant in regions I and II (not in the borders), we get:</p>
+			<p>
+				\begin{align}
+					\frac{du(x)}{dx} &= j \left( \gamma \left( Ee^{j \gamma x} - Fe^{- j \gamma x} \right) - k \left(Ee^{j \gamma x} + Fe^{- j \gamma x} \right) \right) e^{-jkx}\\
+					&= j \left( E (\gamma - k) e^{j \gamma x} - F (\gamma + k) e^{- j \gamma x} \right) e^{-jkx}\\
+				\end{align}
+			</p>
+			<p>Considering region I (where \(V(x) = 0\)):</p>
+			<p>
+				\begin{align}
+					\frac{d^2 u_1(x)}{dx^2} + 2jk \frac{du_1(x)}{dx} + (\alpha^2 - k^2) u_1(x) = 0
+				\end{align}
+				\begin{align}
+					u_1(x) &= \left(Ae^{j \alpha x} + Be^{- j \alpha x}\right) e^{-jkx}\\
+				\end{align}
+				\begin{align}
+					\frac{du_1(x)}{dx} &= j \left( A (\alpha - k) e^{j \alpha x} - B (\alpha + k) e^{- j \alpha x} \right) e^{-jkx}\\
+				\end{align}
+				\begin{align}
+					\alpha^2 = \frac{2mE}{\hbar^2}
+				\end{align}
+				Considering region II (where \(V(x) = V_0\)):
+				\begin{align}
+					\frac{d^2 u_2(x)}{dx^2} + 2jk \frac{du_2(x)}{dx} + \left(\beta^2 - k^2 \right) u_2(x) = 0\\
+				\end{align}
+				\begin{align}
+					u_2(x) &= \left( Ce^{ j \beta x} + De^{- j \beta x} \right) e^{-jkx}
+				\end{align}
+				\begin{align}
+					\frac{du_2(x)}{dx} &= j \left( C (\beta - k) e^{j \beta x} - D (\beta + k) e^{- j \beta x} \right) e^{-jkx}\\
+				\end{align}
+				\begin{align}
+					\beta^2 &= \frac{2m}{\hbar^2}(E - V_0)
+				\end{align}
+			</p>
+			<p>Cauchy boundary conditions</p>
+			<p>
+				\begin{align}
+					u_1(0) &= u_2(0)\\
+					A + B &= C + D
+				\end{align}
+				\begin{align}
+					\left.\frac{du_1}{dx}\right|_{x = 0} &= \left.\frac{du_2}{dx}\right|_{x = 0}\\
+					A (\alpha - k) - B (\alpha + k) &= C (\beta - k) - D (\beta + k)
+				\end{align}
+				\begin{align}
+					u_1(a) &= u_2(-b)\\
+					Ae^{j\left(\alpha - k\right)a} + Be^{- j\left(\alpha + k\right)a} &= Ce^{-j\left(\beta - k\right)b} + De^{j\left(\beta + k\right)b}
+				\end{align}
+				\begin{align}
+					\left.\frac{du_1}{dx}\right|_{x = a} &= \left.\frac{du_2}{dx}\right|_{x = -b}\\
+					A (\alpha - k) e^{j (\alpha - k) a} - B (\alpha + k) e^{- j (\alpha + k) a} &= C (\beta - k) e^{- j (\beta - k) b} - D (\beta + k) e^{j (\beta + k) b}
+				\end{align}
+			</p>
+			<p>Determinant</p>
+			<p>
+				\begin{align}					
+					\left(\begin{array}{ccc}
+						1 & 1 & - 1 & - 1\\
+						\alpha - k & - (\alpha + k) & - (\beta - k) & \beta + k\\
+						e^{j\left(\alpha - k\right)a} & e^{- j\left(\alpha + k\right)a} & - e^{-j\left(\beta - k\right)b} & - e^{j\left(\beta + k\right)b}\\
+						(\alpha - k) e^{j (\alpha - k) a} & - (\alpha + k) e^{- j (\alpha + k) a} & - (\beta - k) e^{- j (\beta - k) b} & (\beta + k) e^{j (\beta + k) b}
+					\end{array}\right)
+				\end{align}
+			</p>
+			<p>By Cramer's rule, the determinant of a \(4 \times 4\) matrix is:</p>
+			<p>
+				\begin{align}
+					\left|\begin{array}{cccc}
+						a & b & c & d\\
+						e & f & g & h\\
+						i & j & k & l\\
+						m & n & o & p
+					\end{array}\right|
+					&=
+					a\cdot\left|\begin{array}{cccc}
+						f & g & h\\
+						j & k & l\\
+						n & o & p
+					\end{array}\right|
+					-
+					b\cdot\left|\begin{array}{cccc}
+						e & g & h\\
+						i & k & l\\
+						m & o & p
+					\end{array}\right|
+					+
+					c\cdot\left|\begin{array}{cccc}
+						e & f & h\\
+						i & j & l\\
+						m & n & p
+					\end{array}\right|
+					-
+					d\cdot\left|\begin{array}{cccc}
+						e & f & g\\
+						i & j & k\\
+						m & n & o
+					\end{array}\right|\\
+					\\
+					\left|\begin{array}{cccc}
+						f & g & h\\
+						j & k & l\\
+						n & o & p
+					\end{array}\right|
+					&=
+					fkp + joh + ngl - nkh - jgp - fol\\
+					\left|\begin{array}{cccc}
+						e & g & h\\
+						i & k & l\\
+						m & o & p
+					\end{array}\right|
+					&=
+					ekp + ioh + mgl - mkh - igp - eol\\
+					\left|\begin{array}{cccc}
+						e & f & h\\
+						i & j & l\\
+						m & n & p
+					\end{array}\right|
+					&=
+					ejp + inh + mfl - mjh - ifp - enl\\
+					\left|\begin{array}{cccc}
+						e & f & g\\
+						i & j & k\\
+						m & n & o
+					\end{array}\right|
+					&=
+					ejo + ing + mfk - mjg - ifo - enk\\
+					\\
+					&=afkp + ajoh + angl - ankh - ajgp - afol\\
+					&+bmkh + bigp + beol - bekp - bioh - bmgl\\
+					&+cejp + cinh + cmfl - cmjh - cifp - cenl\\
+					&+dmjg + difo + denk - dejo - ding - dmfk\\
+				\end{align}
+			</p>
+		</div>
+		<div class="center">
+			<ol id="index">
+				<li class="group"><a href="#toc_1">Kronig-Penney Model</a></li>
+				<ol>
+					<li><a href="#toc_1_1">Model</a></li>
+					<li><a href="#toc_1_2">Solution</a></li>
+
+				</ol>
+			</ol>
+		</div>
+	</div>
+	<footer>
+		<h1>StrawRedBerry</h1>
+		<a href="https://macul.ciencias.uchile.cl/alejo/clases/2018_mechanics/">Funcionales</a>
+	</footer>
+	<script type="text/javascript" src="../../grapher/grapher.js"></script>
+	<script type="text/javascript">
+	(async function() {
+		await document.fonts.ready;
+		let exitFunction = false;
+		if(!checkResources()) {
+			// console.log("Trying to get resources");
+			await new Promise(r => { setTimeout(r, 1000); });
+			exitFunction = !checkResources();
+		}
+
+		function checkResources() {
+			let available = document.fonts.check("64px MJXTEX-B");
+			return available;
+		}
+
+		if(exitFunction) {
+			console.log("MathJax fonts not loaded");
+			return;
+		}
+
+		{
+			const ctx = document.getElementById("canvas_1_5_1").getContext("2d");
+			ctx.fillStyle = "white";
+			ctx.strokeStyle = "gray";
+			ctx.lineWidth = 2;
+			// Horizontal axis
+			ctx.beginPath();
+			ctx.moveTo(0, 225);
+			ctx.lineTo(800, 225);
+			ctx.stroke();
+			ctx.closePath();
+			// Vertical axis
+			ctx.beginPath();
+			ctx.moveTo(400, 0);
+			ctx.lineTo(400, 450);
+			ctx.stroke();
+			ctx.closePath();
+			// Lightbeam path
+			ctx.lineWidth = 4;
+			// Lightbeam slope is 3 / 4
+			ctx.strokeStyle = "cyan";
+			ctx.beginPath();
+			ctx.moveTo(100, 450);
+			ctx.lineTo(700, 0);
+			ctx.closePath();
+			ctx.stroke();
+			// Points
+			drawPoint([400, 225], ctx);
+			drawPoint([600, 75], ctx);
+			// Text
+			ctx.font = "italic 24px MJXTEX-I";
+			ctx.strokeStyle = "black"
+			drawOText("S", 16, 32, ctx);
+			drawOText("A", 400 + 16, 225 + 16, ctx);
+			drawOText("B", 600 + 16, 75 + 16, ctx);
+			ctx.textAlign = "right";
+			ctx.fillText("y", 400 - 8, 32);
+			ctx.fillText("x", 800 - 32, 225 - 8);
+		}
+
+		{
+			const ctx = document.getElementById("canvas_1_5_2").getContext("2d");
+			ctx.fillStyle = "white";
+			ctx.strokeStyle = "gray";
+			ctx.lineWidth = 2;
+			// Horizontal axis
+			ctx.beginPath();
+			ctx.moveTo(0, 225);
+			ctx.lineTo(800, 225);
+			ctx.stroke();
+			ctx.closePath();
+			// Vertical axis
+			ctx.beginPath();
+			ctx.moveTo(400, 0);
+			ctx.lineTo(400, 450);
+			ctx.stroke();
+			ctx.closePath();
+			// Lightbeam path
+			ctx.lineWidth = 4;
+			// Lightbeam slope is 3 / 4
+			ctx.strokeStyle = "cyan";
+			ctx.beginPath();
+			ctx.moveTo(400, 450);
+			ctx.lineTo(400, 0);
+			ctx.closePath();
+			ctx.stroke();
+			// Points
+			drawPoint([400, 225], ctx);
+			drawPoint([400, 75], ctx);
+			// Text
+			ctx.font = "italic 24px MJXTEX-I";
+			ctx.strokeStyle = "black"
+			drawOText("S'", 16, 32, ctx);
+			drawOText("A", 400 + 16, 225 + 16, ctx);
+			drawOText("B", 400 + 16, 75 + 16, ctx);
+			ctx.textAlign = "right";
+			ctx.fillText("y'", 400 - 8, 32);
+			ctx.fillText("x'", 800 - 32, 225 - 8);
+		}
+
+		{
+			const canvas = document.getElementById("canvas_1_5_3");
+			const ctx = canvas.getContext("2d");
+			ctx.fillStyle = "white";
+			ctx.strokeStyle = "gray";
+			ctx.lineWidth = 2;
+			// Horizontal axis
+			ctx.beginPath();
+			ctx.moveTo(0, 225);
+			ctx.lineTo(800, 225);
+			ctx.stroke();
+			ctx.closePath();
+			// Vertical axis
+			ctx.beginPath();
+			ctx.moveTo(400, 0);
+			ctx.lineTo(400, 450);
+			ctx.stroke();
+			ctx.closePath();
+			// Graph
+			ctx.lineWidth = 4;
+			ctx.strokeStyle = "magenta";
+			const gInfo = new GraphInfo(canvas);
+			gInfo.graphArea = [[-1.5, 10], [1.5, -10]]
+			const points = pointsFromParametric(20, [Math.sqrt(Math.PI / 2), Math.sqrt(1 / 10)], t => [Math.cos(t**2), 1 / Math.sin(t**2)], gInfo);
+			drawPolyline(points, ctx);
+			// Text
+			ctx.font = "italic 24px MJXTEX-I";
+			ctx.strokeStyle = "black"
+			ctx.textAlign = "right";
+			ctx.fillText("γ", 400 - 8, 32);
+			ctx.fillText("v", 800 - 32, 225 - 8);
+		}
+
+		{
+			const ctx = document.getElementById("canvas_1_6_1").getContext("2d");
+			ctx.fillStyle = "white";
+			ctx.strokeStyle = "gray";
+			ctx.lineWidth = 2;
+			ctx.font = "24px MJXTEX-I";
+			ctx.textAlign = "right";
+			ctx.fillText("ct", 320 - 8, 32);
+			// ctx.font = "32px MJXTEX-B";
+			// const metrics = ctx.measureText("t");
+			// ctx.strokeRect(410 + metrics.actualBoundingBoxLeft, 50 + metrics.actualBoundingBoxDescent, metrics.actualBoundingBoxRight, - metrics.actualBoundingBoxAscent);
+			// ctx.fillText("t", 410, 50);
+			ctx.fillText("x", 640 - 32, 180 - 8);
+			// Horizontal axis
+			ctx.beginPath();
+			ctx.moveTo(0, 180);
+			ctx.lineTo(640, 180);
+			ctx.stroke();
+			ctx.closePath();
+			// Vertical axis
+			ctx.beginPath();
+			ctx.moveTo(320, 0);
+			ctx.lineTo(320, 360);
+			ctx.stroke();
+			ctx.closePath();
+			// Lightbeam path
+			ctx.strokeStyle = "cyan";
+			ctx.beginPath();
+			ctx.moveTo(80, 360);
+			ctx.lineTo(560, 0);
+			ctx.closePath();
+			ctx.stroke();
+			drawPoint([320, 180], ctx);
+		}
+	})();
+	</script>
+</body>
+</html>
+
+<!-- 
+https://en.wikipedia.org/wiki/Schr%C3%B6dinger_equation
+https://imbooz.com/engineering-physics/schrodinger-wave-equation-time-dependent-and-time-independent-wave-equation/
+ -->
+
+<!-- ABCDEF G HIJKLM
+NOPQRS T UVWXYZ -->

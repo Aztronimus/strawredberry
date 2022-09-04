@@ -56,16 +56,15 @@
 			f(\alpha a) = \cos{ka} \tag{3.30}
 		\end{align}
 	</p>
-	<div class="lb"><a href="semiconductors_2.html"></a></div>
-	<div class="rb"><a href="semiconductors_4.html"></a></div>
+	<div class="lb"><a href="semiconductors_3.html"></a></div>
+	<div class="rb"><a href="semiconductors_5.html"></a></div>
 	<div class="center"><canvas id="canvas_1" width="800" height="450"></canvas></div>
 	<p>
 		\(P'\) <input id="input_p" type="range" min="0" max="20" value="10"> <output id="output_p"></output>
 	</p>
 	<p>
 		\begin{align}
-			\cos{ka} &= 1 &\text{si}& &ka &= 2n \cdot \pi & \forall n \in \mathbb{Z}\\
-			\cos{ka} &= -1 &\text{si}& &ka &= (2n + 1) \cdot \pi & \forall n \in \mathbb{Z}\\
+			k = \dfrac{\text{acos}\ {f}}{a}
 		\end{align}
 	</p>
 	<script type="text/javascript" src="../../grapher/grapher.js"></script>
@@ -96,8 +95,9 @@
 			const canvas = document.getElementById("canvas_1");
 			const ctx = canvas.getContext("2d");
 			const gInfo = new GraphInfo(canvas);
-			gInfo.graphArea = [[-5 * Math.PI, 4], [5 * Math.PI, -4]]
+			gInfo.graphArea = [[-1.5 * Math.PI, 8 * 22], [1.5 * Math.PI, -1 * 22]];
 			let points;
+
 			// console.log(points);
 			function getIntersection(a, b, v) {
 				// a and b are points of the form [x, y]
@@ -134,20 +134,40 @@
 				}
 			}
 
+			function getPointsFromRegion(p, q) {
+				// p are the delimiters
+				// q are the points
+				let _i = p.length - 1;
+				const r = [];
+				for(let i = 0; i < _i; i += 2) {
+					r.push(p[i]);
+					r.push(...q.filter(v => v[0] > p[i][0] && v[0] < p[i + 1][0]));
+					r.push(p[i + 1]);
+				}
+				// console.log(r);
+				return r;
+			}
+
 			function draw() {
 				// Computation
-				points = pointsFromParametric(150, [-5 * Math.PI, 5 * Math.PI], t => [t, p * Math.sin(t) / t + Math.cos(t)]);
+				points = pointsFromParametric(300, [-5 * Math.PI, 5 * Math.PI], t => [t, p * Math.sin(t) / t + Math.cos(t)]);
 				let points_2 = getPoints(points, ctx);
-				points = gInfo.mapToViewportCoord(points);
-				points_2 = gInfo.mapToViewportCoord(points_2);
+				let points_3 = getPointsFromRegion(points_2, points).map(p => [Math.acos(p[1]), p[0]**2]);
+				points_3.push(...points_3.map(p => [-p[0], p[1]]));
+
+				points_3 = gInfo.mapToViewportCoord(points_3);
+				// console.log(points_3);
+				// points = gInfo.mapToViewportCoord(points);
+				// points_2 = gInfo.mapToViewportCoord(points_2);
+				// Drawing
 				ctx.clearRect(0, 0, 800, 450);
 				// Axis
 				ctx.lineWidth = 2;
 				ctx.strokeStyle = "gray";
 				// Horizontal axis
 				ctx.beginPath();
-				ctx.moveTo(0, 225);
-				ctx.lineTo(800, 225);
+				ctx.moveTo(0, 400);
+				ctx.lineTo(800, 400);
 				ctx.stroke();
 				ctx.closePath();
 				// Vertical axis
@@ -156,24 +176,18 @@
 				ctx.lineTo(400, 450);
 				ctx.stroke();
 				ctx.closePath();
-				// Fill Polygons
-				ctx.fillStyle = "#f08";
-				ctx.globalAlpha = 0.2;
-				drawRectsFromPoints(points_2, ctx);
-				ctx.globalAlpha = 1.0;
 				// Graph
 				ctx.lineWidth = 4;
-				ctx.strokeStyle = "#f08";
-				// console.log(p1);
-				drawPolyline(points, ctx);
-				// drawPoints(points_2, ctx);
+				ctx.strokeStyle = "#f07";
+				ctx.fillStyle = "#07f";
+				drawPoints(points_3, ctx);
 				// Text
 				ctx.strokeStyle = "white"
 				ctx.fillStyle = "black";
 				ctx.font = "italic 24px MJXTEX-I";
 				ctx.textAlign = "right";
-				drawOText("f", 400 - 8, 32, ctx);
-				drawOText("αa", 800 - 32, 225 - 8, ctx);
+				drawOText("E", 400 - 8, 32, ctx);
+				drawOText("k", 800 - 32, 400 - 8, ctx);
 			}
 
 			input_p.oninput = () => {
