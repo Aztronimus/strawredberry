@@ -195,7 +195,8 @@
 			}
 			// add all the elements of b that could not be added
 			for(let i of k) { r.push(b[i]); }
-			return r;
+			if(r.length) { return r; }
+			return 0;
 		}
 
 		function pc_addPolynomials(arr) {
@@ -205,12 +206,22 @@
 
 		function pc_multiply2Literals(a, b) {
 			// a and b are literals
-			if(a[0] == b[0]) { return [a[0], a[1] + b[1]]; }
+			if(a[0] == b[0]) {
+				const ta = typeof a[1];
+				const tb = typeof b[1];
+				if(ta == tb) {
+					if(ta == "number") { return [a[0], a[1] + b[1]]; }
+					return [a[0], pc_add2Polynomials(a[1], b[1])];
+				}
+				if(ta == "number") { return [a[0], pc_add2Polynomials([[a[1]]], b[1])]; }
+				else if(tb == "number") { return [a[0], pc_add2Polynomials(a[1], [[b[1]]])]; }
+
+			}
 			return false;
 		}
 
 		function pc_multiply2Monomials(a, b) {
-			// a and b are polynomials
+			// a and b are monomials
 			// monomials must have a coefficient different from 0
 			const r = [a[0] * b[0]];
 			const k = [...b.keys()];
@@ -262,10 +273,11 @@
 			// "a" is an array of strings containing the LaTeX representations of the variables of the polynome
 			let s = "";
 			let _i;
-			let t;	
+			let t;
 			for(let m of p) {
-				if(m[0] != 1) { s += `+ ${m[0]} `; }
-				else { s += `+ `; }
+				if (m[0] > 0) { s += `+ `; }
+				if (m[0] < 0) { s += `- `; }
+				if(Math.abs(m[0]) != 1 || m.length == 1) { s += `${Math.abs(m[0])} `; }
 				_i = m.length;
 				for(let i = 1; i < _i; ++i) {
 					t = m[i][1];
@@ -284,7 +296,7 @@
 					}
 				}
 			}
-
+			if(p[0][0] < 0) { return s; }
 			return s.slice(2);
 		}
 
@@ -345,24 +357,53 @@
 		}
 
 		{
-			const a = ["a", "b", "c", "d"];
+			const A = ["x", "y", "z", "a", "b", "c"];
 
 			// a
-			const m0 = [1, [0, 1]];
+			const a = [1, [3, 1]];
+			// -a
+			const _a = [-1, [3, 1]];
 			// b
-			const m1 = [1, [1, 1]];
-			// c
-			const m2 = [1, [2, [m0, m1]]];
-			// d
-			const m3 = [1, [3, 1]];
+			const b = [1, [4, 1]];
+			// _b
+			const _b = [-1, [4, 1]];
+			// x^a
+			const xa = [1, [0, [a]]];
+			// x^-a
+			const x_a = [1, [0, [_a]]];
+			// x^-b
+			const x_b = [1, [0, [_b]]];
+			// x^b
+			const xb = [1, [0, [b]]];
+			// x^2
+			const x2 = [1, [0, 2]];
+			// x^{a + b}
+			// const xab = [1, [0, [a, b]]];
+			const xab = pc_multiply2Monomials(xa, xb);
+			const xab2 = pc_multiply2Monomials(xab, x2);
+			const x = pc_multiply2Monomials(xa, x_a);
+			const x_ab = pc_multiply2Monomials(x_a, x_b);
 
-			const p0 = [[5], m0, m1, m2];
+			console.log(x);
+
+			const p0 = [xa, xb, x2];
+			const p1 = [xab];
+			const p2 = [xab2];
+			const p3 = [x];
+			const p4 = [x_ab];
+			const p5 = [_a, _b];
+			const p6 = pc_multiply2Polynomials(p1, p4);
+
+			// console.log(xab);
+			// console.log(...p3);
 
 			p_out.innerText += "\\begin{align}";
-			p_out.innerText += `${pc_polynomeToLaTeX(p0, a)}\\\\`;
-			// p_out.innerText += `${pc_polynomeToLaTeX([m2], a)}\\\\`;
-			// p_out.innerText += `${pc_polynomeToLaTeX(p1, a)}\\\\`;
-			// p_out.innerText += `${pc_polynomeToLaTeX(p2, a)}\\\\`;
+			p_out.innerText += `${pc_polynomeToLaTeX(p0, A)}\\\\`;
+			p_out.innerText += `${pc_polynomeToLaTeX(p1, A)}\\\\`;
+			p_out.innerText += `${pc_polynomeToLaTeX(p2, A)}\\\\`;
+			p_out.innerText += `${pc_polynomeToLaTeX(p3, A)}\\\\`;
+			p_out.innerText += `${pc_polynomeToLaTeX(p4, A)}\\\\`;
+			p_out.innerText += `${pc_polynomeToLaTeX(p6, A)}\\\\`;
 			p_out.innerText += "\\end{align}";
 		}
 	</script>
