@@ -1,5 +1,6 @@
 {
 	const codes = document.getElementsByClassName("line-number");
+	console.log(codes);
 	for(let code of codes) {
 		const text = code.innerText;
 		const matches = text.matchAll(/\n/g);

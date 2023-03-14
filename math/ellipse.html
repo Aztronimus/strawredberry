@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width">
+	<title>Ellipse</title>
+	<script type="text/javascript" src="../js/mathjax_loader.js"></script>
+	<link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+	<header>
+		<h1><a href="../index.html">StrawRedBerry</a></h1>
+		<h2>Math</h2>
+	</header>
+	<div id="center">
+		<div class="center">
+			<ul id="links">
+				<li class="group">Quantum mechanics</li>
+				<ul>
+					<li><a href="quantum_mechanichs_1.html">Quantum mechanics</a></li>
+					<li><a href="double_slit.html">Double slit</a></li>
+				</ul>
+			</ul>
+		</div>
+		<div id="content">
+			<h1>Ellipse</h1>
+			<p>
+				\begin{align}
+					a + b = d - c \tag{1}
+				\end{align}
+			</p>
+			<p>Such that \(d > 2c\).</p>
+			<p>
+				\begin{align}
+					a^2 = \left( \frac{c}{2} + x \right)^2 + y^2 \tag{2}
+				\end{align}
+				\begin{align}
+					b^2 = \left( \frac{c}{2} - x \right)^2 + y^2 \tag{3}
+				\end{align}
+			</p>
+			<p>From \((1)\).</p>
+			<p>
+				\begin{align}
+					(a + b)^2 = (d - c)^2\\
+				\end{align}
+				\begin{align}
+					a^2 + b^2 + 2ab = (d - c)^2 \tag{4}
+				\end{align}
+			</p>
+			<p>From the addition and substraction of \((2)\) and \((3)\).</p>
+			<p>
+				\begin{align}
+					a^2 - b^2 = (a + b)(a - b) = 2cx \tag{5}
+				\end{align}
+				\begin{align}
+					a^2 + b^2 = \frac{c^2}{2} + 2x^2 + 2y^2 \tag{6}
+				\end{align}
+			</p>
+			<p>Substituting \((1)\) into \((5)\) and re-arranging.</p>
+			<p>
+				\begin{align}
+					(a + b)(a - b) = (d - c)(a - b) = 2cx
+				\end{align}
+				\begin{align}
+					a - b = \left( \frac{2c}{d - c} \right) x
+				\end{align}
+				\begin{align}
+					(a - b)^2 = a^2 + b^2 - 2ab = \left(\frac{2c}{d - c}\right)^2 x^2 \tag{7}
+				\end{align}
+			</p>
+			<p>From the addition of \((4)\) and \((7)\).</p>
+			<p>
+				\begin{align}
+					2 \left(a^2 + b^2\right) = \left(\frac{2c}{d - c}\right)^2 x^2 + (d - c)^2 \tag{8}
+				\end{align}
+			</p>
+			<p>Substituting \((6)\) into \((8)\) and re-arranging.</p>
+			<p>
+				\begin{align}
+					c^2 + 4x^2 + 4y^2 = \left(\frac{2c}{d - c}\right)^2 x^2 + (d - c)^2
+				\end{align}
+				\begin{align}
+					\left(4 - \left(\frac{2c}{d - c}\right)^2 \right)x^2 + 4y^2 &= (d - c)^2 - c^2
+				\end{align}
+				\begin{align}
+					\left( \frac{4d^2 + 4c^2 - 8dc - 4c^2}{(d - c)^2} \right)x^2 + 4y^2 &= d^2 - 2dc
+				\end{align}
+				\begin{align}
+					\left( \frac{4(d^2 - 2dc)}{d^2 - 2dc + c^2} \right)x^2 + 4y^2 &= d^2 - 2dc
+				\end{align}
+				\begin{align}
+					\left( \frac{4}{d^2 - 2dc + c^2} \right) x^2 + \left( \frac{4}{d^2 - 2dc}\right )y^2 &= 1 \tag{9}
+				\end{align}
+			</p>
+			<p>Which is of the form:</p>
+			<p>
+				\begin{align}
+					\frac{x^2}{c_x^2} + \frac{y^2}{c_y^2} &= 1
+				\end{align}
+			</p>
+			<p>With:</p>
+			<p>
+				\begin{align}
+					c_x^2 &= \frac{d^2 - 2dc + c^2}{4} & c_y^2 &= \frac{d^2 - 2dc}{4}
+				\end{align}
+			</p>
+			<p>Notice that the focus of the ellipse can be obtained using:</p>
+			<p>
+				\begin{align}
+					\frac{c}{2} = \sqrt{c_x^2 - c_y^2}
+				\end{align}
+			</p>
+			<h1>Perimeter</h1>
+			<h2>Arc length</h2>
+			<p>
+				\begin{align}
+					s = \int_{x_0}^{x_1}{ \sqrt{ 1 + \left( \frac{dy}{dx} \right)^2} }dx
+				\end{align}
+				\begin{align}
+					y &= c_y \sqrt{1 - \frac{x^2}{c_x^2}} = \frac{c_y}{c_x} \sqrt{c_x^2 - x^2}\\
+					\frac{dy}{dx} &= - \frac{c_y}{c_x} \cdot \frac{x}{\sqrt{c_x^2 - x^2}}\\
+					\left( \frac{dy}{dx} \right)^2 &= \frac{c_y^2}{c_x^2} \cdot \frac{x^2}{c_x^2 - x^2} = \frac{k^2 x^2}{c_x^2 - x^2}
+				\end{align}
+				\begin{align}
+					k^2 = \frac{c_y^2}{c_x^2}
+				\end{align}
+				\begin{align}
+					p &= 4\int_{0}^{c_x}{ \sqrt{ 1 + \frac{k^2 x^2}{c_x^2 - x^2} } } \cdot dx = 4\int_{0}^{c_x}{ \sqrt{ \frac{c_x^2 - (1 - k^2) x^2}{c_x^2 - x^2} } } \cdot dx\\
+				\end{align}
+			</p>
+			<h2>Taylor series</h2>
+			<p>
+				\begin{align}
+					q(x) &= \sqrt{ 1 + \left( \frac{dy}{dx} \right)^2}\\
+					&= \sum_{n=0}^\infty { \frac{(x - x_0)^n}{n!} \cdot \left. \frac{d^nq}{dx^n} \right|_{x_0} }
+				\end{align}
+				\begin{align}
+					p = 4 \int_{0}^{c_x} q(x) dx = \sum_{n=0}^\infty { \frac{x^{n + 1}}{(n + 1)!} \cdot \left. \frac{d^nq}{dx^n} \right|_{x_0} }
+				\end{align}
+			</p>
+			<p>To get the \(n\) derivative of \(q\):</p>
+			<p>
+				\begin{align}
+					h(x) &= \left( \frac{dy}{dx} \right)^2
+				\end{align}
+				\begin{align}
+					\frac{d^n q}{dx^n} &= \frac{d^{n - 1}}{dx^{n - 1}} \left( \frac{dq}{dh} \cdot \frac{dh}{dx} \right)
+				\end{align}
+				\begin{align}
+					\frac{d^m}{dh^m} \left( \frac{1}{h^n} \right) &= \frac{d^{m - 1}}{dh^{m - 1}} \left( \frac{d}{dh} \left( \frac{1}{h^n} \right) \right) = \frac{d^{m - 1}}{dh^{m - 1}} \left( - \frac{n}{h^{n + 1}} \right)\\
+					&= - n \cdot \frac{d^{m - 1}}{dh^{m - 1}} \left( \frac{1}{h^{n + 1}} \right)
+				\end{align}
+			</p>
+			<p>Now the induction hypothesis (for \(m\)) is:</p>
+			<p>
+				\begin{align}
+					\frac{d^m}{dh^m} \left( \frac{1}{h^n} \right) &= \left( \prod_{j = 0}^{m - 1} - n - j \right) \frac{1}{h^{n + m}}
+				\end{align}
+			</p>
+			<p>By induction hypothesis (for \(m + 1\)) is:</p>
+			<p>
+				\begin{align}
+					\frac{d^{m + 1}}{dh^{m + 1}} \left( \frac{1}{h^n} \right) &= - n \cdot \frac{d^m}{dh^m} \left( \frac{1}{h^{n + 1}} \right)\\
+					&= -(n + 1) \cdot \left( \prod_{j = 0}^{m - 1} - n - 1 - j \right) \frac{1}{h^{n + m + 1}}
+				\end{align}
+			</p>
+			<p>Coming back to the problem:</p>
+			<p>
+				\begin{align}
+					\frac{d^n q}{dh^n} &= \frac{d^{n-1}}{dh^{n-1}} \left( \frac{dq}{dh} \right) = \frac{d^{n-1}}{dh^{n-1}} \left( \frac{1}{2h} \right)\\
+					&= \frac{1}{2} \cdot \frac{d^{n-1}}{dh^{n-1}} \left( \frac{1}{h} \right)
+				\end{align}
+			</p>
+			<p>To get the \(n\) derivative of \(y\):</p>
+			<p>
+				\begin{align}
+					y &= \frac{c_y}{c_x} \cdot f(x) & f(x) &= \sqrt{c_x^2 - x^2}
+				\end{align}
+				\begin{align}
+					\frac{d^ny}{dx^n} &= \frac{c_y}{c_x} \cdot \frac{d^nf}{dx^n}
+				\end{align}
+				\begin{align}
+					\frac{df}{dx} &= - \frac{x}{\sqrt{c_x^2 - x^2}} = - \frac{x}{f}\\
+					\frac{d^2f}{dx^2} &= \frac{x}{f^2} - \frac{1}{f}\\
+				\end{align}
+			</p>
+			<p>We can get a pattern from this point.</p>
+			<p>
+				\begin{align}
+					\frac{d}{dx}\left( \frac{1}{f^n} \right) &= - \frac{n}{f^{n + 1}}
+					& \frac{d}{dx}\left( \frac{x}{f^n} \right) &= \frac{1}{f^n} - \frac{nx}{f^{n + 1}}
+				\end{align}
+				\begin{align}
+					\frac{d}{dx}\left( \frac{x}{f^n} - \frac{1}{f^{n - 1}} \right)
+					&= \frac{d}{dx}\left( \frac{x}{f^n} \right) - \frac{d}{dx}\left( \frac{1}{f^{n - 1}} \right)\\
+					&= \frac{1}{f^n} - \frac{nx}{f^{n + 1}} + \frac{n - 1}{f^n}\\
+					&= n \left( \frac{1}{f^n} - \frac{x}{f^{n + 1}} \right)
+				\end{align}
+			</p>
+			<p>\(m\) derivative formula for \(g_n\).</p>
+			<p>
+				\begin{align}
+					g_n(x) &= \frac{x}{f^n} - \frac{1}{f^{n - 1}}
+					& \frac{d^m g_n}{dx^m} &= - n \cdot \frac{d^{m - 1} g_{n + 1}}{dx^{m - 1}}
+				\end{align}
+			</p>
+			<p>Which are only valid for \(n \ge 2\).</p>
+			<p>
+				\begin{align}
+					\prod_{j=m}^n a_j &= a_m \cdot \left( \prod_{j = m + 1}^n a_j \right)
+					& \prod_{j=m}^m a_j &= a_m
+					& \prod_{j=m}^n a_j &= \left( \prod_{j=m}^{n - 1} a_j \right) \cdot a_n
+				\end{align}
+			</p>
+			<p>Induction hypothesis (for \(k\)).</p>
+			<p>
+				\begin{align}
+					\frac{d^m g_n}{dx^m} &= \left( \prod_{j = 0}^{k - 1} - n - j \right) \frac{d^{m - k} g_{n + k}}{dx^{m - k}}
+				\end{align}
+			</p>
+			<p>By induction hypothesis (for \(k + 1\)).</p>
+			<p>
+				\begin{align}
+					\frac{d^m g_n}{dx^m} &= \left( \prod_{j = 0}^{k - 1} - n - j \right) (- n - k) \frac{d^{m - k - 1} g_{n + k + 1}}{dx^{m - k - 1}}\\
+					&= \left( \prod_{j = 0}^k - n - j \right) \frac{d^{m - k - 1} g_{n + k + 1}}{dx^{m - k - 1}}
+				\end{align}
+			</p>
+			<p>Proof for \(k = 1\).</p>
+			<p>
+				\begin{align}
+					\frac{d^m g_n}{dx^m} &= \left( \prod_{j = 0}^0 - n - j \right) \frac{d^{m - 1} g_{n + 1}}{dx^{m - 1}}\\
+					&= - n \cdot \frac{d^{m - 1} g_{n + 1}}{dx^{m - 1}}
+				\end{align}
+			</p>
+			<p>It is proven.</p>
+			<p>Now there is a definition for the \(m\) derivative for \(g_n\)</p>
+			<p>
+				\begin{align}
+					\frac{d^m g_n}{dx^m} &= \left( \prod_{j = 0}^{m - 1} - n - j \right) g_{m + n}\\
+					&= (-1)^{m} \frac{(n + m - 1)!}{(n - 1)!} \cdot g_{m + n}
+				\end{align}
+			</p>
+			<p>For the \(n\) derivative of \(y\)</p>
+			<p>
+				\begin{align}
+					\frac{d^2 f}{dx^2} &= g_2(x)
+					& \frac{d^ny}{dx^n} &= \frac{c_y}{c_x} \cdot \frac{d^nf}{dx^n}
+				\end{align}
+				\begin{align}
+					\frac{d^n y}{dx^n} &= \frac{c_y}{c_x} \cdot \frac{d^{n - 2} g_2}{dx^{n - 2}}\\
+					&= \frac{c_y}{c_x} (-1)^n \cdot (n - 1)! \cdot g_n(x)\\
+				\end{align}
+			</p>
+			<p>This formula is only valid for \(n \ge 2\).</p>
+			<p>And evaluating at \(x = 0\):</p>
+			<p>
+				\begin{align}
+					f(0) &= c_x & g_n(0) &= - \frac{1}{c_x^{n - 1}}
+				\end{align}
+				\begin{align}
+					\left. \frac{d^n y}{dx^n} \right|_{x = 0} &= \frac{c_y}{c_x} (-1)^n \cdot (n - 3)! \cdot \left( - \frac{1}{c_x^{n - 1}} \right)\\
+					&= \frac{c_y}{c_x^n} (-1)^{n - 1} \cdot (n - 1)!\\
+				\end{align}
+			</p>
+		</div>
+		<div class="center">
+			<ol id="index">
+				<li class="group"><a href="#toc_1">Space-time</a></li>
+				<ol class="group">
+					<li><a href="#toc_1_1">Space-time transformations</a></li>
+				</ol>
+			</ol>
+		</div>
+	</div>
+	<footer>
+		<h1>StrawRedBerry</h1>
+		<a href="https://macul.ciencias.uchile.cl/alejo/clases/2018_mechanics/">Funcionales</a>
+	</footer>
+	<!-- <script type="text/javascript" src="../grapher/grapher.js"></script> -->
+	<script type="text/javascript">
+	</script>
+</body>
+</html>
+
+<!-- 
+http://matematicasfce.ece.buap.mx/sumatoria.html
+
+ -->

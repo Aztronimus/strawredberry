@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Simulation</title>
+	<style type="text/css">
+		* {
+			border: 0;
+			outline: 0;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			background-color: #222;
+			color: white;
+		}
+
+		div.center {
+			display: flex;
+			justify-content: center;
+		}
+
+		canvas {
+			border: 1px solid white;
+		}
+	</style>
+</head>
+<body>
+	<div class="center">
+		<canvas id="canvas1" width="800" height="450" autofocus>Your browser does not support canvas</canvas>
+	</div>
+</body>
+<script type="text/javascript">
+	function module(x, m) {
+		const r = x % m;
+		return r < 0 ? r + m : r;
+	}
+
+	class UserInput {
+		keys = 0;
+
+		keyDown(evt) {
+			switch(evt.code) {
+			case "ArrowUp":
+				this.keys |= 0b1;
+				break;
+			case "ArrowLeft":
+				this.keys |= 0b10;
+				break;
+			case "ArrowRight":
+				this.keys |= 0b100;
+				break;
+			}
+			// console.log(this.keys);
+		}
+
+		keyUp(evt) {
+			switch(evt.code) {
+			case "ArrowUp":
+				this.keys &= ~0b1;
+				break;
+			case "ArrowLeft":
+				this.keys &= ~0b10;
+				break;
+			case "ArrowRight":
+				this.keys &= ~0b100;
+				break;
+			}
+			// console.log(this.keys);
+		}
+
+		focusLost(evt) {
+			this.keys = 0;
+		}
+
+		constructor(elem) {
+			elem.addEventListener("keydown", this.keyDown.bind(this));
+			elem.addEventListener("keyup", this.keyUp.bind(this));
+			elem.addEventListener("focusout", this.focusLost.bind(this));
+		}
+	}
+
+	const drawAgent = (() => {
+		const r = Math.PI / 2;
+		const s = 30;
+		return (ctx, x = 0, y = 0, angle = 0) => {
+			ctx.translate(400 + x, 225 - y);
+			ctx.rotate(- 1.5 * r + angle);
+			ctx.beginPath();
+			ctx.moveTo(- s, 0);
+			ctx.lineTo(- s, - s);
+			ctx.lineTo(0, - s);
+			ctx.arc(0, 0, s, - r, 2 * r);
+			ctx.closePath();
+			ctx.resetTransform();
+			ctx.stroke();
+		}
+	})();
+
+	function drawObjectA(ctx, x = 0, y = 0, s = 40) {
+		ctx.translate(400 + x, 225 - y);
+		ctx.beginPath();
+		ctx.arc(0, 0, s, 0, 2 * Math.PI);
+		ctx.closePath();
+		ctx.stroke();
+	}
+
+	const degToRad = (() => {
+		const f = Math.PI / 180;
+		return deg => deg * f;
+	})();
+
+	class Agent {
+		force = 0.003;
+		positionX = 0;
+		positionY = 0;
+		velocityX = 0;
+		velocityY = 0;
+		accelerationX = 0;
+		accelerationY = 0;
+		torque = 0.0001;
+		angle = 0;
+		angularVelocity = 0;
+		angularAcceleration = 0;
+		velocityResistance = 0.0007;
+		angularVelocityResistance = 0.005;
+
+		static vFactor(dt, R) {
+			return R ? ( 1 - Math.exp( - R * dt ) ) / R : dt;
+		}
+
+		static xFactor(dt, R) {
+			return R ? ( Math.exp( - R * dt ) - 1 + R * dt ) / ( R**2 ) : t**2 / 2
+		}
+
+		turn(left, right) {
+			this.angularAcceleration = (Boolean(right) - Boolean(left)) * this.torque;
+		}
+
+		accelerate(throttle) {
+			if(throttle) {
+				this.accelerationX = this.force * Math.sin(this.angle);
+				this.accelerationY = this.force * Math.cos(this.angle);
+			} else {
+				this.accelerationX = 0;
+				this.accelerationY = 0;
+			}
+		}
+
+		keepInWorld() {
+			this.positionX = module( 450 + this.positionX, 900) - 450;
+			this.positionY = module( 225 + this.positionY, 450) - 225;
+			this.angle %= 2 * Math.PI;
+		}
+
+		update(dt) {
+			const KEYS = this.userInput.keys;
+			this.accelerate(KEYS & 0b1);
+			this.turn(KEYS & 0b10, KEYS & 0b100);
+			const CX = this.accelerationX - this.velocityResistance * this.velocityX;
+			const CY = this.accelerationY - this.velocityResistance * this.velocityY;
+			const CA = this.angularAcceleration - this.angularVelocityResistance * this.angularVelocity;
+			// console.log(Math.cos(this.angle), Math.sin(this.angle));
+			// console.clear();
+			this.positionX += CX * Agent.xFactor(dt, this.velocityResistance) + this.velocityX * dt;
+			this.positionY += CY * Agent.xFactor(dt, this.velocityResistance) + this.velocityY * dt;
+			this.angle += CA * Agent.xFactor(dt, this.angularVelocityResistance) + this.angularVelocity * dt;
+			this.keepInWorld();
+			this.velocityX += CX * Agent.vFactor(dt, this.velocityResistance);
+			this.velocityY += CY * Agent.vFactor(dt, this.velocityResistance);
+			this.angularVelocity += CA * Agent.vFactor(dt, this.angularVelocityResistance);
+		}
+
+		constructor(userInput) {
+			this.userInput = userInput;
+		}
+	}
+
+
+	const CANVAS = document.getElementById("canvas1");
+	CANVAS.tabIndex = 1000;
+	const CTX = CANVAS.getContext("2d");
+	CTX.strokeStyle = "white";
+	
+	const USER_INPUT = new UserInput(CANVAS);
+	const AGENT = new Agent(USER_INPUT);
+
+	let updateWorldState;
+	{
+		updateWorldState = function(dt) {
+			if(dt > 500) { dt = 500; }
+			AGENT.update(dt);
+		};
+	}
+
+	function drawWorld() {
+		CTX.clearRect(0, 0, CANVAS.width, CANVAS.height);
+		drawAgent(CTX, AGENT.positionX, AGENT.positionY, AGENT.angle);
+	}
+
+	let updateWorld;
+	{
+		let i = 0;
+		let intervalId;
+		let lastTime = Date.now();
+		let curTime;
+		updateWorld = function() {
+			// console.log(USER_INPUT.keys);
+			curTime = Date.now();
+			updateWorldState(curTime - lastTime);
+			lastTime = curTime;
+			drawWorld();
+			// if(++i > 1) { clearInterval(intervalId); }
+		};
+
+		intervalId = setInterval(updateWorld, 40);
+		// intervalId = setInterval(updateWorld, 80);
+		// intervalId = setInterval(updateWorld, 160);
+		// intervalId = setInterval(updateWorld, 320);
+		// updateWorld();
+	}
+	
+
+</script>
+</html>

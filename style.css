@@ -1,113 +1,237 @@
 @font-face {
-	font-family: Circular-Book;
-	src: url("fonts/CircularStd-Book.otf");
-	font-weight: normal;
+	font-family: Montserrat;
+	src: url("fonts/montserrat/Montserrat-Regular.woff");
 }
 
 @font-face {
-	font-family: Circular-Book;
-	src: url("fonts/CircularStd-Bold.otf");
+	font-family: Montserrat;
+	src: url("fonts/montserrat/Montserrat-Bold.woff");
+	font-weight: bold;
+}
+/*
+@font-face {
+	font-family: BonaNova;
+	src: url("fonts/bonanova/BonaNova-Bold.woff") format("woff");
 	font-weight: bold;
 }
 
 @font-face {
 	font-family: BonaNova;
-	src: url("fonts/BonaNova-Bold.woff") format("woff");
-	font-weight: bold;
-}
-
-@font-face {
-	font-family: BonaNova;
-	src: url("fonts/BonaNova-Italic.woff") format("woff");
-	font-weight: normal;
+	src: url("fonts/bonanova/BonaNova-Italic.woff") format("woff");
 	font-style: italic;
 }
 
 @font-face {
 	font-family: BonaNova;
-	src: url("fonts/BonaNova-Regular.woff") format("woff");
-	font-weight: normal;
+	src: url("fonts/bonanova/BonaNova-Regular.woff") format("woff");
+}
+
+*/
+@font-face {
+	font-family: Ubuntu-Mono;
+	src: url("fonts/ubuntu/UbuntuMono-R.woff") format("woff");
 }
 
 @font-face {
-	font-family: Roboto-Mono;
-	src: url("fonts/RobotoMono-Regular.woff") format("woff");
-	font-weight: normal;
-}
-
-@font-face {
-	font-family: Roboto-Mono;
-	src: url("fonts/RobotoMono-Bold.woff") format("woff");
-	font-weight: bold;
-}
-
-@font-face {
-	font-family: Roboto-Mono;
-	src: url("fonts/RobotoMono-BoldItalic.woff") format("woff");
-	font-weight: bold;
+	font-family: Ubuntu-Mono;
+	src: url("fonts/ubuntu/UbuntuMono-RI.woff") format("woff");
 	font-style: italic;
 }
 
 @font-face {
-	font-family: Roboto-Mono;
-	src: url("fonts/RobotoMono-Italic.woff") format("woff");
-	font-weight: normal;
+	font-family: Ubuntu-Mono;
+	src: url("fonts/ubuntu/UbuntuMono-B.woff") format("woff");
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: Ubuntu-Mono;
+	src: url("fonts/ubuntu/UbuntuMono-BI.woff") format("woff");
+	font-weight: bold;
+	font-style: italic;
+}
+/*
+@font-face {
+	font-family: Ubuntu;
+	src: url("fonts/ubuntu/Ubuntu-R.woff") format("woff");
+}
+
+@font-face {
+	font-family: Ubuntu;
+	src: url("fonts/ubuntu/Ubuntu-B.woff") format("woff");
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: Ubuntu;
+	src: url("fonts/ubuntu/Ubuntu-RI.woff") format("woff");
+	font-style: italic;
+}
+
+@font-face {
+	font-family: Ubuntu;
+	src: url("fonts/ubuntu/Ubuntu-BI.woff") format("woff");
+	font-weight: bold;
+	font-style: italic;
+}
+*/
+@font-face {
+	font-family: Noto-Serif;
+	src: url("fonts/notoserif/NotoSerif-Regular.woff") format("woff");
+}
+
+@font-face {
+	font-family: Noto-Serif;
+	src: url("fonts/notoserif/NotoSerif-Bold.woff") format("woff");
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: Noto-Serif;
+	src: url("fonts/notoserif/NotoSerif-Italic.woff") format("woff");
 	font-style: italic;
 }
 
 @font-face {
 	font-family: Noto-Serif;
-	src: url("fonts/NotoSerif-Regular.woff") format("woff");
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: Noto-Serif;
-	src: url("fonts/NotoSerif-Bold.woff") format("woff");
+	src: url("fonts/notoserif/NotoSerif-BoldItalic.woff") format("woff");
 	font-weight: bold;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: Noto-Serif;
-	src: url("fonts/NotoSerif-Italic.woff") format("woff");
-	font-weight: normal;
 	font-style: italic;
 }
+
+@font-face {
+	font-family: Noto-Sans;
+	src: url("fonts/notosans/NotoSans-Regular.woff") format("woff");
+}
+
+@font-face {
+	font-family: Noto-Sans;
+	src: url("fonts/notosans/NotoSans-Bold.woff") format("woff");
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: Noto-Sans;
+	src: url("fonts/notosans/NotoSans-Italic.woff") format("woff");
+	font-style: italic;
+}
+
+@font-face {
+	font-family: Noto-Sans;
+	src: url("fonts/notosans/NotoSans-BoldItalic.woff") format("woff");
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: Noto-Sans-JP;
+	src: url("fonts/notosansjp/NotoSansJP-Regular.woff") format("woff");
+}
+
+@font-face {
+	font-family: Noto-Sans-JP;
+	src: url("fonts/notosansjp/NotoSansJP-Bold.woff") format("woff");
+	font-weight: bold;
+}
+
+/*
+font-family: MJXTEX-B;
+font-family: MJXTEX-I;
+font-family: MJXTEX;
+font-family: MJXZERO;
+
+#ff007f rose / bright pink
+#ff00ff magenta
+#7f00ff violet (between electric violet (#8fff00) and electric indigo (#6fff00))
+#0000ff blue
+#007fff azure
+#00ffff cyan
+#00ff7f guppie green
+#00ff00 green
+#7fff00 chartreuse green
+#ffff00 yellow
+#ff7f00 orange
+#ff0000 red
+
+ff
+	cc
+		aa
+	99
+7f
+	66
+		55
+	33
+00
+
+*/
 
 :root {
-	--main-0: #f37;
-	--main-1: #3bf;
-	--main-2: #fd3;
-	--main-3: #7f3;
-	--main-4: #f73;
-	--main-5: #b3f;
-	--color-a0: #0ff;
-	--contrast-a: white;
-	--contrast-a1: #555;
+	--color-l0: #ff007f;
+	--color-l1: #ff00ff;
+	--color-l2: #7f00ff;
+	--color-l3: #0000ff;
+	--color-l4: #007fff;
+	--color-l5: #00ffff;
+	--color-r5: #00ff7f;
+	--color-r4: #00ff00;
+	--color-r3: #7fff00;
+	--color-r2: #ffff00;
+	--color-r1: #ff7f00;
+	--color-r0: #ff0000;
+
+	--color-s0: white;
+	--color-s1: #ccc;
+	--color-s2: #aaa;
+	--color-s3: #999;
+	--color-s4: #7f7f7f;
+	--color-s5: #666;
+	--color-s6: #555;
+	--color-s7: #333;
+	--color-s8: black;
+
 	--contrast-a2: #111;
-	--contrast-a3: #333;
-	--contrast-b: black;
 }
 
 * {
 	margin: 0;
 	padding: 0;
 	outline: 0;
-	border: none;
+	border: 0;
 }
 
 body {
-	font-size: 1.2em;
 	color: white;
-	background-color: var(--contrast-b);
-	font-family: BonaNova;
+	background-color: var(--color-s8);
+	font-family: Noto-Serif;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table td,
+table th {
+	vertical-align: middle;
+}
+
+table.text td,
+table.text th {
+	padding: 4px 8px;
 }
 
 p {
 	line-height: 1.5em;
 	text-align: justify;
+}
+
+p[lang="ja"],
+td[lang="ja"] {
+	font-size: 1.4em;
+}
+
+[lang="ja"] {
+	font-family: Noto-Sans-JP;
 }
 
 header,
@@ -120,7 +244,7 @@ header {
 }
 
 footer {
-	padding: 1em 10%;
+	padding: 1.5em 10%;
 }
 
 #center {
@@ -133,7 +257,8 @@ footer {
 #content ul,
 #content ul li,
 #content ol,
-#content p {
+#content p,
+#content table {
 	margin: 1em 0;
 }
 
@@ -141,38 +266,39 @@ footer {
 	list-style-position: inside;
 }
 
-#content ul.none {
+ul.none {
 	list-style: none;
 }
 
 h1, h2 {
-	font-family: Circular-Book;
+	font-family: Montserrat;
 	text-align: center;
 }
 
 header h1 {
-	color: var(--main-0);
+	color: var(--color-l0);
 	font-size: 2em;
 }
 
 header h2 {
-	color: var(--main-1);
+	color: var(--color-l4);
 	font-size: 1.5em;
 }
 
 footer h1 {
-	color: var(--contrast-a1);
+	color: var(--color-s4);
 	font-size: 1.5em;
 	text-align: left;
 }
 
 h1 a:hover {
-	color: var(--main-2);
+	color: var(--color-r2);
 }
 
 a:link,
 a:visited,
-a:active {
+a:active,
+a:hover {
 	color: inherit;
 	text-decoration: none;
 }
@@ -190,27 +316,26 @@ a:active {
 #links,
 #links ul,
 #index,
-#index ol {
+#index ol,
+#links li.group,
+#index li.group {
 	margin: 1em 0;
-	line-height: 1.5em;
-}
-
-#links a:hover,
-#index a:hover {
-	color: var(--color-a0);
-	color: var(--main-2);
 }
 
 #links li.group,
 #index li.group {
-	margin: 1em 0;
-	font-family: Circular-Book;
-	/*font-family: MJXTEX-B;*/
-	/*font-family: MJXTEX-I;*/
-	/*font-family: MJXTEX;*/
-	/*font-family: MJXZERO;*/
-	font-weight: bold;
-	font-size: 1.2em;
+	font: bold 1.2em Montserrat;
+}
+
+#links li,
+#index li,
+footer li {
+	font: bold 0.9em Noto-Sans;
+}
+
+#links a:hover,
+#index a:hover {
+	color: var(--color-s0);
 }
 
 #links ul,
@@ -220,13 +345,24 @@ a:active {
 
 #links,
 #index {
+	color: var(--color-s2);
 	position: sticky;
 	top: 0;
+	margin: 1em 2em;
 }
 
-#links,
-#index {
-	margin: 1em 2em;
+footer li a:link,
+footer li a:active,
+footer li a:visited {
+	color: var(--color-s6);
+}
+
+footer li a:hover {
+	color: var(--color-s5);
+}
+
+footer ul {
+	padding: 1em 0;
 }
 
 div.center {
@@ -236,28 +372,77 @@ div.center {
 }
 
 canvas {
-	border: 1px solid var(--contrast-a3);
+	border: 1px solid var(--color-s7);
 	width: 100%;
 }
 
+code {
+	font-family: Ubuntu-Mono;
+	color: var(--color-s1);
+	display: inline-block;
+	padding: 4px 8px;
+	background-color: var(--contrast-a2);
+	tab-size: 4;
+	white-space: pre-wrap;
+	counter-reset: line var(--line, 0);
+	line-height: 1.2em;
+}
+
+code.block {
+	display: block;
+	margin: 1em 0;
+	padding: 16px 32px;
+}
+
+code.line-number {
+	padding-left: 16px;
+}
+
+code.line-number > span {
+	display: flex;
+	counter-increment: line;
+}
+
+code.line-number > span::before {
+	text-align: right;
+	color: var(--color-s6);
+	content: counter(line);
+	min-width: 32px;
+	margin-right: 32px;
+}
+
+kbd {
+	display: inline-block;
+	margin: 2px;
+	background-color: var(--color-s7);
+	padding: 4px;
+	border-radius: 2px;
+	/*border: 1px solid white;*/
+}
+
+span.nowrap {
+	white-space: nowrap;
+}
+
 mjx-container {
+	font-size: 1.2em !important;
 	padding: 2px 0;
 	overflow: auto hidden;
 }
 
 @supports selector(::-webkit-scrollbar) {
 	::-webkit-scrollbar {
-		background-color: var(--contrast-b);
+		background-color: var(--color-s8);
 	}
 
 	::-webkit-scrollbar-thumb {
-		background-color: var(--contrast-a3);
+		background-color: var(--color-s7);
 	}
 }
 
-@supports (scrollbar-color: var(--contrast-a) var(--contrast-a)) {
+@supports (scrollbar-color: var(--color-s7) var(--color-s8)) {
 	* {
-		scrollbar-color: var(--contrast-a3) var(--contrast-b);
+		scrollbar-color: var(--color-s7) var(--color-s8);
 	}
 }
 

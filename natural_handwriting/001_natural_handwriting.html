@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Drawbox</title>
+  </head>
+
+  <body>
+
+    <canvas id="drawbox" width="500" height="500"></canvas>
+    <br>
+    <button id="save">Guardar</button>
+    <button id="undo">Borrar último trazo</button>
+    <button id="clear">Borrar todo</button>
+
+    <style type="text/css" media="screen">
+			#drawbox{
+				background-color: #FDF5E5;
+				border: 2px solid #363945;
+				border-radius: 10px;
+			}
+			#save{
+				background-color: #FDF5E5;
+				border: 2px solid #363945;
+				border-radius: 10px;
+			}
+			#undo{
+				background-color: #FDF5E5;
+				border: 2px solid #363945;
+				border-radius: 10px;
+			}
+			#clear{
+				background-color: #FDF5E5;
+				border: 2px solid #363945;
+				border-radius: 10px;
+			}
+
+			* {
+/*				cursor: default;*/
+			} 
+    </style>
+    
+    <script>
+//////////// DECRLARACIÓN DE VARIABLES
+
+      let canvas = document.getElementById("drawbox");
+      let ctx = canvas.getContext("2d");
+      let drawing = false;
+      let lastX, lastY;
+      let strokes = [];
+      let points = []
+      let pressure = 0;
+
+
+      //////////////////////////////////////////////////////////////////////////////////
+      //EVENTOS DEL MOUSE 
+
+      canvas.addEventListener("mousedown", e => {
+        drawing = true;
+        [lastX, lastY] = [e.clientX, e.clientY];
+      });
+
+      canvas.addEventListener("mousemove", e => {
+          if (drawing) {
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(e.clientX, e.clientY);
+            ctx.stroke();
+            strokes.push({fromX: lastX, fromY: lastY, toX: e.clientX, toY: e.clientY});
+            [lastX, lastY] = [e.clientX, e.clientY];
+          }
+      });
+
+      canvas.addEventListener("mouseup", () => {
+        drawing = false;
+      });
+//////////////////////////////////////////////////////////////////////
+      // EVENTOS DE LA TABLETA
+
+      canvas.addEventListener("pointerdown", e => {
+        drawing = true;
+        [lastX, lastY] = [e.clientX, e.clientY];
+        // console.log(e);
+      });
+
+
+      canvas.addEventListener("pointermove", e => {
+        if (drawing) {
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(e.clientX, e.clientY);
+            ctx.stroke();
+            strokes.push({fromX: lastX, fromY: lastY, toX: e.clientX, toY: e.clientY});
+            [lastX, lastY] = [e.clientX, e.clientY];
+        }
+      });
+      
+      canvas.addEventListener("pointerleave", () => {
+        drawing = false;
+      });
+
+
+      // BOTONES DEL LIENZO
+            
+      document.getElementById("undo").addEventListener("click", () => {
+				// Código para borrar el último trazo
+				strokes.pop();
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				for (let i = 0; i < strokes.length; i++) {
+					ctx.beginPath();
+					ctx.moveTo(strokes[i].fromX, strokes[i].fromY);
+					ctx.lineTo(strokes[i].toX, strokes[i].toY);
+					ctx.stroke();
+				}
+      });
+      
+			document.getElementById("clear").addEventListener("click", () => {
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				strokes = [];
+			});
+
+      document.getElementById("save").addEventListener("click", () => {
+        // Código para guardar el dibujo
+      });
+
+
+    </script>
+  </body>
+</html>

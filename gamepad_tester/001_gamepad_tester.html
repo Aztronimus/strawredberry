@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width">
+	<title>Gamepad Tester</title>
+	<script type="text/javascript" src="../js/mathjax_loader.js"></script>
+	<link rel="stylesheet" type="text/css" href="../style.css">
+	<style type="text/css">
+		div#div_buttons {
+			flex-flow: row wrap;
+			justify-content: space-between;
+			align-items: center;
+			display: flex;
+			/*border: 1px solid white;*/
+			/*background-color: gray;*/
+			/*width: 100%;*/
+		}
+
+		div.gb {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			width: 48px;
+			height: 48px;
+			border: 1px solid var(--color-s4);
+			margin: 4px;
+
+			font-family: Montserrat;
+
+			/*border-radius: 25px;*/
+		}
+
+		div.gb[data-pressed] {
+			background-color: var(--color-l0);
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1><a href="../index.html">StrawRedBerry</a></h1>
+		<h2>Gamepad Tester</h2>
+	</header>
+	<div id="center">
+		<div class="center">
+			<ul id="links">
+			</ul>
+		</div>
+		<div id="content">
+			<h1 id="toc_1">Tester</h1>
+			<h2 id="toc_1_1">Buttons</h2>
+			<div id="div_buttons"></div>
+			<h2 id="toc_1_2">Axes</h2>
+			<h1 id="toc_2">API</h1>
+		</div>
+		<div class="center">
+			<ol id="index">
+			</ol>
+		</div>
+	</div>
+	<footer>
+		<h1><a href="../index.html">StrawRedBerry</a></h1>
+		<ul class="none">
+			<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API">developer.mozilla.org | gamepad api</a></li>
+		</ul>
+	</footer>
+	<script type="text/javascript">
+		const div_buttons = document.getElementById("div_buttons");
+		let gp_index;
+		let interval;
+
+		function update_world() {
+			const gamepad = navigator.getGamepads()[gp_index];
+			
+			gamepad.buttons.forEach((b, i) => {
+				div_buttons.children[i].toggleAttribute("data-pressed", b.pressed);
+			});
+		}
+
+		window.addEventListener("gamepadconnected", evt => {
+			console.log("Gamepad connected!");
+			const gamepad = evt.gamepad;
+			const b_len = gamepad.buttons.length;
+			gp_index = gamepad.index;
+
+			const docfrag = document.createDocumentFragment();
+			for(let i = 0; i < b_len; ++i) {
+				const div = document.createElement("div");
+				const txt = document.createTextNode(i);
+				div.appendChild(txt);
+				div.setAttribute("class", "gb");
+				docfrag.appendChild(div);
+				// console.log(evt.gamepad.buttons[i]);
+			}
+			div_buttons.appendChild(docfrag);
+
+			interval = setInterval(update_world, 16);
+		});
+
+		window.addEventListener("gamepaddisconnected", evt => {
+			console.log("Gamepad disconnected!");
+			clearInterval(interval);
+		});
+
+		window.addEventListener("keypress", evt => {
+			console.log(evt);
+		});
+	</script>
+	<!-- <script type="text/javascript" src="../js/code.js"></script> -->
+	<!-- <script type="text/javascript" src="../grapher/grapher.js"></script> -->
+	<!-- <script type="text/javascript"></script> -->
+</body>
+</html>
+
+<!-- 
+	https://en.wikipedia.org/wiki/Schr%C3%B6dinger_equation
+	https://imbooz.com/engineering-physics/schrodinger-wave-equation-time-dependent-and-time-independent-wave-equation/
+	https://www.youtube.com/watch?v=EChO4o4Z9v8
+ -->
+
+<!--
+	ABCDEF G HIJKLM
+	NOPQRS T UVWXYZ
+-->

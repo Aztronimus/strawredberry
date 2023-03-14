@@ -17,35 +17,35 @@
 			<ul id="links">
 				<li class="group">Quantum mechanics</li>
 				<ul>
-					<li><a href="quantum_mechanichs_1.html">Quantum mechanics</a></li>
-					<li><a href="double_slit.html">Double slit</a></li>
+					<li><a href="../quantum_mechanichs_1.html">Quantum mechanics</a></li>
+					<li><a href="../double_slit.html">Double slit</a></li>
 				</ul>
-				<li><a href="analytic_mechanics.html">Analytic mechanics</a></li>
+				<li><a href="../analytic_mechanics.html">Analytic mechanics</a></li>
 				<li class="group">Relativity</li>
 				<ul>
-					<li><a href="relativity_1.html">Special relativity 1</a></li>
-					<li><a href="relativity_2.html">Special relativity 2</a></li>
-					<li><a href="relativity_3.html">Special relativity 3</a></li>
-					<li><a href="drawing.html">Visualizing curved space (work in progress)</a></li>
-					<li><a href="general_relativity.html">Special relativity</a></li>
-					<li><a href="general_relativity_2.html">Tensors</a></li>
-					<li><a href="general_relativity_3.html">Tensors (in matrix notation)</a></li>
-					<li><a href="general_relativity_4.html">Tensors (in tensor notation)</a></li>
+					<li><a href="../relativity_1.html">Special relativity 1</a></li>
+					<li><a href="../relativity_2.html">Special relativity 2</a></li>
+					<li><a href="../relativity_3.html">Special relativity 3</a></li>
+					<li><a href="../drawing.html">Visualizing curved space (work in progress)</a></li>
+					<li><a href="../general_relativity.html">Special relativity</a></li>
+					<li><a href="../general_relativity_2.html">Tensors</a></li>
+					<li><a href="../general_relativity_3.html">Tensors (in matrix notation)</a></li>
+					<li><a href="../general_relativity_4.html">Tensors (in tensor notation)</a></li>
 				</ul>
 				<li class="group">Electromagnetism</li>
 				<ul>
-					<li><a href="maxwell equations_1.html">Linear algebra</a></li>
-					<li><a href="maxwell_equations_2.html">Visualizing electric field</a></li>
-					<li><a href="maxwell_equations_3.html">Green's theorem of circulation</a></li>
-					<li><a href="maxwell_equations_4.html">Divergence theorem</a></li>
-					<li><a href="maxwell_equations_5.html">Gauss's theorem of flux</a></li>
-					<li><a href="maxwell_equations_6.html">Ampere-Maxwell law</a></li>
-					<li><a href="maxwell_equations_7.html">Faraday-Lenz law</a></li>
-					<li><a href="maxwell_equations_8.html">Electromagnetic waves</a></li>
-					<li><a href="maxwell_equations_9.html">Electromechanics</a></li>
+					<li><a href="../maxwell equations_1.html">Linear algebra</a></li>
+					<li><a href="../maxwell_equations_2.html">Visualizing electric field</a></li>
+					<li><a href="../maxwell_equations_3.html">Green's theorem of circulation</a></li>
+					<li><a href="../maxwell_equations_4.html">Divergence theorem</a></li>
+					<li><a href="../maxwell_equations_5.html">Gauss's theorem of flux</a></li>
+					<li><a href="../maxwell_equations_6.html">Ampere-Maxwell law</a></li>
+					<li><a href="../maxwell_equations_7.html">Faraday-Lenz law</a></li>
+					<li><a href="../maxwell_equations_8.html">Electromagnetic waves</a></li>
+					<li><a href="../maxwell_equations_9.html">Electromechanics</a></li>
 				</ul>
-				<li><a href="optics.html">Snell's law</a></li>
-				<li><a href="tensors.html">Tensors</a></li>
+				<li><a href="../optics.html">Snell's law</a></li>
+				<li><a href="../tensors.html">Tensors</a></li>
 			</ul>
 		</div>
 		<div id="content">
@@ -68,24 +68,24 @@
 			<p>
 				\begin{align}
 					\psi(x) &= u(x)e^{jkx}\\
-					\psi(x, t) &= \psi(x)\phi(t) = u(x)e^{jkx} \cdot e^{-j(E/\hbar)t}\\
-					\psi(x, t) &= u(x)e^{j(kx-(E/\hbar)t)}\\
+					\Psi(x, t) &= \psi(x)\phi(t) = u(x)e^{jkx} \cdot e^{-j(E/\hbar)t}\\
+					\Psi(x, t) &= u(x)e^{j(kx-(E/\hbar)t)}\\
 				\end{align}
 			</p>
 			<p>Time-independent Schrödinger equation (used to get the stationary states of the system).</p>
 			</p>
 				\begin{align}
-					\frac{\partial^2 \psi(x, t)}{\partial x^2} + \gamma^2\psi(x, t) = 0
+					\frac{\partial^2 \Psi(x, t)}{\partial x^2} + q^2\Psi(x, t) = 0
 				\end{align}
 				\begin{align}
-					\gamma^2 &= \frac{2m}{\hbar^2}(E - V(x))
+					q^2 &= \frac{2m}{\hbar^2}(E - V(x))
 				\end{align}
 			</p>
 			<h2 id="toc_1_2">Solution</h2>
 			<p>Substituting in Schrödinger equation.</p>
 			<p>
 				\begin{align}
-					\frac{\partial \psi(x, t)}{\partial x} &= \frac{\partial}{\partial x} (\psi(x) \phi(t)) = \frac{d\psi(x)}{dx} \phi(t)\\
+					\frac{\partial \Psi(x, t)}{\partial x} &= \frac{\partial}{\partial x} (\psi(x) \phi(t)) = \frac{d\psi(x)}{dx} \phi(t)\\
 					\\
 					\frac{d\psi(x)}{dx} &= \frac{d}{dx} \left(u(x)e^{jkx}\right)\\
 					&= \frac{du(x)}{dx}e^{jkx} + u(x)\frac{de^{jkx}}{dx}\\
@@ -97,7 +97,7 @@
 					&= e^{jkx} jk \left( \frac{du(x)}{dx} + u(x)jk \right) + e^{jkx} \left( \frac{d^2 u(x)}{dx^2} + \frac{du(x)}{dx}jk \right)\\
 					&= e^{jkx} \left( 2jk \frac{du(x)}{dx} - k^2 u(x) + \frac{d^2 u(x)}{dx^2} \right)\\
 					\\
-					\frac{\partial^2 \psi(x, t)}{\partial x^2} &= \frac{d^2\psi(x)}{dx^2} \phi(t)\\
+					\frac{\partial^2 \Psi(x, t)}{\partial x^2} &= \frac{d^2\psi(x)}{dx^2} \phi(t)\\
 					\\
 					&= \left( 2jk \frac{du(x)}{dx} - k^2 u(x) + \frac{d^2 u(x)}{dx^2} \right) e^{jkx} \phi(t)
 				\end{align}
@@ -105,23 +105,23 @@
 			<p>We finally get:</p>
 			<p>
 				\begin{align}
-					&\frac{\partial^2 \psi(x, t)}{\partial x^2} + \gamma^2\psi(x, t) = 0\\
-					&\left( 2jk \frac{du(x)}{dx} - k^2 u(x) + \frac{d^2 u(x)}{dx^2} \right) e^{jkx} \phi(t) + \gamma^2 u(x) e^{jkx} \phi(t) = 0\\
-					&\frac{d^2 u(x)}{dx^2} + 2jk \frac{du(x)}{dx} + \left(\gamma^2 - k^2 \right) u(x) = 0\\
+					&\frac{\partial^2 \Psi(x, t)}{\partial x^2} + q^2\Psi(x, t) = 0\\
+					&\left( 2jk \frac{du(x)}{dx} - k^2 u(x) + \frac{d^2 u(x)}{dx^2} \right) e^{jkx} \phi(t) + q^2 u(x) e^{jkx} \phi(t) = 0\\
+					&\frac{d^2 u(x)}{dx^2} + 2jk \frac{du(x)}{dx} + \left(q^2 - k^2 \right) u(x) = 0\\
 				\end{align}
 			</p>
 			<p>Solving this differential equation gives us:</p>
 			<p>
 				\begin{align}
-					u(x) &= Ee^{j\left(\gamma - k\right)x} + Fe^{- j\left(\gamma + k\right)x}\\
-					&= \left( Ee^{j\gamma x} + Fe^{- j\gamma x} \right) e^{-jkx}
+					u(x) &= Ee^{j\left(q - k\right)x} + Fe^{- j\left(q + k\right)x}\\
+					&= \left( Ee^{jq x} + Fe^{- jq x} \right) e^{-jkx}
 				\end{align}
 			</p>
-			<p>Considering that \(\gamma\) as a constant in regions I and II (not in the borders), we get:</p>
+			<p>Considering that \(q\) as a constant in regions I and II (not in the borders), we get:</p>
 			<p>
 				\begin{align}
-					\frac{du(x)}{dx} &= j \left( \gamma \left( Ee^{j \gamma x} - Fe^{- j \gamma x} \right) - k \left(Ee^{j \gamma x} + Fe^{- j \gamma x} \right) \right) e^{-jkx}\\
-					&= j \left( E (\gamma - k) e^{j \gamma x} - F (\gamma + k) e^{- j \gamma x} \right) e^{-jkx}\\
+					\frac{du(x)}{dx} &= j \left( q \left( Ee^{j q x} - Fe^{- j q x} \right) - k \left(Ee^{j q x} + Fe^{- j q x} \right) \right) e^{-jkx}\\
+					&= j \left( E (q - k) e^{j q x} - F (q + k) e^{- j q x} \right) e^{-jkx}\\
 				\end{align}
 			</p>
 			<p>Considering region I (where \(V(x) = 0\)):</p>
@@ -180,6 +180,58 @@
 						e^{j\left(\alpha - k\right)a} & e^{- j\left(\alpha + k\right)a} & - e^{-j\left(\beta - k\right)b} & - e^{j\left(\beta + k\right)b}\\
 						(\alpha - k) e^{j (\alpha - k) a} & - (\alpha + k) e^{- j (\alpha + k) a} & - (\beta - k) e^{- j (\beta - k) b} & (\beta + k) e^{j (\beta + k) b}
 					\end{array}\right)
+				\end{align}
+			</p>
+			<p>There is a non-trivial solution, if and only if, the determinant of the coefficients is zero.</p>
+			<p>
+				\begin{align}
+					\frac{-(\alpha^2 + \beta^2)}{2 \alpha \beta} (\sin{\alpha a}) (\sin{\beta b}) + (\cos{\alpha a}) (\cos{\beta b}) &= \cos{(k(a + b))}
+				\end{align}
+			</p>
+			<p>Using Euler's identity.</p>
+			<p>
+				\begin{align}
+					e^{i\omega} &= \cos{\omega} + i\sin{\omega}
+				\end{align}
+			</p>
+			<p>We get the expressions for trigonometric and hyperbolic functions:</p>
+			<p>
+				\begin{align}
+					\cos{\omega} &= \frac{e^{j\omega} + e^{-j\omega}}{2} &\sin{\omega} &= \frac{e^{j\omega} - e^{-j\omega}}{2j}\\
+					\cosh{\omega} &= \frac{e^{\omega} + e^{-\omega}}{2} &\sinh{\omega} &= \frac{e^{\omega} - e^{-\omega}}{2}\\
+				\end{align}
+			</p>
+			<p>The solution becomes.</p>
+			<p>
+				\begin{align}
+					&\frac{-(\alpha^2 + \beta^2)}{2 \alpha \beta} \left( \frac{e^{j\alpha a} - e^{-j\alpha a}}{2j} \right)\left( \frac{e^{j\beta b} - e^{-j\beta b}}{2j} \right)\\
+					&+ \left( \frac{e^{j\alpha a} + e^{-j\alpha a}}{2} \right)\left( \frac{e^{j\beta b} + e^{-j\beta b}}{2} \right)=  \frac{e^{jk(a + b)} + e^{-jk(a + b)}}{2}
+				\end{align}
+			</p>
+			<p>Rewriting it looks like:</p>
+			<p>
+				\begin{align}
+					&(\alpha^2 + \beta^2) \left( e^{j\alpha a} - e^{-j\alpha a} \right) \left( e^{j\beta b} - e^{-j\beta b} \right)\\
+					&+ 2 \alpha \beta \left( e^{j\alpha a} + e^{-j\alpha a} \right)\left( e^{j\beta b} + e^{-j\beta b} \right) = 4 \alpha \beta \left( e^{jk(a + b)} + e^{-jk(a + b)} \right)
+				\end{align}
+			</p>
+			<p>Which turns to be the same that the result of the determinant.</p>
+			<p>
+				\begin{align}
+					&- \alpha^{2} e^{\left(j \alpha a + j \beta b \right)}
+					+ \alpha^{2} e^{\left(j \beta b - j \alpha a \right)}
+					+ \alpha^{2} e^{\left(j \alpha a - j \beta b \right)}
+					- \alpha^{2} e^{\left(- j \beta b - j \alpha a \right)} \\
+					&- \beta^{2} e^{\left(- j \alpha a - j \beta b \right)}
+					+ \beta^{2} e^{\left(j \beta b - j \alpha a \right)}
+					+ \beta^{2} e^{\left(j \alpha a - j \beta b \right)}
+					- \beta^{2} e^{\left(j \beta b + j \alpha a \right)} \\
+					&- 2 \alpha \beta e^{\left(- j \alpha a + j \beta b \right)}
+					- 2 \alpha \beta e^{\left(- j \beta b - j \alpha a \right)}
+					- 2 \alpha \beta e^{\left(j \alpha a + j \beta b \right)}
+					- 2 \alpha \beta e^{\left(- j \beta b + j \alpha a \right)} \\
+					&+ 4 \alpha \beta e^{\left(j k b + j k a \right)}
+					+ 4 \alpha \beta e^{\left(- j k a - j k b \right)} \\
 				\end{align}
 			</p>
 			<p>By Cramer's rule, the determinant of a \(4 \times 4\) matrix is:</p>
@@ -251,6 +303,43 @@
 					&+dmjg + difo + denk - dejo - ding - dmfk\\
 				\end{align}
 			</p>
+			<p>If we consider the case where \(E < V_0\), then \(\beta\) is imaginary, so we could express it like:</p>
+			<p>
+				\begin{align}
+					\beta = j\gamma
+				\end{align}
+			</p>
+			<p>where \(\gamma\) is a real number.</p>
+			<p>
+				\begin{align}
+					\frac{\gamma^2 - \alpha^2}{2 \alpha \beta} (\sin{\alpha a}) (\sinh{\gamma b}) + (\cos{\alpha a}) (\cosh{\gamma b}) &= \cos{(k(a + b))}
+				\end{align}
+			</p>
+			<p>Simplifying even more, we can make the potential barrier width \(b \rightarrow 0\) and the barrier height \(V_0 \rightarrow \infty\), but such that the product \(bV_0\) remains finite.</p>
+			<p>
+				\begin{align}
+					b(r) &= Fr & V_0(r) &= \frac{F}{r}\\
+				\end{align}
+				\begin{align}
+					F &= bV_0
+				\end{align}
+			</p>
+			<p>The equation becomes:</p>
+			<p>
+				\begin{align}
+					\left( \frac{mFa}{\hbar^2} \right)\frac{\sin{\alpha a}}{\alpha a} + \cos{\alpha a} &= \cos{ka}
+				\end{align}
+				\begin{align}
+					P' &= \frac{mFa}{\hbar^2}
+				\end{align}
+				\begin{align}
+					P' \frac{\sin{\alpha a}}{\alpha a} + \cos{\alpha a} &= \cos{ka}
+				\end{align}
+			</p>
+			<canvas id="canvas_1" width="800" height="450"></canvas>
+			<p>
+				\(k\) <input id="input_k" type="range" min="0" max="20" value="10"><output id="output_k"></output>
+			</p>
 		</div>
 		<div class="center">
 			<ol id="index">
@@ -264,178 +353,86 @@
 		</div>
 	</div>
 	<footer>
-		<h1>StrawRedBerry</h1>
-		<a href="https://macul.ciencias.uchile.cl/alejo/clases/2018_mechanics/">Funcionales</a>
+		<h1><a href="../../index.html">StrawRedBerry</a></h1>
 	</footer>
 	<script type="text/javascript" src="../../grapher/grapher.js"></script>
 	<script type="text/javascript">
-	(async function() {
-		await document.fonts.ready;
-		let exitFunction = false;
-		if(!checkResources()) {
-			// console.log("Trying to get resources");
+	// check if resources are ready
+	// await until the resources are ready
+	// run the function when the resources are loaded
+	async function callSafe(loadRes, f) {
+		// "loadRes" is a function that is responsible for loading and checking the resources
+		// assuring resources before running
+		let b = await loadRes();
+		if(!b) {
+			console.log("Trying to get resources");
 			await new Promise(r => { setTimeout(r, 1000); });
-			exitFunction = !checkResources();
 		}
+		b = await loadRes();
+		if(b) { f(); }
+		return b;
+	}
 
-		function checkResources() {
-			let available = document.fonts.check("64px MJXTEX-B");
-			return available;
-		}
+	async function loadResources() {
+		// get resources
+		await document.fonts.ready;
+		// check resources
+		return document.fonts.check("64px MJXTEX");
+	}
 
-		if(exitFunction) {
-			console.log("MathJax fonts not loaded");
-			return;
-		}
-
+	function run() {
 		{
-			const ctx = document.getElementById("canvas_1_5_1").getContext("2d");
-			ctx.fillStyle = "white";
-			ctx.strokeStyle = "gray";
-			ctx.lineWidth = 2;
-			// Horizontal axis
-			ctx.beginPath();
-			ctx.moveTo(0, 225);
-			ctx.lineTo(800, 225);
-			ctx.stroke();
-			ctx.closePath();
-			// Vertical axis
-			ctx.beginPath();
-			ctx.moveTo(400, 0);
-			ctx.lineTo(400, 450);
-			ctx.stroke();
-			ctx.closePath();
-			// Lightbeam path
-			ctx.lineWidth = 4;
-			// Lightbeam slope is 3 / 4
-			ctx.strokeStyle = "cyan";
-			ctx.beginPath();
-			ctx.moveTo(100, 450);
-			ctx.lineTo(700, 0);
-			ctx.closePath();
-			ctx.stroke();
-			// Points
-			drawPoint([400, 225], ctx);
-			drawPoint([600, 75], ctx);
-			// Text
-			ctx.font = "italic 24px MJXTEX-I";
-			ctx.strokeStyle = "black"
-			drawOText("S", 16, 32, ctx);
-			drawOText("A", 400 + 16, 225 + 16, ctx);
-			drawOText("B", 600 + 16, 75 + 16, ctx);
-			ctx.textAlign = "right";
-			ctx.fillText("y", 400 - 8, 32);
-			ctx.fillText("x", 800 - 32, 225 - 8);
-		}
-
-		{
-			const ctx = document.getElementById("canvas_1_5_2").getContext("2d");
-			ctx.fillStyle = "white";
-			ctx.strokeStyle = "gray";
-			ctx.lineWidth = 2;
-			// Horizontal axis
-			ctx.beginPath();
-			ctx.moveTo(0, 225);
-			ctx.lineTo(800, 225);
-			ctx.stroke();
-			ctx.closePath();
-			// Vertical axis
-			ctx.beginPath();
-			ctx.moveTo(400, 0);
-			ctx.lineTo(400, 450);
-			ctx.stroke();
-			ctx.closePath();
-			// Lightbeam path
-			ctx.lineWidth = 4;
-			// Lightbeam slope is 3 / 4
-			ctx.strokeStyle = "cyan";
-			ctx.beginPath();
-			ctx.moveTo(400, 450);
-			ctx.lineTo(400, 0);
-			ctx.closePath();
-			ctx.stroke();
-			// Points
-			drawPoint([400, 225], ctx);
-			drawPoint([400, 75], ctx);
-			// Text
-			ctx.font = "italic 24px MJXTEX-I";
-			ctx.strokeStyle = "black"
-			drawOText("S'", 16, 32, ctx);
-			drawOText("A", 400 + 16, 225 + 16, ctx);
-			drawOText("B", 400 + 16, 75 + 16, ctx);
-			ctx.textAlign = "right";
-			ctx.fillText("y'", 400 - 8, 32);
-			ctx.fillText("x'", 800 - 32, 225 - 8);
-		}
-
-		{
-			const canvas = document.getElementById("canvas_1_5_3");
+			let k = 1;
+			const input_k = document.getElementById("input_k");
+			const output_k = document.getElementById("output_k");
+			const canvas = document.getElementById("canvas_1");
 			const ctx = canvas.getContext("2d");
-			ctx.fillStyle = "white";
-			ctx.strokeStyle = "gray";
-			ctx.lineWidth = 2;
-			// Horizontal axis
-			ctx.beginPath();
-			ctx.moveTo(0, 225);
-			ctx.lineTo(800, 225);
-			ctx.stroke();
-			ctx.closePath();
-			// Vertical axis
-			ctx.beginPath();
-			ctx.moveTo(400, 0);
-			ctx.lineTo(400, 450);
-			ctx.stroke();
-			ctx.closePath();
-			// Graph
-			ctx.lineWidth = 4;
-			ctx.strokeStyle = "magenta";
 			const gInfo = new GraphInfo(canvas);
-			gInfo.graphArea = [[-1.5, 10], [1.5, -10]]
-			const points = pointsFromParametric(20, [Math.sqrt(Math.PI / 2), Math.sqrt(1 / 10)], t => [Math.cos(t**2), 1 / Math.sin(t**2)], gInfo);
-			drawPolyline(points, ctx);
-			// Text
-			ctx.font = "italic 24px MJXTEX-I";
-			ctx.strokeStyle = "black"
-			ctx.textAlign = "right";
-			ctx.fillText("γ", 400 - 8, 32);
-			ctx.fillText("v", 800 - 32, 225 - 8);
-		}
+			gInfo.graphArea = [[-5 * Math.PI, 5], [5 * Math.PI, -5]]
+			let points;
+			// console.log(points);	
+			function draw() {
+				ctx.clearRect(0, 0, 800, 450);
+				// Axis
+				ctx.lineWidth = 2;
+				ctx.strokeStyle = "gray";
+				// Horizontal axis
+				ctx.beginPath();
+				ctx.moveTo(0, 225);
+				ctx.lineTo(800, 225);
+				ctx.stroke();
+				ctx.closePath();
+				// Vertical axis
+				ctx.beginPath();
+				ctx.moveTo(400, 0);
+				ctx.lineTo(400, 450);
+				ctx.stroke();
+				ctx.closePath();
+				// Graph
+				ctx.lineWidth = 4;
+				ctx.strokeStyle = "#0f7";
+				points = pointsFromParametric(150, [-5 * Math.PI, 5 * Math.PI], t => [t, Math.cos(k * t)], gInfo);
+				// drawPoints(points, ctx);
+				drawPolyline(points, ctx);
+				// Text
+				ctx.strokeStyle = "black";
+				ctx.fillStyle = "white";
+				ctx.font = "italic 24px MJXTEX-I";
+				ctx.textAlign = "right";
+				drawOText("f", 400 - 8, 32, ctx);
+				drawOText("a", 800 - 32, 225 - 8, ctx);
+			}
 
-		{
-			const ctx = document.getElementById("canvas_1_6_1").getContext("2d");
-			ctx.fillStyle = "white";
-			ctx.strokeStyle = "gray";
-			ctx.lineWidth = 2;
-			ctx.font = "24px MJXTEX-I";
-			ctx.textAlign = "right";
-			ctx.fillText("ct", 320 - 8, 32);
-			// ctx.font = "32px MJXTEX-B";
-			// const metrics = ctx.measureText("t");
-			// ctx.strokeRect(410 + metrics.actualBoundingBoxLeft, 50 + metrics.actualBoundingBoxDescent, metrics.actualBoundingBoxRight, - metrics.actualBoundingBoxAscent);
-			// ctx.fillText("t", 410, 50);
-			ctx.fillText("x", 640 - 32, 180 - 8);
-			// Horizontal axis
-			ctx.beginPath();
-			ctx.moveTo(0, 180);
-			ctx.lineTo(640, 180);
-			ctx.stroke();
-			ctx.closePath();
-			// Vertical axis
-			ctx.beginPath();
-			ctx.moveTo(320, 0);
-			ctx.lineTo(320, 360);
-			ctx.stroke();
-			ctx.closePath();
-			// Lightbeam path
-			ctx.strokeStyle = "cyan";
-			ctx.beginPath();
-			ctx.moveTo(80, 360);
-			ctx.lineTo(560, 0);
-			ctx.closePath();
-			ctx.stroke();
-			drawPoint([320, 180], ctx);
+			input_k.oninput = () => {
+				k = Number(input_k.value) / 10;
+				draw();
+			}
+
+			draw();
 		}
-	})();
+	}
+
+	callSafe(loadResources, run);
 	</script>
 </body>
 </html>

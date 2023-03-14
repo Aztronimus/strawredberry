@@ -1,0 +1,3 @@
+[submodule "voltammetry_data_analyzer"]
+	path = voltammetry_data_analyzer
+	url = https://github.com/Aztronimus/potentiostat_analizer.git

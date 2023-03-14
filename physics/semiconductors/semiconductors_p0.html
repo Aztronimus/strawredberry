@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Kronig-Penney</title>
+	<link rel="stylesheet" type="text/css" href="../../presentation/presentation.css">
+	<script type="text/javascript" src="../../js/mathjax_loader.js"></script>
+</head>
+<body>
+	<div id="slider">
+		<div>
+			<canvas id="canvas_1" width="800" height="450"></canvas>
+			<p>
+				\begin{align}
+					P' \dfrac{\sin{\alpha a}}{\alpha a} + \cos{\alpha a} = \cos{ka} \tag{3.24}\\
+					f(\alpha a) = P' \dfrac{\sin{\alpha a}}{\alpha a} + \cos{\alpha a} \tag{3.29}\\
+					f(\alpha a) = \cos{ka} \tag{3.30}
+				\end{align}
+			</p>
+			<p>
+				\(k\) <input id="input_k" type="range" min="0" max="20" value="10"> <output id="output_k"></output>
+			</p>
+		</div>
+		<div>
+			<canvas id="canvas_2" width="800" height="450"></canvas>
+			<p>
+				\begin{align}
+					P' \dfrac{\sin{\alpha a}}{\alpha a} + \cos{\alpha a} = \cos{ka} \tag{3.24}\\
+					f(\alpha a) = P' \dfrac{\sin{\alpha a}}{\alpha a} + \cos{\alpha a} \tag{3.29}\\
+					f(\alpha a) = \cos{ka} \tag{3.30}
+				\end{align}
+			</p>
+			<p>
+				\(P'\) <input id="input_p" type="range" min="0" max="20" value="10"> <output id="output_p"></output>
+			</p>
+			<p>
+				\begin{align}
+					\alpha^2 = \frac{2mE}{\hbar^2} \tag{3.5}\\
+				\end{align}
+			</p>
+		</div>
+		<div>
+			<canvas id="canvas_3" width="800" height="450"></canvas>
+			<p>
+				\begin{align}
+					P' \dfrac{\sin{\alpha a}}{\alpha a} + \cos{\alpha a} = \cos{ka} \tag{3.24}\\
+					f(\alpha a) = P' \dfrac{\sin{\alpha a}}{\alpha a} + \cos{\alpha a} \tag{3.29}\\
+					f(\alpha a) = \cos{ka} \tag{3.30}
+				\end{align}
+			</p>
+			<p>
+				\(P'\) <input id="input_3" type="range" min="0" max="20" value="10"> <output id="input_3"></output>
+			</p>
+			<p>
+				\begin{align}
+					\cos{ka} &= 1 &\text{si}& &ka &= 2n \cdot \pi & \forall n \in \mathbb{Z}\\
+					\cos{ka} &= -1 &\text{si}& &ka &= (2n + 1) \cdot \pi & \forall n \in \mathbb{Z}\\
+				\end{align}
+			</p>
+		</div>
+		<div>
+			<canvas id="canvas_4" width="800" height="450"></canvas>
+			<p>
+				\begin{align}
+					P' \dfrac{\sin{\alpha a}}{\alpha a} + \cos{\alpha a} = \cos{ka} \tag{3.24}\\
+					f(\alpha a) = P' \dfrac{\sin{\alpha a}}{\alpha a} + \cos{\alpha a} \tag{3.29}\\
+					f(\alpha a) = \cos{ka} \tag{3.30}
+				\end{align}
+			</p>
+			<p>
+				\(P'\) <input id="input_4" type="range" min="1" max="20" value="10"> <output id="output_4"></output>
+			</p>
+			<p>
+				\begin{align}
+					k &= \dfrac{\text{acos}\ {f}}{a} & E &= \frac{\alpha^2 \hbar^2}{2m}\\
+				\end{align}
+			</p>
+		</div>
+		<div>
+			<canvas id="canvas_5" width="800" height="450"></canvas>
+			<p>
+				\begin{align}
+					P' \dfrac{\sin{\alpha a}}{\alpha a} + \cos{\alpha a} = \cos{ka} \tag{3.24}\\
+					f(\alpha a) = P' \dfrac{\sin{\alpha a}}{\alpha a} + \cos{\alpha a} \tag{3.29}\\
+					f(\alpha a) = \cos{ka} \tag{3.30}
+				\end{align}
+			</p>
+			<p>
+				\(P'\) <input id="input_5" type="range" min="1" max="20" value="10"><output id="output_5"></output>
+			</p>
+			<p>
+				\begin{align}
+					k &= \dfrac{\text{acos}\ {f}}{a} & E &= \frac{\alpha^2 \hbar^2}{2mE}\\
+				\end{align}
+			</p>
+		</div>
+	</div>
+	<div id="control_bar">
+		<div id="prev_slide">〈</div>
+		<div id="next_slide">〉</div>
+	</div>
+	<script type="text/javascript" src="../../grapher/grapher.js"></script>
+	<script type="text/javascript">
+	{
+		const slider = document.getElementById("slider");
+		const slides = slider.children;
+		const l = slides.length;
+		let i = 0;
+		const prev_slide = document.getElementById('prev_slide');
+		const next_slide = document.getElementById('next_slide');
+
+		function module(x, m) {
+			// x is the number
+			// m is the module
+			let r = x % m;
+			return r < 0 ? r + m : r;
+		}
+
+		function next() {
+			i = module(i + 1, l);
+			slides[i].scrollIntoView();
+		}
+
+		function prev() {
+			i = module(i - 1, l);
+			slides[i].scrollIntoView();
+		}
+
+		prev_slide.addEventListener("click", prev);
+		next_slide.addEventListener("click", next);
+	}
+
+	(async function() {
+		await document.fonts.ready;
+		let exitFunction = false;
+		if(!checkResources()) {
+			// console.log("Trying to get resources");
+			await new Promise(r => { setTimeout(r, 1000); });
+			exitFunction = !checkResources();
+		}
+
+		function checkResources() {
+			let available = document.fonts.check("64px MJXTEX");
+			return available;
+		}
+
+		if(exitFunction) {
+			console.log("MathJax fonts not loaded");
+			return;
+		}
+
+		{
+			let k = 1;
+			const input_k = document.getElementById("input_k");
+			const output_k = document.getElementById("output_k");
+			const canvas = document.getElementById("canvas_1");
+			const ctx = canvas.getContext("2d");
+			const gInfo = new GraphInfo(canvas);
+			gInfo.graphArea = [[-5 * Math.PI, 5], [5 * Math.PI, -5]]
+			let points;
+			// console.log(points);	
+			function draw() {
+				ctx.clearRect(0, 0, 800, 450);
+				// Axis
+				ctx.lineWidth = 2;
+				ctx.strokeStyle = "gray";
+				// Horizontal axis
+				ctx.beginPath();
+				ctx.moveTo(0, 225);
+				ctx.lineTo(800, 225);
+				ctx.stroke();
+				ctx.closePath();
+				// Vertical axis
+				ctx.beginPath();
+				ctx.moveTo(400, 0);
+				ctx.lineTo(400, 450);
+				ctx.stroke();
+				ctx.closePath();
+				// Graph
+				ctx.lineWidth = 4;
+				ctx.strokeStyle = "#0f7";
+				points = pointsFromParametric(150, [-5 * Math.PI, 5 * Math.PI], t => [t, Math.cos(k * t)], gInfo);
+				// drawPoints(points, ctx);
+				drawPolyline(points, ctx);
+				// Text
+				ctx.strokeStyle = "white";
+				ctx.fillStyle = "black";
+				ctx.font = "italic 24px MJXTEX-I";
+				ctx.textAlign = "right";
+				drawOText("f", 400 - 8, 32, ctx);
+				drawOText("αa", 800 - 32, 225 - 8, ctx);
+			}
+
+			input_k.oninput = () => {
+				k = Number(input_k.value) / 10;
+				draw();
+			}
+
+			draw();
+		}
+	})();
+
+	(async function() {
+		await document.fonts.ready;
+		let exitFunction = false;
+		if(!checkResources()) {
+			// console.log("Trying to get resources");
+			await new Promise(r => { setTimeout(r, 1000); });
+			exitFunction = !checkResources();
+		}
+
+		function checkResources() {
+			let available = document.fonts.check("64px MJXTEX");
+			return available;
+		}
+
+		if(exitFunction) {
+			console.log("MathJax fonts not loaded");
+			return;
+		}
+
+		{
+			let p = 5;
+			const input_p = document.getElementById("input_p");
+			const output_p = document.getElementById("output_p");
+			const canvas = document.getElementById("canvas_2");
+			const ctx = canvas.getContext("2d");
+			const gInfo = new GraphInfo(canvas);
+			gInfo.graphArea = [[-5 * Math.PI, 4], [5 * Math.PI, -4]]
+			let points;
+			// console.log(points);	
+			function draw() {
+				ctx.clearRect(0, 0, 800, 450);
+				// Axis
+				ctx.lineWidth = 2;
+				ctx.strokeStyle = "gray";
+				// Horizontal axis
+				ctx.beginPath();
+				ctx.moveTo(0, 225);
+				ctx.lineTo(800, 225);
+				ctx.stroke();
+				ctx.closePath();
+				// Vertical axis
+				ctx.beginPath();
+				ctx.moveTo(400, 0);
+				ctx.lineTo(400, 450);
+				ctx.stroke();
+				ctx.closePath();
+				// Graph
+				ctx.lineWidth = 4;
+				ctx.strokeStyle = "#f07";
+				points = pointsFromParametric(150, [-5 * Math.PI, 5 * Math.PI], t => [t, p * Math.sin(t) / t + Math.cos(t)], gInfo);
+				// drawPoints(points, ctx);
+				drawPolyline(points, ctx);
+				// Text
+				ctx.strokeStyle = "white"
+				ctx.fillStyle = "black";
+				ctx.font = "italic 24px MJXTEX-I";
+				ctx.textAlign = "right";
+				drawOText("f", 400 - 8, 32, ctx);
+				drawOText("αa", 800 - 32, 225 - 8, ctx);
+			}
+
+			input_p.oninput = () => {
+				p = Number(input_p.value / 2);
+				draw();
+			}
+
+			draw();
+		}
+	})();
+
+	(async function() {
+		await document.fonts.ready;
+		let exitFunction = false;
+		if(!checkResources()) {
+			// console.log("Trying to get resources");
+			await new Promise(r => { setTimeout(r, 1000); });
+			exitFunction = !checkResources();
+		}
+
+		function checkResources() {
+			let available = document.fonts.check("64px MJXTEX");
+			return available;
+		}
+
+		if(exitFunction) {
+			console.log("MathJax fonts not loaded");
+			return;
+		}
+
+		{
+			let p = 5;
+			const input_p = document.getElementById("input_3");
+			const output_p = document.getElementById("output_3");
+			const canvas = document.getElementById("canvas_3");
+			const ctx = canvas.getContext("2d");
+			const gInfo = new GraphInfo(canvas);
+			gInfo.graphArea = [[-5 * Math.PI, 4], [5 * Math.PI, -4]]
+			let points;
+			// console.log(points);
+			function getIntersection(a, b, v) {
+				// a and b are points of the form [x, y]
+				// v is the value of y (1 or -1)
+				// dy_2 / dx_2 = dy_1 / dx_1 -> dx_2 = dy_2 * dx_1 / dy_1
+				return [a[0] + (v - a[1]) * (b[0] - a[0]) / (b[1] - a[1]), v];
+			}
+			function getPoints(p, ctx) {
+				// p is a set of points of the form [x, y]
+				// will return the intersections of the function with y = 1 and y = -1
+				const r = [];
+				const _i = p.length - 2;
+				let b = false;
+				let v = 1;
+				for(let i = 0; i != _i; ++i) {
+					b = false;
+					if(p[i][1] > 1 && p[i + 1][1] < 1) { b = true; v = 1 }
+					else if(p[i][1] < 1 && p[i + 1][1] > 1) { b = true; v = 1}
+					else if(p[i][1] > -1 && p[i + 1][1] < -1) { b = true; v = -1}
+					else if(p[i][1] < -1 && p[i + 1][1] > -1) { b = true; v = -1}
+					if(b) { r.push(getIntersection(p[i], p[i + 1], v)); }
+				}
+				if(r.length % 4) {
+					r.shift();
+					r.pop();
+				}
+				return r;
+			}
+
+			function drawRectsFromPoints(p, ctx) {
+				let _i = p.length - 1;
+				for(let i = 0; i < _i; i += 2) {
+					ctx.fillRect(p[i][0], p[i][1], p[i + 1][0] - p[i][0], p[i + 1][1] - p[i][1]);
+				}
+			}
+
+			function draw() {
+				// Computation
+				points = pointsFromParametric(150, [-5 * Math.PI, 5 * Math.PI], t => [t, p * Math.sin(t) / t + Math.cos(t)]);
+				let points_2 = getPoints(points, ctx);
+				points = gInfo.mapToViewportCoord(points);
+				points_2 = gInfo.mapToViewportCoord(points_2);
+				ctx.clearRect(0, 0, 800, 450);
+				// Axis
+				ctx.lineWidth = 2;
+				ctx.strokeStyle = "gray";
+				// Horizontal axis
+				ctx.beginPath();
+				ctx.moveTo(0, 225);
+				ctx.lineTo(800, 225);
+				ctx.stroke();
+				ctx.closePath();
+				// Vertical axis
+				ctx.beginPath();
+				ctx.moveTo(400, 0);
+				ctx.lineTo(400, 450);
+				ctx.stroke();
+				ctx.closePath();
+				// Fill Polygons
+				ctx.fillStyle = "#f07";
+				ctx.globalAlpha = 0.2;
+				drawRectsFromPoints(points_2, ctx);
+				ctx.globalAlpha = 1.0;
+				// Graph
+				ctx.lineWidth = 4;
+				ctx.strokeStyle = "#f07";
+				// console.log(p1);
+				drawPolyline(points, ctx);
+				// drawPoints(points_2, ctx);
+				// Text
+				ctx.strokeStyle = "white"
+				ctx.fillStyle = "black";
+				ctx.font = "italic 24px MJXTEX-I";
+				ctx.textAlign = "right";
+				drawOText("f", 400 - 8, 32, ctx);
+				drawOText("αa", 800 - 32, 225 - 8, ctx);
+			}
+
+			input_p.oninput = () => {
+				p = Number(input_p.value / 2);
+				draw();
+			}
+
+			draw();
+		}
+	})();
+
+	(async function() {
+		await document.fonts.ready;
+		let exitFunction = false;
+		if(!checkResources()) {
+			// console.log("Trying to get resources");
+			await new Promise(r => { setTimeout(r, 1000); });
+			exitFunction = !checkResources();
+		}
+
+		function checkResources() {
+			let available = document.fonts.check("64px MJXTEX");
+			return available;
+		}
+
+		if(exitFunction) {
+			console.log("MathJax fonts not loaded");
+			return;
+		}
+
+		{
+			let p = 5;
+			const input_p = document.getElementById("input_4");
+			const output_p = document.getElementById("output_4");
+			const canvas = document.getElementById("canvas_4");
+			const ctx = canvas.getContext("2d");
+			const gInfo = new GraphInfo(canvas);
+			gInfo.graphArea = [[-4 * Math.PI, 8 * 22], [4 * Math.PI, -1 * 22]];
+			let points;
+
+			// console.log(points);
+			function getIntersection(a, b, v) {
+				// a and b are points of the form [x, y]
+				// v is the value of y (1 or -1)
+				// dy_2 / dx_2 = dy_1 / dx_1 -> dx_2 = dy_2 * dx_1 / dy_1
+				return [a[0] + (v - a[1]) * (b[0] - a[0]) / (b[1] - a[1]), v];
+			}
+
+			function getRegions(p, ctx) {
+				// p is a set of points of the form [x, y]
+				// will return the intersections of the function with y = 1 and y = -1
+				const r = [];
+				const _i = p.length - 2;
+				let b = false;
+				let v = 1;
+				for(let i = 0; i != _i; ++i) {
+					b = false;
+					if(p[i][1] > 1 && p[i + 1][1] < 1) { b = true; v = 1 }
+					else if(p[i][1] < 1 && p[i + 1][1] > 1) { b = true; v = 1 }
+					else if(p[i][1] > -1 && p[i + 1][1] < -1) { b = true; v = -1 }
+					else if(p[i][1] < -1 && p[i + 1][1] > -1) { b = true; v = -1 }
+					if(b) { r.push(getIntersection(p[i], p[i + 1], v)); }
+				}
+				if(r.length % 4) {
+					r.shift();
+					r.pop();
+				}
+				return r;
+			}
+
+			function drawRectsFromPoints(p, ctx) {
+				let _i = p.length - 1;
+				for(let i = 0; i < _i; i += 2) {
+					ctx.fillRect(p[i][0], p[i][1], p[i + 1][0] - p[i][0], p[i + 1][1] - p[i][1]);
+				}
+			}
+
+			function getRelation(p, q) {
+				// p are the delimiters
+				// q are the points
+				let _i = p.length - 1;
+				let r = [];
+				for(let i = 0; i < _i; i += 2) {
+					r.push(p[i]);
+					r.push(...q.filter(v => v[0] > p[i][0] && v[0] < p[i + 1][0]));
+					r.push(p[i + 1]);
+				}
+				r = r.map(p => [Math.acos(p[1]), p[0]**2]);
+				r.push(...r.map(p => [-p[0], p[1]]));
+				// console.log(r);
+				return r;
+			}
+
+			function getFunction(q) {
+				// p are the delimiters
+				// q are the points
+				const p = getRegions(q, ctx);
+				const _i = p.length;
+				const h = p.length / 2;
+				const s = [];
+				const f = [];
+				for(let i = 0; i < _i; i += 2) {
+					const r = [];
+					r.push(p[i]);
+					r.push(...q.filter(v => v[0] > p[i][0] && v[0] < p[i + 1][0]));
+					r.push(p[i + 1]);
+					s.push(r);
+				}
+				for(let i = 0; i < h; ++i) {
+					const j = s.length / 2 - i;
+					f.push(...s[i].map(p => [Math.acos(p[1]) * ((-1) ** j) - (j - (j % 2 ? 1 : 0)) * Math.PI, p[0]**2]));
+					// f.push(...s[i].map(p => [Math.acos(p[1]), p[0]**2]));
+				}
+				// f.push(...f.map(p => [-p[0], p[1]]));
+				// console.log(r);
+				// f.sort((a, b) => a[0] - b[0]);
+				return f;
+			}
+
+			function draw() {
+				// Computation
+				points = pointsFromParametric(300, [-5 * Math.PI, 5 * Math.PI], t => [t, p * Math.sin(t) / t + Math.cos(t)]);
+				let points_3 = getFunction(points);
+
+				points_3 = gInfo.mapToViewportCoord(points_3);
+				// console.log(points_3);
+				// points = gInfo.mapToViewportCoord(points);
+				// points_2 = gInfo.mapToViewportCoord(points_2);
+				// Drawing
+				ctx.clearRect(0, 0, 800, 450);
+				// Axis
+				ctx.lineWidth = 2;
+				ctx.strokeStyle = "gray";
+				// Horizontal axis
+				ctx.beginPath();
+				ctx.moveTo(0, 400);
+				ctx.lineTo(800, 400);
+				ctx.stroke();
+				ctx.closePath();
+				// Vertical axis
+				ctx.beginPath();
+				ctx.moveTo(400, 0);
+				ctx.lineTo(400, 450);
+				ctx.stroke();
+				ctx.closePath();
+				// Graph
+				ctx.lineWidth = 4;
+				ctx.strokeStyle = "#f07";
+				ctx.fillStyle = "#07f";
+				drawPoints(points_3, ctx);
+				// Text
+				ctx.strokeStyle = "white"
+				ctx.fillStyle = "black";
+				ctx.font = "italic 24px MJXTEX-I";
+				ctx.textAlign = "right";
+				drawOText("E", 400 - 8, 32, ctx);
+				drawOText("k", 800 - 32, 400 - 8, ctx);
+			}
+
+			input_p.oninput = () => {
+				p = Number(input_p.value / 2);
+				draw();
+			}
+
+			draw();
+		}
+	})();
+
+	(async function() {
+		await document.fonts.ready;
+		let exitFunction = false;
+		if(!checkResources()) {
+			// console.log("Trying to get resources");
+			await new Promise(r => { setTimeout(r, 1000); });
+			exitFunction = !checkResources();
+		}
+
+		function checkResources() {
+			let available = document.fonts.check("64px MJXTEX");
+			return available;
+		}
+
+		if(exitFunction) {
+			console.log("MathJax fonts not loaded");
+			return;
+		}
+
+		{
+			let p = 5;
+			const input_p = document.getElementById("input_5");
+			const output_p = document.getElementById("output_5");
+			const canvas = document.getElementById("canvas_5");
+			const ctx = canvas.getContext("2d");
+			const gInfo = new GraphInfo(canvas);
+			gInfo.graphArea = [[-1.5 * Math.PI, 8 * 22], [1.5 * Math.PI, -1 * 22]];
+			let points;
+
+			// console.log(points);
+			function getIntersection(a, b, v) {
+				// a and b are points of the form [x, y]
+				// v is the value of y (1 or -1)
+				// dy_2 / dx_2 = dy_1 / dx_1 -> dx_2 = dy_2 * dx_1 / dy_1
+				return [a[0] + (v - a[1]) * (b[0] - a[0]) / (b[1] - a[1]), v];
+			}
+
+			function getRegions(p, ctx) {
+				// p is a set of points of the form [x, y]
+				// will return the intersections of the function with y = 1 and y = -1
+				const r = [];
+				const _i = p.length - 2;
+				let b = false;
+				let v = 1;
+				for(let i = 0; i != _i; ++i) {
+					b = false;
+					if(p[i][1] > 1 && p[i + 1][1] < 1) { b = true; v = 1 }
+					else if(p[i][1] < 1 && p[i + 1][1] > 1) { b = true; v = 1 }
+					else if(p[i][1] > -1 && p[i + 1][1] < -1) { b = true; v = -1 }
+					else if(p[i][1] < -1 && p[i + 1][1] > -1) { b = true; v = -1 }
+					if(b) { r.push(getIntersection(p[i], p[i + 1], v)); }
+				}
+				if(r.length % 4) {
+					r.shift();
+					r.pop();
+				}
+				return r;
+			}
+
+			function drawRectsFromPoints(p, ctx) {
+				let _i = p.length - 1;
+				for(let i = 0; i < _i; i += 2) {
+					ctx.fillRect(p[i][0], p[i][1], p[i + 1][0] - p[i][0], p[i + 1][1] - p[i][1]);
+				}
+			}
+
+			function getRelation(p, q) {
+				// p are the delimiters
+				// q are the points
+				let _i = p.length - 1;
+				let r = [];
+				for(let i = 0; i < _i; i += 2) {
+					r.push(p[i]);
+					r.push(...q.filter(v => v[0] > p[i][0] && v[0] < p[i + 1][0]));
+					r.push(p[i + 1]);
+				}
+				r = r.map(p => [Math.acos(p[1]), p[0]**2]);
+				r.push(...r.map(p => [-p[0], p[1]]));
+				// console.log(r);
+				return r;
+			}
+
+			function getFunction(p, q) {
+				// p are the delimiters
+				// q are the points
+				let _i = p.length - 1;
+				const r = [];
+				for(let i = 0; i < _i; i += 2) {
+					r.push(p[i]);
+					r.push(...q.filter(v => v[0] > p[i][0] && v[0] < p[i + 1][0]));
+					r.push(p[i + 1]);
+				}
+				// console.log(r);
+				return r;
+			}
+
+			function draw() {
+				// Computation
+				points = pointsFromParametric(300, [-5 * Math.PI, 5 * Math.PI], t => [t, p * Math.sin(t) / t + Math.cos(t)]);
+				let points_2 = getRegions(points, ctx);
+				let points_3 = getRelation(points_2, points);
+
+				points_3 = gInfo.mapToViewportCoord(points_3);
+				// console.log(points_3);
+				// points = gInfo.mapToViewportCoord(points);
+				// points_2 = gInfo.mapToViewportCoord(points_2);
+				// Drawing
+				ctx.clearRect(0, 0, 800, 450);
+				// Axis
+				ctx.lineWidth = 2;
+				ctx.strokeStyle = "gray";
+				// Horizontal axis
+				ctx.beginPath();
+				ctx.moveTo(0, 400);
+				ctx.lineTo(800, 400);
+				ctx.stroke();
+				ctx.closePath();
+				// Vertical axis
+				ctx.beginPath();
+				ctx.moveTo(400, 0);
+				ctx.lineTo(400, 450);
+				ctx.stroke();
+				ctx.closePath();
+				// Graph
+				ctx.lineWidth = 4;
+				ctx.strokeStyle = "#f07";
+				ctx.fillStyle = "#07f";
+				drawPoints(points_3, ctx);
+				// Text
+				ctx.strokeStyle = "white"
+				ctx.fillStyle = "black";
+				ctx.font = "italic 24px MJXTEX-I";
+				ctx.textAlign = "right";
+				drawOText("E", 400 - 8, 32, ctx);
+				drawOText("k", 800 - 32, 400 - 8, ctx);
+			}
+
+			input_p.oninput = () => {
+				p = Number(input_p.value / 2);
+				draw();
+			}
+
+			draw();
+		}
+	})();
+	</script>
+</body>
+</html>

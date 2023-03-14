@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width">
+	<title>Polynome calculator</title>
+	<script type="text/javascript" src="../js/mathjax_loader.js"></script>
+	<link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+	<header>
+		<h1><a href="../index.html">StrawRedBerry</a></h1>
+		<h2>Polynome calculator</h2>
+	</header>
+	<div id="center">
+		<div class="center">
+			<ul id="links">
+				<li class="group">StrawRedBerry</li>
+				<ul>
+					<li>Polynome calculator</li>
+				</ul>
+			</ul>
+		</div>
+		<div id="content">
+			<h1 id="toc_1">Space-time</h1>
+			<h2 id="toc_1_1">Space-time transformations</h2>
+			<p id="p_out"></p>
+		</div>
+		<div class="center">
+			<ol id="index">
+				<li class="group"><a href="#toc_1">Space-time</a></li>
+				<ol class="group">
+					<li><a href="#toc_1_1">Space-time transformations</a></li>
+					<li><a href="#toc_1_2">Space-time rules</a></li>
+					<li><a href="#toc_1_3">Quotes notation</a></li>
+					<li><a href="#toc_1_4">Galilean transformation</a></li>
+					<li><a href="#toc_1_5">Lorentz factor</a></li>
+					<li><a href="#toc_1_6">Lorentz transformation</a></li>
+					<li><a href="#toc_1_7">Time and space dilation and contraction</a></li>
+				</ol>
+			</ol>
+		</div>
+	</div>
+	<footer>
+		<h1>StrawRedBerry</h1>
+		<a href="https://macul.ciencias.uchile.cl/alejo/clases/2018_mechanics/">Funcionales</a>
+	</footer>
+	<script type="text/javascript" src="../grapher/grapher.js"></script>
+	<script type="text/javascript" src="../js/polynome_calculator.js"></script>
+	<script type="text/javascript">
+		"use strict";
+
+		function det3(m) {
+			// m is a 3x3 matrix
+			return pc_addPolynomials([
+				pc_multiplyPolynomials([m[0][0], m[1][1], m[2][2]]),
+				pc_multiplyPolynomials([m[1][0], m[2][1], m[0][2]]),
+				pc_multiplyPolynomials([m[2][0], m[0][1], m[1][2]]),
+				pc_multiplyPolynomials([m[0][2], m[1][1], m[2][0], [[-1]]]),
+				pc_multiplyPolynomials([m[1][2], m[2][1], m[0][0], [[-1]]]),
+				pc_multiplyPolynomials([m[2][2], m[0][1], m[1][0], [[-1]]])
+			]);
+		}
+
+		function cof4(n, m) {
+			const r = [[], [], []];
+			for(let i = 1; i < 4; ++i) {
+				for(let j = 0; j < 4; ++j) {
+					if(j != n) { r[i - 1].push(m[i][j]); }
+				}
+			}
+			return r;
+		}
+
+		function det4(m) {
+			return pc_addPolynomials([
+				pc_multiplyPolynomials([m[0][0], det3(cof4(0, m))]),
+				pc_multiplyPolynomials([m[0][1], det3(cof4(1, m)), [[-1]]]),
+				pc_multiplyPolynomials([m[0][2], det3(cof4(2, m))]),
+				pc_multiplyPolynomials([m[0][3], det3(cof4(3, m)), [[-1]]])
+			]);
+		}
+
+		{
+			// const a = ["x", "y", "z", "e"];
+
+			// // y^2 z^2
+			// const m0 = [1, [1, 2], [2, 2]];
+			// // y^2 e^2
+			// const m1 = [1, [1, -2], [3, 2]];
+			// const m2 = [1, [1, 2], [2, 2], [3, 1]];
+			// const m3 = [-1, [1, 2], [2, 2]];
+			// const m4 = [5, [0, 1]];
+			// const m5 = pc_multiply2Monomials(m0, m1);
+
+			// const p0 = [m0, m1, m2];
+			// const p1 = [m4, m3, m1, m2];
+			// const p2 = pc_add2Polynomials(p0, p1);
+			// const p3 = pc_multiplyMonomialPolynomial(m5, p0);
+
+			// const p_out = document.getElementById("p_out");
+			// p_out.innerText += "\\begin{align}";
+			// p_out.innerText += `${pc_polynomeToLaTeX(p0, a)}\\\\`;
+			// p_out.innerText += `${pc_polynomeToLaTeX(p1, a)}\\\\`;
+			// p_out.innerText += `${pc_polynomeToLaTeX(p2, a)}\\\\`;
+			// p_out.innerText += `${pc_polynomeToLaTeX([m0], a)}\\\\`;
+			// p_out.innerText += `${pc_polynomeToLaTeX([m1], a)}\\\\`;
+			// p_out.innerText += `${pc_polynomeToLaTeX([m5], a)}\\\\`;
+			// p_out.innerText += `${pc_polynomeToLaTeX(p3, a)}\\\\`;
+			// p_out.innerText += "\\end{align}";
+		}
+
+		{
+			// const a = ["a", "b", "c", "d"];
+
+			// // a
+			// const m0 = [1, [0, 1]];
+			// // b
+			// const m1 = [1, [1, 1]];
+			// // c
+			// const m2 = [1, [2, 1]];
+			// // d
+			// const m3 = [1, [3, 1]];
+
+			// const p0 = [[5], m0, m1, m2];
+			// const p1 = [[3], [1, [0, -1]], [1, [1, 2]]];
+			// const p2 = pc_multiply2Polynomials(p0, p1);
+			// // const p6 = pc_add2Polynomials(p3, p4);
+
+			// // console.log(pc_add2Monomials(m0, m3));
+
+			// const p_out = document.getElementById("p_out");
+			// p_out.innerText += "\\begin{align}";
+			// p_out.innerText += `${pc_polynomeToLaTeX(p0, a)}\\\\`;
+			// p_out.innerText += `${pc_polynomeToLaTeX(p1, a)}\\\\`;
+			// p_out.innerText += `${pc_polynomeToLaTeX(p2, a)}\\\\`;
+			// p_out.innerText += "\\end{align}";
+		}
+
+		{
+			// const A = ["x", "y", "z", "a", "b", "c"];
+
+			// // a
+			// const a = [1, [3, 1]];
+			// // -a
+			// const _a = [-1, [3, 1]];
+			// // b
+			// const b = [1, [4, 1]];
+			// // _b
+			// const _b = [-1, [4, 1]];
+			// // x^a
+			// const xa = [1, [0, [a]]];
+			// // x^-a
+			// const x_a = [1, [0, [_a]]];
+			// // x^-b
+			// const x_b = [1, [0, [_b]]];
+			// // x^b
+			// const xb = [1, [0, [b]]];
+			// // x^2
+			// const x2 = [1, [0, 2]];
+			// // x^{a + b}
+			// // const xab = [1, [0, [a, b]]];
+			// const xab = pc_multiply2Monomials(xa, xb);
+			// const xab2 = pc_multiply2Monomials(xab, x2);
+			// const x = pc_multiply2Monomials(xa, x_a);
+			// const x_ab = pc_multiply2Monomials(x_a, x_b);
+
+			// console.log(x);
+
+			// const p0 = [xa, xb, x2];
+			// const p1 = [xab];
+			// const p2 = [xab2];
+			// const p3 = [x];
+			// const p4 = [x_ab];
+			// const p5 = [_a, _b];
+			// const p6 = pc_multiply2Polynomials(p1, p4);
+
+			// // console.log(xab);
+			// // console.log(...p3);
+
+			// p_out.innerText += "\\begin{align}";
+			// p_out.innerText += `${pc_polynomeToLaTeX(p0, A)}\\\\`;
+			// p_out.innerText += `${pc_polynomeToLaTeX(p1, A)}\\\\`;
+			// p_out.innerText += `${pc_polynomeToLaTeX(p2, A)}\\\\`;
+			// p_out.innerText += `${pc_polynomeToLaTeX(p3, A)}\\\\`;
+			// p_out.innerText += `${pc_polynomeToLaTeX(p4, A)}\\\\`;
+			// p_out.innerText += `${pc_polynomeToLaTeX(p6, A)}\\\\`;
+			// p_out.innerText += "\\end{align}";
+		}
+
+		// determinant
+		{
+			// const A = ["j", "(\\alpha - k)", "(\\alpha + k)", "(\\beta - k)", "(\\beta + k)", "e", "a", "b"];
+
+			// // j
+			// const j = [1, [0, 1]];
+			// // a
+			// const a = [1, [6, 1]];
+			// // b
+			// const b = [1, [7, 1]];
+			// // (\alpha - k)
+			// const m00 = [[1, [1, 1]]];
+			// // - (\alpha + k)
+			// const m01 = [[-1, [2, 1]]];
+			// // - (\beta - k)
+			// const m02 = [[-1, [3, 1]]];
+			// // (\beta + k)
+			// const m03 = [[1, [4, 1]]];
+			// const m10 = [[1, [5, pc_multiplyPolynomials([[j], m00, [a]])]]];
+			// const m11 = [[1, [5, pc_multiplyPolynomials([[j], m01, [a]])]]];
+			// const m12 = [[-1, [5, pc_multiplyPolynomials([[j], m02, [b]])]]];
+			// const m13 = [[-1, [5, pc_multiplyPolynomials([[j], m03, [b]])]]];
+			// const m20 = pc_multiplyPolynomials([m00, m10]);
+			// const m21 = pc_multiplyPolynomials([m01, m11]);
+			// const m22 = pc_multiplyPolynomials([[[-1]], m02, m12]);
+			// const m23 = pc_multiplyPolynomials([[[-1]], m03, m13]);
+
+			// // const p0 = [xa, xb, x2];
+
+			// // console.log(xab);
+			// // console.log(...p3);
+
+			// const matrix = [
+			// 	[[[1]], [[1]], [[-1]], [[-1]]],
+			// 	[m00, m01, m02, m03],
+			// 	[m10, m11, m12, m13],
+			// 	[m20, m21, m22, m23]
+			// ];
+
+			// // const p = det3(cof4(0, matrix));
+			// const p = det4(matrix);
+			// // console.log(pc_polinomeTp);
+
+			// let s = "";
+			// s += "\\begin{align}";
+			// // for(let r of matrix) {
+			// // 	for(let p of r) {
+			// // 		s += `${pc_polynomeToLaTeX(p, A)}\\\\`;
+			// // 	}
+			// // }
+			// for(let m of p) {
+			// 	s += `${pc_polynomeToLaTeX([m], A)}\\\\`;
+			// }
+			// s += "\\end{align}";
+			// p_out.innerText += s;
+		}
+		// solution
+		{
+			const A = ["j", "\\alpha", "\\beta", "k", "e", "a", "b"];
+
+			// j
+			const j = [1, [0, 1]];
+			// alpha
+			const alpha = [1, [1, 1]];
+			// beta
+			const beta = [1, [2, 1]];
+			// k
+			const k = [1, [3, 1]];
+			// _k
+			const _k = [-1, [3, 1]];
+			// a
+			const a = [1, [5, 1]];
+			// b
+			const b = [1, [6, 1]];
+			// (\alpha - k)
+			const m00 = [alpha, _k];
+			// - (\alpha + k)
+			const m01 = pc_multiplyPolynomials([[[-1]], [alpha, k]]);
+			// - (\beta - k)
+			const m02 = pc_multiplyPolynomials([[[-1]], [beta, _k]]);;
+			// (\beta + k)
+			const m03 = [beta, k];
+			const m10 = [[1, [4, pc_multiplyPolynomials([[j], m00, [a]])]]];
+			const m11 = [[1, [4, pc_multiplyPolynomials([[j], m01, [a]])]]];
+			const m12 = [[-1, [4, pc_multiplyPolynomials([[j], m02, [b]])]]];
+			const m13 = [[-1, [4, pc_multiplyPolynomials([[j], m03, [b]])]]];
+			const m20 = pc_multiplyPolynomials([m00, m10]);
+			const m21 = pc_multiplyPolynomials([m01, m11]);
+			const m22 = pc_multiplyPolynomials([[[-1]], m02, m12]);
+			const m23 = pc_multiplyPolynomials([[[-1]], m03, m13]);
+
+			// const p0 = [xa, xb, x2];
+
+			// console.log(xab);
+			// console.log(...p3);
+
+			const matrix = [
+				[[[1]], [[1]], [[-1]], [[-1]]],
+				[m00, m01, m02, m03],
+				[m10, m11, m12, m13],
+				[m20, m21, m22, m23]
+			];
+
+			let p = det4(matrix);
+			const jkb = pc_multiplyPolynomials([[j], [k], [b], [[-1]]]);
+			const jka = pc_multiplyPolynomials([[j], [k], [a]]);
+			const ejkb = [[1, [4, jkb]]];
+			const ejka = [[1, [4, jka]]];
+			p = pc_multiplyPolynomials([p, ejkb, ejka]);
+			// const p = ejkb;
+			// console.log(pc_polinomeTp);
+
+			let s = "";
+			s += "\\begin{align}";
+			// for(let r of matrix) {
+			// 	for(let p of r) {
+			// 		s += `${pc_polynomeToLaTeX(p, A)}\\\\`;
+			// 	}
+			// }
+			for(let m of p) {
+				s += `${pc_polynomeToLaTeX([m], A)}\\\\`;
+			}
+			s += "\\end{align}";
+			p_out.innerText += s;
+		}
+
+		// 4x4 determinant
+		{
+			// const A = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p"];
+
+			// // const p0 = [xa, xb, x2];
+
+			// // console.log(xab);
+			// // console.log(...p3);
+
+			// const matrix = [[], [], [], []];
+			// for(let i = 0; i < 4; ++i) {
+			// 	for(let j = 0; j < 4; j++) {
+			// 		matrix[i].push([[1, [4 * i + j, 1]]]);
+			// 	}
+			// }
+
+			// const p = det4(matrix);
+			// // console.log(pc_polinomeTp);
+
+			// let s = "";
+			// s += "\\begin{align}";
+			// // for(let r of matrix) {
+			// // 	for(let p of r) {
+			// // 		s += `${pc_polynomeToLaTeX(p, A)}\\\\`;
+			// // 	}
+			// // }
+			// for(let m of p) {
+			// 	s += `${pc_polynomeToLaTeX([m], A)}\\\\`;
+			// }
+			// s += "\\end{align}";
+			// p_out.innerText += s;
+		}
+	</script>
+</body>
+</html>
+<!-- 
+https://www.dcode.fr/polynomial-factorization
+ -->

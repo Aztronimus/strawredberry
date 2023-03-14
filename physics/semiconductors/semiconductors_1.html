@@ -1,138 +1,342 @@
 <!DOCTYPE html>
-<html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Semiconductores</title>
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width">
+	<title>Semiconductors</title>
 	<script type="text/javascript" src="../../js/mathjax_loader.js"></script>
-	<style type="text/css">
-		canvas {
-			border: 1px solid gray;
-		}
-
-		.center {
-			display: flex;
-			justify-content: center;
-		}
-
-		p {
-			margin: auto;
-			width: 7in;
-		}
-
-		body {
-			font-size: 1.2em;
-		}
-
-		.lb, .rb {
-			position: fixed;
-			width: 50px;
-			height: 100%;
-			z-index: 1;
-			top: 0;
-		}
-
-		.lb {
-			left: 0;
-		}
-
-		.rb {
-			right: 0;
-		}
-
-		.lb a, .rb a {
-			display: block;
-			width: 100%;
-			height: 100%;
-			/*background-color: gray;*/
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="../../style.css">
 </head>
 <body>
-	<p>
-		\begin{align}
-			P' \dfrac{\sin{\alpha a}}{\alpha a} + \cos{\alpha a} = \cos{ka} \tag{3.24}\\
-			f(\alpha a) = P' \dfrac{\sin{\alpha a}}{\alpha a} + \cos{\alpha a} \tag{3.29}\\
-			f(\alpha a) = \cos{ka} \tag{3.30}
-		\end{align}
-	</p>
-	<div class="lb"><a href="semiconductors_0.html"></a></div>
-	<div class="rb"><a href="semiconductors_2.html"></a></div>
-	<div class="center"><canvas id="canvas_1" width="800" height="450"></canvas></div>
-	<p>
-		\(k\) <input id="input_k" type="range" min="0" max="20" value="10"> <output id="output_k"></output>
-	</p>
+	<header>
+		<h1><a href="../../index.html">StrawRedBerry</a></h1>
+		<h2>Semiconductors</h2>
+	</header>
+	<div id="center">
+		<div class="center">
+			<ul id="links">
+				<li class="group">Quantum mechanics</li>
+				<ul>
+					<li><a href="../quantum_mechanichs_1.html">Quantum mechanics</a></li>
+					<li><a href="../double_slit.html">Double slit</a></li>
+				</ul>
+				<li><a href="../analytic_mechanics.html">Analytic mechanics</a></li>
+				<li class="group">Relativity</li>
+				<ul>
+					<li><a href="../relativity_1.html">Special relativity 1</a></li>
+					<li><a href="../relativity_2.html">Special relativity 2</a></li>
+					<li><a href="../relativity_3.html">Special relativity 3</a></li>
+					<li><a href="../drawing.html">Visualizing curved space (work in progress)</a></li>
+					<li><a href="../general_relativity.html">Special relativity</a></li>
+					<li><a href="../general_relativity_2.html">Tensors</a></li>
+					<li><a href="../general_relativity_3.html">Tensors (in matrix notation)</a></li>
+					<li><a href="../general_relativity_4.html">Tensors (in tensor notation)</a></li>
+				</ul>
+				<li class="group">Electromagnetism</li>
+				<ul>
+					<li><a href="../maxwell equations_1.html">Linear algebra</a></li>
+					<li><a href="../maxwell_equations_2.html">Visualizing electric field</a></li>
+					<li><a href="../maxwell_equations_3.html">Green's theorem of circulation</a></li>
+					<li><a href="../maxwell_equations_4.html">Divergence theorem</a></li>
+					<li><a href="../maxwell_equations_5.html">Gauss's theorem of flux</a></li>
+					<li><a href="../maxwell_equations_6.html">Ampere-Maxwell law</a></li>
+					<li><a href="../maxwell_equations_7.html">Faraday-Lenz law</a></li>
+					<li><a href="../maxwell_equations_8.html">Electromagnetic waves</a></li>
+					<li><a href="../maxwell_equations_9.html">Electromechanics</a></li>
+				</ul>
+				<li><a href="../optics.html">Snell's law</a></li>
+				<li><a href="../tensors.html">Tensors</a></li>
+			</ul>
+		</div>
+		<div id="content">
+			<h1 id="toc_1">Density of states</h1>
+			<h2 id="toc_1_1">1D potential well</h2>
+			<p>Infinite potential well</p>
+			<p>
+				\begin{align}
+					V(x) &= \left\lbrace
+						\begin{array}{lcl}
+							V_0 & \text{if} & x < 0\\
+							0 & \text{if} & 0 < x < L\\
+							V_0 & \text{if} & L < x\\
+						\end{array}
+					\right.\\
+				\end{align}
+			</p>
+			<p>One-dimensional, non-relativistic Schrödinger's equation wave equation.</p>
+			</p>
+				\begin{align}
+					\frac{- \hbar^2}{2m} \cdot \frac{\partial^2 \Psi(x, t)}{\partial x^2} + V(x) \Psi(x, t) = j \hbar \frac{\partial \Psi(x, t)}{\partial t}
+				\end{align}
+			</p>
+			<p>One-dimensional, time-independent Schrödinger equation (used to get the stationary states of the system).</p>
+			</p>
+				\begin{align}
+					\frac{- \hbar^2}{2m} \cdot \frac{d^2 \psi(x)}{dx^2} + V(x) \psi(x) = E \psi(x)
+				\end{align}
+			</p>
+			<h2 id="toc_1_2">Solution</h2>
+			</p>
+				\begin{align}
+					\psi(x) &= e^{a x} & a^2 &= \frac{2m}{\hbar^2} (V(x) - E)
+				\end{align}
+			</p>		
+			<p>We know that \(V_0 > E\)</p>
+			<p>Considering region I (where \(V(x) = V_0\))</p>
+			<p>
+				\begin{align}
+					k_1 &= \sqrt{ \frac{2m(V_0 - E)}{\hbar^2} }
+				\end{align}
+				\begin{align}
+					a_1 &= k_1 & a_2 &= -k_1
+				\end{align}
+				\begin{align}
+					\psi_1(x) &= Ae^{a_1 x} + Be^{a_2 x}\\
+					&= Ae^{k_1 x} + Be^{- k_1 x}\\
+					\frac{d\psi_1(x)}{dx} &= A k_1 e^{k_1 x} - B k_1 e^{- k_1 x}
+				\end{align}
+			</p>
+			<p>Considering region II (where \(V(x) = 0\))</p>
+			<p>
+				\begin{align}
+					k_2 &= \sqrt{ \frac{2mE}{\hbar^2} }
+				\end{align}
+				\begin{align}
+					a_1 &= jk_2 & a_2 &= - jk_2
+				\end{align}
+				\begin{align}
+					\psi_2(x) &= C \cos(k_2 x) + D \sin(k_2 x)\\
+					\frac{d\psi_2(x)}{dx} &= - C \sin(k_2 x) + D \cos(k_2 x)
+				\end{align}
+			</p>
+			<p>Considering region III (where \(V(x) = V_0\))</p>
+			<p>
+				\begin{align}
+					k_1 &= \sqrt{ \frac{2m(V_0 - E)}{\hbar^2} }
+				\end{align}
+				\begin{align}
+					a_1 &= k_1 & a_2 &= -k_1
+				\end{align}
+				\begin{align}
+					\psi_3(x) &= Ee^{a_1 x} + Fe^{a_2 x}\\
+					&= Ee^{k_1 x} + Fe^{- k_1 x}\\
+					\frac{d\psi_3(x)}{dx} &= E k_1 e^{k_1 x} - F k_1 e^{- k_1 x}
+				\end{align}
+			</p>
+			<p>In order to preserve normalization</p>
+			<p>
+				\begin{align}
+					B &= 0\\
+					E &= 0
+				\end{align}
+			</p>
+			<p>Boundary conditions</p>
+			<p>
+				\begin{align}
+					\psi_1(0) &= \psi_2(0)\\
+					A &= C\\
+					\\
+					\left.\frac{d\psi_1}{dx}\right|_{x = 0} &= \left.\frac{d\psi_2}{dx}\right|_{x = 0}\\
+					A k_1 &= D\\
+					\\
+					\psi_2(L) &= \psi_3(L)\\
+					C \cos(k_2 L) + D \sin(k_2 L) &= Fe^{- k_1 L}\\
+					\\
+					\left.\frac{d\psi_2}{dx}\right|_{x = L} &= \left.\frac{d\psi_3}{dx}\right|_{x = L}\\
+					- C \sin(k_2 L) + D \cos(k_2 L) &= - F k_1 e^{- k_1 L}
+				\end{align}
+			</p>
+			<p>Expressions</p>
+			<p>
+				\begin{align}
+					C (k_1 \cos(k_2 L) - \sin(k_2 L)) + D (k_1 \sin(k_2 L) + \cos(k_2 L)) &= 0\\
+				\end{align}
+				\begin{align}
+					2k_1 \cos(k_2 L) + (k_1^2 - 1) \sin(k_2 L) &= 0\\
+				\end{align}
+				\begin{align}
+					k_1^2 + 2k_1 \cot(k_2 L) - 1 &= 0\\
+				\end{align}
+			</p>
+			<p></p>
+			<p>Taking on count the following relation, one could create a \(k_1\) vs. \(k_2\) space</p>
+			<p>
+				\begin{align}
+					k_1^2 + k_2^2 &= \frac{2mV_0}{\hbar^2}
+				\end{align}
+				\begin{align}
+					k_1 &= \pm \sqrt{\frac{2mV_0}{\hbar^2} - k_2^2} = - \cot(k_2 L) \pm |\csc(k_2 L)|
+				\end{align}
+			</p>
+			<p>The latter expression can be simplified, in order to ignore relations with \(k_1 < 0\)</p>
+			<p>
+				\begin{align}
+					k_1 &= \sqrt{\frac{2mV_0}{\hbar^2} - k_2^2} = - \cot(k_2 L) + |\csc(k_2 L)|
+				\end{align}
+			</p>
+			<canvas id="canvas_1_2_1" width="800" height="450"></canvas>
+			<form id="form_1_2_1_1">
+				<table>
+					<tr>
+						<td>\begin{align} \sqrt{\frac{2mV_0}{\hbar^2}} \end{align}</td>
+						<td><input name="input_v" type="range" min="0" max="40" value="20"><output id="output_v"></output></td>
+					</tr>
+					<tr>
+						<td>\begin{align} L \end{align}</td>
+						<td><input name="input_l" type="range" min="0" max="40" value="20"><output id="output_l"></output></td>
+					</tr>
+				</table>
+			</form>
+			<p>Alternatively, the latter relation can be represented in the \(\Large \sqrt{\frac{2mV_0}{\hbar^2}}\) vs. \(\Large \sqrt{\frac{2mE}{\hbar^2}}\) space.</p>
+			<p>
+				\begin{align}
+					\sqrt{\frac{2mV_0}{\hbar^2}} &= \sqrt{(|\csc(k_2 L)| - \cot(k_2 L))^2 + k_2^2}
+				\end{align}
+			</p>
+			<canvas id="canvas_1_2_2" width="800" height="450"></canvas>
+			<h2 id="toc_1_3">2D potential well</h2>
+			<p>Schrödinger equation</p>
+			<p>
+				\begin{align}
+					\frac{- \hbar^2}{2m} \cdot \left(\frac{\partial^2 \psi(x, y)}{\partial x^2} + \frac{\partial^2 \psi(x, y)}{\partial y^2}\right) + V(x, y) \psi(x, y) = E \psi(x, y)
+				\end{align}
+			</p>
+			<p>Separation of variables</p>
+			<p>
+				\begin{align}
+					\psi(x, y) &= \psi_x(x) \psi_y(y)\\
+					V(x, y) &= V_x(x) + V_y(y)
+				\end{align}
+			</p>
+			<p>Rearranging the equation is as follows:</p>
+			<p>
+				\begin{align}
+					V_x(x) - \frac{\hbar^2}{2m} \cdot \frac{1}{\psi_x(x)} \cdot \frac{\partial^2 \psi_x(x)}{\partial x^2} + V_y(y) - \frac{\hbar^2}{2m} \cdot \frac{1}{\psi_y(y)} \cdot \frac{\partial^2 \psi_y(y)}{\partial y^2} = E
+				\end{align}
+				\begin{align}
+					E_x + E_y &= E
+				\end{align}
+			</p>
+			<p>We get the following equations</p>
+			<p>
+				\begin{align}
+					\frac{- \hbar^2}{2m} \cdot \frac{\partial^2 \psi_x(x)}{\partial x^2} + V_x(x) \psi_x(x) &= E_x \psi_x(x)
+				\end{align}
+				\begin{align}
+					\frac{- \hbar^2}{2m} \cdot \frac{\partial^2 \psi_y(y)}{\partial y^2} + V_y(y) \psi_y(y) &= E_y \psi_y(y)
+				\end{align}
+			</p>
+		</div>
+		<div class="center">
+			<ol id="index">
+				<li class="group"><a href="#toc_1">Density of states function</a></li>
+				<ol>
+					<li><a href="#toc_1_1">Derivation</a></li>
+				</ol>
+			</ol>
+		</div>
+	</div>
+	<footer>
+		<h1><a href="../../index.html">StrawRedBerry</a></h1>
+	</footer>
 	<script type="text/javascript" src="../../grapher/grapher.js"></script>
 	<script type="text/javascript">
-	(async function() {
-		await document.fonts.ready;
-		let exitFunction = false;
-		if(!checkResources()) {
-			// console.log("Trying to get resources");
+	async function callSafe(loadRes, f) {
+		// "loadRes" is a function that is responsible for loading and checking the resources
+		// assuring resources before running
+		let b = await loadRes();
+		if(!b) {
+			console.log("Trying to get resources");
 			await new Promise(r => { setTimeout(r, 1000); });
-			exitFunction = !checkResources();
 		}
+		b = await loadRes();
+		if(b) { f(); }
+		return b;
+	}
 
-		function checkResources() {
-			let available = document.fonts.check("64px MJXTEX");
-			return available;
-		}
+	async function loadResources() {
+		// get resources
+		await document.fonts.ready;
+		// check resources
+		return document.fonts.check("64px MJXTEX");
+	}
 
-		if(exitFunction) {
-			console.log("MathJax fonts not loaded");
-			return;
-		}
-
+	function run() {
 		{
-			let k = 1;
-			const input_k = document.getElementById("input_k");
-			const output_k = document.getElementById("output_k");
-			const canvas = document.getElementById("canvas_1");
+			const form = document.getElementById("form_1_2_1_1");
+			const input_v = form.elements.input_v;
+			const input_l = form.elements.input_l;
+			const canvas = document.getElementById("canvas_1_2_1");
 			const ctx = canvas.getContext("2d");
 			const gInfo = new GraphInfo(canvas);
-			gInfo.graphArea = [[-5 * Math.PI, 5], [5 * Math.PI, -5]]
-			let points;
-			// console.log(points);	
+			gInfo.graphArea = [[-1, 7.5], [15, -1]];
+
+			// World variables
+			let k1_l;
+			let k1_r;
+			let v = input_v.value / 4;
+			let l = input_v.value / 10;
+
 			function draw() {
+				// computation
+				k1_l = pointsFromParametric(50, [0, Math.PI / 2], t => [v * Math.cos(t), v * Math.sin(t)], gInfo);
+				k1_r = pointsFromParametric(150, [0, 15], t => [t, - 1 / Math.tan(t * l) + Math.abs(1 / Math.sin(t * l))], gInfo);
+				// drawing
 				ctx.clearRect(0, 0, 800, 450);
 				// Axis
 				ctx.lineWidth = 2;
 				ctx.strokeStyle = "gray";
 				// Horizontal axis
 				ctx.beginPath();
-				ctx.moveTo(0, 225);
-				ctx.lineTo(800, 225);
+				ctx.moveTo(0, 400);
+				ctx.lineTo(800, 400);
 				ctx.stroke();
 				ctx.closePath();
 				// Vertical axis
 				ctx.beginPath();
-				ctx.moveTo(400, 0);
-				ctx.lineTo(400, 450);
+				ctx.moveTo(50, 0);
+				ctx.lineTo(50, 450);
 				ctx.stroke();
 				ctx.closePath();
 				// Graph
 				ctx.lineWidth = 4;
 				ctx.strokeStyle = "#0f7";
-				points = pointsFromParametric(150, [-5 * Math.PI, 5 * Math.PI], t => [t, Math.cos(k * t)], gInfo);
 				// drawPoints(points, ctx);
-				drawPolyline(points, ctx);
+				drawPolyline(k1_l, ctx);
+				ctx.strokeStyle = "#f07";
+				drawPolyline(k1_r, ctx);
 				// Text
-				ctx.strokeStyle = "white";
-				ctx.fillStyle = "black";
+				ctx.strokeStyle = "black";
+				ctx.fillStyle = "white";
 				ctx.font = "italic 24px MJXTEX-I";
 				ctx.textAlign = "right";
-				drawOText("f", 400 - 8, 32, ctx);
-				drawOText("a", 800 - 32, 225 - 8, ctx);
+				drawOText("k_1", 100 - 8, 32, ctx);
+				drawOText("k_2", 800 - 32, 400 - 8, ctx);
 			}
 
-			input_k.oninput = () => {
-				k = Number(input_k.value) / 10;
+			input_v.oninput = () => {
+				v = Number(input_v.value) / 4;
+				draw();
+			}
+
+			input_l.oninput = () => {
+				l = Number(input_l.value) / 10;
 				draw();
 			}
 
 			draw();
 		}
-	})();
+	}
+
+	callSafe(loadResources, run);
 	</script>
 </body>
 </html>
+
+<!-- 
+https://en.wikipedia.org/wiki/Schr%C3%B6dinger_equation
+https://imbooz.com/engineering-physics/schrodinger-wave-equation-time-dependent-and-time-independent-wave-equation/
+ -->
+
+<!-- ABCDEF G HIJKLM
+NOPQRS T UVWXYZ -->

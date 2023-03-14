@@ -1,4 +1,6 @@
 pressure/pressure 260419/
 pressure/pressure/
+magic_hat/
 **/ignore
 *.ini
+*.ssh
