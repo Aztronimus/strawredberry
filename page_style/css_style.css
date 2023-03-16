@@ -1,0 +1,93 @@
+h1, h2, h3 {
+	font-family: Montserrat;
+	text-align: center;
+	margin: 0.5em 0;
+}
+
+header h1 {
+	color: var(--color-l4);
+	font-size: 3em;
+}
+
+header h2 {
+	color: var(--color-s6);
+	font-size: 1.5em;
+}
+
+header h2 a:hover {
+	color: var(--color-l0);
+}
+
+header {
+	padding: 0.5em;
+	background-color: var(--contrast-a2);
+}
+
+body {
+	color: var(--color-s1);
+	background-color: var(--color-s8);
+	font-family: Noto-Serif;
+}
+
+#content {
+	margin: auto;
+	max-width: 6.5in;
+}
+
+#content > * {
+	width: 100%;
+	margin: 1em 0;
+}
+
+canvas {
+	border: 1px solid var(--contrast-a2);
+}
+
+code,
+input.code {
+	font-family: Ubuntu-Mono;
+	font-size: 1em;
+	color: var(--color-s1);
+	display: inline-block;
+	padding: 4px 8px;
+	tab-size: 4;
+	white-space: pre-wrap;
+/*	counter-reset: line var(--line, 0);*/
+	line-height: 1.4em;
+}
+
+code {
+	background-color: var(--contrast-a2);
+}
+
+code.block,
+input.code {
+	display: block;
+	padding: 16px 32px;
+}
+
+input.code {
+	border-radius: 2em;
+	background-color: var(--color-s8);
+	border: 1px solid var(--color-s7);
+/*	border: 1px solid var(--contrast-a2);*/
+}
+
+input.code:focus {
+	background-color: var(--contrast-a2);
+	border-color: var(--contrast-a2);
+}
+
+ul, ol {
+	list-style-position: inside;
+}
+
+#content ul,
+#content ol,
+#content p {
+	margin: 0 1em;
+}
+
+ul.none {
+	list-style: none;
+}

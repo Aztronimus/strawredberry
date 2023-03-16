@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>Latex Tools</title>
+	<link rel="stylesheet" type="text/css" href="../css/general_style.css"/>
+	<link rel="stylesheet" href="css_style.css">
+	<script type="text/javascript" src="../js/mathjax_loader.js"></script>
+</head>
+<body>
+	<header>
+		<h1>Latex Tools</h1>
+		<h2><a href="../index.html">StrawRedBerry</a></h2>
+	</header>
+	<div id="content">
+		<h1>Plotting a parametric function</h1>
+		<input id="latex_input" class="code" type="text"/>
+		<output id="latex_output" for="latex_input"></output>
+		<code class="block">pointsFromFunction(dstArray, f, n, t0, t1);</code>
+		<ul>
+			<li>Model space</li>
+			<li>World space</li>
+			<li>View space</li>
+			<li>Projection space</li>
+		</ul>
+		<code class="block">gp_pointsToWorld(dstArray, srcArray);</code>
+		<code class="block">gp_pointsToView(dstArray, srcArray);</code>
+		<code class="block">gp_pointsToProjection(dstArray, srcArray);</code>
+		<code class="block">gp_drawPolyline(ctx, points);</code>
+		<code class="block">gp_drawGrid(ctx);</code>
+		<code class="block">gp_drawAxis(ctx);</code>
+		<code class="block">gp_drawPoints(ctx);</code>
+		<code class="block">gp_drawLabels(ctx);</code>
+		<canvas id="plot_example_1" width="800" height="450">Your browser does not support canvas.</canvas>
+	</div>
+	<script type="text/javascript" src="../js/style_2.js"></script>
+	<script type="text/javascript">
+		const inp = document.getElementById("latex_input");
+		const out = document.getElementById("latex_output");
+		function typeset() {
+			out.replaceChildren(document.createTextNode("\\begin{gather}" + inp.value + "\\end{gather}"));
+			console.log(inp.value);
+			MathJax.typeset();
+		}
+
+		inp.addEventListener("input", typeset);
+	</script>
+</body>
+</html>
+<!-- 
+	https://www.cmor-faculty.rice.edu/~heinken/latex/symbols.pdf
+ -->

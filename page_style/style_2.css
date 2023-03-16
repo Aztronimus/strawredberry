@@ -1,0 +1,76 @@
+body {
+	display: grid;
+	grid-template-columns: 0.3fr 0.7fr;
+	color: var(--color-s1);
+	background-color: var(--color-s8);
+	font-family: Noto-Serif;
+}
+
+h1, h2, h3 {
+	font-family: Montserrat;
+	text-align: center;
+	margin: 0.5em 0;
+/*	padding: 0.25em;*/
+}
+
+h1 {
+	font-size: 3em;
+}
+
+h2 {
+	font-size: 1.5em;
+}
+
+#navbar {
+	grid-column: 1 / 2;
+	background-color: #171717;
+	color: var(--contrast-a1);
+/*	font-family: Montserrat;*/
+	min-height: 100vh;
+/*	border-right: 1px solid var(--color-l4);*/
+}
+
+#navbar header {
+	border-width: 0;
+	padding: 10px;
+	background-color: var(--color-l4);
+	margin-bottom: 10px;
+}
+
+#navbar header h1 {
+	color: var(--contrast-a1);
+}
+
+#navbar > div {
+	font-family: Noto-Sans;
+/*	font-weight: bold;*/
+/*	font-size: 14px;*/
+/*	color: var(--color-s2);*/
+	padding: 0.5em 2em;
+	margin-left: 5px;
+	border-radius: 8px 0 0 8px;
+/*	border: 1px solid var(--color-s8);*/
+}
+
+
+#navbar > div:hover {
+	background-color: var(--contrast-a2);
+	cursor: pointer;
+/*	color: var(--color-l0);*/
+}
+
+#navbar	> div.selected:hover,
+#navbar > div.selected {
+	background-color: var(--color-s8);
+	cursor: default;
+}
+
+body > div.page {
+	display: none;
+	grid-column: 2 / 2;
+	padding: 0 5%;
+}
+
+body > div.selected {
+	display: block;
+}
