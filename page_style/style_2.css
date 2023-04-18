@@ -51,8 +51,8 @@ h2 {
 #navbar > div {
 	font-family: Noto-Sans;
 	padding: 0.5em 2em;
-	margin-left: 5px;
-	border-radius: 8px 0 0 8px;
+	margin: 0 5px;
+	border-radius: 8px;
 }
 
 
