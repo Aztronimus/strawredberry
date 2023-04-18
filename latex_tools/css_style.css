@@ -70,12 +70,13 @@ input.code {
 	border-radius: 2em;
 	background-color: var(--color-s8);
 	border: 1px solid var(--color-s7);
+	outline: 2px solid transparent;
 /*	border: 1px solid var(--contrast-a2);*/
 }
 
 input.code:focus {
 	background-color: var(--contrast-a2);
-	border-color: var(--contrast-a2);
+	outline-color: var(--color-l4);
 }
 
 ul, ol {
